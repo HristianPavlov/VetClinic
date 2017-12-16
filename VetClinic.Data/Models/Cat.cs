@@ -5,11 +5,11 @@
     using VetClinic.Data.Common.Enums;
 
     class Cat : Animal
-
     {
         private int age;
 
-        public Cat(string name, GenderType gender, int age) : base(name, gender)
+        public Cat(string name, GenderType gender, int age) 
+            : base(name, gender)
         {
             //this.Breed = breed;
             this.Age = age;
