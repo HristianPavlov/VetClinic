@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic", "VetClinic\VetClinic.csproj", "{EFA03579-871B-4E2E-9342-8D0051C32860}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic.Data", "VetClinic.Data\VetClinic.Data.csproj", "{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA03579-871B-4E2E-9342-8D0051C32860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA03579-871B-4E2E-9342-8D0051C32860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA03579-871B-4E2E-9342-8D0051C32860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA03579-871B-4E2E-9342-8D0051C32860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0CADF69-B6C0-4E0C-B1FC-D5893422CCC0}
+	EndGlobalSection
+EndGlobal
