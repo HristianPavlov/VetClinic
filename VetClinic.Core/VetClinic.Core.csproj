@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EFA03579-871B-4E2E-9342-8D0051C32860}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>VetClinic</RootNamespace>
-    <AssemblyName>VetClinic</AssemblyName>
+    <ProjectGuid>{7AB9DD89-4AAF-4C02-8C3F-2F9952F661B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VetClinic.Core</RootNamespace>
+    <AssemblyName>VetClinic.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,21 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VetClinic.Core\VetClinic.Core.csproj">
-      <Project>{7AB9DD89-4AAF-4C02-8C3F-2F9952F661B1}</Project>
-      <Name>VetClinic.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj">
-      <Project>{18bd4b11-918a-42d0-bddd-a79b3d1a872e}</Project>
-      <Name>VetClinic.Data</Name>
-    </ProjectReference>
+    <Compile Include="Services\ClinicServices.cs" />
+    <Compile Include="Services\Contracts\IClinicServices.cs" />
+    <Compile Include="Services\Contracts\IService.cs" />
+    <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
