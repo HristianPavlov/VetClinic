@@ -1,12 +1,12 @@
-﻿using Bytes2you.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using VetClinic.Data.Contracts;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using Bytes2you.Validation;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using VetClinic.Data.Contracts;
+
     public class Owner : Human, IIdentifiable
     {
         private string id;

@@ -1,13 +1,12 @@
-﻿using Bytes2you.Validation;
-using VetClinic.Common;
-using VetClinic.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using VetClinic.Common.Enums;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using Bytes2you.Validation;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using VetClinic.Data.Common.Enums;
+    using VetClinic.Data.Contracts;
+
     public abstract class Animal : IIdentifiable
     {
         private string name;

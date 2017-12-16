@@ -1,15 +1,16 @@
-﻿using Bytes2you.Validation;
-using System.Text;
-using VetClinic.Common.Enums;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using Bytes2you.Validation;
+    using System.Text;
+    using VetClinic.Data.Common.Enums;
+
     public class Dog : Animal
     {
         private string breed;
         private int age;
 
-        public Dog(string name, GenderType gender, int age, string breed) : base(name, gender)
+        public Dog(string name, GenderType gender, int age, string breed) 
+            : base(name, gender)
         {
             this.Breed = breed;
             this.Age = age;

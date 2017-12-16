@@ -1,8 +1,8 @@
-﻿using Bytes2you.Validation;
-using VetClinic.Data.Contracts;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using Bytes2you.Validation;
+    using VetClinic.Data.Contracts;
+
     public class Medicine : Supplies, ISuppliable
     {
         private string name;

@@ -1,8 +1,8 @@
-﻿using System.Text;
-using VetClinic.Data.Contracts;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using System.Text;
+    using VetClinic.Data.Contracts;
+
     public abstract class Staff : Human, IIdentifiable
     {
         private string id;

@@ -1,9 +1,9 @@
-﻿using Bytes2you.Validation;
-using System.Text;
-using VetClinic.Common.Enums;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using Bytes2you.Validation;
+    using System.Text;
+    using VetClinic.Data.Common.Enums;
+
     class Cat : Animal
 
     {

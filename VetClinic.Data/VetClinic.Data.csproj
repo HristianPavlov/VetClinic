@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DataConstants.cs" />
     <Compile Include="Common\Enums\AnimalType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />
     <Compile Include="Common\Validator.cs" />
@@ -53,7 +54,7 @@
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\Dignosis.cs" />
-    <Compile Include="Models\Disease.cs" />
+    <Compile Include="Common\Enums\Diseases.cs" />
     <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\Hamster.cs" />
     <Compile Include="Models\Human.cs" />
@@ -65,7 +66,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Common\Data.Constants" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

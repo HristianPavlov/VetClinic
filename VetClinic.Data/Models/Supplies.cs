@@ -1,11 +1,11 @@
-﻿using Bytes2you.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using VetClinic.Data.Contracts;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using Bytes2you.Validation;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using VetClinic.Data.Contracts;
+
     public abstract class Supplies : ISuppliable
     {
         private string name;

@@ -1,9 +1,9 @@
-﻿using VetClinic.Data.Contracts;
-using System;
-using System.Collections.Generic;
-
-namespace VetClinic.Data.Models
+﻿namespace VetClinic.Data.Models
 {
+    using VetClinic.Data.Contracts;
+    using System;
+    using System.Collections.Generic;
+
     public class Dignosis : IDiagnosis
     {
         public Dignosis()

@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj">
+      <Project>{18bd4b11-918a-42d0-bddd-a79b3d1a872e}</Project>
+      <Name>VetClinic.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
