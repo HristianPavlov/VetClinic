@@ -1,7 +1,7 @@
 ﻿namespace VetClinic.Data.Models
 {
     using System;
-    using VetClinic.Data.Contracts;
+    using Contracts;
 
     public class Veterinarian : Staff, IIdentifiable
     {

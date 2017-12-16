@@ -2,7 +2,8 @@
 {
     using Bytes2you.Validation;
     using System.Text;
-    using VetClinic.Data.Common.Enums;
+    using Common.Enums;
+    using Abstractions;
 
     public class Dog : Animal
     {

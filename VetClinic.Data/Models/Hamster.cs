@@ -1,6 +1,7 @@
 ﻿namespace VetClinic.Data.Models
 {
-    using VetClinic.Data.Common.Enums;
+    using Common.Enums;
+    using Abstractions;
 
     public class Hamster : Animal
     {

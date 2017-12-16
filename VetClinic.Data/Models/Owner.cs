@@ -5,7 +5,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using VetClinic.Data.Contracts;
+    using Contracts;
+    using Abstractions;
 
     public class Owner : Human, IIdentifiable
     {

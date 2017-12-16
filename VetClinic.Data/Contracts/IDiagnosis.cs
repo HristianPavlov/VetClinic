@@ -1,6 +1,6 @@
 ﻿namespace VetClinic.Data.Contracts
 {
-    using VetClinic.Data.Models;
+    using Models.Abstractions;
     using System;
     using System.Collections.Generic;
 

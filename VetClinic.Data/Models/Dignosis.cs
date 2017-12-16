@@ -1,6 +1,7 @@
 ﻿namespace VetClinic.Data.Models
 {
-    using VetClinic.Data.Contracts;
+    using Abstractions;
+    using Contracts;
     using System;
     using System.Collections.Generic;
 

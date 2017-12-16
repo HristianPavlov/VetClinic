@@ -1,8 +1,9 @@
 ﻿namespace VetClinic.Data.Models
 {
+    using Abstractions;
     using Bytes2you.Validation;
+    using Common.Enums;
     using System.Text;
-    using VetClinic.Data.Common.Enums;
 
     class Cat : Animal
     {

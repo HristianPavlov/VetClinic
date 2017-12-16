@@ -4,7 +4,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using VetClinic.Data.Contracts;
+    using Contracts;
 
     public abstract class Supplies : ISuppliable
     {

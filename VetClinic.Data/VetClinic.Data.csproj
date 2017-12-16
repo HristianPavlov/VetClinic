@@ -51,13 +51,13 @@
     <Compile Include="Contracts\IDiagnosis.cs" />
     <Compile Include="Contracts\IIdentifiable.cs" />
     <Compile Include="Contracts\ISuppliable.cs" />
-    <Compile Include="Models\Animal.cs" />
+    <Compile Include="Models\Abstractions\Animal.cs" />
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\Dignosis.cs" />
     <Compile Include="Common\Enums\Diseases.cs" />
     <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\Hamster.cs" />
-    <Compile Include="Models\Human.cs" />
+    <Compile Include="Models\Abstractions\Human.cs" />
     <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\Staff.cs" />

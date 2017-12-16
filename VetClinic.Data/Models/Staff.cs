@@ -1,7 +1,8 @@
 ﻿namespace VetClinic.Data.Models
 {
     using System.Text;
-    using VetClinic.Data.Contracts;
+    using Contracts;
+    using Abstractions;
 
     public abstract class Staff : Human, IIdentifiable
     {

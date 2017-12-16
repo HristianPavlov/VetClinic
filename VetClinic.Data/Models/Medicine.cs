@@ -1,7 +1,7 @@
 ﻿namespace VetClinic.Data.Models
 {
     using Bytes2you.Validation;
-    using VetClinic.Data.Contracts;
+    using Contracts;
 
     public class Medicine : Supplies, ISuppliable
     {
