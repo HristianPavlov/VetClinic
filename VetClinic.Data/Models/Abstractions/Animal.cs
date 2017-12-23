@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public abstract class Animal : IIdentifiable
+    public abstract class Animal : IIdentifiable,IAnimal
     {
         private string name;
         // private Owner owner;
@@ -17,7 +17,7 @@
         private string id;
         private AnimalType type;
 
-        public Animal(string name, GenderType gender)//, int age, Owner owner
+        public Animal(string name, GenderType gender, AnimalType type)//, int age, Owner owner
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
@@ -29,7 +29,7 @@
             this.diagnosises = new List<IDiagnosis>();
             // this.Age = age;
             this.id = GenerateID();
-
+            this.Type = type;
         }
 
         public AnimalType Type

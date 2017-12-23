@@ -12,6 +12,8 @@
     {
         private string id;
         private ICollection<Animal> pets;
+        static int ownersCount = 0;
+
 
         public Owner(string firstName, string lastName, string phoneNumber)
             : base(firstName, lastName, phoneNumber)
@@ -22,9 +24,8 @@
 
         public ICollection<Animal> Pets { get => this.pets; }  // List copy To Do ! 
 
-        public string ID { get => this.id; set => this.id = value; }
+        public string ID { get => this.id; private set => this.id = value; }
 
-        static int ownersCount = 0;
         public string GenerateID()
         {
             StringBuilder sb = new StringBuilder();
@@ -35,6 +36,7 @@
 
             return sb.ToString();
         }
+
 
         public void PayForServices()
         {
@@ -50,7 +52,7 @@
             this.pets.Add(pet);
         }
 
-        public void RemovePet(Animal pet)
+        public void RemovePet(IAnimal pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
             Animal petFound = this.pets.FirstOrDefault(x => x.ID == pet.ID);
@@ -92,7 +94,18 @@
                 strBuilder.AppendLine("=====");
             }
 
-            Console.WriteLine(strBuilder.ToString());
+            Console.WriteLine(strBuilder.ToString().TrimEnd());
+        }
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        public static int gettingStaticID()
+        {
+            //StringBuilder sb = new StringBuilder();
+
+            //ownersCount++;
+           // sb.Append('O');
+           // sb.Append(ownersCount+1);
+
+            return ownersCount;
         }
     }
 }

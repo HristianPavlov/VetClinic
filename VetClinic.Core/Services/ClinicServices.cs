@@ -13,6 +13,7 @@
         public ClinicServices()
         {
             this.services = new List<IService>();
+
         }
 
         public ICollection<IService> Services => new List<IService>();

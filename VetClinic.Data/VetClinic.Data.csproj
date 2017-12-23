@@ -53,6 +53,7 @@
     <Compile Include="Contracts\ISuppliable.cs" />
     <Compile Include="Models\Abstractions\Animal.cs" />
     <Compile Include="Models\Cat.cs" />
+    <Compile Include="Models\DataBaseForOwners.cs" />
     <Compile Include="Models\Dignosis.cs" />
     <Compile Include="Common\Enums\Diseases.cs" />
     <Compile Include="Models\Dog.cs" />

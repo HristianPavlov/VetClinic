@@ -5,16 +5,16 @@
     using Common.Enums;
     using System.Text;
 
-    class Cat : Animal
+  public  class Cat : Animal
     {
         private int age;
 
         public Cat(string name, GenderType gender, int age) 
-            : base(name, gender)
+            : base(name, gender, AnimalType.Cat)
         {
             //this.Breed = breed;
             this.Age = age;
-            this.Type = AnimalType.Cat;
+            //this.Type = AnimalType.Cat;
         }
 
         public int Age

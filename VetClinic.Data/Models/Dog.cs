@@ -11,11 +11,11 @@
         private int age;
 
         public Dog(string name, GenderType gender, int age, string breed) 
-            : base(name, gender)
+            : base(name, gender, AnimalType.Dog)
         {
             this.Breed = breed;
             this.Age = age;
-            this.Type = AnimalType.Dog;
+           // this.Type = AnimalType.Dog;
         }
 
         public int Age
