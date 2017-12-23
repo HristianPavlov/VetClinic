@@ -69,6 +69,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VetClinic.Core\VetClinic.Core.csproj">
+      <Project>{7AB9DD89-4AAF-4C02-8C3F-2F9952F661B1}</Project>
+      <Name>VetClinic.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,7 +6,9 @@
     {
         //ICollection<IService> Services { get; }
 
-        string ListAllServices();
+        //string ListAllServices();  
+        // ^ Не може да се декларира като статичен метод в интерфейса. Трябва да е статичен за да се извиква през Engine ChooseService.
+
 
         void AddServices(IService service);
 

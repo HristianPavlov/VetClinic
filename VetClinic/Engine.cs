@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VetClinic.Core.Services;
 using VetClinic.Data.Common.Enums;
 using VetClinic.Data.Contracts;
 using VetClinic.Data.Models;
@@ -13,18 +14,19 @@ namespace VetClinic
   public sealed class Engine:IEngine
     {
         private const string SeparatorForConst = "====";
+
         private const string UserRegister = "RegisterUser ==== will give you the option to add a new Owner to the database";
         private const string AnimalAdd = "AddAnimal ==== will give you the option to add a new animal to an existing Owner";
         private const string AnimalRemove = "RemoveAnimal ==== will give you the option to remove the animal from an Owners data";
         private const string PetsPrint = "PrintPets ==== will print the information about the Owner's collection of pets";
+        private const string ChooseServices = "ChooseServices ==== will give you the option to add multiple services to the owner";
 
-        
 
         private const string END = "END "+ SeparatorForConst+" will close the program";
         private const string InvalidCommand = "Invalid command!  {0}";
             
          
-       private const string OwnerAddedSuccessfully = "{0} added successfully to the database with ID = {1}!";
+        private const string OwnerAddedSuccessfully = "{0} added successfully to the database with ID = {1}!";
         private const string AnimalAddedSuccessfully = "{0} named {1} with ID {2} added successfully to Owner {3} with ID {4}!";
         private const string AnimalRemovedSuccessfully= "{0} named {1} with ID {2} removed successfully from Owner with ID {3}!";
 
@@ -70,7 +72,8 @@ namespace VetClinic
             Console.WriteLine(UserRegister);
             Console.WriteLine(AnimalAdd); 
             Console.WriteLine(AnimalRemove); 
-            Console.WriteLine(PetsPrint); 
+            Console.WriteLine(PetsPrint);
+            Console.WriteLine(ChooseServices);
 
 
 
@@ -197,6 +200,16 @@ namespace VetClinic
                     DataBaseForOwners.data[id].PrintPets();
                     return string.Empty;
 
+                case "ChooseServices":
+                    Console.Write(ClinicServices.ListAllServices());
+                    id = Console.ReadLine();
+                    if (int.Parse(id) < 1 || int.Parse(id) > ClinicServices.Services.Count)
+                    {
+                        throw new ArgumentException("There is no such service");
+                    }
+
+                    // TO DO => implement execution of the service !
+                    return string.Empty;
 
 
 
@@ -239,11 +252,12 @@ namespace VetClinic
         {
             Console.Write("name: ");
             var name = Console.ReadLine();
-            Console.Write("gender(male/female): ");
 
+            Console.Write("gender(male/female): ");
             GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine().ToLower());
 
-            Animal x=null;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Implement fill info method for each animal
+
+            Animal x=null;    //  ==============  Implement fill info method for each animal
             if (type==AnimalType.Dog)
              {
                 Console.Write("age: ");
@@ -261,15 +275,12 @@ namespace VetClinic
             else if (type == AnimalType.Hamster)
             {
                  x = new Hamster(name, gender);
-
             }
             
 
             DataBaseForOwners.data[id].AddPet(x);
             Owner y = DataBaseForOwners.data[id];
-
-          
-
+        
 
             return string.Format(AnimalAddedSuccessfully, type.ToString(), name, x.ID, y.FirstName, y.ID);
 
@@ -286,7 +297,6 @@ namespace VetClinic
             var lastName = Console.ReadLine();
             Console.Write("Phone number: ");
             var phoneNumber = Console.ReadLine();
-
           
             DataBaseForOwners.data.Add(id,new Owner(firstName, lastName, phoneNumber));
 

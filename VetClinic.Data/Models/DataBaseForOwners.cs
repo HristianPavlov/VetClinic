@@ -7,7 +7,7 @@ using VetClinic.Data.Models.Abstractions;
 
 namespace VetClinic.Data.Models
 {
-    public static  class DataBaseForOwners
+    public static class DataBaseForOwners
     {
         public static Dictionary<string , Owner> data = new Dictionary<string, Owner>();
 

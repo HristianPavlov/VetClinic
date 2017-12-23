@@ -15,7 +15,6 @@
         {
             this.Breed = breed;
             this.Age = age;
-           // this.Type = AnimalType.Dog;
         }
 
         public int Age
@@ -26,8 +25,8 @@
                 Guard.WhenArgument(value, "Age less than zero").IsLessThan(0).Throw();
                 this.age = value;
             }
-
         }
+
         public string Breed
         {
             get => breed;
@@ -36,7 +35,6 @@
                 Guard.WhenArgument(value, "Invalid name").IsNull().Throw();
                 Guard.WhenArgument(value.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
                 this.breed = value;
-
             }
         }
 
@@ -52,7 +50,6 @@
             str.AppendLine($"ID: {this.ID}");
 
             return str.ToString();
-
         }
     }
 }

@@ -11,23 +11,21 @@
     {
         private string name;
         // private Owner owner;
-        private GenderType gender;
-        private ICollection<IDiagnosis> diagnosises;  // ???????? To do
-                                                      // private int age;
+        private GenderType gender;        
         private string id;
         private AnimalType type;
 
-        public Animal(string name, GenderType gender, AnimalType type)//, int age, Owner owner
+        private ICollection<IDiagnosis> diagnosises;  // ===== TO DO
+
+        public Animal(string name, GenderType gender, AnimalType type)
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
-            // Guard.WhenArgument(age, "Age less than zero").IsLessThan(0).Throw();
 
             this.Name = name;
             //  this.Owner = owner;
             this.Gender = gender;
             this.diagnosises = new List<IDiagnosis>();
-            // this.Age = age;
             this.id = GenerateID();
             this.Type = type;
         }
@@ -40,9 +38,7 @@
                 // Validation ?
                 this.type = value;
             }
-
         }
-
 
         public string Name
         {
@@ -69,17 +65,7 @@
             }
         }
 
-        //public int Age
-        //{
-        //    get => this.age;
-        //    set => this.age = value;
-        //}
-
-        public bool NewClient { get; set; } // not implemented
-
         public string ID { get => this.id; }
-
-
 
         static int animalsCount = 0;
         public string GenerateID()
@@ -103,6 +89,11 @@
             str.AppendLine($"ID: {this.ID}");
 
             return str.ToString();
+        }
+
+        public virtual void FillInfo()
+        {
+
         }
     }
 }

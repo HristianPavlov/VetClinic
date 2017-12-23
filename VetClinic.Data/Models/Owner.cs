@@ -7,22 +7,28 @@
     using System.Text;
     using Contracts;
     using Abstractions;
+    using VetClinic.Core.Services.Contracts;
+    using VetClinic.Core;
 
     public class Owner : Human, IIdentifiable
     {
+        static int ownersCount = 0;
+
         private string id;
         private ICollection<Animal> pets;
-        static int ownersCount = 0;
+        private ICollection<IService> services;
+        private decimal total;
 
 
         public Owner(string firstName, string lastName, string phoneNumber)
             : base(firstName, lastName, phoneNumber)
         {
-            this.pets = new List<Animal>();
             this.ID = GenerateID();
+            this.pets = new List<Animal>();
+            this.services = new List<IService>();
         }
 
-        public ICollection<Animal> Pets { get => this.pets; }  // List copy To Do ! 
+        public ICollection<Animal> Pets { get => this.pets; }
 
         public string ID { get => this.id; private set => this.id = value; }
 
@@ -40,7 +46,9 @@
 
         public void PayForServices()
         {
-            throw new NotImplementedException(); // To Do
+            CashRegister.Money += this.total;
+            this.services.Clear();
+            this.total = 0.00m;
         }
 
 
@@ -86,7 +94,7 @@
             }
 
             StringBuilder strBuilder = new StringBuilder();
-            strBuilder.AppendLine($"#Owner: {this.FirstName} {this.LastName}, ID: {this.ID}");
+            strBuilder.AppendLine($"Owner: {this.FirstName} {this.LastName}, ID: {this.ID}");
 
             foreach (var pet in this.Pets)
             {
@@ -96,14 +104,22 @@
 
             Console.WriteLine(strBuilder.ToString().TrimEnd());
         }
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        public void AddService(IService service)
+        {
+            Guard.WhenArgument(service, "Service is null").IsNull().Throw();
+            this.services.Add(service);
+            this.total += service.Price;
+        }
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         public static int gettingStaticID()
         {
             //StringBuilder sb = new StringBuilder();
 
             //ownersCount++;
-           // sb.Append('O');
-           // sb.Append(ownersCount+1);
+            // sb.Append('O');
+            // sb.Append(ownersCount+1);
 
             return ownersCount;
         }

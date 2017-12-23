@@ -18,9 +18,14 @@
             services.Add(new Service("Vaccination", 8.90m));
             services.Add(new Service("Anti parasite treatment", 6.50m));
             services.Add(new Service("Grooming", 25.00m));
+
+            services.Add(new BuyProductService()); // implement buy products service !!!
+
         }
 
         //public ICollection<IService> Services => new List<IService>();
+
+        public static ICollection<IService> Services { get;}
 
         public void AddServices(IService service)
         {
@@ -38,7 +43,7 @@
             services.Remove(service);
         }
 
-        public bool ContainsService(string id) // private maybe ???
+        public bool ContainsService(string id) // necessary ???
         {
             return services.Any(s => s.Id == id);
         }
@@ -48,7 +53,7 @@
             services.FirstOrDefault(s => s.Id == id);
         }
 
-        public string ListAllServices()
+        public static string ListAllServices()
         {
             var sb = new StringBuilder();
 
