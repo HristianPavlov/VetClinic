@@ -4,7 +4,7 @@
 
     public interface IClinicServices
     {
-        ICollection<IService> Services { get; }
+        //ICollection<IService> Services { get; }
 
         string ListAllServices();
 
