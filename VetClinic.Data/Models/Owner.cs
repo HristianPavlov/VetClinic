@@ -22,7 +22,7 @@
             this.Id = GenerateId();
         }
 
-        public ICollection<Animal> Pets { get => this.pets; }  // List copy To Do ! 
+        public ICollection<Animal> Pets => new List<Animal>(this.pets);
 
         public string Id { get => this.id; private set => this.id = value; }
 
@@ -102,8 +102,8 @@
             //StringBuilder sb = new StringBuilder();
 
             //ownersCount++;
-           // sb.Append('O');
-           // sb.Append(ownersCount+1);
+            // sb.Append('O');
+            // sb.Append(ownersCount+1);
 
             return ownersCount;
         }
