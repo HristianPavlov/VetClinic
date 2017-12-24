@@ -2,6 +2,6 @@
 {
     public interface ISuppliable
     {
-        int Quantity { get;}
+        int Quantity { get; }
     }
 }

@@ -3,85 +3,46 @@
     using Bytes2you.Validation;
     using Common.Enums;
     using Contracts;
-    using System;
-    using System.Collections.Generic;
     using System.Text;
 
-    public abstract class Animal : IIdentifiable,IAnimal
+    public abstract class Animal : IIdentifiable, IAnimal
     {
-        private string name;
-        // private Owner owner;
-        private AnimalGenderType gender;
-        private string id;
-        private AnimalType type;
+        private readonly string id;
+        private readonly string name;
+        private readonly int age;
+        private readonly Owner owner;
 
-        public Animal(string name, AnimalGenderType gender, AnimalType type)//, int age, Owner owner
+        public Animal(string id, string name, int age, Owner owner, AnimalGenderType gender, AnimalType type)
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
-            // Guard.WhenArgument(age, "Age less than zero").IsLessThan(0).Throw();
+            Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
 
-            this.Name = name;
-            //  this.Owner = owner;
-            this.Gender = gender;
-            // this.Age = age;
             this.id = GenerateId();
+            this.name = name;
+            this.age = age;
+            this.owner = owner;
+            this.Gender = gender;          
             this.Type = type;
         }
 
-        public AnimalType Type
-        {
-            get => this.type;
-            protected set
-            {
-                // Validation ?
-                this.type = value;
-            }
+        public string Id => this.id;
 
-        }
+        public string Name => this.name;
 
+        public int Age => this.age;
 
-        public string Name
-        {
-            get => this.name;
-            set => this.name = value;
-        }
+        public Owner Owner => this.Owner;
 
-        //public Owner Owner
-        //{
-        //    get => this.owner;
-        //    set { this.owner = value; }
-        //}
+        public AnimalType Type { get; protected set; }
 
-        public AnimalGenderType Gender
-        {
-            get => this.gender;
-            set
-            {
-                if (!Enum.IsDefined(typeof(AnimalGenderType), value))
-                {
-                    throw new ArgumentException("Invalid gender");
-                }
-                this.gender = value;
-            }
-        }
-
-        //public int Age
-        //{
-        //    get => this.age;
-        //    set => this.age = value;
-        //}
-
-        public bool NewClient { get; set; } // not implemented
-
-        public string Id { get => this.id; }
-
-
+        public AnimalGenderType Gender { get; protected set; }
 
         static int animalsCount = 0;
+
         public string GenerateId()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             animalsCount++;
             sb.Append('A');
@@ -92,14 +53,14 @@
 
         public virtual string PrintInfo()
         {
-            StringBuilder str = new StringBuilder();
+            var sb = new StringBuilder();
 
-            str.AppendLine($"Pet Type: {this.Type}");
-            str.AppendLine($"Name: {this.Name}");
-            str.AppendLine($"Gender: {this.Gender}");
-            str.AppendLine($"Id: {this.Id}");
+            sb.AppendLine($"Id: {this.Id}");
+            sb.AppendLine($"Pet Type: {this.Type}");
+            sb.AppendLine($"Name: {this.Name}");
+            sb.AppendLine($"Gender: {this.Gender}");
 
-            return str.ToString();
+            return sb.ToString();
         }
     }
 }
