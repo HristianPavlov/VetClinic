@@ -4,28 +4,14 @@
     using Bytes2you.Validation;
     using Common.Enums;
     using System.Text;
+    using VetClinic.Data.Contracts;
 
-  public  class Cat : Animal
+    public class Cat : Animal, ICat
     {
-        private int age;
-
         public Cat(string name, AnimalGenderType gender, int age) 
-            : base(name, gender, AnimalType.Cat)
+            : base(name, gender, AnimalType.Cat, age)
         {
-            //this.Breed = breed;
-            this.Age = age;
-            //this.Type = AnimalType.Cat;
-        }
-
-        public int Age
-        {
-            get => this.age;
-            private set
-            {
-                Guard.WhenArgument(value, "Age less than zero").IsLessThan(0).Throw();
-                this.age = value;
-            }
-
+            Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
         }
 
         public override string PrintInfo()
