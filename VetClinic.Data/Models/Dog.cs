@@ -4,41 +4,23 @@
     using System.Text;
     using Common.Enums;
     using Abstractions;
+    using VetClinic.Data.Contracts;
 
-    public class Dog : Animal
+    public class Dog : Animal, IDog
     {
-        private string breed;
-        private int age;
+        private readonly string breed;
 
-        public Dog(string name, AnimalGenderType gender, int age, string breed) 
-            : base(name, gender, AnimalType.Dog)
+        public Dog(string name, AnimalGenderType gender, string breed, int age) 
+            : base(name, gender, AnimalType.Dog, age)
         {
-            this.Breed = breed;
-            this.Age = age;
-           // this.Type = AnimalType.Dog;
+            Guard.WhenArgument(breed, "Invalid name").IsNull().Throw();
+            Guard.WhenArgument(breed.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
+            Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
+
+            this.breed = breed;
         }
 
-        public int Age
-        {
-            get => this.age;
-            private set
-            {
-                Guard.WhenArgument(value, "Age less than zero").IsLessThan(0).Throw();
-                this.age = value;
-            }
-
-        }
-        public string Breed
-        {
-            get => breed;
-            private set
-            {
-                Guard.WhenArgument(value, "Invalid name").IsNull().Throw();
-                Guard.WhenArgument(value.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
-                this.breed = value;
-
-            }
-        }
+        public string Breed => this.breed;
 
         public override string PrintInfo()
         {

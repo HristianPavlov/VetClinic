@@ -1,12 +1,11 @@
-﻿namespace VetClinic.Data.Models
+﻿using VetClinic.Data.Common.Enums;
+
+namespace VetClinic.Data.Models
 {
-    using Contracts;
-
-    public class Veterinarian : Staff, IIdentifiable
+    public class Veterinarian : ClinicStaffPerson
     {
-        private string Prescription = string.Empty;
-
-        public Veterinarian(string firstName, string lastName, string phoneNumber) : base(firstName, lastName, phoneNumber)
+        public Veterinarian(string firstName, string lastName, string phoneNumber, string email, RoleType role)
+            : base(firstName, lastName, phoneNumber, email, RoleType.Doctor)
         {
         }
     }
