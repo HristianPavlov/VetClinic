@@ -11,7 +11,7 @@ namespace VetClinic.Data.Contracts
 
         int Age { get; }
 
-        Owner Owner { get; }
+        PetOwner Owner { get; }
 
         AnimalType Type { get; }
 

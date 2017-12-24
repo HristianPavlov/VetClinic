@@ -2,15 +2,15 @@
 {
     using Common.Enums;
     using Abstractions;
+    using Bytes2you.Validation;
+    using VetClinic.Data.Contracts;
 
-    public class Hamster : Animal
+    public class Hamster : Animal, IHamster
     {
-        public Hamster(string name, AnimalGenderType gender) 
-            : base(name, gender, AnimalType.Hamster)
+        public Hamster(string name, AnimalGenderType gender, int age) 
+            : base(name, gender, AnimalType.Hamster, age)
         {
-           // this.Type = AnimalType.Hamster;
+            Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
         }
-
-
     }
 }

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VetClinic.Data.Models.Abstractions;
+﻿using System.Collections.Generic;
+using VetClinic.Data.Contracts;
 
 namespace VetClinic.Data.Models
 {
-    public static  class DataBaseForOwners
+    public static class DataBaseForOwners
     {
-        public static Dictionary<string , Owner> data = new Dictionary<string, Owner>();
+        public static Dictionary<string, IPetOwner> data = new Dictionary<string, IPetOwner>();
 
-    // public  static List<Owner> data=new List<Owner>();
-               
-
+        // public  static List<Owner> data=new List<Owner>();
     }
 }

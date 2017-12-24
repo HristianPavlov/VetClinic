@@ -4,25 +4,23 @@
     using Common.Enums;
     using Contracts;
     using System.Text;
+    using VetClinic.Data.Common;
 
-    public abstract class Animal : IIdentifiable, IAnimal
+    public abstract class Animal : IAnimal
     {
         private readonly string id;
         private readonly string name;
-        private readonly int age;
-        private readonly Owner owner;
+        private readonly int? age;
 
-        public Animal(string id, string name, int age, Owner owner, AnimalGenderType gender, AnimalType type)
+        public Animal(string name, AnimalGenderType gender, AnimalType type, int age = 0)
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
-            Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
 
-            this.id = GenerateId();
+            id = IdGenerator.GenerateId(typeof(IAnimal));
             this.name = name;
-            this.age = age;
-            this.owner = owner;
-            this.Gender = gender;          
+            this.Gender = gender;
+            this.Age = age;
             this.Type = type;
         }
 
@@ -30,9 +28,9 @@
 
         public string Name => this.name;
 
-        public int Age => this.age;
+        public int Age { get; protected set; }
 
-        public Owner Owner => this.Owner;
+        public PetOwner Owner { get; protected set; }
 
         public AnimalType Type { get; protected set; }
 
