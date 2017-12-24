@@ -41,10 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Contracts\IDiagnosis.cs" />
     <Compile Include="Services\Implementations\ClinicServicesListing.cs" />
     <Compile Include="Services\Contracts\IClinicServicesListing.cs" />
     <Compile Include="Services\Contracts\IService.cs" />
+    <Compile Include="Services\Implementations\Diagnosis.cs" />
     <Compile Include="Services\Implementations\Service.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj">
+      <Project>{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}</Project>
+      <Name>VetClinic.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

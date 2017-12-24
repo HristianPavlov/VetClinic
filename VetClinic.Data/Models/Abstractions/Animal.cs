@@ -12,8 +12,6 @@
         private string name;
         // private Owner owner;
         private GenderType gender;
-        private ICollection<IDiagnosis> diagnosises;  // ???????? To do
-                                                      // private int age;
         private string id;
         private AnimalType type;
 
@@ -26,7 +24,6 @@
             this.Name = name;
             //  this.Owner = owner;
             this.Gender = gender;
-            this.diagnosises = new List<IDiagnosis>();
             // this.Age = age;
             this.id = GenerateID();
             this.Type = type;
