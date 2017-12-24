@@ -24,9 +24,9 @@ namespace VetClinic
         private const string InvalidCommand = "Invalid command!  {0}";
             
          
-       private const string OwnerAddedSuccessfully = "{0} added successfully to the database with ID = {1}!";
-        private const string AnimalAddedSuccessfully = "{0} named {1} with ID {2} added successfully to Owner {3} with ID {4}!";
-        private const string AnimalRemovedSuccessfully= "{0} named {1} with ID {2} removed successfully from Owner with ID {3}!";
+       private const string OwnerAddedSuccessfully = "{0} added successfully to the database with Id = {1}!";
+        private const string AnimalAddedSuccessfully = "{0} named {1} with Id {2} added successfully to Owner {3} with Id {4}!";
+        private const string AnimalRemovedSuccessfully= "{0} named {1} with Id {2} removed successfully from Owner with Id {3}!";
 
 
         private static readonly IEngine SingleInstance = new Engine();
@@ -155,12 +155,12 @@ namespace VetClinic
 
 
                 case "AddAnimal":
-                    Console.Write("Owner ID: ");
+                    Console.Write("Owner Id: ");
                     string id = Console.ReadLine();
                    // Console.WriteLine();
                     if (!CheckForID(id))
                     {
-                        throw new ArgumentException("There is no such ID in the database");
+                        throw new ArgumentException("There is no such Id in the database");
                     }
                      Console.WriteLine("Which kind of animal would you like to add:");
                     foreach (var item in Enum.GetValues(typeof(AnimalType)))
@@ -172,27 +172,27 @@ namespace VetClinic
 
 
                 case "RemoveAnimal":
-                    Console.Write("Owner ID: ");
+                    Console.Write("Owner Id: ");
                     id = Console.ReadLine();
                     if (!CheckForID(id))
                     {
-                        throw new ArgumentException("There is no such ID in the database");
+                        throw new ArgumentException("There is no such Id in the database");
                     }
 
-                    Console.Write("Animal ID: ");
+                    Console.Write("Animal Id: ");
                     string idAnimal = Console.ReadLine();
 
                     return RemoveAnimal(idAnimal, id);
 
                 case "PrintPets":
-                    Console.Write("Owner ID: ");
+                    Console.Write("Owner Id: ");
                     id = Console.ReadLine();
                     if (!CheckForID(id))
                     {
-                        throw new ArgumentException("There is no such ID in the database");
+                        throw new ArgumentException("There is no such Id in the database");
                     }
 
-                    // Console.Write("Animal ID: ");
+                    // Console.Write("Animal Id: ");
                     // string idAnimal = Console.ReadLine();
                     DataBaseForOwners.data[id].PrintPets();
                     return string.Empty;
@@ -212,15 +212,15 @@ namespace VetClinic
 
             IAnimal animalToRemove = DataBaseForOwners.data[id]
                 .Pets
-                .FirstOrDefault(x => x.ID == idAnimal);
+                .FirstOrDefault(x => x.Id == idAnimal);
             if (animalToRemove == default(IAnimal))
             {
-                throw new ArgumentException("There is no such ID in the database");
+                throw new ArgumentException("There is no such Id in the database");
             }
             DataBaseForOwners.data[id].RemovePet(animalToRemove);
 
 
-            return string.Format(AnimalRemovedSuccessfully, animalToRemove.Type, animalToRemove.Name, animalToRemove.ID, id);
+            return string.Format(AnimalRemovedSuccessfully, animalToRemove.Type, animalToRemove.Name, animalToRemove.Id, id);
         }
 
         private bool CheckForID(string id)
@@ -241,7 +241,7 @@ namespace VetClinic
             var name = Console.ReadLine();
             Console.Write("gender(male/female): ");
 
-            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine().ToLower());
+            AnimalGenderType gender = (AnimalGenderType)Enum.Parse(typeof(AnimalGenderType), Console.ReadLine().ToLower());
 
             Animal x=null;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Implement fill info method for each animal
             if (type==AnimalType.Dog)
@@ -271,7 +271,7 @@ namespace VetClinic
           
 
 
-            return string.Format(AnimalAddedSuccessfully, type.ToString(), name, x.ID, y.FirstName, y.ID);
+            return string.Format(AnimalAddedSuccessfully, type.ToString(), name, x.Id, y.FirstName, y.Id);
 
         }
 

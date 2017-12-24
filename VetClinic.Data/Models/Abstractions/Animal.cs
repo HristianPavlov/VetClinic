@@ -11,11 +11,11 @@
     {
         private string name;
         // private Owner owner;
-        private GenderType gender;
+        private AnimalGenderType gender;
         private string id;
         private AnimalType type;
 
-        public Animal(string name, GenderType gender, AnimalType type)//, int age, Owner owner
+        public Animal(string name, AnimalGenderType gender, AnimalType type)//, int age, Owner owner
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
@@ -25,7 +25,7 @@
             //  this.Owner = owner;
             this.Gender = gender;
             // this.Age = age;
-            this.id = GenerateID();
+            this.id = GenerateId();
             this.Type = type;
         }
 
@@ -53,12 +53,12 @@
         //    set { this.owner = value; }
         //}
 
-        public GenderType Gender
+        public AnimalGenderType Gender
         {
             get => this.gender;
             set
             {
-                if (!Enum.IsDefined(typeof(GenderType), value))
+                if (!Enum.IsDefined(typeof(AnimalGenderType), value))
                 {
                     throw new ArgumentException("Invalid gender");
                 }
@@ -74,12 +74,12 @@
 
         public bool NewClient { get; set; } // not implemented
 
-        public string ID { get => this.id; }
+        public string Id { get => this.id; }
 
 
 
         static int animalsCount = 0;
-        public string GenerateID()
+        public string GenerateId()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -97,7 +97,7 @@
             str.AppendLine($"Pet Type: {this.Type}");
             str.AppendLine($"Name: {this.Name}");
             str.AppendLine($"Gender: {this.Gender}");
-            str.AppendLine($"ID: {this.ID}");
+            str.AppendLine($"Id: {this.Id}");
 
             return str.ToString();
         }

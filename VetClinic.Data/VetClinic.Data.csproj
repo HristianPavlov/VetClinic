@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Common\DataConstants.cs" />
     <Compile Include="Common\Enums\AnimalType.cs" />
-    <Compile Include="Common\Enums\GenderType.cs" />
+    <Compile Include="Common\Enums\AnimalGenderType.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IAnimal.cs" />
     <Compile Include="Contracts\IIdentifiable.cs" />

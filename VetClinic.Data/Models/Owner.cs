@@ -19,14 +19,14 @@
             : base(firstName, lastName, phoneNumber)
         {
             this.pets = new List<Animal>();
-            this.ID = GenerateID();
+            this.Id = GenerateId();
         }
 
         public ICollection<Animal> Pets { get => this.pets; }  // List copy To Do ! 
 
-        public string ID { get => this.id; private set => this.id = value; }
+        public string Id { get => this.id; private set => this.id = value; }
 
-        public string GenerateID()
+        public string GenerateId()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -55,7 +55,7 @@
         public void RemovePet(IAnimal pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
-            Animal petFound = this.pets.FirstOrDefault(x => x.ID == pet.ID);
+            Animal petFound = this.pets.FirstOrDefault(x => x.Id == pet.Id);
             Guard.WhenArgument(petFound, "PetFound").IsNull().Throw();
 
             if (petFound != null)
@@ -64,10 +64,10 @@
             }
         }
 
-        public void RemovePet(string iD)
+        public void RemovePet(string Id)
         {
-            Guard.WhenArgument(iD, "ID is null").IsNull().Throw();
-            Animal petFound = this.pets.FirstOrDefault(x => x.ID == iD);
+            Guard.WhenArgument(Id, "Id is null").IsNull().Throw();
+            Animal petFound = this.pets.FirstOrDefault(x => x.Id == Id);
             Guard.WhenArgument(petFound, "PetFound").IsNull().Throw();
 
             if (petFound != null)
@@ -86,7 +86,7 @@
             }
 
             StringBuilder strBuilder = new StringBuilder();
-            strBuilder.AppendLine($"#Owner: {this.FirstName} {this.LastName}, ID: {this.ID}");
+            strBuilder.AppendLine($"#Owner: {this.FirstName} {this.LastName}, Id: {this.Id}");
 
             foreach (var pet in this.Pets)
             {

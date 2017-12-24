@@ -10,7 +10,7 @@
         private string breed;
         private int age;
 
-        public Dog(string name, GenderType gender, int age, string breed) 
+        public Dog(string name, AnimalGenderType gender, int age, string breed) 
             : base(name, gender, AnimalType.Dog)
         {
             this.Breed = breed;
@@ -49,7 +49,7 @@
             str.AppendLine($"Name: {this.Name}");
             str.AppendLine($"Gender: {this.Gender}");
             str.AppendLine($"Age: {this.Age} years");
-            str.AppendLine($"ID: {this.ID}");
+            str.AppendLine($"Id: {this.Id}");
 
             return str.ToString();
 

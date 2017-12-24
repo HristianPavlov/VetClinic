@@ -21,7 +21,7 @@ namespace VetClinic.Data.Contracts
 
        
 
-         GenderType Gender
+         AnimalGenderType Gender
         {
             get ;
             
@@ -31,7 +31,7 @@ namespace VetClinic.Data.Contracts
 
      
 
-        string ID { get; }
+        string Id { get; }
 
 
 

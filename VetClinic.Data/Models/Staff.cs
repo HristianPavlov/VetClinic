@@ -10,13 +10,13 @@
 
         public Staff(string firstName, string lastName, string phoneNumber) : base(firstName, lastName, phoneNumber)
         {
-            this.ID = GenerateID();
+            this.Id = GenerateId();
         }
 
-        public string ID { get => this.id; set => this.id = value; }
+        public string Id { get => this.id; set => this.id = value; }
 
         static int staffCount = 0;
-        public string GenerateID()
+        public string GenerateId()
         {
             StringBuilder sb = new StringBuilder();
 

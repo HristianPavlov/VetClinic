@@ -2,8 +2,8 @@
 {
     public interface IIdentifiable
     {
-        string ID { get; }
+        string Id { get; }
 
-        string GenerateID();
+        string GenerateId();
     }
 }
