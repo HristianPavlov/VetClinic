@@ -14,7 +14,7 @@ namespace VetClinic.Data.Repositories
             this.users = new List<IUser>();
         }
 
-       public ICollection<IUser> Users => new List<IUser>(this.users);
+        public ICollection<IUser> Users => new List<IUser>(this.users);
 
         public IUser GetById(string ownerId)
         {
