@@ -16,9 +16,9 @@ namespace VetClinic.Data.Repositories
 
         public ICollection<IUser> Users => new List<IUser>(this.users);
 
-        public IUser GetById(string ownerId)
+        public IUser GetById(string id)
         {
-            return this.users.FirstOrDefault(o => o.Id == ownerId);
+            return this.users.FirstOrDefault(o => o.Id == id);
         }
 
         public void AddUser(IUser user)
