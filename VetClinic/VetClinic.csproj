@@ -44,10 +44,8 @@
   <ItemGroup>
     <Compile Include="Commands\Contracts\ICommandExample.cs" />
     <Compile Include="Commands\Implementations\CommandExample.cs" />
-    <Compile Include="Commands\Implementations\CreateStaffPerson.cs" />
-    <Compile Include="Commands\Implementations\CreateUser.cs" />
-    <Compile Include="Commands\Implementations\RemoveStaffPerson.cs" />
-    <Compile Include="Commands\Implementations\RemoveUser.cs" />
+    <Compile Include="Commands\Repositories\CommandRepository.cs" />
+    <Compile Include="Commands\Repositories\ICommandRepository.cs" />
     <Compile Include="EngineExample.cs" />
     <Compile Include="Factories\Contracts\IAnimalFactory.cs" />
     <Compile Include="Factories\Contracts\IPersonFactory.cs" />
@@ -70,8 +68,6 @@
       <Name>VetClinic.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
