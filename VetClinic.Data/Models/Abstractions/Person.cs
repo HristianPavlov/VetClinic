@@ -4,7 +4,7 @@
     using VetClinic.Data.Common;
     using VetClinic.Data.Contracts;
 
-    public abstract class Person: IPerson
+    public abstract class Person : IPerson
     {
         private readonly string id;
         private readonly string firstName;
@@ -21,7 +21,7 @@
             Guard.WhenArgument(phoneNumber, "First name is null or empty").IsNullOrEmpty().Throw();
             Guard.WhenArgument(phoneNumber.Length, "First name has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
 
-            id = IdGenerator.GenerateId(typeof(IPerson));
+            this.id = IdGenerator.GenerateId(typeof(IPerson));
             this.firstName = firstName;
             this.lastName = lastName;
             this.phoneNumber = phoneNumber;
@@ -34,7 +34,7 @@
 
         public string PhoneNumber => this.phoneNumber;
 
-        public string Id => this.Id;
+        public string Id => this.id;
 
         public string Email => this.Email;
 

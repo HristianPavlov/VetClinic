@@ -2,12 +2,13 @@
 {
     using Abstractions;
     using VetClinic.Data.Common.Enums;
+    using VetClinic.Data.Contracts;
 
-    public class ClinicStaffPerson : Person
+    public class StaffPerson : Person, IStaffPerson
     {
         private readonly RoleType role;
 
-        public ClinicStaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role)
+        public StaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role)
             : base(firstName, lastName, phoneNumber, email)
         {
             this.role = role;

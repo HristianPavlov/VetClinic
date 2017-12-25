@@ -30,7 +30,7 @@
 
         public int Age { get; protected set; }
 
-        public PetOwner Owner { get; protected set; }
+        public User Owner { get; protected set; }
 
         public AnimalType Type { get; protected set; }
 
