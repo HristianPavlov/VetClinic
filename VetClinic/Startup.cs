@@ -1,17 +1,16 @@
-﻿using VetClinic.Core.Services;
-using VetClinic.Data.Models;
-using VetClinic.Data.Models.Abstractions;
-
-using VetClinic.Data.Common.Enums;
-
-namespace VetClinic
+﻿namespace VetClinic
 {
+    using System;
+    using VetClinic.Data.Common.Enums;
+    using VetClinic.Data.Models;
+
     public class Startup
     {
         static void Main()
         {
 
-            Engine.Instance.Start();
+            //var c = new Cat("asss", AnimalGenderType.male, -1);
+            //Console.WriteLine(c.Id);
 
             //var pesho = new Owner("Pesho", "Peshev", "09678676");
             //pesho.PrintPets();
@@ -28,6 +27,8 @@ namespace VetClinic
             //clinicServices.AddServices(new Service("Surgery", 1000));
             //clinicServices.AddServices(new Service("Vaccination", 50));
             //System.Console.WriteLine(clinicServices.ListAllServices());
+
+            Engine.Instance.Start();
 
         }
     }
