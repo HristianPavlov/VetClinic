@@ -1,6 +1,7 @@
 ﻿namespace VetClinic.Data.Models.Abstractions
 {
     using Bytes2you.Validation;
+    using System.Text;
     using VetClinic.Data.Common;
     using VetClinic.Data.Contracts;
 
@@ -37,6 +38,18 @@
         public string Id => this.id;
 
         public string Email => this.Email;
+
+        public virtual string PrintInfo()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"Id: {this.Id}");
+            sb.AppendLine($"Full Name: {this.FirstName} {this.LastName}");
+            sb.AppendLine($"Phone Number: {this.PhoneNumber}");
+            sb.AppendLine($"Email: {this.Email}");
+
+            return sb.ToString();
+        }
 
     }
 }
