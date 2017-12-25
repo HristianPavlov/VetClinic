@@ -79,17 +79,21 @@
                 return;
             }
 
-            StringBuilder strBuilder = new StringBuilder();
-            strBuilder.AppendLine($"#Owner: {this.FirstName} {this.LastName}, Id: {this.Id}");
+            var sb = new StringBuilder();
 
             foreach (var pet in this.Pets)
             {
-                //strBuilder.Append(pet.());
-                strBuilder.AppendLine("=====");
+                sb.AppendLine($"Name: {pet.Name}");
+                sb.AppendLine($"Gender: {pet.Gender}");
+                sb.AppendLine($"Age: {pet.Age}");
+                sb.AppendLine($"Type: {pet.Type}");
+                sb.AppendLine($"Onwer: {pet.Owner}");
             }
 
-            Console.WriteLine(strBuilder.ToString().TrimEnd());
+            Console.WriteLine(sb.ToString());
         }
+
+        public override string PrintInfo() => base.PrintInfo();
 
 
         // -------------- Obsolete ----------------
