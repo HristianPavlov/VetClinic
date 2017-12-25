@@ -38,17 +38,6 @@
 
         static int animalsCount = 0;
 
-        public string GenerateId()
-        {
-            var sb = new StringBuilder();
-
-            animalsCount++;
-            sb.Append('A');
-            sb.Append(animalsCount);
-
-            return sb.ToString();
-        }
-
         public virtual string PrintInfo()
         {
             var sb = new StringBuilder();
@@ -57,6 +46,19 @@
             sb.AppendLine($"Pet Type: {this.Type}");
             sb.AppendLine($"Name: {this.Name}");
             sb.AppendLine($"Gender: {this.Gender}");
+
+            return sb.ToString();
+        }
+
+
+        // ------------------- obsolete ------------------
+        public string GenerateId()
+        {
+            var sb = new StringBuilder();
+
+            animalsCount++;
+            sb.Append('A');
+            sb.Append(animalsCount);
 
             return sb.ToString();
         }
