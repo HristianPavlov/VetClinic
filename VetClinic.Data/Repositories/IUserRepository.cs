@@ -12,5 +12,13 @@ namespace VetClinic.Data.Repositories
         void AddUser(IUser user);
 
         void RemoveUser(string id);
+
+        void CreateCat(IUser user, ICat cat);
+
+        void CreateDog(IUser user, IDog dog);
+
+        void CreateHamster(IUser user, IHamster hamster);
+
+        void RemoveAnimal(string id);
     }
 }
