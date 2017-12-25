@@ -51,6 +51,8 @@
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IAnimal.cs" />
     <Compile Include="Contracts\ICat.cs" />
+    <Compile Include="Repositories\AnimalRepository.cs" />
+    <Compile Include="Repositories\IAnimalRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\IDog.cs" />
     <Compile Include="Contracts\IHamster.cs" />
