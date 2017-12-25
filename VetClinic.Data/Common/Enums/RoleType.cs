@@ -3,6 +3,6 @@
     public enum RoleType
     {
         Admin,
-        Doctor
+        Veterinarian
     }
 }
