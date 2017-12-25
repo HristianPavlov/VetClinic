@@ -14,33 +14,33 @@ namespace VetClinic.Data.Repositories
             this.users = new List<IUser>();
         }
 
-        public ICollection<IUser> Users => new List<IUser>(this.users);
+       public ICollection<IUser> Users => new List<IUser>(this.users);
 
         public IUser GetById(string ownerId)
         {
-            return this.Users.FirstOrDefault(o => o.Id == ownerId);
+            return this.users.FirstOrDefault(o => o.Id == ownerId);
         }
 
         public void AddUser(IUser user)
         {
-            var userExists = this.Users.Any(o => o.Id == user.Id);
+            var userExists = this.users.Any(o => o.Id == user.Id);
 
             if (userExists)
             {
                 throw new ArgumentException("This user exists in database");
             }
-            this.Users.Add(user);
+            this.users.Add(user);
         }
 
         public void RemoveUser(string id)
         {
-            var user = this.Users.FirstOrDefault(o => o.Id == id);
+            var user = this.users.FirstOrDefault(o => o.Id == id);
 
             if (user == null)
             {
                 throw new ArgumentException("This user does not exists in database");
             }
-            this.Users.Remove(user);
+            this.users.Remove(user);
         }
     }
 }
