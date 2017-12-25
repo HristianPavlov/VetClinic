@@ -42,9 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
-    <Compile Include="Engine.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Commands\Contracts\ICommandExample.cs" />
+    <Compile Include="Commands\Implementations\CommandExample.cs" />
+    <Compile Include="Commands\Implementations\CreateStaffPerson.cs" />
+    <Compile Include="Commands\Implementations\CreateUser.cs" />
+    <Compile Include="Commands\Implementations\RemoveStaffPerson.cs" />
+    <Compile Include="Commands\Implementations\RemoveUser.cs" />
+    <Compile Include="EngineExample.cs" />
+    <Compile Include="Factories\Contracts\IAnimalFactory.cs" />
+    <Compile Include="Factories\Contracts\IPersonFactory.cs" />
+    <Compile Include="Factories\Implemetations\AnimalFactory.cs" />
+    <Compile Include="Factories\Implemetations\PersonFactory.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +69,9 @@
       <Project>{18bd4b11-918a-42d0-bddd-a79b3d1a872e}</Project>
       <Name>VetClinic.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\Factories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

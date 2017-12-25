@@ -151,8 +151,8 @@ namespace VetClinic
 
             switch (command)
             {
-                case "RegisterUser":
-                    return RegisterUser();
+               // case "RegisterUser":
+                  //  return RegisterUser();
 
 
                 case "AddAnimal":
@@ -263,28 +263,28 @@ namespace VetClinic
             }
 
             DataBaseForOwners.data[id].AddPet(x);
-            IPetOwner y = DataBaseForOwners.data[id];
+            IUser y = DataBaseForOwners.data[id];
 
             return string.Format(AnimalAddedSuccessfully, type.ToString(), name, x.Id, y.FirstName, y.Id);
 
         }
 
-        private string RegisterUser()
-        {
-            string id = "O" + (PetOwner.gettingStaticID() + 1);
-            Console.Write("first name: ");
-            var firstName = Console.ReadLine();
-            Console.Write("last name: ");
-            var lastName = Console.ReadLine();
-            Console.Write("Phone number: ");
-            var phoneNumber = Console.ReadLine();
-            Console.Write("Email: ");
-            var email = Console.ReadLine();
+        //private string RegisterUser()
+        //{
+        //    string id = "O" + (User.gettingStaticID() + 1);
+        //    Console.Write("first name: ");
+        //    var firstName = Console.ReadLine();
+        //    Console.Write("last name: ");
+        //    var lastName = Console.ReadLine();
+        //    Console.Write("Phone number: ");
+        //    var phoneNumber = Console.ReadLine();
+        //    Console.Write("Email: ");
+        //    var email = Console.ReadLine();
 
-            DataBaseForOwners.data.Add(id, new PetOwner(firstName, lastName, phoneNumber, email));
+        //    DataBaseForOwners.data.Add(id, new User(firstName, lastName, phoneNumber, email));
 
-            return string.Format(OwnerAddedSuccessfully, firstName, id);
-        }
+        //    return string.Format(OwnerAddedSuccessfully, firstName, id);
+        //}
 
     }
 }

@@ -1,14 +1,13 @@
 ﻿namespace VetClinic
 {
-    using System;
-    using VetClinic.Data.Common.Enums;
-    using VetClinic.Data.Models;
+    using VetClinic.Commands.Implementations;
+    using VetClinic.Data.Repositories;
+    using VetClinic.Factories.Implemetations;
 
     public class Startup
     {
         static void Main()
         {
-
             //var c = new Cat("asss", AnimalGenderType.male, -1);
             //Console.WriteLine(c.Id);
 
@@ -28,7 +27,16 @@
             //clinicServices.AddServices(new Service("Vaccination", 50));
             //System.Console.WriteLine(clinicServices.ListAllServices());
 
-            Engine.Instance.Start();
+            //Engine.Instance.Start();
+            var personFactory = new PersonFactory();
+            var userDb = new UserRepository();
+            var command = new CommandExample(personFactory, userDb);
+
+            var engine = new EngineExample(userDb, command);
+
+            engine.Start();
+
+
 
         }
     }
