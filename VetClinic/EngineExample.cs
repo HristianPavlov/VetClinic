@@ -51,15 +51,15 @@
 
             if (commandParts.Count() == 0)
             {
-                Console.WriteLine("Please add a command!");
-               
+                Console.WriteLine("Please add a command!");      
             }
 
             switch (commandParts[0]) // all three implemented methods working
             {
                 case "registerUser": this.userCommands.CreateUser(commandParts); break;
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
-                case "userPetsInfo": this.userCommands.GetUserPets(commandParts); break;
+                case "userPets": this.userCommands.GetUserPets(commandParts); break;
+                case "allUsers": this.userCommands.ListAllUsers(); break;
                 // case "registerCat": this.commands.CreateCat(commandParts); break;
                 // case "registerDog": this.commands.CreateDog(commandParts); break;
                 // case "registerHamster": this.commands.CreateHamster(commandParts); break;
