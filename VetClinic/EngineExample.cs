@@ -59,7 +59,7 @@
             {
                 case "registerUser": this.userCommands.CreateUser(commandParts); break;
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
-                case "userInfo": this.userCommands.GetUserPets(commandParts); break;
+                case "userPetsInfo": this.userCommands.GetUserPets(commandParts); break;
                 // case "registerCat": this.commands.CreateCat(commandParts); break;
                 // case "registerDog": this.commands.CreateDog(commandParts); break;
                 // case "registerHamster": this.commands.CreateHamster(commandParts); break;
