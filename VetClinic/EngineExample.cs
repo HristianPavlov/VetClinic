@@ -8,9 +8,9 @@
     public class EngineExample : IEngine
     {
         private readonly IUserRepository usersDb;
-        private readonly ICommandExample commands;
+        private readonly IUserCommand commands;
 
-        public EngineExample(IUserRepository usersDb, ICommandExample commands)
+        public EngineExample(IUserRepository usersDb, IUserCommand commands)
         {
             this.usersDb = usersDb;
             this.commands = commands;
@@ -23,7 +23,7 @@
 
             var phone = Console.ReadLine();
 
-            var userExists = this.usersDb.Users.Any(o => o.PhoneNumber == phone);
+            var userExists = this.usersDb.Users.Any(u => u.PhoneNumber == phone);
 
             if (!userExists)
             {
