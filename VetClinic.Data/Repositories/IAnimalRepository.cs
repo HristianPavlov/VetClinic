@@ -5,15 +5,11 @@
 
     public interface IAnimalRepository
     {
-        IDictionary<IUser, IAnimal> Animals { get; }
+        ICollection<IAnimal> Animals { get; }
 
         IAnimal GetById(string id);
 
-        void CreateCat(IUser user, ICat cat);
-
-        void CreateDog(IUser user, IDog dog);
-
-        void CreateHamster(IUser user, IHamster hamster);
+        void AddAnimal(string userId, IAnimal animal);
 
         void RemoveAnimal(string id);
     }
