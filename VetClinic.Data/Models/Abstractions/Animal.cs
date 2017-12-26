@@ -10,7 +10,8 @@
     {
         private readonly string id;
         private readonly string name;
-        private readonly int? age;
+        private readonly int age;
+        private readonly AnimalGenderType gender;
 
         public Animal(string name, AnimalGenderType gender, AnimalType type, int age = 0)
         {
@@ -19,8 +20,8 @@
 
             id = IdGenerator.GenerateId(typeof(IAnimal));
             this.name = name;
-            this.Gender = gender;
-            this.Age = age;
+            this.gender = gender;
+            this.age = age;
             this.Type = type;
         }
 
@@ -28,15 +29,13 @@
 
         public string Name => this.name;
 
-        public int Age { get; protected set; }
+        public int Age => this.age;
+
+        public AnimalGenderType Gender => this.gender;
 
         public User Owner { get; protected set; }
 
         public AnimalType Type { get; protected set; }
-
-        public AnimalGenderType Gender { get; protected set; }
-
-        static int animalsCount = 0;
 
         public virtual string PrintInfo()
         {
@@ -52,6 +51,8 @@
 
 
         // ------------------- obsolete ------------------
+        static int animalsCount = 0;
+
         public string GenerateId()
         {
             var sb = new StringBuilder();
