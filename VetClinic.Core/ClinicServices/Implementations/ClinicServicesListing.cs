@@ -8,7 +8,14 @@
 
     public class ClinicServicesListing: IClinicServicesListing
     {
-        private readonly ICollection<IService> services;
+        private readonly ICollection<IService> services = new List<IService>
+        {
+            { new Service("Healing", 19.90m) },
+            { new Service("Vaccination", 8.90m) },
+            { new Service("Anti parasite treatment", 6.50m) },
+            { new Service ("Grooming", 25.00m) },
+            // TODO - implement Buy Products service
+        };
     
         public ClinicServicesListing()
         {
@@ -29,9 +36,9 @@
 
         public void RemoveServices(IService service)
         {
-            if (service == null)
+            if (services.Any(s => s.Id == service.Id) == false)
             {
-                throw new Exception("No such service found");
+                throw new Exception("No such service found!");
             }
 
             this.services.Remove(service);

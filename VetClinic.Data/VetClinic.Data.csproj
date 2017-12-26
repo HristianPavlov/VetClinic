@@ -43,12 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\DataConstants.cs" />
     <Compile Include="Common\Enums\AnimalType.cs" />
     <Compile Include="Common\Enums\AnimalGenderType.cs" />
     <Compile Include="Common\Enums\RoleType.cs" />
     <Compile Include="Common\IdGenerator.cs" />
-    <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IAnimal.cs" />
     <Compile Include="Contracts\ICat.cs" />
     <Compile Include="Repositories\AnimalRepository.cs" />
@@ -56,13 +54,9 @@
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\IDog.cs" />
     <Compile Include="Contracts\IHamster.cs" />
-    <Compile Include="Contracts\IMedicine.cs" />
     <Compile Include="Contracts\IPerson.cs" />
     <Compile Include="Contracts\IStaffPerson.cs" />
     <Compile Include="Contracts\IUser.cs" />
-    <Compile Include="Contracts\ISuppliable.cs" />
-    <Compile Include="Contracts\ISupplies.cs" />
-    <Compile Include="Contracts\ISupply.cs" />
     <Compile Include="Contracts\IVeterinarian.cs" />
     <Compile Include="Models\Abstractions\Animal.cs" />
     <Compile Include="Models\Cat.cs" />
@@ -70,10 +64,8 @@
     <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\Hamster.cs" />
     <Compile Include="Models\Abstractions\Person.cs" />
-    <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\StaffPerson.cs" />
-    <Compile Include="Models\Supply.cs" />
     <Compile Include="Models\Veterinarian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

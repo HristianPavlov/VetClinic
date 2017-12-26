@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,13 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClinicServices\Contracts\IProduct.cs" />
+    <Compile Include="ClinicServices\Implementations\Product.cs" />
+    <Compile Include="ClinicServices\Implementations\ServiceExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClinicServices\Common\Enums\DiseaseType.cs" />
-    <Compile Include="ClinicServices\Contracts\IDiagnosis.cs" />
     <Compile Include="ClinicServices\Implementations\ClinicServicesListing.cs" />
     <Compile Include="ClinicServices\Contracts\IClinicServicesListing.cs" />
     <Compile Include="ClinicServices\Contracts\IService.cs" />
-    <Compile Include="ClinicServices\Implementations\Diagnosis.cs" />
     <Compile Include="ClinicServices\Implementations\Service.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +57,9 @@
       <Project>{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}</Project>
       <Name>VetClinic.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
