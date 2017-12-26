@@ -29,10 +29,15 @@
 
             //Engine.Instance.Start();
             var personFactory = new PersonFactory();
-            var userDb = new UserRepository();
-            var command = new UserCommand(personFactory, userDb);
+            var animalFactory = new AnimalFactory();
 
-            var engine = new EngineExample(userDb, command);
+            var userDb = new UserRepository();
+            var animalDb = new AnimalRepository(userDb);
+
+            var userCommands = new UserCommand(personFactory, userDb);
+            var animalCommands = new AnimalCommand(animalFactory, animalDb);
+
+            var engine = new EngineExample(userDb, userCommands, animalCommands);
             engine.Start();
 
         }
