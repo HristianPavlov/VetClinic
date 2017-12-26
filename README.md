@@ -15,7 +15,7 @@ The Vet Clinic is a simple console application that manage the clinic CRUD opera
 
 # App Description
 
-## The Vet Clinic is a simple console application that allows the following functionalities:
+### The Vet Clinic is a simple console application that allows the following functionalities:
 
 ## CRUD Operations
 
