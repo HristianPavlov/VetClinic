@@ -37,7 +37,7 @@
 
         public string Id => this.id;
 
-        public string Email => this.Email;
+        public string Email => this.email;
 
         public virtual string PrintInfo()
         {
