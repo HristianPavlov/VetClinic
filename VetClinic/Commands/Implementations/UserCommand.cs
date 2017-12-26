@@ -64,7 +64,7 @@
             user.ListAllPets();
         }
 
-        public string ListAllUsers() // TODO not tested
+        public string ListAllUsers() // TODO not working
         {
             if (this.userDb.Users.Count == 0)
             {
