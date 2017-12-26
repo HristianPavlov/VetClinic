@@ -2,20 +2,22 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Contracts;
 
 
-    public class CommandExample : ICommandExample
+    public class UserCommand : IUserCommand
     {
         private readonly IPersonFactory personFactory;
-        private readonly IUserRepository userRepository;
+        private readonly IUserRepository userDb;
 
-        public CommandExample(IPersonFactory personFactory, IUserRepository petsOwnerRepository)
+        public UserCommand(IPersonFactory personFactory, IUserRepository userDb)
         {
             this.personFactory = personFactory;
-            this.userRepository = petsOwnerRepository;
+            this.userDb = userDb;
         }
 
         public void CreateUser(IList<string> parameters)
@@ -27,7 +29,7 @@
 
             var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email); // TODO children could not be evaluated
 
-            this.userRepository.AddUser(newUser);
+            this.userDb.AddUser(newUser);
             Console.WriteLine($"User {firstName} {lastName} successfully created");
         }
 
@@ -35,7 +37,7 @@
         {
             var userId = parameters[1];
 
-            var user = this.userRepository.GetById(userId);
+            var user = this.userDb.GetById(userId);
 
             if (user == null)
             {
@@ -43,7 +45,7 @@
                 return;
             }
 
-            this.userRepository.RemoveUser(userId);
+            this.userDb.RemoveUser(userId);
             Console.WriteLine($"User {user.FirstName} {user.LastName} successfully removed from database");
         }
 
@@ -51,7 +53,7 @@
         {
             var userId = parameters[1];
 
-            var user = this.userRepository.GetById(userId);
+            var user = this.userDb.GetById(userId);
 
             if (user == null)
             {
@@ -60,6 +62,41 @@
             }
 
             user.ListAllPets();
+        }
+
+        public string ListAllUsers() // TODO not tested
+        {
+            if (this.userDb.Users.Count == 0)
+            {
+                return "This student has no marks.";
+            }
+
+            var sb = new StringBuilder();
+
+            sb.AppendLine("All users:");
+
+            var users = this.userDb
+                            .Users
+                            .Select(u => new
+                            {
+                                u.FirstName,
+                                u.LastName,
+                                u.PhoneNumber,
+                                u.Email,
+                                Pets = u.Pets.Select(p => new
+                                {
+                                     p.Name,
+                                     p.Age,
+                                     p.Type,
+                                     p.Gender
+                                })
+                            })
+                            .ToList();
+                     
+
+            users.ForEach(u => sb.AppendLine(u.ToString()));
+
+            return sb.ToString();
         }
     }
 }
