@@ -30,7 +30,7 @@
             //Engine.Instance.Start();
             var personFactory = new PersonFactory();
             var userDb = new UserRepository();
-            var command = new CommandExample(personFactory, userDb);
+            var command = new UserCommand(personFactory, userDb);
 
             var engine = new EngineExample(userDb, command);
             engine.Start();
