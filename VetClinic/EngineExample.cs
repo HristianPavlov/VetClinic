@@ -65,11 +65,21 @@
                 case "allUsers": this.userCommands.ListAllUsers(); break;
                 case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
 
-                // case "registerCat": this.commands.CreateCat(commandParts); break;
-                // case "registerDog": this.commands.CreateDog(commandParts); break;
-                // case "registerHamster": this.commands.CreateHamster(commandParts); break;
+                    //Hris
+              //removeAnimal
+              //
+              //listAllAnimal
+              //customExceptionClass
+              //struct
+
+                //Marto
                 // case "registerAdmin": this.commands.CreateAdmin(commandParts); break;
                 // case "registerVeterinarian": this.commands.CreateVeterinarian(commandParts); break;
+                //Staff CRUD+Search by ID
+                //lsitThem
+
+                
+
                 // case "help": this.commands.GetUserInfo(commandParts); break;
 
                 default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
