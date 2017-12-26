@@ -81,7 +81,7 @@
 
             var sb = new StringBuilder();
 
-            foreach (var pet in this.Pets)
+            foreach (var pet in this.Pets) // TODO pet is null although pets list is not null
             {
                 sb.AppendLine($"Name: {pet.Name}");
                 sb.AppendLine($"Gender: {pet.Gender}");
