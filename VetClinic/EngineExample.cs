@@ -8,12 +8,12 @@
     public class EngineExample : IEngine
     {
         private readonly IUserRepository usersDb;
-        private readonly IUserCommand commands;
+        private readonly IUserCommand userCommands;
 
         public EngineExample(IUserRepository usersDb, IUserCommand commands)
         {
             this.usersDb = usersDb;
-            this.commands = commands;
+            this.userCommands = commands;
         }
 
         public void Start()
@@ -52,13 +52,14 @@
             if (commandParts.Count() == 0)
             {
                 Console.WriteLine("Please add a command!");
+               
             }
 
             switch (commandParts[0]) // all three implemented methods working
             {
-                case "registerUser": this.commands.CreateUser(commandParts); break;
-                case "removeUser": this.commands.RemoveUser(commandParts); break;
-                case "userInfo": this.commands.GetUserPets(commandParts); break;
+                case "registerUser": this.userCommands.CreateUser(commandParts); break;
+                case "removeUser": this.userCommands.RemoveUser(commandParts); break;
+                case "userInfo": this.userCommands.GetUserPets(commandParts); break;
                 // case "registerCat": this.commands.CreateCat(commandParts); break;
                 // case "registerDog": this.commands.CreateDog(commandParts); break;
                 // case "registerHamster": this.commands.CreateHamster(commandParts); break;
