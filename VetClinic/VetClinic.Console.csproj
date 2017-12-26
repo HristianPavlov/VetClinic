@@ -48,7 +48,7 @@
     <Compile Include="Commands\Implementations\UserCommand.cs" />
     <Compile Include="Commands\Repositories\CommandRepository.cs" />
     <Compile Include="Commands\Repositories\ICommandRepository.cs" />
-    <Compile Include="EngineExample.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Factories\Contracts\IAnimalFactory.cs" />
     <Compile Include="Factories\Contracts\IPersonFactory.cs" />
     <Compile Include="Factories\Implemetations\AnimalFactory.cs" />

@@ -37,7 +37,7 @@
             var userCommands = new UserCommand(personFactory, userDb);
             var animalCommands = new AnimalCommand(animalFactory, animalDb);
 
-            var engine = new EngineExample(userDb, userCommands, animalCommands);
+            var engine = new Engine(userDb, userCommands, animalCommands);
             engine.Start();
 
         }
