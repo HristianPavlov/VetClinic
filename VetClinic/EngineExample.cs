@@ -9,11 +9,13 @@
     {
         private readonly IUserRepository usersDb;
         private readonly IUserCommand userCommands;
+        private readonly IAnimalCommand animalCommands;
 
-        public EngineExample(IUserRepository usersDb, IUserCommand commands)
+        public EngineExample(IUserRepository usersDb, IUserCommand commands, IAnimalCommand animalCommands)
         {
             this.usersDb = usersDb;
             this.userCommands = commands;
+            this.animalCommands = animalCommands;
         }
 
         public void Start()
@@ -60,6 +62,7 @@
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
                 case "userPets": this.userCommands.GetUserPets(commandParts); break;
                 case "allUsers": this.userCommands.ListAllUsers(); break;
+                case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
                 // case "registerCat": this.commands.CreateCat(commandParts); break;
                 // case "registerDog": this.commands.CreateDog(commandParts); break;
                 // case "registerHamster": this.commands.CreateHamster(commandParts); break;
