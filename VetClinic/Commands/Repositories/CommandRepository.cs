@@ -25,6 +25,11 @@
             throw new NotImplementedException();
         }
 
+        public void ListAllCommands()
+        {
+            throw new NotImplementedException();
+        }
+
         public void RemoveCommand(string name)
         {
             throw new NotImplementedException();
