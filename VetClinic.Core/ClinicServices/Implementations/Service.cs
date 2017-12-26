@@ -10,12 +10,17 @@
         private readonly string name;
         private readonly string id;
 
-        public Service(string name, decimal price)
+        public Service(string name)
         {
             Guard.WhenArgument(name, "Service name cannot be null!").IsNullOrEmpty().Throw();
             Guard.WhenArgument(name.Length, "Service name must be more than 2 symbols and less than 14 symbols long!").IsLessThan(3).IsGreaterThan(13).Throw();
             this.id = Guid.NewGuid().ToString();
             this.name = name;
+        }
+
+        public Service(string name, decimal price)
+            : this(name)
+        {
             this.Price = price;
         }
 

@@ -9,7 +9,7 @@ namespace VetClinic.Core.Services
     {
         private readonly string name;
         private readonly decimal price;
-        private ICollection<Product> allProducts = new List<Product>
+        private ICollection<IProduct> allProducts = new List<IProduct>
         {
             { new Product("Medicine", 11.80m)},
             { new Product("Vitamins", 11.80m)},

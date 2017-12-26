@@ -64,6 +64,7 @@
                 case "userPets": this.userCommands.GetUserPets(commandParts); break;
                 case "allUsers": this.userCommands.ListAllUsers(); break;
                 case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
+
                 // case "registerCat": this.commands.CreateCat(commandParts); break;
                 // case "registerDog": this.commands.CreateDog(commandParts); break;
                 // case "registerHamster": this.commands.CreateHamster(commandParts); break;

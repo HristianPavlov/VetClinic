@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClinicServices\Implementations\BuyProductsService.cs" />
+    <Compile Include="ClinicServices\Implementations\CashRegister.cs" />
     <Compile Include="ClinicServices\Contracts\IProduct.cs" />
     <Compile Include="ClinicServices\Implementations\Product.cs" />
     <Compile Include="ClinicServices\Implementations\ServiceExecuter.cs" />
