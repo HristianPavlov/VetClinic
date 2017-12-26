@@ -49,11 +49,12 @@
 
         private void ProcessCommand(string command)
         {
-            var commandParts = command.Split(' ').ToList();
+            var commandParts = command.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries).ToList();
 
             if (commandParts.Count() == 0)
             {
-                Console.WriteLine("Please add a command!");      
+                Console.WriteLine("Please add a command!");
+                return;
             }
 
             switch (commandParts[0]) // all three implemented methods working
