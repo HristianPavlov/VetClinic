@@ -18,12 +18,12 @@ namespace VetClinic.Data.Repositories
 
         public IUser GetById(string id)
         {
-            return this.users.FirstOrDefault(o => o.Id == id);
+            return this.users.FirstOrDefault(u => u.Id == id);
         }
 
         public void AddUser(IUser user)
         {
-            var userExists = this.users.Any(o => o.Id == user.Id);
+            var userExists = this.users.Any(u => u.Id == user.Id);
 
             if (userExists)
             {
@@ -34,7 +34,7 @@ namespace VetClinic.Data.Repositories
 
         public void RemoveUser(string id)
         {
-            var user = this.users.FirstOrDefault(o => o.Id == id);
+            var user = this.users.FirstOrDefault(u => u.Id == id);
 
             if (user == null)
             {
