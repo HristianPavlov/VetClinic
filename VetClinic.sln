@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic", "VetClinic\VetClinic.csproj", "{EFA03579-871B-4E2E-9342-8D0051C32860}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic.Console", "VetClinic\VetClinic.Console.csproj", "{EFA03579-871B-4E2E-9342-8D0051C32860}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic.Data", "VetClinic.Data\VetClinic.Data.csproj", "{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic.Core", "VetClinic.Core\VetClinic.Core.csproj", "{7AB9DD89-4AAF-4C02-8C3F-2F9952F661B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetClinic.Services", "VetClinic.Core\VetClinic.Services.csproj", "{7AB9DD89-4AAF-4C02-8C3F-2F9952F661B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

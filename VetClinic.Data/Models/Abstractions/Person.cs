@@ -1,8 +1,8 @@
 ﻿namespace VetClinic.Data.Models.Abstractions
 {
     using Bytes2you.Validation;
+    using System;
     using System.Text;
-    using VetClinic.Data.Common;
     using VetClinic.Data.Contracts;
 
     public abstract class Person : IPerson
@@ -22,7 +22,7 @@
             Guard.WhenArgument(phoneNumber, "First name is null or empty").IsNullOrEmpty().Throw();
             Guard.WhenArgument(phoneNumber.Length, "First name has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
 
-            this.id = IdGenerator.GenerateId(typeof(IPerson));
+            this.id = Guid.NewGuid().ToString();
             this.firstName = firstName;
             this.lastName = lastName;
             this.phoneNumber = phoneNumber;

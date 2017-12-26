@@ -3,8 +3,8 @@
     using Bytes2you.Validation;
     using Common.Enums;
     using Contracts;
+    using System;
     using System.Text;
-    using VetClinic.Data.Common;
 
     public abstract class Animal : IAnimal
     {
@@ -18,7 +18,7 @@
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
 
-            id = IdGenerator.GenerateId(typeof(IAnimal));
+            this.id = Guid.NewGuid().ToString();
             this.name = name;
             this.gender = gender;
             this.age = age;
