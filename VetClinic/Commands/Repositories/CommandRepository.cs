@@ -6,21 +6,21 @@
 
     public class CommandRepository : ICommandRepository
     {
-        private readonly ICollection<ICommandExample> commands;
+        private readonly ICollection<IUserCommand> commands;
 
         public CommandRepository()
         {
-            this.commands = new List<ICommandExample>();
+            this.commands = new List<IUserCommand>();
         }
 
-        public ICollection<ICommandExample> Commands => new List<ICommandExample>(this.commands);
+        public ICollection<IUserCommand> Commands => new List<IUserCommand>(this.commands);
 
-        public void AddComamnd(ICommandExample command)
+        public void AddComamnd(IUserCommand command)
         {
             throw new NotImplementedException();
         }
 
-        public ICommandExample GetByName(string name)
+        public IUserCommand GetByName(string name)
         {
             throw new NotImplementedException();
         }
