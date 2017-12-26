@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Contracts\ICommandExample.cs" />
-    <Compile Include="Commands\Implementations\CommandExample.cs" />
+    <Compile Include="Commands\Contracts\IUserCommand.cs" />
+    <Compile Include="Commands\Implementations\UserCommand.cs" />
     <Compile Include="Commands\Repositories\CommandRepository.cs" />
     <Compile Include="Commands\Repositories\ICommandRepository.cs" />
     <Compile Include="EngineExample.cs" />
