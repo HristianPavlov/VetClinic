@@ -2,31 +2,40 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using VetClinic.Data.Contracts;
 
     public class AnimalRepository : IAnimalRepository
     {
-        private readonly IDictionary<IUser, IAnimal> animals;
+        private readonly ICollection<IAnimal> animals;
+        private readonly IUserRepository usersDb;
 
-        public AnimalRepository()
+        public AnimalRepository(IUserRepository users)
         {
-            this.animals = new Dictionary<IUser, IAnimal>();
+            this.usersDb = users;
+            this.animals = new List<IAnimal>();
         }
-        public IDictionary<IUser, IAnimal> Animals => new Dictionary<IUser, IAnimal>(this.animals);
+        public ICollection<IAnimal> Animals => new List<IAnimal>(this.animals);
 
-        public void CreateCat(IUser user, ICat cat)
+        public void AddAnimal(string userId, IAnimal animal)
         {
-            throw new NotImplementedException();
-        }
+            var animalExists = this.animals.Any(u => u.Id == animal.Id);
 
-        public void CreateDog(IUser user, IDog dog)
-        {
-            throw new NotImplementedException();
-        }
+            if (animalExists)
+            {
+                throw new ArgumentException("This animal already exists in database");
+            }
+            this.animals.Add(animal);
+            
+            // find user and add animal to him
+            var user = this.usersDb.Users.FirstOrDefault(u => u.Id == userId);
 
-        public void CreateHamster(IUser user, IHamster hamster)
-        {
-            throw new NotImplementedException();
+            if (user == null)
+            {
+                throw new ArgumentException("This user does not exists in database");
+            }
+
+            user.AddPet(animal);
         }
 
         public IAnimal GetById(string id)
