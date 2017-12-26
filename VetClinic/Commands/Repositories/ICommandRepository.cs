@@ -5,11 +5,11 @@
 
     public interface ICommandRepository
     {
-        ICollection<ICommandExample> Commands { get; }
+        ICollection<IUserCommand> Commands { get; }
 
-        ICommandExample GetByName(string name);
+        IUserCommand GetByName(string name);
 
-        void AddComamnd(ICommandExample command);
+        void AddComamnd(IUserCommand command);
 
         void RemoveCommand(string name);
     }
