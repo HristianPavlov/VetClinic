@@ -12,5 +12,7 @@
         void AddComamnd(IUserCommand command);
 
         void RemoveCommand(string name);
+
+        void ListAllCommands();
     }
 }
