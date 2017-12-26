@@ -27,7 +27,7 @@ namespace VetClinic.Data.Repositories
 
             if (userExists)
             {
-                throw new ArgumentException("This user exists in database");
+                throw new ArgumentException("This user already exists in database");
             }
             this.users.Add(user);
         }
