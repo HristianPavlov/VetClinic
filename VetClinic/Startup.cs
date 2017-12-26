@@ -33,10 +33,7 @@
             var command = new CommandExample(personFactory, userDb);
 
             var engine = new EngineExample(userDb, command);
-
             engine.Start();
-
-
 
         }
     }
