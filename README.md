@@ -34,4 +34,4 @@ This application provides services for the customer and their pets
 
 ## Libraries
 
-- NinJect is an open-source IoC container which managed dependencies within the application
+
