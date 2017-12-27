@@ -9,12 +9,6 @@ namespace VetClinic.Core.Services
     {
         private readonly string name;
         private readonly decimal price;
-        private ICollection<IProduct> allProducts = new List<IProduct>
-        {
-            { new Product("Medicine", 11.80m)},
-            { new Product("Vitamins", 11.80m)},
-            { new Product("Food", 11.80m)}
-        };
 
         public Product(string name, decimal price)
         {
@@ -25,17 +19,5 @@ namespace VetClinic.Core.Services
         public string Name { get; }
 
         public decimal Price { get; protected set; }
-
-        public void PrintProducts()
-        {
-            var sb = new StringBuilder();
-
-            foreach (var item in allProducts)
-            {
-                sb.AppendLine($"   {item.Name} - ${item.Price}");
-            }
-
-            Console.WriteLine(sb.ToString());
-        }
     }
 }

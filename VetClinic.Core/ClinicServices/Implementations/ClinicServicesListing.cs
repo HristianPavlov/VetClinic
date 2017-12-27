@@ -26,10 +26,14 @@
 
         public void AddServices(IService service)
         {
-            // TODO check if the service is already added to the list
             if (service == null)
             {
                 throw new Exception("No such service found");
+            }
+
+            if (services.Any(s => s.Id == service.Id) == true)
+            {
+                throw new Exception("This servoce already exists!");
             }
 
             this.services.Add(service);
