@@ -49,7 +49,7 @@
 
         private void ProcessCommand(string command)
         {
-            var commandParts = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var commandParts = command.Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             if (commandParts.Count() == 0)
             {
@@ -63,7 +63,7 @@
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
                 case "userPets": this.userCommands.GetUserPets(commandParts); break;
                 case "allUsers": this.userCommands.ListAllUsers(); break;
-  
+
                 // Marto
                 // case "registerAdmin": this.commands.CreateAdmin(commandParts); break;
                 // case "removeAdmin": this.commands.CreateAdmin(commandParts); break;

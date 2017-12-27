@@ -38,8 +38,6 @@ namespace VetClinic.Commands.Implementations
                 default: throw new ArgumentException("No such animal can be serviced");
             }
 
-            //var newAnimal = this.animalFactory.CreateAnimal(name, gender, breed, age); // TODO children could not be evaluated
-
             this.animalDb.AddAnimal(userId, newAnimal); // and to user
 
             Console.WriteLine($"{animalType} with name {name} successfully created");
