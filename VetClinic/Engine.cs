@@ -49,7 +49,7 @@
 
         private void ProcessCommand(string command)
         {
-            var commandParts = command.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries).ToList();
+            var commandParts = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             if (commandParts.Count() == 0)
             {
@@ -57,28 +57,27 @@
                 return;
             }
 
-            switch (commandParts[0]) // all three implemented methods working
+            switch (commandParts[0])
             {
                 case "registerUser": this.userCommands.CreateUser(commandParts); break;
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
                 case "userPets": this.userCommands.GetUserPets(commandParts); break;
                 case "allUsers": this.userCommands.ListAllUsers(); break;
-                case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
-
-                    //Hris
-              //removeAnimal
-              //
-              //listAllAnimal
-              //customExceptionClass
-              //struct
-
-                //Marto
+  
+                // Marto
                 // case "registerAdmin": this.commands.CreateAdmin(commandParts); break;
+                // case "removeAdmin": this.commands.CreateAdmin(commandParts); break;
                 // case "registerVeterinarian": this.commands.CreateVeterinarian(commandParts); break;
-                //Staff CRUD+Search by ID
-                //lsitThem
+                // case "removeVeterinarian": this.commands.CreateVeterinarian(commandParts); break;
+                // case "listStaff": this.commands.CreateVeterinarian(commandParts); break;
+                // case "searchById": this.commands.CreateVeterinarian(commandParts); break;
 
-                
+                // Hris
+                case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
+                //removeAnimal
+                //listAllAnimal
+                //customExceptionClass
+                //struct     
 
                 // case "help": this.commands.GetUserInfo(commandParts); break;
 
