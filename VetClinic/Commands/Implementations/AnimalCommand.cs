@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using VetClinic.Commands.Contracts;
-using VetClinic.Data.Common.Enums;
-using VetClinic.Data.Contracts;
-using VetClinic.Data.Repositories;
-using VetClinic.Factories.Contracts;
-
-namespace VetClinic.Commands.Implementations
+﻿namespace VetClinic.Commands.Implementations
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using VetClinic.Commands.Contracts;
+    using VetClinic.Data.Common.Enums;
+    using VetClinic.Data.Contracts;
+    using VetClinic.Data.Repositories;
+    using VetClinic.Factories.Contracts;
+
     public class AnimalCommand : IAnimalCommand
     {
         private readonly IAnimalFactory animalFactory;
@@ -39,7 +39,7 @@ namespace VetClinic.Commands.Implementations
                 default: throw new ArgumentException($"No animal of kind {animalType} can be serviced in this clinic");
             }
 
-            this.animalDb.CreateAnimal(userId, newAnimal); // and to user
+            this.animalDb.CreateAnimal(userId, newAnimal); // add to user
 
             Console.WriteLine($"{animalType} with name {name} successfully created");
         }
