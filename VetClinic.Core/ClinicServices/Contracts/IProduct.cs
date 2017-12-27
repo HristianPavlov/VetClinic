@@ -11,7 +11,5 @@ namespace VetClinic.Core.ClinicServices.Contracts
         string Name { get;  }
 
         decimal Price { get; }
-
-        void PrintProducts();
     }
 }

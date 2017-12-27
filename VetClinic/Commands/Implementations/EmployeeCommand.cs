@@ -9,7 +9,7 @@
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Contracts;
 
-    public class EmployeeCommand : IEmployeeCommand
+    public class EmployeeCommand : AbstractCommand, IEmployeeCommand
     {
         private readonly IPersonFactory personFactory;
         private readonly IEmployeeRepository employeeDb;
@@ -44,7 +44,7 @@
             }
 
             this.employeeDb.DeleteEmployee(employeeId);
-            Console.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully deleted");
+            this.onMessage($"Person {employee.FirstName} {employee.LastName} successfully deleted");
         }
 
         public void ListEmployees()

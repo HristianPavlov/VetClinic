@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,7 +48,9 @@
     <Compile Include="Commands\Contracts\IAnimalCommand.cs" />
     <Compile Include="Commands\Contracts\IEmployeeCommand.cs" />
     <Compile Include="Commands\Contracts\IUserCommand.cs" />
+    <Compile Include="Commands\Implementations\AbstractCommand.cs" />
     <Compile Include="Commands\Implementations\AnimalCommand.cs" />
+    <Compile Include="Commands\Implementations\CommandMessage.cs" />
     <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
     <Compile Include="Commands\Implementations\UserCommand.cs" />
     <Compile Include="Commands\Repositories\CommandRepository.cs" />
@@ -61,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VetClinic.Core\VetClinic.Services.csproj">

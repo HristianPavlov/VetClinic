@@ -10,11 +10,11 @@
     {
         private readonly ICollection<IService> services = new List<IService>
         {
-            { new Service("Healing", 19.90m) },
-            { new Service("Vaccination", 8.90m) },
-            { new Service("Anti parasite treatment", 6.50m) },
-            { new Service ("Grooming", 25.00m) },
-            // TODO - implement Buy Products service
+            { new Service("Healing", 19.90m, 5) },
+            { new Service("Vaccination", 8.90m, 4) },
+            { new Service("Anti parasite treatment", 6.50m, 3) },
+            { new Service("Grooming", 25.00m, 6) },
+            // TODO - implement Buy Products service ( 1 second )
         };
     
         public ClinicServicesListing()
@@ -24,25 +24,32 @@
 
         public ICollection<IService> Services => new List<IService>();
 
-        public void AddServices(IService service)
-        {
-            if (service == null)
-            {
-                throw new Exception("No such service found");
-            }
+        // TODO remove irrelevent methods
 
-            this.services.Add(service);
-        }
+        //public void AddServices(IService service)
+        //{
+        //    if (service == null)
+        //    {
+        //        throw new Exception("No such service found");
+        //    }
 
-        public void RemoveServices(IService service)
-        {
-            if (services.Any(s => s.Id == service.Id) == false)
-            {
-                throw new Exception("No such service found!");
-            }
+        //    if (services.Any(s => s.Id == service.Id) == true)
+        //    {
+        //        throw new Exception("This servoce already exists!");
+        //    }
 
-            this.services.Remove(service);
-        }
+        //    this.services.Add(service);
+        //}
+
+        //public void RemoveServices(IService service)
+        //{
+        //    if (services.Any(s => s.Id == service.Id) == false)
+        //    {
+        //        throw new Exception("No such service found!");
+        //    }
+
+        //    this.services.Remove(service);
+        //}
 
         public bool ContainsService(string id)
         {

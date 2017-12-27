@@ -10,7 +10,7 @@
 
     public class User : Person, IUser
     {
-        private decimal wallet;
+        private decimal total;
         private readonly List<IAnimal> pets;
 
         public User(string firstName, string lastName, string phoneNumber, string email)
@@ -21,14 +21,14 @@
 
         public ICollection<IAnimal> Pets => new List<IAnimal>(this.pets);
 
-        public decimal Wallet
+        public decimal Total
         {
-            get => this.wallet;
+            get => this.total;
 
             private set
             {
-                Guard.WhenArgument(wallet, "Wallet canno be less than zero").IsLessThan(0).Throw();
-                this.wallet = value;
+                Guard.WhenArgument(total, "total canno be less than zero").IsLessThan(0).Throw();
+                this.total = value;
             }
         }
 
@@ -60,14 +60,14 @@
 
         public void PayForServices(decimal cost)
         {
-            Guard.WhenArgument(wallet, "Not enough money").IsLessThan(cost).Throw();
-            this.wallet -= cost;
+            Guard.WhenArgument(total, "Not enough money").IsLessThan(cost).Throw();
+            this.total -= cost;
         }
 
         public void BuyMedicine(decimal cost)
         {
-            Guard.WhenArgument(wallet, "Not enough money").IsLessThan(cost).Throw();
-            this.wallet -= cost;
+            Guard.WhenArgument(total, "Not enough money").IsLessThan(cost).Throw();
+            this.total -= cost;
         }
 
         public string ListUserPets()
