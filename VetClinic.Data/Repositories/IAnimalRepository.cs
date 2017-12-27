@@ -9,7 +9,7 @@
 
         void CreateAnimal(string userId, IAnimal animal);
 
-        void DeteleAnimal(string id);
+        void DeteleAnimal(IAnimal animal,string userPhoneNumber);
 
         IAnimal GetById(string id);
     }

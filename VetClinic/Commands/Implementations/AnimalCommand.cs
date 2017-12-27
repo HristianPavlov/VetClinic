@@ -63,14 +63,14 @@
             var animalId = parameters[2];
 
             var animal = this.animalDb.GetById(animalId);
-
+            
             if (animal == null)
             {
                 Console.WriteLine("Animal not found");
                 return;
             }
 
-            this.animalDb.DeteleAnimal(animalId);
+            this.animalDb.DeteleAnimal(animal, userPhoneNumber);
             this.onMessage($"{animal.Type} with name {animal.Name} successfully removed from database");
         }
     }

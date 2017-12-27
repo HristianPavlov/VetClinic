@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Contracts\CustomException.cs" />
     <Compile Include="Commands\Contracts\IAnimalCommand.cs" />
     <Compile Include="Commands\Contracts\IEmployeeCommand.cs" />
     <Compile Include="Commands\Contracts\IUserCommand.cs" />

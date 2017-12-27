@@ -43,15 +43,18 @@
 
         public IAnimal GetById(string id) => this.animals.FirstOrDefault(a => a.Id == id);
 
-        public void DeteleAnimal(string id)
-        {
-            var animal = this.animals.FirstOrDefault(a => a.Id == id);
 
-            if (animal == null)
-            {
-                Console.WriteLine("Animal not found");
-                return;
-            }
+        public void DeteleAnimal(IAnimal animal, string userPhoneNumber)
+        {
+            // var animal = this.animals.FirstOrDefault(a => a.Id == id);
+
+            //if (animal == null)
+            //{
+            //    Console.WriteLine("Animal not found");
+            //    return;
+            //}
+           var user= this.usersDb.Users.FirstOrDefault(a => a.PhoneNumber == userPhoneNumber);
+            user.RemovePet(animal);
 
             this.animals.Remove(animal);
         }

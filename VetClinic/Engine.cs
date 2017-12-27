@@ -56,6 +56,10 @@
 
                 // Hris
                 case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
+                case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts); break;
+                case "allAnimals": this.animalCommands.ListPets(); break;
+
+
                 //deleteAnimal
                 //allAnimals
                 //searchAnimalByUserPhone
