@@ -47,8 +47,6 @@ namespace VetClinic.Core.Services
 
                     // TODO !!
                     throw new NotImplementedException("Service BUY PRODUCTS is not implemented yet!");
-                    return;
-
             }
         }
     }
