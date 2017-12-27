@@ -8,6 +8,10 @@
 
         decimal Price { get; }
 
+        int TimeToExecute { get; }
+
         string Print();
+
+        void Execute();
     }
 }

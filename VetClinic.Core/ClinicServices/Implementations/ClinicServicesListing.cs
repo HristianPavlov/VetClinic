@@ -10,11 +10,11 @@
     {
         private readonly ICollection<IService> services = new List<IService>
         {
-            { new Service("Healing", 19.90m) },
-            { new Service("Vaccination", 8.90m) },
-            { new Service("Anti parasite treatment", 6.50m) },
-            { new Service ("Grooming", 25.00m) },
-            // TODO - implement Buy Products service
+            { new Service("Healing", 19.90m, 5) },
+            { new Service("Vaccination", 8.90m, 4) },
+            { new Service("Anti parasite treatment", 6.50m, 3) },
+            { new Service("Grooming", 25.00m, 6) },
+            // TODO - implement Buy Products service ( 1 second )
         };
     
         public ClinicServicesListing()
@@ -26,6 +26,7 @@
 
         public void AddServices(IService service)
         {
+            // TODO check if the service is already added to the list
             if (service == null)
             {
                 throw new Exception("No such service found");

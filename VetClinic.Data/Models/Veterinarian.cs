@@ -8,5 +8,7 @@ namespace VetClinic.Data.Models
             : base(firstName, lastName, phoneNumber, email, RoleType.Veterinarian)
         {
         }
+
+
     }
 }
