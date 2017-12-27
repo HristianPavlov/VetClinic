@@ -3,42 +3,24 @@
     using System;
     using System.Linq;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Data.Repositories;
 
     public class Engine : IEngine
     {
-        private readonly IUserRepository usersDb;
         private readonly IUserCommand userCommands;
         private readonly IAnimalCommand animalCommands;
-        private readonly IEmployeeCommand staffCommands;
+        private readonly IEmployeeCommand employeeCommands;
 
-        public Engine(IUserRepository usersDb, IUserCommand commands, IAnimalCommand animalCommands, IEmployeeCommand staffCommands)
+        public Engine(IUserCommand commands, IAnimalCommand animalCommands, IEmployeeCommand employeeCommands)
         {
-            this.usersDb = usersDb;
             this.userCommands = commands;
             this.animalCommands = animalCommands;
-            this.staffCommands = staffCommands;
+            this.employeeCommands = employeeCommands;
         }
 
         public void Start()
         {
             Console.WriteLine("System running...");
-            Console.Write("Search person by phone number. Type phone number here: ");
-
-            var phone = Console.ReadLine();
-
-            var userExists = this.usersDb.Users.Any(u => u.PhoneNumber == phone);
-
-            if (!userExists)
-            {
-                Console.WriteLine(("User not found! Please proceed to register"));
-                Console.WriteLine(("Type registerUser firstname lastname phone email separated by space..."));
-            }
-            else
-            {
-                Console.WriteLine("This User exists in database. Please proceed to add your command");
-            }
-
+          
             while (true)
             {
                 var command = Console.ReadLine();
@@ -65,10 +47,10 @@
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
                 case "userPets": this.userCommands.GetUserPets(commandParts); break;
                 case "allUsers": this.userCommands.ListAllUsers(); break;
-                case "registerEmployee": this.staffCommands.CreateEmployee(commandParts); break;
-                case "removeEmployee": this.staffCommands.RemoveEmployee(commandParts); break;
-                case "allEmployees": this.staffCommands.ListEmployees(); break;
-                // case "searchById": this.commands.CreateVeterinarian(commandParts); break;
+                case "registerEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
+                case "removeEmployee": this.employeeCommands.RemoveEmployee(commandParts); break;
+                case "allEmployees": this.employeeCommands.ListEmployees(); break;
+                case "searchByPhone": this.employeeCommands.FindByPhone(commandParts); break;
 
                 // Hris
                 case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
