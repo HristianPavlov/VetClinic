@@ -5,7 +5,7 @@
 
     public interface IAnimalFactory
     {
-        IAnimal CreateAnimal(string name, AnimalGenderType gender, string breed, int age);
+        // IAnimal CreateAnimal(string name, AnimalGenderType gender, string breed, int age);
 
         IAnimal CreateDog(string name, AnimalGenderType gender, string breed, int age);
 
