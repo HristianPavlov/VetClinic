@@ -67,7 +67,7 @@
             Console.WriteLine(sb.ToString());
         }
 
-        public string FindByPhone(IList<string> parameters)
+        public string SearchByPhone(IList<string> parameters)
         {
             var phone = parameters[1];
 

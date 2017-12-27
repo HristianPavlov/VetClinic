@@ -33,7 +33,7 @@
             Console.WriteLine($"User {firstName} {lastName} successfully created");
         }
 
-        public void RemoveUser(IList<string> parameters)
+        public void DeleteUser(IList<string> parameters)
         {
             var userId = parameters[1];
 
@@ -49,7 +49,7 @@
             Console.WriteLine($"User {user.FirstName} {user.LastName} successfully removed from database");
         }
 
-        public void GetUserPets(IList<string> parameters)
+        public void ListUserPets(IList<string> parameters)
         {
             var userId = parameters[1];
 
@@ -64,7 +64,7 @@
             Console.WriteLine(user.ListUserPets());
         }
 
-        public void ListAllUsers()
+        public void ListUsers()
         {
             if (this.userDb.Users.Count == 0)
             {
@@ -82,6 +82,23 @@
             }
 
             Console.WriteLine(sb.ToString());
+        }
+
+        public string SearchByPhone(IList<string> parameters)
+        {
+            var phone = parameters[1];
+
+            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == phone);
+
+            if (user == null)
+            {
+                return $"User with phone number {phone} was not found! Please proceed to register";
+            }
+            else
+            {
+                Console.WriteLine($"User {user.FirstName} {user.LastName} was found with phone number {phone}");
+                return $"Emplyoee Info: {user.PrintInfo()}";
+            }
         }
     }
 }

@@ -6,10 +6,12 @@
     {
         void CreateUser(IList<string> parameters);
 
-        void RemoveUser(IList<string> parameters);
+        void DeleteUser(IList<string> parameters);
 
-        void GetUserPets(IList<string> parameters);
+        void ListUserPets(IList<string> parameters);
 
-        void ListAllUsers();
+        string SearchByPhone(IList<string> parameters);
+
+        void ListUsers();
     }
 }
