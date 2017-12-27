@@ -10,6 +10,6 @@ namespace VetClinic.Commands.Contracts
       
         void ListEmployees();
 
-        string SearchByPhone(IList<string> parameters);
+        void SearchByPhone(IList<string> parameters);
     }
 }
