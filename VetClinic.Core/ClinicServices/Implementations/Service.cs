@@ -52,7 +52,7 @@
             return $"  {this.Id}. {this.Name} - Price: ${this.Price}".Trim();
         }
 
-        public void Execute()
+        public virtual void Execute()
         {
             Console.WriteLine($"Executing {this.Name} service. Please wait {this.TimeToExecute} seconds.");
             Thread.Sleep(this.TimeToExecute * 1000);
