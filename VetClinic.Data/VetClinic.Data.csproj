@@ -51,21 +51,23 @@
     <Compile Include="Contracts\ICat.cs" />
     <Compile Include="Repositories\AnimalRepository.cs" />
     <Compile Include="Repositories\IAnimalRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\IDog.cs" />
     <Compile Include="Contracts\IHamster.cs" />
     <Compile Include="Contracts\IPerson.cs" />
-    <Compile Include="Contracts\IStaffPerson.cs" />
+    <Compile Include="Contracts\IEmployee.cs" />
     <Compile Include="Contracts\IUser.cs" />
     <Compile Include="Contracts\IVeterinarian.cs" />
     <Compile Include="Models\Abstractions\Animal.cs" />
     <Compile Include="Models\Cat.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\Hamster.cs" />
     <Compile Include="Models\Abstractions\Person.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\StaffPerson.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Veterinarian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
