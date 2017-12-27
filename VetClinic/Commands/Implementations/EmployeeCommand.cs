@@ -33,18 +33,18 @@
 
         public void RemoveEmployee(IList<string> parameters)
         {
-            var staffPersonId = parameters[1];
+            var employeeId = parameters[1];
 
-            var staffPerson = this.employeeDb.Employees.FirstOrDefault(p => p.Id == staffPersonId);
+            var employee = this.employeeDb.Employees.FirstOrDefault(e => e.Id == employeeId);
 
-            if (staffPerson == null)
+            if (employee == null)
             {
                 Console.WriteLine("Employee not found");
                 return;
             }
 
-            this.employeeDb.RemoveEmployee(staffPersonId);
-            Console.WriteLine($"Person {staffPerson.FirstName} {staffPerson.LastName} successfully removed from database");
+            this.employeeDb.RemoveEmployee(employeeId);
+            Console.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully removed from database");
         }
 
         public void ListEmployees()
@@ -65,6 +65,23 @@
             }
 
             Console.WriteLine(sb.ToString());
+        }
+
+        public string FindByPhone(IList<string> parameters)
+        {
+            var phone = parameters[1];
+
+            var employee = this.employeeDb.Employees.FirstOrDefault(e => e.PhoneNumber == phone);
+
+            if (employee == null)
+            {
+                return $"Employee with phone number {phone} was not found! Please proceed to register";
+            }
+            else
+            {
+                Console.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with phone number {phone}");
+                return $"Emplyoee Info: {employee.PrintInfo()}";
+            }
         }
     }
 }
