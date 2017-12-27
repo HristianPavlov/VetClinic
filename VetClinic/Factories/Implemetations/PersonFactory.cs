@@ -9,7 +9,7 @@
     {
         public IUser CreateUser(string firstName, string lastName, string phoneNumber, string email) => new User(firstName, lastName, phoneNumber, email);
 
-        public IStaffPerson CreateStaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role)
-            => new StaffPerson(firstName, lastName, phoneNumber, email, role);
+        public IEmployee CreateStaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role)
+            => new Employee(firstName, lastName, phoneNumber, email, role);
     }
 }

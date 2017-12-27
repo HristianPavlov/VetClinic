@@ -7,6 +7,6 @@
     {
         IUser CreateUser(string firstName, string lastName, string phoneNumber, string email);
 
-        IStaffPerson CreateStaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role);
+        IEmployee CreateStaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role);
     }
 }

@@ -10,12 +10,14 @@
         private readonly IUserRepository usersDb;
         private readonly IUserCommand userCommands;
         private readonly IAnimalCommand animalCommands;
+        private readonly IEmployeeCommand staffCommands;
 
-        public Engine(IUserRepository usersDb, IUserCommand commands, IAnimalCommand animalCommands)
+        public Engine(IUserRepository usersDb, IUserCommand commands, IAnimalCommand animalCommands, IEmployeeCommand staffCommands)
         {
             this.usersDb = usersDb;
             this.userCommands = commands;
             this.animalCommands = animalCommands;
+            this.staffCommands = staffCommands;
         }
 
         public void Start()
@@ -53,7 +55,7 @@
 
             if (commandParts.Count() == 0)
             {
-                Console.WriteLine("Please add a command!");
+                Console.WriteLine("Please add a valid command!");
                 return;
             }
 
@@ -63,13 +65,9 @@
                 case "removeUser": this.userCommands.RemoveUser(commandParts); break;
                 case "userPets": this.userCommands.GetUserPets(commandParts); break;
                 case "allUsers": this.userCommands.ListAllUsers(); break;
-
-                // Marto
-                // case "registerAdmin": this.commands.CreateAdmin(commandParts); break;
-                // case "removeAdmin": this.commands.CreateAdmin(commandParts); break;
-                // case "registerVeterinarian": this.commands.CreateVeterinarian(commandParts); break;
-                // case "removeVeterinarian": this.commands.CreateVeterinarian(commandParts); break;
-                // case "listStaff": this.commands.CreateVeterinarian(commandParts); break;
+                case "registerEmployee": this.staffCommands.CreateEmployee(commandParts); break;
+                case "removeEmployee": this.staffCommands.RemoveEmployee(commandParts); break;
+                case "allEmployees": this.staffCommands.ListEmployees(); break;
                 // case "searchById": this.commands.CreateVeterinarian(commandParts); break;
 
                 // Hris
