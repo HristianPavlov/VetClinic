@@ -73,12 +73,12 @@
         {
             if (!this.pets.Any())
             {
-                return $"Pets: Client {this.FirstName} {this.LastName} has no pets registered yet.";
+                return $"Pets: {this.FirstName} {this.LastName} has no pets registered yet.";
             }
 
             var sb = new StringBuilder();
 
-            foreach (var pet in this.Pets)
+            foreach (var pet in this.pets) // TODO null
             {
                 sb.AppendLine($"Name: {pet.Name}");
                 sb.AppendLine($"Gender: {pet.Gender}");

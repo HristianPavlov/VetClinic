@@ -13,7 +13,7 @@
         private readonly int age;
         private readonly AnimalGenderType gender;
 
-        public Animal(string name, AnimalGenderType gender, AnimalType type, int age = 0)
+        public Animal(string name, AnimalGenderType gender, AnimalType type, int age)
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
