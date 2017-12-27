@@ -61,42 +61,27 @@
                 return;
             }
 
-            user.ListAllPets();
+            user.ListUserPets();
         }
 
-        public string ListAllUsers() // TODO not working
+        public void ListAllUsers()
         {
             if (this.userDb.Users.Count == 0)
             {
-                return "no users registered";
+                Console.WriteLine("No users registered");
+                return;
             }
 
             var sb = new StringBuilder();
 
             sb.AppendLine("All users:");
 
-            var users = this.userDb
-                            .Users
-                            .Select(u => new
-                            {
-                                u.FirstName,
-                                u.LastName,
-                                u.PhoneNumber,
-                                u.Email,
-                                Pets = u.Pets.Select(p => new
-                                {
-                                     p.Name,
-                                     p.Age,
-                                     p.Type,
-                                     p.Gender
-                                })
-                            })
-                            .ToList();
-                     
+            foreach (var user in this.userDb.Users)
+            {
+                sb.AppendLine(user.PrintInfo());
+            }
 
-            users.ForEach(u => sb.AppendLine(u.ToString()));
-
-            return sb.ToString();
+            Console.WriteLine(sb.ToString());
         }
     }
 }

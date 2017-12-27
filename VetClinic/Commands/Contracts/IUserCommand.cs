@@ -10,6 +10,6 @@
 
         void GetUserPets(IList<string> parameters);
 
-        string ListAllUsers();
+        void ListAllUsers();
     }
 }
