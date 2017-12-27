@@ -9,5 +9,7 @@ namespace VetClinic.Commands.Contracts
         void RemoveEmployee(IList<string> parameters);
       
         void ListEmployees();
+
+        string FindByPhone(IList<string> parameters);
     }
 }
