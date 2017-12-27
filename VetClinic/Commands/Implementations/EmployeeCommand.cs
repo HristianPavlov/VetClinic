@@ -44,7 +44,7 @@
             }
 
             this.employeeDb.DeleteEmployee(employeeId);
-            Console.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully removed from database");
+            Console.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully deleted");
         }
 
         public void ListEmployees()
@@ -67,7 +67,7 @@
             Console.WriteLine(sb.ToString());
         }
 
-        public string SearchByPhone(IList<string> parameters)
+        public void SearchByPhone(IList<string> parameters)
         {
             var phone = parameters[1];
 
@@ -75,12 +75,12 @@
 
             if (employee == null)
             {
-                return $"Employee with phone number {phone} was not found! Please proceed to register";
+                Console.WriteLine($"Employee with phone number {phone} was not found! Please proceed to register");
             }
             else
             {
-                Console.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with phone number {phone}");
-                return $"Emplyoee Info: {employee.PrintInfo()}";
+                Console.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with searched phone number {phone}");
+                Console.WriteLine($"Emplyoee Info: {employee.PrintInfo()}");
             }
         }
     }
