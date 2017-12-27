@@ -5,11 +5,11 @@
     using VetClinic.Data.Common.Enums;
     using VetClinic.Data.Contracts;
 
-    public class StaffPerson : Person, IStaffPerson
+    public class Employee : Person, IEmployee
     {
         private readonly RoleType role;
 
-        public StaffPerson(string firstName, string lastName, string phoneNumber, string email, RoleType role)
+        public Employee(string firstName, string lastName, string phoneNumber, string email, RoleType role)
             : base(firstName, lastName, phoneNumber, email)
         {
             this.role = role;
