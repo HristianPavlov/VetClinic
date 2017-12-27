@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Data.Common.Enums;
     using VetClinic.Data.Contracts;
@@ -24,36 +24,45 @@
         {
             IAnimal newAnimal;
 
-            var userId = parameters[1];
+            var userPhone = parameters[1];
             var animalType = parameters[2];
             var name = parameters[3];
             var gender = (AnimalGenderType)Enum.Parse(typeof(AnimalGenderType), parameters[4]);
-            var breed = parameters[5];
-            var age = int.Parse(parameters[6]);
+            var age = int.Parse(parameters[5]);
 
             switch (animalType)
             {
                 case "cat": newAnimal = this.animalFactory.CreateCat(name, gender, age); break;
-                case "dog": newAnimal = this.animalFactory.CreateDog(name, gender, breed, age); break;
+                case "dog": var breed = parameters[6]; newAnimal = this.animalFactory.CreateDog(name, gender, breed, age); break;
                 case "hamster": newAnimal = this.animalFactory.CreateHammster(name, gender, age); break;
-                default: throw new ArgumentException($"No animal of kind {animalType} can be serviced in this clinic");
+                default: Console.WriteLine(($"No animal of kind {animalType} can be serviced in this clinic")); return;
             }
 
-            this.animalDb.CreateAnimal(userId, newAnimal); // TODO add to user
+            newAnimal.OwnerPhoneNumber = userPhone;
+            this.animalDb.CreateAnimal(userPhone, newAnimal);
 
             this.onMessage($"{animalType} with name {name} successfully created");
         }
 
-        public string ListPets()
+        public void ListPets()
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+
+            foreach (var pet in animalDb.Animals)
+            {
+                sb.Append(pet.PrintInfo());
+                sb.AppendLine($"Owner: {pet.OwnerPhoneNumber}");
+            }
+
+            Console.WriteLine(sb.ToString());
         }
 
         public void DeleteAnimal(IList<string> parameters)
         {
-            var animalId = parameters[1];
+            var userPhoneNumber = parameters[1];
+            var animalId = parameters[2];
 
-            var animal = this.animalDb.Animals.FirstOrDefault(a => a.Id == animalId);
+            var animal = this.animalDb.GetById(animalId);
 
             if (animal == null)
             {

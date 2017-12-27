@@ -15,7 +15,7 @@ namespace VetClinic.Data.Common
             {
                 case Type person when person == typeof(IPerson): sb.Append("P"); break;
                 case Type animal when animal == typeof(IAnimal): sb.Append("A"); break;
-                default: throw new ArgumentException("No such type found");
+                default: Console.WriteLine(("No such type found")); break;
             }
 
             sb.Append(id);

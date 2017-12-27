@@ -2,6 +2,7 @@
 {
     public enum AnimalGenderType
     {
+        NotSet,
         male,
         female
     }

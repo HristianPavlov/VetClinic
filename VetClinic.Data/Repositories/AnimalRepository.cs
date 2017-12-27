@@ -17,35 +17,43 @@
         }
         public ICollection<IAnimal> Animals => new List<IAnimal>(this.animals);
 
-        public void CreateAnimal(string userId, IAnimal animal)
+        public void CreateAnimal(string userPhone, IAnimal animal)
         {
             var animalExists = this.animals.Any(u => u.Id == animal.Id);
 
             if (animalExists)
             {
-                throw new ArgumentException("This animal already exists in database");
+                Console.WriteLine(("This animal already exists in database"));
+                return;
             }
+
             this.animals.Add(animal);
             
-            // find user and add animal to him
-            var user = this.usersDb.Users.FirstOrDefault(u => u.Id == userId);
+            // TODO to be extracted
+            var user = this.usersDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
-                throw new ArgumentException("This user does not exists in database");
+                Console.WriteLine(("This user does not exists in database"));
+                return;
             }
 
             user.AddPet(animal);
         }
 
-        public IAnimal GetById(string id)
-        {
-            throw new NotImplementedException();
-        }
+        public IAnimal GetById(string id) => this.animals.FirstOrDefault(a => a.Id == id);
 
         public void DeteleAnimal(string id)
         {
-            throw new NotImplementedException();
+            var animal = this.animals.FirstOrDefault(a => a.Id == id);
+
+            if (animal == null)
+            {
+                Console.WriteLine("Animal not found");
+                return;
+            }
+
+            this.animals.Remove(animal);
         }
     }
 }

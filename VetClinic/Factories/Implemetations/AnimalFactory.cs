@@ -15,17 +15,5 @@
 
         public IAnimal CreateHammster(string name, AnimalGenderType gender, int age)
             => new Hamster(name, gender, age);
-
-        //public IAnimal CreateAnimal(string name, AnimalGenderType gender, string breed, int age)
-        //{
-        //    var animalTypes = Enum.GetValues(typeof(AnimalType)).Cast<AnimalType>().ToList();
-        //    switch (animalTypes.ToString())
-        //    {
-        //        case "Dog": return new Dog(name, gender, breed, age);
-        //        case "Cat": return new Cat(name, gender, age);
-        //        case "Hamster": return new Hamster(name, gender, age);
-        //        default: throw new ArgumentException("no such type of animal can be services");
-        //    }
-        //}
     }
 }

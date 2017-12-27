@@ -37,12 +37,13 @@
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
             var petFound = this.pets.FirstOrDefault(p => p.Id == pet.Id);
 
-            if (pet == null)
+            if (petFound != null)
             {
-                throw new ArgumentException("this pet already exists in database");
+                Console.WriteLine(("this pet already exists in database"));
+                return;
             }
 
-            this.pets.Add(petFound);
+            this.pets.Add(pet);
         }
 
         public void RemovePet(IAnimal pet)
@@ -84,7 +85,7 @@
                 sb.AppendLine($"Gender: {pet.Gender}");
                 sb.AppendLine($"Age: {pet.Age}");
                 sb.AppendLine($"Type: {pet.Type}");
-                sb.AppendLine($"Owner: {pet.Owner}");
+                sb.AppendLine($"Owner: {pet.OwnerPhoneNumber}");
             }
 
            return sb.ToString();

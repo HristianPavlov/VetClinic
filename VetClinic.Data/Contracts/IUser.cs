@@ -17,6 +17,5 @@
         string ListUserPets();
 
         string PrintInfo();
-
     }
 }

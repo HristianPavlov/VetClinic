@@ -48,6 +48,7 @@
                 case "userPets": this.userCommands.ListUserPets(commandParts); break;
                 case "searchUserByPhone": this.userCommands.SearchByPhone(commandParts); break;
                 case "allUsers": this.userCommands.ListUsers(); break;
+
                 case "registerEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
                 case "deleteEmployee": this.employeeCommands.RemoveEmployee(commandParts); break;
                 case "allEmployees": this.employeeCommands.ListEmployees(); break;
@@ -57,6 +58,7 @@
                 case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
                 //deleteAnimal
                 //allAnimals
+                //searchAnimalByUserPhone
                 // case "help": this.commands.GetUserInfo(commandParts); break;
 
                 //customExceptionClass
