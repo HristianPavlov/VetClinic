@@ -14,6 +14,9 @@
 
         void ListUsers();
 
-        void ChooseService();
+        void ShowServices();
+
+        void SelectService(string id);
+
     }
 }

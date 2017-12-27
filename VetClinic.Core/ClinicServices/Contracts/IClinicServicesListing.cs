@@ -14,7 +14,7 @@
 
         //void RemoveServices(IService service);
 
-        //void FindById(string id);
+        IService FindById(string id);
 
         //bool ContainsService(string id);
     }

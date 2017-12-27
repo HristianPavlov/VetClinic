@@ -44,6 +44,11 @@ namespace VetClinic.Core.Services
 
             Console.WriteLine(sb.ToString());
         }
+
+        public override string Print()
+        {
+            return $"  {this.Id}. {this.Name}".Trim();
+        }
     }
 }
 

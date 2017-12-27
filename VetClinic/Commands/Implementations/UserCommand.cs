@@ -105,10 +105,15 @@
             }
         }
 
-        public void ChooseService()
+        public void ShowServices()
         {
-            this.servicesList.ListAllServices();
+            Console.WriteLine(this.servicesList.ListAllServices().TrimEnd());
+        }
 
+        public void SelectService(string id)
+        {
+            IService serviceToExecute = this.servicesList.FindById(id);
+            serviceToExecute.Execute();
         }
     }
 }

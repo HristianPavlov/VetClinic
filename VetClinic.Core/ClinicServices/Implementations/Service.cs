@@ -7,6 +7,8 @@
 
     public class Service : IService
     {
+        private static int count = 1;
+
         private decimal price;
         private readonly string name;
         private readonly string id;
@@ -15,9 +17,10 @@
         public Service(string name, int timeToExecute = 1)
         {
             Guard.WhenArgument(name, "Service name cannot be null!").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(name.Length, "Service name must be more than 2 symbols and less than 14 symbols long!").IsLessThan(3).IsGreaterThan(13).Throw();
+            //Guard.WhenArgument(name.Length, "Service name must be more than 2 symbols and less than 14 symbols long!").IsLessThan(3).IsGreaterThan(13).Throw();
             Guard.WhenArgument(timeToExecute, "Time must be positive!").IsLessThan(0).Throw();
-            this.id = Guid.NewGuid().ToString();
+            //this.id = Guid.NewGuid().ToString();
+            this.id = (count++).ToString();
             this.name = name;
             this.timeToExecute = timeToExecute;
         }
@@ -44,16 +47,16 @@
 
         public int TimeToExecute => this.timeToExecute;
 
-        public string Print()
+        public virtual string Print()
         {
-            return $"{this.Name} - Price: ${this.Price}".Trim();
+            return $"  {this.Id}. {this.Name} - Price: ${this.Price}".Trim();
         }
 
         public void Execute()
         {
-            Console.WriteLine($"Executing {this.GetType().Name} service. Please wait {this.TimeToExecute} seconds.");
+            Console.WriteLine($"Executing {this.Name} service. Please wait {this.TimeToExecute} seconds.");
             Thread.Sleep(this.TimeToExecute * 1000);
-            Console.WriteLine($"Service {this.GetType().Name} is ecexuted!");
+            Console.WriteLine($"Service {this.Name} is executed!");
         }
     }
 }

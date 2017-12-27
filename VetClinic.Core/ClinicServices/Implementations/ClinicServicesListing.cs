@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using VetClinic.Core.ClinicServices.Contracts;
+    using VetClinic.Core.Services;
 
     public class ClinicServicesListing: IClinicServicesListing
     {
@@ -14,7 +15,7 @@
             { new Service("Vaccination", 8.90m, 4) },
             { new Service("Anti parasite treatment", 6.50m, 3) },
             { new Service("Grooming", 25.00m, 6) },
-            // TODO - implement Buy Products service ( 1 second )
+            { new BuyProductService() },
         };
 
         public ICollection<IService> Services => services;
@@ -51,10 +52,10 @@
         //    return services.Any(s => s.Id == id);
         //}
 
-        //public void FindById(string id)
-        //{
-        //    services.FirstOrDefault(s => s.Id == id);
-        //}
+        public IService FindById(string id)
+        {
+            return services.FirstOrDefault(s => s.Id == id);
+        }
 
         public string ListAllServices()
         {
