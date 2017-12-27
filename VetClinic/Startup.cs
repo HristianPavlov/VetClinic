@@ -2,6 +2,7 @@
 {
     using System;
     using VetClinic.Commands.Implementations;
+    using VetClinic.Core.ClinicServices.Implementations;
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Implemetations;
 
@@ -11,7 +12,6 @@
         {
             var personFactory = new PersonFactory();
             var animalFactory = new AnimalFactory();
-
             var userDb = new UserRepository();
             var employeeDb = new EmployeeRepository();
             var animalDb = new AnimalRepository(userDb);
@@ -19,7 +19,7 @@
 
             var eventHandler = new EventHandler((command, message) => { Console.WriteLine(message); });
 
-            var userCommands = new UserCommand(personFactory, userDb);
+            var userCommands = new UserCommand(personFactory, userDb, new ClinicServicesListing() );
             userCommands.SomethingHappened += eventHandler;
 
             var animalCommands = new AnimalCommand(animalFactory, animalDb);

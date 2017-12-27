@@ -13,5 +13,7 @@
         void SearchByPhone(IList<string> parameters);
 
         void ListUsers();
+
+        void ChooseService();
     }
 }

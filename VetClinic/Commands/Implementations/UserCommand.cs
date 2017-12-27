@@ -5,6 +5,8 @@
     using System.Linq;
     using System.Text;
     using VetClinic.Commands.Contracts;
+    using VetClinic.Core.ClinicServices.Contracts;
+    using VetClinic.Core.ClinicServices.Implementations;
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Contracts;
 
@@ -12,11 +14,13 @@
     {
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;
+        private readonly IClinicServicesListing servicesList;
 
-        public UserCommand(IPersonFactory personFactory, IUserRepository userDb)
+        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IClinicServicesListing servicesListing)
         {
             this.personFactory = personFactory;
             this.userDb = userDb;
+            this.servicesList = servicesListing;
         }
 
         public void CreateUser(IList<string> parameters)
@@ -98,6 +102,12 @@
                 Console.WriteLine($"User {user.FirstName} {user.LastName} was found with searched phone number {phone}");
                 Console.WriteLine($"{user.FirstName}'s Info: {user.PrintInfo()}");
             }
+        }
+
+        public void ChooseService()
+        {
+            this.servicesList.ListAllServices();
+
         }
     }
 }

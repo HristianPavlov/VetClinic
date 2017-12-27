@@ -62,6 +62,9 @@
                 //customExceptionClass
                 //struct     
 
+                // Jivka
+                case "showServices": this.userCommands.ChooseService(); break;
+
                 default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
             }
 

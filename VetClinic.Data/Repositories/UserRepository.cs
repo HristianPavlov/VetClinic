@@ -37,5 +37,6 @@ namespace VetClinic.Data.Repositories
             }
             this.users.Remove(user);
         }
+        
     }
 }
