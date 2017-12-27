@@ -43,8 +43,8 @@
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Id: {this.Id}");
             sb.AppendLine($"Full Name: {this.FirstName} {this.LastName}");
+            sb.AppendLine($"Id: {this.Id}");
             sb.AppendLine($"Phone Number: {this.PhoneNumber}");
             sb.AppendLine($"Email: {this.Email}");
 

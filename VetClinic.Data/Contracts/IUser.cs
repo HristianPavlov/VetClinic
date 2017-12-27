@@ -14,7 +14,9 @@
 
         void BuyMedicine(decimal cost);
 
-        void ListAllPets();
+        string ListUserPets();
+
+        string PrintInfo();
 
     }
 }

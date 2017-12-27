@@ -12,6 +12,5 @@ namespace VetClinic.Data.Repositories
         void AddUser(IUser user);
 
         void RemoveUser(string id);
-
     }
 }

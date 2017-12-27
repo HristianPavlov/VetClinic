@@ -24,17 +24,16 @@
 
         public override string PrintInfo()
         {
-            StringBuilder str = new StringBuilder();
+            var sb = new StringBuilder();
 
-            str.AppendLine($"Pet Type: {this.Type}");
-            str.AppendLine($"Breed: {this.Breed}");
-            str.AppendLine($"Name: {this.Name}");
-            str.AppendLine($"Gender: {this.Gender}");
-            str.AppendLine($"Age: {this.Age} years");
-            str.AppendLine($"Id: {this.Id}");
+            sb.AppendLine($"Id: {this.Id}");
+            sb.AppendLine($"Pet Type: {this.Type}");
+            sb.AppendLine($"Breed: {this.Breed}");
+            sb.AppendLine($"Name: {this.Name}");
+            sb.AppendLine($"Gender: {this.Gender}");
+            sb.AppendLine($"Age: {this.Age} years");
 
-            return str.ToString();
-
+            return sb.ToString();
         }
     }
 }

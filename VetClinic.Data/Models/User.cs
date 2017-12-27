@@ -10,8 +10,6 @@
 
     public class User : Person, IUser
     {
-        static int ownersCount = 0;
-
         private decimal wallet;
         private readonly List<IAnimal> pets;
 
@@ -71,52 +69,33 @@
             this.wallet -= cost;
         }
 
-        public void ListAllPets()
+        public string ListUserPets()
         {
             if (!this.pets.Any())
             {
-                Console.WriteLine("This client has no pets.");
-                return;
+                return $"Pets: Client {this.FirstName} {this.LastName} has no pets registered yet.";
             }
 
             var sb = new StringBuilder();
 
-            foreach (var pet in this.Pets) // TODO pet is null although pets list is not null
+            foreach (var pet in this.Pets)
             {
                 sb.AppendLine($"Name: {pet.Name}");
                 sb.AppendLine($"Gender: {pet.Gender}");
                 sb.AppendLine($"Age: {pet.Age}");
                 sb.AppendLine($"Type: {pet.Type}");
-                sb.AppendLine($"Onwer: {pet.Owner}");
+                sb.AppendLine($"Owner: {pet.Owner}");
             }
 
-            Console.WriteLine(sb.ToString());
+           return sb.ToString();
         }
 
-        public override string PrintInfo() => base.PrintInfo();
-
-
-        // -------------- Obsolete ----------------
-        public string GenerateId()
+        public override string PrintInfo()
         {
-            StringBuilder sb = new StringBuilder();
-
-            ownersCount++;
-            sb.Append('O');
-            sb.Append(ownersCount);
-
+            var sb = new StringBuilder();
+            sb.Append(base.PrintInfo());
+            sb.AppendLine(ListUserPets());
             return sb.ToString();
-        }
-
-        public static int gettingStaticID()
-        {
-            //StringBuilder sb = new StringBuilder();
-
-            //ownersCount++;
-            // sb.Append('O');
-            // sb.Append(ownersCount+1);
-
-            return ownersCount;
         }
     }
 }
