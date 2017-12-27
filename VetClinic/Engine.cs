@@ -55,12 +55,12 @@
 
                 // Hris
                 case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
-                //removeAnimal
-                //listAllAnimal
+                //deleteAnimal
+                //allAnimals
+                // case "help": this.commands.GetUserInfo(commandParts); break;
+
                 //customExceptionClass
                 //struct     
-
-                // case "help": this.commands.GetUserInfo(commandParts); break;
 
                 default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
             }
