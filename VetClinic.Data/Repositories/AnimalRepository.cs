@@ -17,7 +17,7 @@
         }
         public ICollection<IAnimal> Animals => new List<IAnimal>(this.animals);
 
-        public void AddAnimal(string userId, IAnimal animal)
+        public void CreateAnimal(string userId, IAnimal animal)
         {
             var animalExists = this.animals.Any(u => u.Id == animal.Id);
 
@@ -43,7 +43,7 @@
             throw new NotImplementedException();
         }
 
-        public void RemoveAnimal(string id)
+        public void DeteleAnimal(string id)
         {
             throw new NotImplementedException();
         }

@@ -16,7 +16,7 @@ namespace VetClinic.Data.Repositories
 
         public ICollection<IUser> Users => new List<IUser>(this.users);
 
-        public void AddUser(IUser user)
+        public void CreateUser(IUser user)
         {
             var userExists = this.users.Any(u => u.Id == user.Id);
 
@@ -27,7 +27,7 @@ namespace VetClinic.Data.Repositories
             this.users.Add(user);
         }
 
-        public void RemoveUser(string id)
+        public void DeleteUser(string id)
         {
             var user = this.users.FirstOrDefault(u => u.Id == id);
 

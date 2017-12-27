@@ -7,8 +7,8 @@
     {
         ICollection<IAnimal> Animals { get; }
 
-        void AddAnimal(string userId, IAnimal animal);
+        void CreateAnimal(string userId, IAnimal animal);
 
-        void RemoveAnimal(string id);
+        void DeteleAnimal(string id);
     }
 }

@@ -16,7 +16,7 @@
 
         public ICollection<IEmployee> Employees => new List<IEmployee>(this.employees);
 
-        public void AddEmployee(IEmployee employee)
+        public void CreateEmployee(IEmployee employee)
         {
             var employeeExist = this.employees.Any(e => e.Id == employee.Id);
 
@@ -27,7 +27,7 @@
             this.employees.Add(employee);
         }
 
-        public void RemoveEmployee(string id)
+        public void DeleteEmployee(string id)
         {
             var employee = this.employees.FirstOrDefault(e => e.Id == id);
 

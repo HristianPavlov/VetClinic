@@ -7,8 +7,8 @@ namespace VetClinic.Data.Repositories
     {
         ICollection<IEmployee> Employees { get; }
 
-        void AddEmployee(IEmployee employee);
+        void CreateEmployee(IEmployee employee);
 
-        void RemoveEmployee(string id);
+        void DeleteEmployee(string id);
     }
 }

@@ -7,8 +7,8 @@ namespace VetClinic.Data.Repositories
     {
         ICollection<IUser> Users { get; }
 
-        void AddUser(IUser user);
+        void CreateUser(IUser user);
 
-        void RemoveUser(string id);
+        void DeleteUser(string id);
     }
 }
