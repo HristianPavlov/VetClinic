@@ -27,7 +27,7 @@
             var phoneNumber = parameters[3];
             var email = parameters[4];
 
-            var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email); // TODO children could not be evaluated
+            var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email);
 
             this.userDb.AddUser(newUser);
             Console.WriteLine($"User {firstName} {lastName} successfully created");
@@ -68,7 +68,7 @@
         {
             if (this.userDb.Users.Count == 0)
             {
-                return "This student has no marks.";
+                return "no users registered";
             }
 
             var sb = new StringBuilder();
