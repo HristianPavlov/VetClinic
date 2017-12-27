@@ -10,7 +10,7 @@
 
         void ListUserPets(IList<string> parameters);
 
-        string SearchByPhone(IList<string> parameters);
+        void SearchByPhone(IList<string> parameters);
 
         void ListUsers();
     }
