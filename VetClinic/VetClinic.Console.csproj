@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Contracts\IAnimalCommand.cs" />
+    <Compile Include="Commands\Contracts\IEmployeeCommand.cs" />
     <Compile Include="Commands\Contracts\IUserCommand.cs" />
     <Compile Include="Commands\Implementations\AnimalCommand.cs" />
+    <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
     <Compile Include="Commands\Implementations\UserCommand.cs" />
     <Compile Include="Commands\Repositories\CommandRepository.cs" />
     <Compile Include="Commands\Repositories\ICommandRepository.cs" />

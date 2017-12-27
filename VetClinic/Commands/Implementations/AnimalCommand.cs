@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using VetClinic.Commands.Contracts;
 using VetClinic.Data.Common.Enums;
 using VetClinic.Data.Contracts;
@@ -35,7 +36,7 @@ namespace VetClinic.Commands.Implementations
                 case "cat": newAnimal = this.animalFactory.CreateCat(name, gender, age); break;
                 case "dog": newAnimal = this.animalFactory.CreateDog(name, gender, breed, age); break;
                 case "hamster": newAnimal = this.animalFactory.CreateHammster(name, gender, age); break;
-                default: throw new ArgumentException("No such animal can be serviced");
+                default: throw new ArgumentException($"No animal of kind {animalType} can be serviced in this clinic");
             }
 
             this.animalDb.AddAnimal(userId, newAnimal); // and to user
@@ -52,7 +53,7 @@ namespace VetClinic.Commands.Implementations
         {
             var animalId = parameters[1];
 
-            var animal = this.animalDb.GetById(animalId);
+            var animal = this.animalDb.Animals.FirstOrDefault(a => a.Id == animalId);
 
             if (animal == null)
             {
