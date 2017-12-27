@@ -37,7 +37,7 @@
         {
             var userId = parameters[1];
 
-            var user = this.userDb.GetById(userId);
+            var user = this.userDb.Users.FirstOrDefault(p => p.Id == userId);
 
             if (user == null)
             {
@@ -53,7 +53,7 @@
         {
             var userId = parameters[1];
 
-            var user = this.userDb.GetById(userId);
+            var user = this.userDb.Users.FirstOrDefault(p => p.Id == userId);
 
             if (user == null)
             {
@@ -61,7 +61,7 @@
                 return;
             }
 
-            user.ListUserPets();
+            Console.WriteLine(user.ListUserPets());
         }
 
         public void ListAllUsers()
