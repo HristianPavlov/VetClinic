@@ -6,8 +6,8 @@ namespace VetClinic.Commands.Contracts
     {
         void CreateAnimal(IList<string> parameters);
 
-        void RemoveAnimal(IList<string> parameters);
+        void DeleteAnimal(IList<string> parameters);
 
-        string ListAllPets();
+        string ListPets();
     }
 }

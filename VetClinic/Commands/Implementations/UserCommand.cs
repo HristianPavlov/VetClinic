@@ -29,7 +29,7 @@
 
             var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email);
 
-            this.userDb.AddUser(newUser);
+            this.userDb.CreateUser(newUser);
             Console.WriteLine($"User {firstName} {lastName} successfully created");
         }
 
@@ -45,7 +45,7 @@
                 return;
             }
 
-            this.userDb.RemoveUser(userId);
+            this.userDb.DeleteUser(userId);
             Console.WriteLine($"User {user.FirstName} {user.LastName} successfully removed from database");
         }
 

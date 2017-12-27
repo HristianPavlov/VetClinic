@@ -39,17 +39,17 @@ namespace VetClinic.Commands.Implementations
                 default: throw new ArgumentException($"No animal of kind {animalType} can be serviced in this clinic");
             }
 
-            this.animalDb.AddAnimal(userId, newAnimal); // and to user
+            this.animalDb.CreateAnimal(userId, newAnimal); // and to user
 
             Console.WriteLine($"{animalType} with name {name} successfully created");
         }
 
-        public string ListAllPets()
+        public string ListPets()
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveAnimal(IList<string> parameters)
+        public void DeleteAnimal(IList<string> parameters)
         {
             var animalId = parameters[1];
 
@@ -61,7 +61,7 @@ namespace VetClinic.Commands.Implementations
                 return;
             }
 
-            this.animalDb.RemoveAnimal(animalId);
+            this.animalDb.DeteleAnimal(animalId);
             Console.WriteLine($"{animal.Type} with name {animal.Name} successfully removed from database");
         }
     }

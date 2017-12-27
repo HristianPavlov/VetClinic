@@ -43,7 +43,7 @@
                 return;
             }
 
-            this.employeeDb.RemoveEmployee(employeeId);
+            this.employeeDb.DeleteEmployee(employeeId);
             Console.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully removed from database");
         }
 
