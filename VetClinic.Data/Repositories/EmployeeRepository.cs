@@ -18,7 +18,7 @@
 
         public void AddEmployee(IEmployee employee)
         {
-            var employeeExist = this.employees.Any(p => p.Id == employee.Id);
+            var employeeExist = this.employees.Any(e => e.Id == employee.Id);
 
             if (employeeExist)
             {
@@ -29,7 +29,7 @@
 
         public void RemoveEmployee(string id)
         {
-            var employee = this.employees.FirstOrDefault(p => p.Id == id);
+            var employee = this.employees.FirstOrDefault(e => e.Id == id);
 
             if (employee == null)
             {
