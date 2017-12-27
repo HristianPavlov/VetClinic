@@ -22,7 +22,8 @@ namespace VetClinic.Data.Repositories
 
             if (userExists)
             {
-                throw new ArgumentException("This user already exists in database");
+                Console.WriteLine(("This user already exists in database"));
+                return;
             }
             this.users.Add(user);
         }
@@ -33,7 +34,8 @@ namespace VetClinic.Data.Repositories
 
             if (user == null)
             {
-                throw new ArgumentException("This user does not exists in database");
+                Console.WriteLine(("This user does not exists in database"));
+                return;
             }
             this.users.Remove(user);
         }

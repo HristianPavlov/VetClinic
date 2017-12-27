@@ -33,7 +33,7 @@
 
         public AnimalGenderType Gender => this.gender;
 
-        public User Owner { get; protected set; }
+        public string OwnerPhoneNumber { get; set; }
 
         public AnimalType Type { get; protected set; }
 

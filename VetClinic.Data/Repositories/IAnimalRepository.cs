@@ -10,5 +10,7 @@
         void CreateAnimal(string userId, IAnimal animal);
 
         void DeteleAnimal(string id);
+
+        IAnimal GetById(string id);
     }
 }

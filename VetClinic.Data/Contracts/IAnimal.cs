@@ -1,5 +1,4 @@
 ﻿using VetClinic.Data.Common.Enums;
-using VetClinic.Data.Models;
 
 namespace VetClinic.Data.Contracts
 {
@@ -11,7 +10,9 @@ namespace VetClinic.Data.Contracts
 
         int Age { get; }
 
-        User Owner { get; }
+        string OwnerPhoneNumber { get; set; }
+
+        string PrintInfo();
 
         AnimalType Type { get; }
 

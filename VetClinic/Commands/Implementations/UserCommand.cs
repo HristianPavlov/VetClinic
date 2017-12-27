@@ -51,9 +51,9 @@
 
         public void ListUserPets(IList<string> parameters)
         {
-            var userId = parameters[1];
+            var userPhone = parameters[1];
 
-            var user = this.userDb.Users.FirstOrDefault(p => p.Id == userId);
+            var user = this.userDb.Users.FirstOrDefault(p => p.PhoneNumber == userPhone);
 
             if (user == null)
             {
@@ -97,7 +97,8 @@
             else
             {
                 Console.WriteLine($"User {user.FirstName} {user.LastName} was found with searched phone number {phone}");
-                Console.WriteLine($"{user.FirstName}'s Info: {user.PrintInfo()}");
+                Console.WriteLine($"{user.FirstName}'s Info:");
+                Console.WriteLine($"{user.PrintInfo()}");
             }
         }
     }

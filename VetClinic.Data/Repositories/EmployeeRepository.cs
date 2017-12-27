@@ -22,7 +22,8 @@
 
             if (employeeExist)
             {
-                throw new ArgumentException("This employee already exists in database");
+                Console.WriteLine(("This employee already exists in database"));
+                return;
             }
             this.employees.Add(employee);
         }
@@ -33,7 +34,8 @@
 
             if (employee == null)
             {
-                throw new ArgumentException("This employee does not exists in database");
+                Console.WriteLine(("This employee does not exists in database"));
+                return;
             }
             this.employees.Remove(employee);
         }
