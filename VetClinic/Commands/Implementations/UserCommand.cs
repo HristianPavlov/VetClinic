@@ -84,7 +84,7 @@
             Console.WriteLine(sb.ToString());
         }
 
-        public string SearchByPhone(IList<string> parameters)
+        public void SearchByPhone(IList<string> parameters)
         {
             var phone = parameters[1];
 
@@ -92,12 +92,12 @@
 
             if (user == null)
             {
-                return $"User with phone number {phone} was not found! Please proceed to register";
+                Console.WriteLine($"User with phone number {phone} was not found! Please proceed to register");
             }
             else
             {
-                Console.WriteLine($"User {user.FirstName} {user.LastName} was found with phone number {phone}");
-                return $"Emplyoee Info: {user.PrintInfo()}";
+                Console.WriteLine($"User {user.FirstName} {user.LastName} was found with searched phone number {phone}");
+                Console.WriteLine($"{user.FirstName}'s Info: {user.PrintInfo()}");
             }
         }
     }
