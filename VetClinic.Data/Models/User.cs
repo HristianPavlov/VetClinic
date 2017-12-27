@@ -35,7 +35,7 @@
         public void AddPet(IAnimal pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
-            var petFound = this.pets.FirstOrDefault(x => x.Id == pet.Id);
+            var petFound = this.pets.FirstOrDefault(p => p.Id == pet.Id);
 
             if (pet == null)
             {
