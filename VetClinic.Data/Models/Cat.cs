@@ -14,19 +14,6 @@
             Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
         }
 
-        public override string PrintInfo()
-        {
-            StringBuilder str = new StringBuilder();
-
-            str.AppendLine($"Id: {this.Id}");
-            str.AppendLine($"Pet Type: {this.Type}");
-            str.AppendLine($"Name: {this.Name}");
-            str.AppendLine($"Gender: {this.Gender}");
-            str.AppendLine($"Age: {this.Age}");
-
-            return str.ToString();
-
-        }
-
+        public override string PrintInfo() => base.PrintInfo();
     }
 }
