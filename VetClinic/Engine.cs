@@ -44,17 +44,17 @@
             switch (commandParts[0])
             {
                 case "registerUser": this.userCommands.CreateUser(commandParts); break;
-                case "removeUser": this.userCommands.DeleteUser(commandParts); break;
+                case "deleteUser": this.userCommands.DeleteUser(commandParts); break;
                 case "userPets": this.userCommands.ListUserPets(commandParts); break;
                 case "searchUserByPhone": this.userCommands.SearchByPhone(commandParts); break;
                 case "allUsers": this.userCommands.ListUsers(); break;
                 case "registerEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
-                case "removeEmployee": this.employeeCommands.RemoveEmployee(commandParts); break;
+                case "deleteEmployee": this.employeeCommands.RemoveEmployee(commandParts); break;
                 case "allEmployees": this.employeeCommands.ListEmployees(); break;
                 case "searchEmployeeByPhone": this.employeeCommands.SearchByPhone(commandParts); break;
 
                 // Hris
-                case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
+                case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
                 //removeAnimal
                 //listAllAnimal
                 //customExceptionClass
