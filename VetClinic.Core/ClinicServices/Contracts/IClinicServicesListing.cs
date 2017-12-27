@@ -8,9 +8,11 @@
 
         string ListAllServices();
 
-        void AddServices(IService service);
+        // TODO remove irrelevent methods
 
-        void RemoveServices(IService service);
+        //void AddServices(IService service);
+
+        //void RemoveServices(IService service);
 
         void FindById(string id);
 

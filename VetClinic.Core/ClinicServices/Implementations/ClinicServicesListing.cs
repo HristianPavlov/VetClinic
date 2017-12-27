@@ -24,30 +24,32 @@
 
         public ICollection<IService> Services => new List<IService>();
 
-        public void AddServices(IService service)
-        {
-            if (service == null)
-            {
-                throw new Exception("No such service found");
-            }
+        // TODO remove irrelevent methods
 
-            if (services.Any(s => s.Id == service.Id) == true)
-            {
-                throw new Exception("This servoce already exists!");
-            }
+        //public void AddServices(IService service)
+        //{
+        //    if (service == null)
+        //    {
+        //        throw new Exception("No such service found");
+        //    }
 
-            this.services.Add(service);
-        }
+        //    if (services.Any(s => s.Id == service.Id) == true)
+        //    {
+        //        throw new Exception("This servoce already exists!");
+        //    }
 
-        public void RemoveServices(IService service)
-        {
-            if (services.Any(s => s.Id == service.Id) == false)
-            {
-                throw new Exception("No such service found!");
-            }
+        //    this.services.Add(service);
+        //}
 
-            this.services.Remove(service);
-        }
+        //public void RemoveServices(IService service)
+        //{
+        //    if (services.Any(s => s.Id == service.Id) == false)
+        //    {
+        //        throw new Exception("No such service found!");
+        //    }
+
+        //    this.services.Remove(service);
+        //}
 
         public bool ContainsService(string id)
         {

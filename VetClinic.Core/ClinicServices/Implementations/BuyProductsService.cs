@@ -21,16 +21,16 @@ namespace VetClinic.Core.Services
             this.allProducts = new List<IProduct>();
         }
 
-        public void ChooseProducts()
+        public void SellProducts(IList<Purchase> purchases)
         {
-            PrintProducts();
+            decimal total = 0m;
 
-            //foreach (var item in Product.products)
-            //{
+            foreach (var item in purchases)
+            {
+                total += item.Product.Price * item.Quantity;
+            }
 
-            //}
-
-            base.Price = 0.0m;
+            base.Price = total;
         }
 
         public void PrintProducts()

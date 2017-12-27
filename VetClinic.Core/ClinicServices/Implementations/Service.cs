@@ -7,8 +7,6 @@
 
     public class Service : IService
     {
-        public event EventHandler ServiceExecuted;
-
         private decimal price;
         private readonly string name;
         private readonly string id;
@@ -21,6 +19,7 @@
             Guard.WhenArgument(timeToExecute, "Time must be positive!").IsLessThan(0).Throw();
             this.id = Guid.NewGuid().ToString();
             this.name = name;
+            this.timeToExecute = timeToExecute;
         }
 
         public Service(string name, decimal price, int timeToExecute)
@@ -54,7 +53,7 @@
         {
             Console.WriteLine($"Executing {this.GetType().Name} service. Please wait {this.TimeToExecute} seconds.");
             Thread.Sleep(this.TimeToExecute * 1000);
-            this.ServiceExecuted?.Invoke(this, null);
+            Console.WriteLine($"Service {this.GetType().Name} is ecexuted!");
         }
     }
 }

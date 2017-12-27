@@ -9,7 +9,7 @@
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Contracts;
 
-    public class AnimalCommand : IAnimalCommand
+    public class AnimalCommand : AbstractCommand, IAnimalCommand
     {
         private readonly IAnimalFactory animalFactory;
         private readonly IAnimalRepository animalDb;
@@ -39,9 +39,9 @@
                 default: throw new ArgumentException($"No animal of kind {animalType} can be serviced in this clinic");
             }
 
-            this.animalDb.CreateAnimal(userId, newAnimal); // add to user
+            this.animalDb.CreateAnimal(userId, newAnimal); // TODO add to user
 
-            Console.WriteLine($"{animalType} with name {name} successfully created");
+            this.onMessage($"{animalType} with name {name} successfully created");
         }
 
         public string ListPets()
@@ -62,7 +62,7 @@
             }
 
             this.animalDb.DeteleAnimal(animalId);
-            Console.WriteLine($"{animal.Type} with name {animal.Name} successfully removed from database");
+            this.onMessage($"{animal.Type} with name {animal.Name} successfully removed from database");
         }
     }
 }

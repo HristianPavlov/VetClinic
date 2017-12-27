@@ -1,5 +1,5 @@
 ﻿namespace VetClinic.Commands.Implementations
-{
+{   
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -8,8 +8,7 @@
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Contracts;
 
-
-    public class UserCommand : IUserCommand
+    public class UserCommand : AbstractCommand, IUserCommand
     {
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;
@@ -30,7 +29,7 @@
             var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email);
 
             this.userDb.CreateUser(newUser);
-            Console.WriteLine($"User {firstName} {lastName} successfully created");
+            this.onMessage($"User {firstName} {lastName} successfully created");
         }
 
         public void DeleteUser(IList<string> parameters)
@@ -46,7 +45,7 @@
             }
 
             this.userDb.DeleteUser(userId);
-            Console.WriteLine($"User {user.FirstName} {user.LastName} successfully removed from database");
+            this.onMessage($"User {user.FirstName} {user.LastName} successfully removed from database");
         }
 
         public void ListUserPets(IList<string> parameters)
