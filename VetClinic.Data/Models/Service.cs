@@ -1,9 +1,9 @@
-﻿namespace VetClinic.Core.ClinicServices.Implementations
+﻿namespace VetClinic.Data.Models
 {
     using Bytes2you.Validation;
     using System;
     using System.Threading;
-    using VetClinic.Core.ClinicServices.Contracts;
+    using VetClinic.Data.Contracts;
 
     public class Service : IService
     {
@@ -50,7 +50,7 @@
             return $"  {this.Id}. {this.Name} - Price: ${this.Price}".Trim();
         }
 
-        public virtual void Execute()
+        public virtual void Execute() // TODO add animal
         {
             Console.WriteLine($"Executing {this.Name} service. Please wait {this.TimeToExecute} seconds.");
             Thread.Sleep(this.TimeToExecute * 1000);

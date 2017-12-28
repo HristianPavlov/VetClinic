@@ -1,6 +1,7 @@
 ﻿namespace VetClinic.Core.ClinicServices.Contracts
 {
     using System.Collections.Generic;
+    using VetClinic.Data.Contracts;
 
     public interface IClinicServicesListing
     {

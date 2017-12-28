@@ -50,8 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClinicServices\Implementations\ClinicServicesListing.cs" />
     <Compile Include="ClinicServices\Contracts\IClinicServicesListing.cs" />
-    <Compile Include="ClinicServices\Contracts\IService.cs" />
-    <Compile Include="ClinicServices\Implementations\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj">

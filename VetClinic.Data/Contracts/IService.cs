@@ -1,4 +1,4 @@
-﻿namespace VetClinic.Core.ClinicServices.Contracts
+﻿namespace VetClinic.Data.Contracts
 {
     public interface IService
     {
@@ -12,6 +12,6 @@
 
         string Print();
 
-        void Execute();
+        void Execute(); // TODO add animal
     }
 }

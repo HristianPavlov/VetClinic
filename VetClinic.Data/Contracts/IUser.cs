@@ -6,8 +6,7 @@
     {
         ICollection<IAnimal> Pets { get; }
 
-        // TODO
-        // IList<IService> UsedServices { get; }
+        ICollection<IService> UsedServices { get; }
 
         void AddPet(IAnimal pet);
 

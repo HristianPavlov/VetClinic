@@ -7,6 +7,7 @@
     using VetClinic.Commands.Contracts;
     using VetClinic.Core.ClinicServices.Contracts;
     using VetClinic.Core.ClinicServices.Implementations;
+    using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories;
     using VetClinic.Factories.Contracts;
 

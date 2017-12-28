@@ -49,6 +49,8 @@
     <Compile Include="Common\IdGenerator.cs" />
     <Compile Include="Contracts\IAnimal.cs" />
     <Compile Include="Contracts\ICat.cs" />
+    <Compile Include="Contracts\IService.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Repositories\AnimalRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\IAnimalRepository.cs" />

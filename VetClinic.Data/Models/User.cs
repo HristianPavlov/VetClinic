@@ -12,7 +12,7 @@
     {
         private decimal total;
         private readonly List<IAnimal> pets;
-        //private readonly List<IService> usedServices;   // TODO fix using/reference
+        private ICollection<IService> usedServices;
 
         public User(string firstName, string lastName, string phoneNumber, string email)
             : base(firstName, lastName, phoneNumber, email)
@@ -33,17 +33,17 @@
             }
         }
 
-        // TODO
-
-        //public IList<IService> UsedServices
-        //{
-        //    get => this.usedServices;
-
-        //    private set
-        //    {
-        //        this.usedServices = value;
-        //    }
-        //}
+        public ICollection<IService> UsedServices
+        {
+            get
+            {
+                return this.usedServices;
+            }
+            private set
+            {
+                this.usedServices = value;
+            }
+        }
 
         public void AddPet(IAnimal pet)
         {
@@ -90,7 +90,7 @@
 
             var sb = new StringBuilder();
 
-            foreach (var pet in this.pets) // TODO null
+            foreach (var pet in this.pets)
             {
                 sb.AppendLine($"Name: {pet.Name}");
                 sb.AppendLine($"Gender: {pet.Gender}");

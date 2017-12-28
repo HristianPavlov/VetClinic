@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using VetClinic.Core.ClinicServices.Contracts;
-using VetClinic.Core.ClinicServices.Implementations;
 using Bytes2you.Validation;
+using VetClinic.Data.Models;
+using VetClinic.Data.Contracts;
 
 namespace VetClinic.Core.Services
 {

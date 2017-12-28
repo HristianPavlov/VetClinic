@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VetClinic.Core.ClinicServices.Contracts;
+using VetClinic.Data.Contracts;
 
 namespace VetClinic.Core
 {

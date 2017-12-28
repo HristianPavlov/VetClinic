@@ -1,11 +1,12 @@
 ﻿namespace VetClinic.Core.ClinicServices.Implementations
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using VetClinic.Core.ClinicServices.Contracts;
     using VetClinic.Core.Services;
+    using VetClinic.Data.Contracts;
+    using VetClinic.Data.Models;
 
     public class ClinicServicesListing: IClinicServicesListing
     {
