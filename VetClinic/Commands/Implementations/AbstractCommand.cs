@@ -8,11 +8,11 @@ namespace VetClinic.Commands.Implementations
 {
     public abstract class AbstractCommand
     {
-        public event EventHandler SomethingHappened;
+        public event EventHandler ImportantEventHappened;
 
         protected void onMessage(string message)
         {
-            this.SomethingHappened?.Invoke(this, new CommandMessage(message));
+            this.ImportantEventHappened?.Invoke(this, new CommandMessage(message));
         }
     }
 }

@@ -20,13 +20,13 @@
             var eventHandler = new EventHandler((command, message) => { Console.WriteLine(message); });
 
             var userCommands = new UserCommand(personFactory, userDb, new ClinicServicesListing() );
-            userCommands.SomethingHappened += eventHandler;
+            userCommands.ImportantEventHappened += eventHandler;
 
             var animalCommands = new AnimalCommand(animalFactory, animalDb);
-            animalCommands.SomethingHappened += eventHandler;
+            animalCommands.ImportantEventHappened += eventHandler;
 
             var employeeCommands = new EmployeeCommand(personFactory, employeeDb);
-            employeeCommands.SomethingHappened += eventHandler;
+            employeeCommands.ImportantEventHappened += eventHandler;
 
 
             var engine = new Engine(userCommands, animalCommands, employeeCommands);
