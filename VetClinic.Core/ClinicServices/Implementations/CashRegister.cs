@@ -30,6 +30,14 @@ namespace VetClinic.Core
             }
         }
 
+        public void AddServicesToList(ICollection<IService> servicesToAdd)
+        {
+            foreach (var service in servicesToAdd)
+            {
+                performedServices.Add(service);
+            }
+        }
+
         public void PrintDailyReport()
         {
             var sb = new StringBuilder();

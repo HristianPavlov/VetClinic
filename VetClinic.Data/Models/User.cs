@@ -12,6 +12,7 @@
     {
         private decimal total;
         private readonly List<IAnimal> pets;
+        //private readonly List<IService> usedServices;   // TODO fix using/reference
 
         public User(string firstName, string lastName, string phoneNumber, string email)
             : base(firstName, lastName, phoneNumber, email)
@@ -31,6 +32,18 @@
                 this.total = value;
             }
         }
+
+        // TODO
+
+        //public IList<IService> UsedServices
+        //{
+        //    get => this.usedServices;
+
+        //    private set
+        //    {
+        //        this.usedServices = value;
+        //    }
+        //}
 
         public void AddPet(IAnimal pet)
         {
@@ -58,16 +71,14 @@
             }
         }
 
-        public void PayForServices(decimal cost)
+        public void PayForServices()
         {
-            Guard.WhenArgument(total, "Not enough money").IsLessThan(cost).Throw();
-            this.total -= cost;
-        }
-
-        public void BuyMedicine(decimal cost)
-        {
-            Guard.WhenArgument(total, "Not enough money").IsLessThan(cost).Throw();
-            this.total -= cost;
+            Guard.WhenArgument(this.Total, "Noting to pay for!").IsEqual(0).Throw();
+            //  TODO :
+            // CashRegister.Monay += total;
+            // CashRegister.AddServicesToList(this.UsedServices);
+            // this.UsedServices.Clear;
+            this.total = 0m;
         }
 
         public string ListUserPets()

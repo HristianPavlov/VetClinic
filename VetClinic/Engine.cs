@@ -59,9 +59,6 @@
                 case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts); break;
                 case "allAnimals": this.animalCommands.ListPets(); break;
 
-
-                //deleteAnimal
-                //allAnimals
                 //searchAnimalByUserPhone
                 // case "help": this.commands.GetUserInfo(commandParts); break;
 
@@ -71,6 +68,7 @@
                 // Jivka
                 case "showServices": this.userCommands.ShowServices(); break;
                 case "selectService": this.userCommands.SelectService(commandParts[1]); break;
+                case "payForServices": this.userCommands.PayForServices(); break;
 
 
                 default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;

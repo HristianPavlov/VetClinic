@@ -18,5 +18,7 @@
 
         void SelectService(string id);
 
+        void PayForServices();
+
     }
 }

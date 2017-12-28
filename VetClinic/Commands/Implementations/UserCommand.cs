@@ -115,5 +115,10 @@
             IService serviceToExecute = this.servicesList.FindById(id);
             serviceToExecute.Execute();
         }
+
+        public void PayForServices()
+        {
+            this.PayForServices();
+        }
     }
 }

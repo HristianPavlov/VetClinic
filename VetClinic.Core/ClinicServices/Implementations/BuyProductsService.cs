@@ -10,7 +10,8 @@ namespace VetClinic.Core.Services
 {
     public class BuyProductService : Service, IService
     {
-        private ICollection<IProduct> allProducts = new List<IProduct>
+        // TODO fix !!!
+        private static ICollection<IProduct> allProducts = new List<IProduct>()
         {
             { new Product("Medicine", 11.80m)},
             { new Product("Vitamins", 11.80m)},
@@ -20,19 +21,6 @@ namespace VetClinic.Core.Services
         public BuyProductService()
             : base("Buy products")
         {
-            this.allProducts = new List<IProduct>();
-        }
-
-        public void SellProducts(IList<Purchase> purchases)
-        {
-            decimal total = 0m;
-
-            foreach (var item in purchases)
-            {
-                total += item.Product.Price * item.Quantity;
-            }
-
-            base.Price = total;
         }
 
         public void PrintProducts()
@@ -59,8 +47,9 @@ namespace VetClinic.Core.Services
 
         public override void Execute()
         {
-            this.PrintProducts();
+            PrintProducts();
 
+            decimal sum = 0m;
             while (true)
             {
                 string line = Console.ReadLine();
@@ -76,11 +65,12 @@ namespace VetClinic.Core.Services
 
                 IProduct product = FindByName(arr[0]);
                 int qunatity = int.Parse(arr[1]);
-
-                // TODO add to user wallet and serviceList;
-
+                sum += (product.Price * qunatity);
             }
-           
+            // TODO :
+            BuyProductService serviceToAdd = new BuyProductService();
+            serviceToAdd.Price = sum;
+            // this.UsedServices.Add(serviceToAdd);
         }
     }
 }

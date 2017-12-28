@@ -17,9 +17,7 @@
         public Service(string name, int timeToExecute = 1)
         {
             Guard.WhenArgument(name, "Service name cannot be null!").IsNullOrEmpty().Throw();
-            //Guard.WhenArgument(name.Length, "Service name must be more than 2 symbols and less than 14 symbols long!").IsLessThan(3).IsGreaterThan(13).Throw();
             Guard.WhenArgument(timeToExecute, "Time must be positive!").IsLessThan(0).Throw();
-            //this.id = Guid.NewGuid().ToString();
             this.id = (count++).ToString();
             this.name = name;
             this.timeToExecute = timeToExecute;
