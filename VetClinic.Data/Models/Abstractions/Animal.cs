@@ -5,6 +5,7 @@
     using Contracts;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     public abstract class Animal : IAnimal
@@ -52,6 +53,26 @@
             this.services.Add(service);
         }
 
+        public string ListAnimalServices()
+        {
+            if (!this.services.Any())
+            {
+                return "No services performed yet";
+            }
+
+            var sb = new StringBuilder();
+
+            sb.AppendLine("All services: ");
+
+            foreach (var service in this.services)
+            {
+                sb.AppendLine($"Service: {service.Name}");
+            }
+
+            return sb.ToString();
+        }
+
+
         public virtual string PrintInfo()
         {
             var sb = new StringBuilder();
@@ -60,7 +81,7 @@
             sb.AppendLine($"Name: {this.Name}");
             sb.AppendLine($"Id: {this.Id}");
             sb.AppendLine($"Gender: {this.Gender}");
-
+            sb.AppendLine(ListAnimalServices());
             return sb.ToString();
         }
     }
