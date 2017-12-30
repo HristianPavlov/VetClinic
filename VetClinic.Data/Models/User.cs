@@ -11,7 +11,8 @@
     public class User : Person, IUser
     {
 
-        private readonly List<IAnimal> pets;    
+        private readonly List<IAnimal> pets;
+        private decimal moneyOwned;
 
         public User(string firstName, string lastName, string phoneNumber, string email)
             : base(firstName, lastName, phoneNumber, email)
@@ -20,6 +21,12 @@
         }
 
         public ICollection<IAnimal> Pets => new List<IAnimal>(this.pets);
+
+
+        // HMMMMMMMMMMMM public?
+        public decimal MoneyOwned { get => moneyOwned; set => moneyOwned = value; }
+
+        
 
         public void AddPet(IAnimal pet)
         {

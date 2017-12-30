@@ -1,4 +1,5 @@
-﻿using VetClinic.Data.Common.Enums;
+﻿using System.Collections.Generic;
+using VetClinic.Data.Common.Enums;
 
 namespace VetClinic.Data.Contracts
 {
@@ -17,5 +18,8 @@ namespace VetClinic.Data.Contracts
         AnimalType Type { get; }
 
         AnimalGenderType Gender { get; }
+        ICollection<IService> Services { get; }
+
+        void addServices(IService service);
     }
 }

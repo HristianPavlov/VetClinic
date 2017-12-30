@@ -11,8 +11,10 @@
 
         void AddBookedService(IList<string> parameters);
 
-        decimal UpdateBalance(IList<string> parameters);
+        void UpdateBalance(decimal amount);
 
         void PrintBalance();
+
+        void PrintBookedServices();
     }
 }

@@ -13,5 +13,7 @@ namespace VetClinic.Commands.Contracts
         void PerformService(IList<string> parameters);
 
         void BookService(IList<string> parameters);
+        
+        decimal closeAccount(IList<string> parameters);
     }
 }

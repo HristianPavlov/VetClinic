@@ -4,6 +4,7 @@
     using Common.Enums;
     using Contracts;
     using System;
+    using System.Collections.Generic;
     using System.Text;
 
     public abstract class Animal : IAnimal
@@ -12,6 +13,7 @@
         private readonly string name;
         private readonly int age;
         private readonly AnimalGenderType gender;
+        private readonly ICollection<IService> services;
 
         public Animal(string name, AnimalGenderType gender, AnimalType type, int age)
         {
@@ -23,6 +25,7 @@
             this.gender = gender;
             this.age = age;
             this.Type = type;
+            this.services = new List<IService>();
         }
 
         public string Id => this.id;
@@ -36,6 +39,20 @@
         public string OwnerPhoneNumber { get; set; }
 
         public AnimalType Type { get; protected set; }
+
+        public ICollection<IService> Services => this.services;
+
+        public void addServices(IService service)
+        {
+            if (service == null)
+            {
+                Console.WriteLine("The services cannot be null");
+                return;
+            }
+
+            Services.Add(service);
+
+        }
 
         public virtual string PrintInfo()
         {

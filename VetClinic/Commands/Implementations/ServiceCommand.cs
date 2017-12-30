@@ -6,6 +6,7 @@
     using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
+    using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
@@ -89,19 +90,42 @@
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not exists");
             }
 
-            var animal = this.userDb.Users
-                                    .Where(u => u.PhoneNumber == userPhone)
-                                    .Select(u => u.Pets.Select(p => p.Name == animalName))
-                                    .FirstOrDefault();
+
+            //CHange from Marto's verion
+            IAnimal animal = user.Pets.FirstOrDefault((p => p.Name == animalName));
+
+
 
             if (animal == null)
             {
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not have an animal with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
             }
 
+
+            animal.addServices(service);
+            user.MoneyOwned += service.Price;
+
+            //EXecute method ?/??
             service.Execute();
             this.OnMessage($"Service {service.Name} is executed!");
+
         }
+
+        public decimal closeAccount(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+           var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+
+            decimal amount = user.MoneyOwned;
+            user.MoneyOwned = 0;
+
+
+            return amount;
+
+        }
+
+
+
 
         public void BookService(IList<string> parameters)
         {

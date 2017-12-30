@@ -27,11 +27,14 @@
 
         public ICollection<IService> BookedServices => new List<IService>(this.bookedServices);
 
-        public decimal UpdateBalance(IList<string> parameters)
+        public void UpdateBalance(decimal amount)
         {
-            var amount = Decimal.Parse(parameters[1]);
 
-            return this.Balance += amount;
+            //var amount = Decimal.Parse(parameters[1]);
+
+            this.Balance += amount;
+
+           // Console.WriteLine(this.Balance);
         }
 
         public void AddBookedService(IList<string> parameters)
@@ -50,24 +53,20 @@
         }
 
 
-            public void PrintBookedServices()
+        public void PrintBookedServices()
+        {
+            Console.WriteLine(("Booked service History:"));
+
+            foreach (var service in bookedServices)
             {
-                var sb = new StringBuilder();
-
-                sb.AppendLine("Booked service History:");
-
-                foreach (var service in bookedServices)
-                {
-                    sb.AppendLine($"{service.Name} - ${service.Price}");
-                }
-
-                sb.AppendLine($"TOTAL: ${Math.Round(this.Balance, 2)}"); // TODO Math.Round slower than string.Format
-            }
-
-            public void PrintBalance()
-            {
-                Console.WriteLine(string.Format("{0:F2}", this.Balance));
+                Console.WriteLine($"{service.Name} - ${service.Price}");
             }
         }
+
+        public void PrintBalance()
+        {
+            Console.WriteLine(string.Format("{0:F2}", this.Balance));
+        }
     }
+}
 

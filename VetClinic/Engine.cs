@@ -46,43 +46,63 @@
                 Console.WriteLine("Please add a valid command!");
                 return;
             }
-
-            switch (commandParts[0])
+            try
             {
-                // User
-                case "registerUser": this.userCommands.CreateUser(commandParts); break;
-                case "deleteUser": this.userCommands.DeleteUser(commandParts); break;
-                case "listUserPets": this.userCommands.ListUserPets(commandParts); break;
-                case "searchUserByPhone": this.userCommands.SearchUserByPhone(commandParts); break;
-                case "allUsers": this.userCommands.ListUsers(); break;
+                switch (commandParts[0])
+                {
 
-                // Employee
-                case "registerEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
-                case "deleteEmployee": this.employeeCommands.DeleteEmployee(commandParts); break;
-                case "listEmployees": this.employeeCommands.ListEmployees(); break;
-                case "searchEmployeeByPhone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
+                    // var report = this.ProcessSingleCommand(command);
+                    //reports.Add(report);
 
-                // Animal
-                case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
-                case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts); break;
-                case "listAnimals": this.animalCommands.ListPets(); break;
+                    // User
+                    case "registerUser": this.userCommands.CreateUser(commandParts); break;
+                    case "deleteUser": this.userCommands.DeleteUser(commandParts); break;
+                    case "listUserPets": this.userCommands.ListUserPets(commandParts); break;
+                    case "searchUserByPhone": this.userCommands.SearchUserByPhone(commandParts); break;
+                    case "allUsers": this.userCommands.ListUsers(); break;
 
-                // Services
-                case "createService": this.serviceCommands.CreateService(commandParts); break;
-                case "deleteService": this.serviceCommands.DeleteService(commandParts); break;
-                case "listServices": this.serviceCommands.ListServices(commandParts); break;
+                    // Employee
+                    case "registerEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
+                    case "deleteEmployee": this.employeeCommands.DeleteEmployee(commandParts); break;
+                    case "listEmployees": this.employeeCommands.ListEmployees(); break;
+                    case "searchEmployeeByPhone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
 
-                // Commands
-                case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
-                case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
-                case "help": this.engineCommands.Help(); break;
+                    // Animal
+                    case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
+                    case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts); break;
+                    case "listAnimals": this.animalCommands.ListPets(); break;
 
-                // Accounting
-                case "addBookedService": this.cashRegister.AddBookedService(commandParts); break;
-                case "updateBalance": this.cashRegister.UpdateBalance(commandParts); break;
-                case "printBalance": this.cashRegister.PrintBalance(); break;
+                    // Services
+                    case "createService": this.serviceCommands.CreateService(commandParts); break;
+                    case "deleteService": this.serviceCommands.DeleteService(commandParts); break;
+                    case "listServices": this.serviceCommands.ListServices(commandParts); break;
+                    case "performServices":
+                        this.serviceCommands.PerformService(commandParts);
+                        this.cashRegister.AddBookedService(commandParts); break;
 
-                default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
+
+                    // Commands
+                    case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
+                    case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
+                    case "help": this.engineCommands.Help(); break;
+
+                    // Accounting
+                    //  case "addBookedService":  break;
+                    // case "updateBalance": this.cashRegister.UpdateBalance(commandParts); break;
+                    case "updateBalance":
+                        this.cashRegister.UpdateBalance(
+                        this.serviceCommands.closeAccount(commandParts)); break;
+                    case "printBalance": this.cashRegister.PrintBalance(); break;
+                    case "printBookedServices": this.cashRegister.PrintBookedServices(); break;
+
+                    default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
             Console.WriteLine($"Command {commandParts[0]} completed successfully.");
