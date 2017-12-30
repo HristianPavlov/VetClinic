@@ -10,20 +10,20 @@
 
     public class User : Person, IUser
     {
-        private readonly List<IAnimal> pets;
+        private readonly List<IPet> pets;
         private decimal bill;
 
         public User(string firstName, string lastName, string phoneNumber, string email)
             : base(firstName, lastName, phoneNumber, email)
         {
-            this.pets = new List<IAnimal>();
+            this.pets = new List<IPet>();
         }
 
-        public ICollection<IAnimal> Pets => new List<IAnimal>(this.pets);
+        public ICollection<IPet> Pets => new List<IPet>(this.pets);
 
         public decimal Bill { get => bill; set => bill = value; }
 
-        public void AddPet(IAnimal pet)
+        public void AddPet(IPet pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
             var petFound = this.pets.FirstOrDefault(p => p.Id == pet.Id);
@@ -36,7 +36,7 @@
             this.pets.Add(pet);
         }
 
-        public void RemovePet(IAnimal pet)
+        public void RemovePet(IPet pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
             var petFound = this.pets.FirstOrDefault(p => p.Id == pet.Id);

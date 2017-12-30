@@ -5,7 +5,7 @@
     using Common.Enums;
     using VetClinic.Data.Contracts;
 
-    public class Hamster : Animal, IHamster
+    public class Hamster : Pet, IHamster
     {
         public Hamster(string name, AnimalGenderType gender, int age) 
             : base(name, gender, AnimalType.Hamster, age)

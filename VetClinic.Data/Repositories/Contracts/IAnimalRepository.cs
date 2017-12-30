@@ -5,12 +5,12 @@
 
     public interface IAnimalRepository
     {
-        ICollection<IAnimal> Animals { get; }
+        ICollection<IPet> Pets { get; }
 
-        void CreateAnimal(string userPhone, IAnimal animal);
+        void CreatePet(string userPhone, IPet pet);
 
-        void DeteleAnimal(string userPhone, IAnimal animal);
+        void DetelePet(string userPhone, IPet pet);
 
-        IAnimal GetById(string id);
+        IPet GetById(string id);
     }
 }

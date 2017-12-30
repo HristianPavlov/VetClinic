@@ -1,6 +1,6 @@
 ﻿namespace VetClinic.Data.Contracts
 {
-    public interface ICat: IAnimal
+    public interface ICat: IPet
     {
     }
 }

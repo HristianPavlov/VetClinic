@@ -53,14 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacContainer.cs" />
-    <Compile Include="Commands\Contracts\IAnimalCommand.cs" />
+    <Compile Include="Commands\Contracts\IPetCommand.cs" />
     <Compile Include="Commands\Contracts\ICashRegisterCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\IEmployeeCommand.cs" />
     <Compile Include="Commands\Contracts\IEngineCommand.cs" />
     <Compile Include="Commands\Contracts\IServiceCommand.cs" />
     <Compile Include="Commands\Contracts\IUserCommand.cs" />
-    <Compile Include="Commands\Implementations\AnimalCommand.cs" />
+    <Compile Include="Commands\Implementations\PetCommand.cs" />
     <Compile Include="Commands\Implementations\CashRegisterCommand.cs" />
     <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
     <Compile Include="Commands\Implementations\EngineCommand.cs" />
@@ -70,11 +70,11 @@
     <Compile Include="Common\CustomMessage.cs" />
     <Compile Include="Common\VetClinicEventHandler.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="Factories\Contracts\IAnimalFactory.cs" />
+    <Compile Include="Factories\Contracts\IPetFactory.cs" />
     <Compile Include="Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Factories\Contracts\IPersonFactory.cs" />
     <Compile Include="Factories\Contracts\IServiceFactory.cs" />
-    <Compile Include="Factories\Implemetations\AnimalFactory.cs" />
+    <Compile Include="Factories\Implemetations\PetFactory.cs" />
     <Compile Include="Factories\Implemetations\CommandFactory.cs" />
     <Compile Include="Factories\Implemetations\PersonFactory.cs" />
     <Compile Include="Factories\Implemetations\ServiceFactory.cs" />

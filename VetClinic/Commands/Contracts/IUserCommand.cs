@@ -10,9 +10,9 @@
 
         void ListUserPets(IList<string> parameters);
 
-        void CreateAnimal(IList<string> parameters);
+        void CreatePet(IList<string> parameters);
 
-        void DeleteAnimal(IList<string> parameters);
+        void DeletePet(IList<string> parameters);
 
         void SearchUserByPhone(IList<string> parameters);
 

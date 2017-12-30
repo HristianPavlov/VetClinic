@@ -1,6 +1,6 @@
 ﻿namespace VetClinic.Data.Contracts
 {
-    public interface IDog: IAnimal
+    public interface IDog: IPet
     {
         string Breed { get; }
     }

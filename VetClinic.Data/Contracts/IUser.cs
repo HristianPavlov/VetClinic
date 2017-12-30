@@ -4,13 +4,13 @@
 
     public interface IUser : IPerson
     {
-        ICollection<IAnimal> Pets { get; }
+        ICollection<IPet> Pets { get; }
 
          decimal Bill { get ; set ; }
 
-        void AddPet(IAnimal pet);
+        void AddPet(IPet pet);
 
-        void RemovePet(IAnimal pet);
+        void RemovePet(IPet pet);
 
         string ListUserPets();
 

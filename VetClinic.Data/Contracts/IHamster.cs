@@ -1,6 +1,6 @@
 ﻿namespace VetClinic.Data.Contracts
 {
-    public interface IHamster: IAnimal
+    public interface IHamster: IPet
     {
     }
 }

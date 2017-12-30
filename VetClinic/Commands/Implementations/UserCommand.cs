@@ -22,7 +22,7 @@
             this.animalDb = animalDb;
         }
 
-        public void CreateAnimal(IList<string> parameters)
+        public void CreatePet(IList<string> parameters)
         {
             var userPhone = parameters[1];
             // var animalType = parameters[2];
@@ -35,17 +35,17 @@
                 throw new ArgumentException("User not found");
             }
 
-            var animal = this.animalDb.Animals.FirstOrDefault(a => a.Name == animalName);
+            var pet = this.animalDb.Pets.FirstOrDefault(a => a.Name == animalName);
 
-            if (animal == null)
+            if (pet == null)
             {
-                throw new ArgumentException("Animal not found");
+                throw new ArgumentException("Pet not found");
             }
 
-            user.AddPet(animal);
+            user.AddPet(pet);
         }
 
-        public void DeleteAnimal(IList<string> parameters)
+        public void DeletePet(IList<string> parameters)
         {
             var userPhone = parameters[1];
             // var animalType = parameters[2];
@@ -58,14 +58,14 @@
                 throw new ArgumentException("User not found");
             }
 
-            var animal = this.animalDb.Animals.FirstOrDefault(a => a.Name == animalName);
+            var pet = this.animalDb.Pets.FirstOrDefault(a => a.Name == animalName);
 
-            if (animal == null)
+            if (pet == null)
             {
-                throw new ArgumentException("Animal not found");
+                throw new ArgumentException("Pet not found");
             }
 
-            user.RemovePet(animal);
+            user.RemovePet(pet);
         }
 
         public void CreateUser(IList<string> parameters)

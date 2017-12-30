@@ -54,7 +54,7 @@
     <Compile Include="Common\Enums\AnimalGenderType.cs" />
     <Compile Include="Common\Enums\RoleType.cs" />
     <Compile Include="Common\IdGenerator.cs" />
-    <Compile Include="Contracts\IAnimal.cs" />
+    <Compile Include="Contracts\IPet.cs" />
     <Compile Include="Contracts\ICat.cs" />
     <Compile Include="Contracts\IEngineCommand.cs" />
     <Compile Include="Contracts\IService.cs" />
@@ -74,7 +74,7 @@
     <Compile Include="Contracts\IPerson.cs" />
     <Compile Include="Contracts\IEmployee.cs" />
     <Compile Include="Contracts\IUser.cs" />
-    <Compile Include="Models\Abstractions\Animal.cs" />
+    <Compile Include="Models\Abstractions\Pet.cs" />
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Repositories\Implementations\Repository.cs" />
     <Compile Include="Repositories\Implementations\ServiceRepository.cs" />

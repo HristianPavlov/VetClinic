@@ -49,7 +49,7 @@
                  .AssignableTo<Person>().PropertiesAutowired();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                 .AssignableTo<Animal>().PropertiesAutowired();
+                 .AssignableTo<Pet>().PropertiesAutowired();
         }
     }
 }

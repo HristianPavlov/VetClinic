@@ -8,41 +8,41 @@
 
     public class AnimalRepository : IAnimalRepository
     {
-        private readonly ICollection<IAnimal> animals;
+        private readonly ICollection<IPet> pets;
         private readonly IUserRepository usersDb;
 
         public AnimalRepository(IUserRepository users)
         {
             this.usersDb = users;
-            this.animals = new List<IAnimal>();
+            this.pets = new List<IPet>();
         }
-        public ICollection<IAnimal> Animals => new List<IAnimal>(this.animals);
+        public ICollection<IPet> Pets => new List<IPet>(this.pets);
 
-        public void CreateAnimal(string userPhone, IAnimal animal)
+        public void CreatePet(string userPhone, IPet pet)
         {
-            var animalExists = this.animals.Any(a => a.Id == animal.Id);
+            var petExists = this.pets.Any(a => a.Id == pet.Id);
 
-            if (animalExists)
+            if (petExists)
             {
-                throw new ArgumentException("This animal already exists in database");
+                throw new ArgumentException("This pet already exists in database");
             }
 
-            this.animals.Add(animal);
+            this.pets.Add(pet);
         }
 
-        public IAnimal GetById(string id) => this.animals.FirstOrDefault(a => a.Id == id);
+        public IPet GetById(string id) => this.pets.FirstOrDefault(a => a.Id == id);
 
 
-        public void DeteleAnimal(string userPhone, IAnimal animal)
+        public void DetelePet(string userPhone, IPet pet)
         {
-            var animalExists = this.animals.Any(a => a.Id == animal.Id);
+            var petExists = this.pets.Any(a => a.Id == pet.Id);
 
-            if (animalExists)
+            if (petExists)
             {
-                throw new ArgumentException("This animal already exists in database");
+                throw new ArgumentException("This pet already exists in database");
             }
 
-            this.animals.Remove(animal);
+            this.pets.Remove(pet);
         }
     }
 }

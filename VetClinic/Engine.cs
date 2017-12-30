@@ -7,13 +7,13 @@
     public class Engine : IEngine
     {
         private readonly IUserCommand userCommands;
-        private readonly IAnimalCommand animalCommands;
+        private readonly IPetCommand animalCommands;
         private readonly IEmployeeCommand employeeCommands;
         private readonly IServiceCommand serviceCommands;
         private readonly IEngineCommand engineCommands;
         private readonly ICashRegisterCommand cashRegister;
 
-        public Engine(IUserCommand userCommands, IAnimalCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister)
+        public Engine(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister)
         {
             this.userCommands = userCommands;
             this.animalCommands = animalCommands;
@@ -64,12 +64,13 @@
                     case "listEmployees": this.employeeCommands.ListEmployees(); break;
                     case "searchEmployeeByPhone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
 
-                    // Animal
-                    case "createAnimal": this.animalCommands.CreateAnimal(commandParts);
-                                         this.userCommands.CreateAnimal(commandParts); break;
-                    case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts);
-                                         this.userCommands.CreateAnimal(commandParts); break;
-
+                    // Pet
+                    case "createPet":
+                        this.animalCommands.CreatePet(commandParts);
+                        this.userCommands.CreatePet(commandParts); break;
+                    case "deletePet":
+                        this.animalCommands.DeletePet(commandParts);
+                        this.userCommands.CreatePet(commandParts); break;
                     case "listPets": this.animalCommands.ListPets(); break;
 
                     // Services
@@ -85,7 +86,7 @@
                     case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
                     case "help": this.engineCommands.Help(); break;
 
-                   // Accounting
+                    // Accounting
                     case "updateBalance":
                         this.cashRegister.UpdateBalance(
                         this.serviceCommands.closeAccount(commandParts)); break;

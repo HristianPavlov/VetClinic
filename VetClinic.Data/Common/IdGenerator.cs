@@ -14,7 +14,7 @@ namespace VetClinic.Data.Common
             switch (classType)
             {
                 case Type person when person == typeof(IPerson): sb.Append("P"); break;
-                case Type animal when animal == typeof(IAnimal): sb.Append("A"); break;
+                case Type pet when pet == typeof(IPet): sb.Append("A"); break;
                 default: Console.WriteLine(("No such type found")); break;
             }
 

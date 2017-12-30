@@ -31,7 +31,7 @@
 
 
             var personFactory = new PersonFactory();
-            var animalFactory = new AnimalFactory();
+            var animalFactory = new PetFactory();
             var serviceFactory = new ServiceFactory();
             var commandFactory = new CommandFactory();
 
@@ -46,7 +46,7 @@
             var userCommands = new UserCommand(personFactory, userDb, animalDb);
             userCommands.ImportantEventHappened += eventHandler;
 
-            var animalCommands = new AnimalCommand(animalFactory, animalDb);
+            var animalCommands = new PetCommand(animalFactory, animalDb);
             animalCommands.ImportantEventHappened += eventHandler;
 
             var employeeCommands = new EmployeeCommand(personFactory, employeeDb);

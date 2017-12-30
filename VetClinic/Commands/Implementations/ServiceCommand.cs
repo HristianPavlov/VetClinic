@@ -88,14 +88,14 @@
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not exists");
             }
 
-            IAnimal animal = user.Pets.FirstOrDefault((p => p.Name == animalName));
+            IPet pet = user.Pets.FirstOrDefault((p => p.Name == animalName));
 
-            if (animal == null)
+            if (pet == null)
             {
-                throw new ArgumentException($"{user.FirstName} {user.LastName} does not have an animal with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
+                throw new ArgumentException($"{user.FirstName} {user.LastName} does not have an pet with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
             }
 
-            animal.AddServices(service);
+            pet.AddServices(service);
             user.Bill += service.Price;
 
             service.Execute();

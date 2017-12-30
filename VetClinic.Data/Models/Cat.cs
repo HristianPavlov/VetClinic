@@ -6,7 +6,7 @@
     using System.Text;
     using VetClinic.Data.Contracts;
 
-    public class Cat : Animal, ICat
+    public class Cat : Pet, ICat
     {
         public Cat(string name, AnimalGenderType gender, int age) 
             : base(name, gender, AnimalType.Cat, age)

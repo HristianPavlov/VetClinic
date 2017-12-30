@@ -6,7 +6,7 @@
     using Abstractions;
     using VetClinic.Data.Contracts;
 
-    public class Dog : Animal, IDog
+    public class Dog : Pet, IDog
     {
         private readonly string breed;
 
