@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFA03579-871B-4E2E-9342-8D0051C32860}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>VetClinic</RootNamespace>
+    <AssemblyName>VetClinic</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Autofac\AutofacConfig.cs" />
+    <Compile Include="Commands\Contracts\IAnimalCommand.cs" />
+    <Compile Include="Commands\Contracts\ICashRegisterCommand.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\Contracts\IEmployeeCommand.cs" />
+    <Compile Include="Commands\Contracts\IEngineCommand.cs" />
+    <Compile Include="Commands\Contracts\IServiceCommand.cs" />
+    <Compile Include="Commands\Contracts\IUserCommand.cs" />
+    <Compile Include="Commands\Implementations\AnimalCommand.cs" />
+    <Compile Include="Commands\Implementations\CashRegisterCommand.cs" />
+    <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
+    <Compile Include="Commands\Implementations\EngineCommand.cs" />
+    <Compile Include="Commands\Implementations\ServiceCommand.cs" />
+    <Compile Include="Commands\Implementations\UserCommand.cs" />
+    <Compile Include="Common\CustomException.cs" />
+    <Compile Include="Common\CustomMessage.cs" />
+    <Compile Include="Common\VetClinicEventHandler.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Factories\Contracts\IAnimalFactory.cs" />
+    <Compile Include="Factories\Contracts\ICommandFactory.cs" />
+    <Compile Include="Factories\Contracts\IPersonFactory.cs" />
+    <Compile Include="Factories\Contracts\IServiceFactory.cs" />
+    <Compile Include="Factories\Implemetations\AnimalFactory.cs" />
+    <Compile Include="Factories\Implemetations\CommandFactory.cs" />
+    <Compile Include="Factories\Implemetations\PersonFactory.cs" />
+    <Compile Include="Factories\Implemetations\ServiceFactory.cs" />
+    <Compile Include="IEngine.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj">
+      <Project>{18bd4b11-918a-42d0-bddd-a79b3d1a872e}</Project>
+      <Name>VetClinic.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
