@@ -13,9 +13,9 @@
     {
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;
-        private readonly IAnimalRepository animalDb;
+        private readonly IPetRepository animalDb;
 
-        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IAnimalRepository animalDb)
+        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IPetRepository animalDb)
         {
             this.personFactory = personFactory;
             this.userDb = userDb;

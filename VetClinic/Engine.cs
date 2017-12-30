@@ -50,7 +50,6 @@
             {
                 switch (commandParts[0])
                 {
-
                     // User
                     case "createUser": this.userCommands.CreateUser(commandParts); break;
                     case "deleteUser": this.userCommands.DeleteUser(commandParts); break;

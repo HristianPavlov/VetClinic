@@ -6,9 +6,7 @@
     using VetClinic.Common;
     using VetClinic.Data.Models.Abstractions;
     using VetClinic.Data.Repositories.Contracts;
-    using VetClinic.Data.Repositories.Implementations;
     using VetClinic.Factories.Contracts;
-    using VetClinic.Factories.Implemetations;
 
     public static class AutofacContainer
     {

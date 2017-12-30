@@ -12,9 +12,9 @@
         {
             // autofac
             //var container = AutofacContainer.Build();
-            //var animalDb = container.Resolve<Anim]]]alRepository>();
+            //var petDb = container.Resolve<PetRepository>();
             //var userCommands = container.Resolve<UserCommand>();
-            //var animalCommands = container.Resolve<AnimalCommand>();
+            //var petCommands = container.Resolve<PetCommand>();
             //var employeeCommands = container.Resolve<EmployeeCommand>();
             //var serviceCommands = container.Resolve<ServiceCommand>();
             //var engineCommands = container.Resolve<EngineCommand>();
@@ -23,7 +23,7 @@
 
             //var eventHandler = new EventHandler((command, message) => { Console.WriteLine(message); });
             //userCommands.ImportantEventHappened += eventHandler;
-            //animalCommands.ImportantEventHappened += eventHandler;
+            //petCommands.ImportantEventHappened += eventHandler;
             //employeeCommands.ImportantEventHappened += eventHandler;
             //serviceCommands.ImportantEventHappened += eventHandler;
             //engineCommands.ImportantEventHappened += eventHandler;
@@ -37,7 +37,7 @@
 
             var userDb = new UserRepository();
             var employeeDb = new EmployeeRepository();
-            var animalDb = new AnimalRepository(userDb);
+            var animalDb = new PetRepository(userDb);
             var serviceDb = new ServiceRepository();
             var commandDb = new CommandRepository();
 
