@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
     using VetClinic.Data.Contracts;
@@ -29,12 +28,7 @@
 
         public void UpdateBalance(decimal amount)
         {
-
-            //var amount = Decimal.Parse(parameters[1]);
-
             this.Balance += amount;
-
-           // Console.WriteLine(this.Balance);
         }
 
         public void AddBookedService(IList<string> parameters)

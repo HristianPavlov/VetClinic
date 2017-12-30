@@ -42,8 +42,7 @@
 
             if (service == null)
             {
-                Console.WriteLine("Service not found");
-                return;
+                throw new ArgumentException("Service not found");
             }
 
             this.serviceDb.DeleteService(name);
@@ -54,8 +53,7 @@
         {
             if (this.serviceDb.Services.Count == 0)
             {
-                Console.WriteLine("No users registered");
-                return;
+                throw new ArgumentException("No users registered");
             }
 
             var sb = new StringBuilder();
@@ -90,25 +88,18 @@
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not exists");
             }
 
-
-            //CHange from Marto's verion
             IAnimal animal = user.Pets.FirstOrDefault((p => p.Name == animalName));
-
-
 
             if (animal == null)
             {
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not have an animal with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
             }
 
-
             animal.addServices(service);
-            user.MoneyOwned += service.Price;
+            user.Bill += service.Price;
 
-            //EXecute method ?/??
             service.Execute();
             this.OnMessage($"Service {service.Name} is executed!");
-
         }
 
         public decimal closeAccount(IList<string> parameters)
@@ -116,15 +107,11 @@
             var userPhone = parameters[1];
            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
-            decimal amount = user.MoneyOwned;
-            user.MoneyOwned = 0;
-
+            decimal amount = user.Bill;
+            user.Bill = 0;
 
             return amount;
-
         }
-
-
 
 
         public void BookService(IList<string> parameters)
@@ -135,8 +122,7 @@
 
             if (service == null)
             {
-                Console.WriteLine("Service not found");
-                return;
+                throw new CustomException("Service not found");
             }
             this.OnMessage($"Service {service.Name} is executed!");
         }

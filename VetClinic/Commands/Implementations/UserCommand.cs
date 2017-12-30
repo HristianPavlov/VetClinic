@@ -41,8 +41,7 @@
 
             if (user == null)
             {
-                Console.WriteLine("User not found");
-                return;
+                throw new ArgumentException("User not found");
             }
 
             this.userDb.DeleteUser(userId);
@@ -57,8 +56,7 @@
 
             if (user == null)
             {
-                Console.WriteLine("User not found");
-                return;
+                throw new ArgumentException("User not found");
             }
 
             Console.WriteLine(user.ListUserPets());
@@ -68,8 +66,7 @@
         {
             if (this.userDb.Users.Count == 0)
             {
-                Console.WriteLine("No users registered");
-                return;
+                throw new ArgumentException("No users registered");
             }
 
             var sb = new StringBuilder();

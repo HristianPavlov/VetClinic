@@ -10,9 +10,8 @@
 
     public class User : Person, IUser
     {
-
         private readonly List<IAnimal> pets;
-        private decimal moneyOwned;
+        private decimal bill;
 
         public User(string firstName, string lastName, string phoneNumber, string email)
             : base(firstName, lastName, phoneNumber, email)
@@ -22,11 +21,7 @@
 
         public ICollection<IAnimal> Pets => new List<IAnimal>(this.pets);
 
-
-        // HMMMMMMMMMMMM public?
-        public decimal MoneyOwned { get => moneyOwned; set => moneyOwned = value; }
-
-        
+        public decimal Bill { get => bill; set => bill = value; }
 
         public void AddPet(IAnimal pet)
         {
@@ -35,8 +30,7 @@
 
             if (petFound != null)
             {
-                Console.WriteLine(("this pet already exists in database"));
-                return;
+                throw new ArgumentException("this pet already exists in database");
             }
 
             this.pets.Add(pet);
@@ -72,7 +66,7 @@
                 sb.AppendLine($"Owner: {pet.OwnerPhoneNumber}");
             }
 
-           return sb.ToString();
+            return sb.ToString();
         }
 
         public override string PrintInfo()

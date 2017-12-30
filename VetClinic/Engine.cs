@@ -51,9 +51,6 @@
                 switch (commandParts[0])
                 {
 
-                    // var report = this.ProcessSingleCommand(command);
-                    //reports.Add(report);
-
                     // User
                     case "createUser": this.userCommands.CreateUser(commandParts); break;
                     case "deleteUser": this.userCommands.DeleteUser(commandParts); break;
@@ -80,13 +77,12 @@
                         this.serviceCommands.PerformService(commandParts);
                         this.cashRegister.AddBookedService(commandParts); break;
 
-
                     // Commands
                     case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
                     case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
                     case "help": this.engineCommands.Help(); break;
 
-                   //Acounting
+                   // Accounting
                     case "updateBalance":
                         this.cashRegister.UpdateBalance(
                         this.serviceCommands.closeAccount(commandParts)); break;
@@ -96,7 +92,6 @@
                     default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
 
                 }
-
             }
             catch (Exception ex)
             {

@@ -40,8 +40,7 @@
 
             if (employee == null)
             {
-                Console.WriteLine("Employee not found");
-                return;
+                throw new ArgumentException("Employee not found");
             }
 
             this.employeeDb.DeleteEmployee(employeeId);
@@ -52,8 +51,7 @@
         {
             if (this.employeeDb.Employees.Count == 0)
             {
-                Console.WriteLine("No employee registered yet");
-                return;
+                throw new ArgumentException("No employee registered yet");
             }
 
             var sb = new StringBuilder();

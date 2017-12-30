@@ -37,8 +37,7 @@
 
             if (command == null)
             {
-                Console.WriteLine("Command not found");
-                return;
+                throw new ArgumentException("Command not found");
             }
 
             this.commandsDb.DeleteCommand(name);
@@ -51,8 +50,7 @@
 
             if (engineCommands.Count() == 0)
             {
-                Console.WriteLine("No commands created yet");
-                return;
+                throw new ArgumentException("No commands created yet");
             }
 
             Console.WriteLine(("All commands:"));

@@ -6,7 +6,7 @@
     {
         ICollection<IAnimal> Pets { get; }
 
-         decimal MoneyOwned { get ; set ; }
+         decimal Bill { get ; set ; }
 
         void AddPet(IAnimal pet);
 

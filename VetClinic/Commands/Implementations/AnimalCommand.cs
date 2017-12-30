@@ -67,8 +67,7 @@
             
             if (animal == null)
             {
-                Console.WriteLine("Animal not found");
-                return;
+                throw new ArgumentException("Animal not found");
             }
 
             this.animalDb.DeteleAnimal(animal, userPhoneNumber);

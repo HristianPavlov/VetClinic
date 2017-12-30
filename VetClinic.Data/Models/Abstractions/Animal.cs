@@ -46,8 +46,7 @@
         {
             if (service == null)
             {
-                Console.WriteLine("The services cannot be null");
-                return;
+                throw new ArgumentException("The services cannot be null");
             }
 
             Services.Add(service);

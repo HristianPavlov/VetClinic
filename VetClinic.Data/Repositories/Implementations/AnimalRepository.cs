@@ -24,8 +24,7 @@
 
             if (animalExists)
             {
-                Console.WriteLine(("This animal already exists in database"));
-                return;
+                throw new ArgumentException("This animal already exists in database");
             }
 
             this.animals.Add(animal);
@@ -35,8 +34,7 @@
 
             if (user == null)
             {
-                Console.WriteLine(("This user does not exists in database"));
-                return;
+                throw new ArgumentException("This user does not exists in database");
             }
 
             user.AddPet(animal);
@@ -47,13 +45,6 @@
 
         public void DeteleAnimal(IAnimal animal, string userPhoneNumber)
         {
-            // var animal = this.animals.FirstOrDefault(a => a.Id == id);
-
-            //if (animal == null)
-            //{
-            //    Console.WriteLine("Animal not found");
-            //    return;
-            //}
            var user= this.usersDb.Users.FirstOrDefault(a => a.PhoneNumber == userPhoneNumber);
             user.RemovePet(animal);
 
