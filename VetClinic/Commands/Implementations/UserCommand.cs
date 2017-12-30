@@ -13,11 +13,59 @@
     {
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;
+        private readonly IAnimalRepository animalDb;
 
-        public UserCommand(IPersonFactory personFactory, IUserRepository userDb)
+        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IAnimalRepository animalDb)
         {
             this.personFactory = personFactory;
             this.userDb = userDb;
+            this.animalDb = animalDb;
+        }
+
+        public void CreateAnimal(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+            // var animalType = parameters[2];
+            var animalName = parameters[3];
+
+            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+
+            if (user == null)
+            {
+                throw new ArgumentException("User not found");
+            }
+
+            var animal = this.animalDb.Animals.FirstOrDefault(a => a.Name == animalName);
+
+            if (animal == null)
+            {
+                throw new ArgumentException("Animal not found");
+            }
+
+            user.AddPet(animal);
+        }
+
+        public void DeleteAnimal(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+            // var animalType = parameters[2];
+            var animalName = parameters[3];
+
+            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+
+            if (user == null)
+            {
+                throw new ArgumentException("User not found");
+            }
+
+            var animal = this.animalDb.Animals.FirstOrDefault(a => a.Name == animalName);
+
+            if (animal == null)
+            {
+                throw new ArgumentException("Animal not found");
+            }
+
+            user.RemovePet(animal);
         }
 
         public void CreateUser(IList<string> parameters)

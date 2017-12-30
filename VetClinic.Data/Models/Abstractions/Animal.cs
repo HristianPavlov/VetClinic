@@ -42,15 +42,14 @@
 
         public ICollection<IService> Services => this.services;
 
-        public void addServices(IService service)
+        public void AddServices(IService service)
         {
             if (service == null)
             {
                 throw new ArgumentException("The services cannot be null");
             }
 
-            Services.Add(service);
-
+            this.services.Add(service);
         }
 
         public virtual string PrintInfo()

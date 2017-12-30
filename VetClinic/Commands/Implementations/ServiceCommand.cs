@@ -95,7 +95,7 @@
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not have an animal with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
             }
 
-            animal.addServices(service);
+            animal.AddServices(service);
             user.Bill += service.Price;
 
             service.Execute();

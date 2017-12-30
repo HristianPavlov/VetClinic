@@ -65,8 +65,11 @@
                     case "searchEmployeeByPhone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
 
                     // Animal
-                    case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
-                    case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts); break;
+                    case "createAnimal": this.animalCommands.CreateAnimal(commandParts);
+                                         this.userCommands.CreateAnimal(commandParts); break;
+                    case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts);
+                                         this.userCommands.CreateAnimal(commandParts); break;
+
                     case "listPets": this.animalCommands.ListPets(); break;
 
                     // Services

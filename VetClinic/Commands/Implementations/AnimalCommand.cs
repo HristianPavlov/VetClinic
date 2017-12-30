@@ -45,6 +45,22 @@
             this.OnMessage($"{animalType} with name {name} successfully created");
         }
 
+        public void DeleteAnimal(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+            var animalId = parameters[2];
+
+            var animal = this.animalDb.GetById(animalId);
+            
+            if (animal == null)
+            {
+                throw new ArgumentException("Animal not found");
+            }
+
+            this.animalDb.DeteleAnimal(userPhone, animal);
+            this.OnMessage($"{animal.Type} with name {animal.Name} successfully removed from database");
+        }
+
         public void ListPets()
         {
             var sb = new StringBuilder();
@@ -56,22 +72,6 @@
             }
 
             Console.WriteLine(sb.ToString());
-        }
-
-        public void DeleteAnimal(IList<string> parameters)
-        {
-            var userPhoneNumber = parameters[1];
-            var animalId = parameters[2];
-
-            var animal = this.animalDb.GetById(animalId);
-            
-            if (animal == null)
-            {
-                throw new ArgumentException("Animal not found");
-            }
-
-            this.animalDb.DeteleAnimal(animal, userPhoneNumber);
-            this.OnMessage($"{animal.Type} with name {animal.Name} successfully removed from database");
         }
     }
 }

@@ -20,6 +20,6 @@ namespace VetClinic.Data.Contracts
         AnimalGenderType Gender { get; }
         ICollection<IService> Services { get; }
 
-        void addServices(IService service);
+        void AddServices(IService service);
     }
 }

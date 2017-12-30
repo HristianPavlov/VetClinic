@@ -12,7 +12,7 @@
         {
             // autofac
             //var container = AutofacContainer.Build();
-            //var animalDb = container.Resolve<AnimalRepository>();
+            //var animalDb = container.Resolve<Anim]]]alRepository>();
             //var userCommands = container.Resolve<UserCommand>();
             //var animalCommands = container.Resolve<AnimalCommand>();
             //var employeeCommands = container.Resolve<EmployeeCommand>();
@@ -43,7 +43,7 @@
 
             var eventHandler = new EventHandler((command, message) => { Console.WriteLine(message); });
 
-            var userCommands = new UserCommand(personFactory, userDb);
+            var userCommands = new UserCommand(personFactory, userDb, animalDb);
             userCommands.ImportantEventHappened += eventHandler;
 
             var animalCommands = new AnimalCommand(animalFactory, animalDb);

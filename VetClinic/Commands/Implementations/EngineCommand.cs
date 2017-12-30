@@ -70,17 +70,24 @@
                         .GetTypes()
                         .Where(t => t.IsInterface)
                         .Select(t => new
-                         {
+                        {
                             Commands = t.GetMethods()
                                             .Where(m => m.ReturnType == typeof(void)).ToList()
                           })
                         .ToList();
 
-            foreach (var method in allMethods.Skip(1))
+            foreach (var methodList in allMethods.Skip(1))
             {
-                foreach (var command in method.Commands)
+                foreach (var command in methodList.Commands)
                 {
-                    allCommands.Add(command.Name);
+                    if (allCommands.Contains(command.Name))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        allCommands.Add(command.Name);
+                    }
                 }
             }
 

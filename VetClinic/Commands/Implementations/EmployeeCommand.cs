@@ -29,7 +29,7 @@
             var email = parameters[4];
             var role = (RoleType)Enum.Parse(typeof(RoleType), parameters[4]);
 
-            var newEmployee = this.personFactory.CreateStaffPerson(firstName, lastName, phoneNumber, email, role);
+            var newEmployee = this.personFactory.CreateEmployee(firstName, lastName, phoneNumber, email, role);
         }
 
         public void DeleteEmployee(IList<string> parameters)
