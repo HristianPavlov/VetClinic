@@ -55,22 +55,22 @@
                     //reports.Add(report);
 
                     // User
-                    case "registerUser": this.userCommands.CreateUser(commandParts); break;
+                    case "createUser": this.userCommands.CreateUser(commandParts); break;
                     case "deleteUser": this.userCommands.DeleteUser(commandParts); break;
                     case "listUserPets": this.userCommands.ListUserPets(commandParts); break;
                     case "searchUserByPhone": this.userCommands.SearchUserByPhone(commandParts); break;
-                    case "allUsers": this.userCommands.ListUsers(); break;
+                    case "listUsers": this.userCommands.ListUsers(); break;
 
                     // Employee
-                    case "registerEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
+                    case "createEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
                     case "deleteEmployee": this.employeeCommands.DeleteEmployee(commandParts); break;
                     case "listEmployees": this.employeeCommands.ListEmployees(); break;
                     case "searchEmployeeByPhone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
 
                     // Animal
-                    case "registerAnimal": this.animalCommands.CreateAnimal(commandParts); break;
+                    case "createAnimal": this.animalCommands.CreateAnimal(commandParts); break;
                     case "deleteAnimal": this.animalCommands.DeleteAnimal(commandParts); break;
-                    case "listAnimals": this.animalCommands.ListPets(); break;
+                    case "listPets": this.animalCommands.ListPets(); break;
 
                     // Services
                     case "createService": this.serviceCommands.CreateService(commandParts); break;
@@ -86,9 +86,7 @@
                     case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
                     case "help": this.engineCommands.Help(); break;
 
-                    // Accounting
-                    //  case "addBookedService":  break;
-                    // case "updateBalance": this.cashRegister.UpdateBalance(commandParts); break;
+                   //Acounting
                     case "updateBalance":
                         this.cashRegister.UpdateBalance(
                         this.serviceCommands.closeAccount(commandParts)); break;
