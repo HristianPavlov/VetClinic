@@ -1,5 +1,6 @@
 ﻿namespace VetClinic
 {
+    using Autofac;
     using System;
     using VetClinic.Commands.Implementations;
     using VetClinic.Data.Repositories.Implementations;
@@ -9,6 +10,26 @@
     {
         static void Main()
         {
+            // autofac
+            //var container = AutofacContainer.Build();
+            //var animalDb = container.Resolve<AnimalRepository>();
+            //var userCommands = container.Resolve<UserCommand>();
+            //var animalCommands = container.Resolve<AnimalCommand>();
+            //var employeeCommands = container.Resolve<EmployeeCommand>();
+            //var serviceCommands = container.Resolve<ServiceCommand>();
+            //var engineCommands = container.Resolve<EngineCommand>();
+            //var cashRegisterCommands = container.Resolve<CashRegisterCommand>();
+            //var engine = container.Resolve<Engine>();
+
+            //var eventHandler = new EventHandler((command, message) => { Console.WriteLine(message); });
+            //userCommands.ImportantEventHappened += eventHandler;
+            //animalCommands.ImportantEventHappened += eventHandler;
+            //employeeCommands.ImportantEventHappened += eventHandler;
+            //serviceCommands.ImportantEventHappened += eventHandler;
+            //engineCommands.ImportantEventHappened += eventHandler;
+            //cashRegisterCommands.ImportantEventHappened += eventHandler;
+
+
             var personFactory = new PersonFactory();
             var animalFactory = new AnimalFactory();
             var serviceFactory = new ServiceFactory();
@@ -37,11 +58,11 @@
             var engineCommands = new EngineCommand(commandFactory, commandDb);
             engineCommands.ImportantEventHappened += eventHandler;
 
-            var cashRegister = new CashRegisterCommand(serviceDb);
-            engineCommands.ImportantEventHappened += eventHandler;
+            var cashRegisterCommands = new CashRegisterCommand(serviceDb);
+            cashRegisterCommands.ImportantEventHappened += eventHandler;
 
 
-            var engine = new Engine(userCommands, animalCommands, employeeCommands, serviceCommands, engineCommands, cashRegister);
+            var engine = new Engine(userCommands, animalCommands, employeeCommands, serviceCommands, engineCommands, cashRegisterCommands);
 
             engine.Start();
         }
