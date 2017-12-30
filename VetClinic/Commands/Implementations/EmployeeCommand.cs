@@ -5,11 +5,12 @@
     using System.Linq;
     using System.Text;
     using VetClinic.Commands.Contracts;
+    using VetClinic.Common;
     using VetClinic.Data.Common.Enums;
-    using VetClinic.Data.Repositories;
+    using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class EmployeeCommand : AbstractCommand, IEmployeeCommand
+    public class EmployeeCommand : VetClinicEventHandler, IEmployeeCommand
     {
         private readonly IPersonFactory personFactory;
         private readonly IEmployeeRepository employeeDb;
@@ -31,7 +32,7 @@
             var newEmployee = this.personFactory.CreateStaffPerson(firstName, lastName, phoneNumber, email, role);
         }
 
-        public void RemoveEmployee(IList<string> parameters)
+        public void DeleteEmployee(IList<string> parameters)
         {
             var employeeId = parameters[1];
 
@@ -44,7 +45,7 @@
             }
 
             this.employeeDb.DeleteEmployee(employeeId);
-            this.onMessage($"Person {employee.FirstName} {employee.LastName} successfully deleted");
+            this.OnMessage($"Person {employee.FirstName} {employee.LastName} successfully deleted");
         }
 
         public void ListEmployees()
@@ -67,7 +68,7 @@
             Console.WriteLine(sb.ToString());
         }
 
-        public void SearchByPhone(IList<string> parameters)
+        public void SearchEmployeeByPhone(IList<string> parameters)
         {
             var phone = parameters[1];
 

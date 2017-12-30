@@ -10,9 +10,8 @@
 
     public class User : Person, IUser
     {
-        private decimal total;
-        private readonly List<IAnimal> pets;
-        private ICollection<IService> usedServices;
+
+        private readonly List<IAnimal> pets;    
 
         public User(string firstName, string lastName, string phoneNumber, string email)
             : base(firstName, lastName, phoneNumber, email)
@@ -21,29 +20,6 @@
         }
 
         public ICollection<IAnimal> Pets => new List<IAnimal>(this.pets);
-
-        public decimal Total
-        {
-            get => this.total;
-
-            private set
-            {
-                Guard.WhenArgument(total, "total canno be less than zero").IsLessThan(0).Throw();
-                this.total = value;
-            }
-        }
-
-        public ICollection<IService> UsedServices
-        {
-            get
-            {
-                return this.usedServices;
-            }
-            private set
-            {
-                this.usedServices = value;
-            }
-        }
 
         public void AddPet(IAnimal pet)
         {
@@ -69,16 +45,6 @@
             {
                 this.pets.Remove(petFound);
             }
-        }
-
-        public void PayForServices()
-        {
-            Guard.WhenArgument(this.Total, "Noting to pay for!").IsEqual(0).Throw();
-            //  TODO :
-            // CashRegister.Monay += total;
-            // CashRegister.AddServicesToList(this.UsedServices);
-            // this.UsedServices.Clear;
-            this.total = 0m;
         }
 
         public string ListUserPets()

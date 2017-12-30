@@ -1,27 +1,23 @@
 ﻿namespace VetClinic.Commands.Implementations
-{   
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Core.ClinicServices.Contracts;
-    using VetClinic.Core.ClinicServices.Implementations;
-    using VetClinic.Data.Contracts;
-    using VetClinic.Data.Repositories;
+    using VetClinic.Common;
+    using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class UserCommand : AbstractCommand, IUserCommand
+    public class UserCommand : VetClinicEventHandler, IUserCommand
     {
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;
-        private readonly IClinicServicesListing servicesList;
 
-        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IClinicServicesListing servicesListing)
+        public UserCommand(IPersonFactory personFactory, IUserRepository userDb)
         {
             this.personFactory = personFactory;
             this.userDb = userDb;
-            this.servicesList = servicesListing;
         }
 
         public void CreateUser(IList<string> parameters)
@@ -34,7 +30,7 @@
             var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email);
 
             this.userDb.CreateUser(newUser);
-            this.onMessage($"User {firstName} {lastName} successfully created");
+            this.OnMessage($"User {firstName} {lastName} successfully created");
         }
 
         public void DeleteUser(IList<string> parameters)
@@ -50,7 +46,7 @@
             }
 
             this.userDb.DeleteUser(userId);
-            this.onMessage($"User {user.FirstName} {user.LastName} successfully removed from database");
+            this.OnMessage($"User {user.FirstName} {user.LastName} successfully removed from database");
         }
 
         public void ListUserPets(IList<string> parameters)
@@ -88,7 +84,7 @@
             Console.WriteLine(sb.ToString());
         }
 
-        public void SearchByPhone(IList<string> parameters)
+        public void SearchUserByPhone(IList<string> parameters)
         {
             var phone = parameters[1];
 
@@ -106,20 +102,5 @@
             }
         }
 
-        public void ShowServices()
-        {
-            Console.WriteLine(this.servicesList.ListAllServices().TrimEnd());
-        }
-
-        public void SelectService(string id)
-        {
-            IService serviceToExecute = this.servicesList.FindById(id);
-            serviceToExecute.Execute();
-        }
-
-        public void PayForServices()
-        {
-            this.PayForServices();
-        }
     }
 }

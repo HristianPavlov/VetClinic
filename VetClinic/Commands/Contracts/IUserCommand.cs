@@ -10,15 +10,8 @@
 
         void ListUserPets(IList<string> parameters);
 
-        void SearchByPhone(IList<string> parameters);
+        void SearchUserByPhone(IList<string> parameters);
 
         void ListUsers();
-
-        void ShowServices();
-
-        void SelectService(string id);
-
-        void PayForServices();
-
     }
 }

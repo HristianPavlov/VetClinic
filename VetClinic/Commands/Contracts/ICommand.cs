@@ -2,8 +2,6 @@
 {
     public interface ICommand
     {
-        string Name { get; }
-
-        //string Execute(IList<string> parameters);
+        
     }
 }

@@ -44,12 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClinicServices\Implementations\BuyProductsService.cs" />
-    <Compile Include="ClinicServices\Implementations\CashRegister.cs" />
     <Compile Include="ClinicServices\Contracts\IProduct.cs" />
     <Compile Include="ClinicServices\Implementations\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClinicServices\Implementations\ClinicServicesListing.cs" />
-    <Compile Include="ClinicServices\Contracts\IClinicServicesListing.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj">

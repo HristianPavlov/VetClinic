@@ -1,8 +1,8 @@
-﻿using Bytes2you.Validation;
-using VetClinic.Core.ClinicServices.Contracts;
-
-namespace VetClinic.Core.Services
+﻿namespace VetClinic.Core.Services
 {
+    using Bytes2you.Validation;
+    using VetClinic.Core.ClinicServices.Contracts;
+
     public class Product : IProduct
     {
         private readonly string name;

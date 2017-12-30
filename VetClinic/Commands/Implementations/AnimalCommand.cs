@@ -4,12 +4,13 @@
     using System.Collections.Generic;
     using System.Text;
     using VetClinic.Commands.Contracts;
+    using VetClinic.Common;
     using VetClinic.Data.Common.Enums;
     using VetClinic.Data.Contracts;
-    using VetClinic.Data.Repositories;
+    using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class AnimalCommand : AbstractCommand, IAnimalCommand
+    public class AnimalCommand : VetClinicEventHandler, IAnimalCommand
     {
         private readonly IAnimalFactory animalFactory;
         private readonly IAnimalRepository animalDb;
@@ -41,7 +42,7 @@
             newAnimal.OwnerPhoneNumber = userPhone;
             this.animalDb.CreateAnimal(userPhone, newAnimal);
 
-            this.onMessage($"{animalType} with name {name} successfully created");
+            this.OnMessage($"{animalType} with name {name} successfully created");
         }
 
         public void ListPets()
@@ -71,7 +72,7 @@
             }
 
             this.animalDb.DeteleAnimal(animal, userPhoneNumber);
-            this.onMessage($"{animal.Type} with name {animal.Name} successfully removed from database");
+            this.OnMessage($"{animal.Type} with name {animal.Name} successfully removed from database");
         }
     }
 }

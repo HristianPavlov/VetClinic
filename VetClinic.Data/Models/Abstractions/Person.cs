@@ -29,13 +29,13 @@
             this.email = email;
         }
 
+        public string Id => this.id;
+
         public string FirstName => this.firstName;
 
         public string LastName => this.lastName;
 
         public string PhoneNumber => this.phoneNumber;
-
-        public string Id => this.id;
 
         public string Email => this.email;
 

@@ -6,13 +6,9 @@
     {
         ICollection<IAnimal> Pets { get; }
 
-        ICollection<IService> UsedServices { get; }
-
         void AddPet(IAnimal pet);
 
         void RemovePet(IAnimal pet);
-
-        void PayForServices();
 
         string ListUserPets();
 

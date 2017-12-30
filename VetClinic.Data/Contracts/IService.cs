@@ -10,8 +10,8 @@
 
         int TimeToExecute { get; }
 
-        string Print();
+        string PrintInfo();
 
-        void Execute(); // TODO add animal
+        void Execute();
     }
 }

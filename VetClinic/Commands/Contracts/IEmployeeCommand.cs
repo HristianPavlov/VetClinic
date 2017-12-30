@@ -6,10 +6,10 @@ namespace VetClinic.Commands.Contracts
     {
         void CreateEmployee(IList<string> parameters);
 
-        void RemoveEmployee(IList<string> parameters);
+        void DeleteEmployee(IList<string> parameters);
       
         void ListEmployees();
 
-        void SearchByPhone(IList<string> parameters);
+        void SearchEmployeeByPhone(IList<string> parameters);
     }
 }

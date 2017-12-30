@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Text;
 using VetClinic.Core.ClinicServices.Contracts;
-using Bytes2you.Validation;
-using VetClinic.Data.Models;
 using VetClinic.Data.Contracts;
+using VetClinic.Data.Models;
 
-namespace VetClinic.Core.Services
+namespace VetClinic.Core.Services // could be done in the same way as cashRegister
 {
     public class BuyProductService : Service, IService
     {
-        // TODO fix !!!
+        // replace with CRUD operations
         private static ICollection<IProduct> allProducts = new List<IProduct>()
         {
             { new Product("Medicine", 11.80m)},
@@ -41,38 +40,38 @@ namespace VetClinic.Core.Services
             return allProducts.FirstOrDefault(s => s.Name == name);
         }
 
-        public override string Print()
-        {
-            return $"  {this.Id}. {this.Name}".Trim();
-        }
+        //public override string PrintInfo)
+        //{
+        //    return $"  {this.Id}. {this.Name}".Trim();
+        //}
 
-        public override void Execute()
-        {
-            PrintProducts();
+        //public override void Execute()
+        //{
+        //    PrintProducts();
 
-            decimal sum = 0m;
-            while (true)
-            {
-                string line = Console.ReadLine();
-                if (line == string.Empty)
-                {
-                    break;
-                }
-                string[] arr = line.Split(' ');
+        //    decimal sum = 0m;
+        //    while (true)
+        //    {
+        //        string line = Console.ReadLine();
+        //        if (line == string.Empty)
+        //        {
+        //            break;
+        //        }
+        //        string[] arr = line.Split(' ');
 
-                Guard.WhenArgument(arr[0], "Product name is null!").IsNullOrEmpty().Throw();
-                Guard.WhenArgument(arr[0].Length, "Product name must be longer than 1 and shorter than 20 symbols").IsLessThan(2).IsGreaterThan(19).Throw();
-                Guard.WhenArgument(int.Parse(arr[1]), "Quantity must be positive").IsLessThan(0).Throw();
+        //        Guard.WhenArgument(arr[0], "Product name is null!").IsNullOrEmpty().Throw();
+        //        Guard.WhenArgument(arr[0].Length, "Product name must be longer than 1 and shorter than 20 symbols").IsLessThan(2).IsGreaterThan(19).Throw();
+        //        Guard.WhenArgument(int.Parse(arr[1]), "Quantity must be positive").IsLessThan(0).Throw();
 
-                IProduct product = FindByName(arr[0]);
-                int qunatity = int.Parse(arr[1]);
-                sum += (product.Price * qunatity);
-            }
-            // TODO :
-            BuyProductService serviceToAdd = new BuyProductService();
-            serviceToAdd.Price = sum;
-            // this.UsedServices.Add(serviceToAdd);
-        }
+        //        IProduct product = FindByName(arr[0]);
+        //        int qunatity = int.Parse(arr[1]);
+        //        sum += (product.Price * qunatity);
+        //    }
+        //    // TODO :
+        //    BuyProductService serviceToAdd = new BuyProductService();
+        //    serviceToAdd.Price = sum;
+        //    // this.UsedServices.Add(serviceToAdd);
+        //}
     }
 }
 

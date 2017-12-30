@@ -2,6 +2,7 @@
 {
     using Bytes2you.Validation;
     using System;
+    using System.Text;
     using System.Threading;
     using VetClinic.Data.Contracts;
 
@@ -23,7 +24,7 @@
             this.timeToExecute = timeToExecute;
         }
 
-        public Service(string name, decimal price, int timeToExecute)
+        public Service(string name, decimal price, int timeToExecute) // TODO price cannot be changed
             : this(name, timeToExecute)
         {
             this.Price = price;
@@ -45,16 +46,22 @@
 
         public int TimeToExecute => this.timeToExecute;
 
-        public virtual string Print()
+        public virtual string PrintInfo()
         {
-            return $"  {this.Id}. {this.Name} - Price: ${this.Price}".Trim();
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"Name: {this.Name}");
+            sb.AppendLine($"Id: {this.Id}");
+            sb.AppendLine($"Price: {this.Price}");
+
+            return sb.ToString();
         }
 
-        public virtual void Execute() // TODO add animal
+        public virtual void Execute()
         {
             Console.WriteLine($"Executing {this.Name} service. Please wait {this.TimeToExecute} seconds.");
             Thread.Sleep(this.TimeToExecute * 1000);
-            Console.WriteLine($"Service {this.Name} is executed!");
         }
+
     }
 }
