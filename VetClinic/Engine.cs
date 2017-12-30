@@ -76,7 +76,7 @@
                     case "createService": this.serviceCommands.CreateService(commandParts); break;
                     case "deleteService": this.serviceCommands.DeleteService(commandParts); break;
                     case "listServices": this.serviceCommands.ListServices(commandParts); break;
-                    case "performServices":
+                    case "performService":
                         this.serviceCommands.PerformService(commandParts);
                         this.cashRegister.AddBookedService(commandParts); break;
 
@@ -93,7 +93,6 @@
                     case "printBookedServices": this.cashRegister.PrintBookedServices(); break;
 
                     default: Console.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
-
                 }
             }
             catch (Exception ex)
