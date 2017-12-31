@@ -1,9 +1,9 @@
 ﻿namespace VetClinic
 {
     using Autofac;
+    using System;
     using System.Reflection;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common;
     using VetClinic.Data.Models.Abstractions;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
@@ -22,7 +22,7 @@
         private static void ConfigureContainer(ContainerBuilder builder)
         {
             builder
-              .RegisterAssemblyTypes(typeof(IRepository).Assembly)
+              .RegisterAssemblyTypes(typeof(IPetRepository).Assembly)
               .Where(t => t.Name.EndsWith("Repository"))
               .AsImplementedInterfaces()
               .SingleInstance();
@@ -39,15 +39,19 @@
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
-            builder.RegisterType<VetClinicEventHandler>().SingleInstance();
+            builder.RegisterType<EventHandler>().SingleInstance();
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
 
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                 .AssignableTo<Person>().PropertiesAutowired();
+            builder.RegisterAssemblyTypes(
+                      Assembly.GetExecutingAssembly())
+                     .AssignableTo<Person>()
+                     .PropertiesAutowired();
 
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                 .AssignableTo<Pet>().PropertiesAutowired();
+            builder.RegisterAssemblyTypes(
+                      Assembly.GetExecutingAssembly())
+                      .AssignableTo<Pet>()
+                      .PropertiesAutowired();
         }
     }
 }

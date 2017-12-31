@@ -57,10 +57,11 @@
             }
 
             this.writer.WriteLine(("All commands:"));
+            var counter = 0;
 
             foreach (var command in engineCommands)
             {
-                this.writer.WriteLine(command);
+                this.writer.WriteLine($"{++counter}. {command}");
             }
         }
 

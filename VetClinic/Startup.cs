@@ -13,6 +13,7 @@
         {
             // autofac
             //var container = AutofacContainer.Build();
+
             //var petDb = container.Resolve<PetRepository>();
             //var userCommands = container.Resolve<UserCommand>();
             //var petCommands = container.Resolve<PetCommand>();
@@ -45,7 +46,8 @@
             var writer = new ConsoleWriter();
 
             var eventHandler = new EventHandler((command, message)
-                =>{ writer.WriteLine(message); });
+                =>
+            { writer.WriteLine(message); });
 
             var userCommands = new UserCommand(personFactory, userDb, animalDb, writer);
             userCommands.ImportantEventHappened += eventHandler;
