@@ -55,7 +55,7 @@
     <Compile Include="AutofacContainer.cs" />
     <Compile Include="Commands\Contracts\IPetCommand.cs" />
     <Compile Include="Commands\Contracts\ICashRegisterCommand.cs" />
-    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\Contracts\IProcessorCommand.cs" />
     <Compile Include="Commands\Contracts\IEmployeeCommand.cs" />
     <Compile Include="Commands\Contracts\IEngineCommand.cs" />
     <Compile Include="Commands\Contracts\IServiceCommand.cs" />
@@ -64,8 +64,13 @@
     <Compile Include="Commands\Implementations\CashRegisterCommand.cs" />
     <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
     <Compile Include="Commands\Implementations\EngineCommand.cs" />
+    <Compile Include="Commands\Implementations\ProcessorCommand.cs" />
     <Compile Include="Commands\Implementations\ServiceCommand.cs" />
     <Compile Include="Commands\Implementations\UserCommand.cs" />
+    <Compile Include="Common\ConsoleServices\Contracts\IWriter.cs" />
+    <Compile Include="Common\ConsoleServices\Implementations\ConsoleReader.cs" />
+    <Compile Include="Common\ConsoleServices\Contracts\IReader.cs" />
+    <Compile Include="Common\ConsoleServices\Implementations\ConsoleWriter.cs" />
     <Compile Include="Common\CustomException.cs" />
     <Compile Include="Common\CustomMessage.cs" />
     <Compile Include="Common\VetClinicEventHandler.cs" />

@@ -8,7 +8,7 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public static class AutofacContainer
+    public class AutofacContainer
     {
         public static IContainer Build()
         {
@@ -34,7 +34,7 @@
                 .SingleInstance();
 
             builder
-                .RegisterAssemblyTypes(typeof(ICommand).Assembly)
+                .RegisterAssemblyTypes(typeof(IProcessorCommand).Assembly)
                 .Where(t => t.Name.EndsWith("Command"))
                 .AsImplementedInterfaces()
                 .SingleInstance();

@@ -3,6 +3,7 @@
     using Autofac;
     using System;
     using VetClinic.Commands.Implementations;
+    using VetClinic.Common.ConsoleServices.Implementations;
     using VetClinic.Data.Repositories.Implementations;
     using VetClinic.Factories.Implemetations;
 
@@ -41,28 +42,32 @@
             var serviceDb = new ServiceRepository();
             var commandDb = new CommandRepository();
 
-            var eventHandler = new EventHandler((command, message) => { Console.WriteLine(message); });
+            var writer = new ConsoleWriter();
 
-            var userCommands = new UserCommand(personFactory, userDb, animalDb);
+            var eventHandler = new EventHandler((command, message)
+                =>{ writer.WriteLine(message); });
+
+            var userCommands = new UserCommand(personFactory, userDb, animalDb, writer);
             userCommands.ImportantEventHappened += eventHandler;
 
-            var animalCommands = new PetCommand(animalFactory, animalDb);
+            var animalCommands = new PetCommand(animalFactory, animalDb, writer);
             animalCommands.ImportantEventHappened += eventHandler;
 
-            var employeeCommands = new EmployeeCommand(personFactory, employeeDb);
+            var employeeCommands = new EmployeeCommand(personFactory, employeeDb, writer);
             employeeCommands.ImportantEventHappened += eventHandler;
 
-            var serviceCommands = new ServiceCommand(serviceFactory, serviceDb, userDb);
+            var serviceCommands = new ServiceCommand(serviceFactory, serviceDb, userDb, writer);
             serviceCommands.ImportantEventHappened += eventHandler;
 
-            var engineCommands = new EngineCommand(commandFactory, commandDb);
+            var engineCommands = new EngineCommand(commandFactory, commandDb, writer);
             engineCommands.ImportantEventHappened += eventHandler;
 
-            var cashRegisterCommands = new CashRegisterCommand(serviceDb);
+            var cashRegisterCommands = new CashRegisterCommand(serviceDb, writer);
             cashRegisterCommands.ImportantEventHappened += eventHandler;
 
+            var processorCommand = new ProcessorCommand(userCommands, animalCommands, employeeCommands, serviceCommands, engineCommands, cashRegisterCommands, writer);
 
-            var engine = new Engine(userCommands, animalCommands, employeeCommands, serviceCommands, engineCommands, cashRegisterCommands);
+            var engine = new Engine(writer, processorCommand);
 
             engine.Start();
         }

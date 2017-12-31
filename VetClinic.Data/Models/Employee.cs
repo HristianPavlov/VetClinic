@@ -2,8 +2,8 @@
 {
     using Abstractions;
     using System.Text;
-    using VetClinic.Data.Common.Enums;
     using VetClinic.Data.Contracts;
+    using VetClinic.Data.Enums;
 
     public class Employee : Person, IEmployee
     {

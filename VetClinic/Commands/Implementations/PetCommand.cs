@@ -5,8 +5,9 @@
     using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
-    using VetClinic.Data.Common.Enums;
+    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Contracts;
+    using VetClinic.Data.Enums;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
@@ -14,11 +15,13 @@
     {
         private readonly IPetFactory animalFactory;
         private readonly IPetRepository animalDb;
+        private readonly IWriter writer;
 
-        public PetCommand(IPetFactory animalFactory, IPetRepository animalDb)
+        public PetCommand(IPetFactory animalFactory, IPetRepository animalDb, IWriter writer)
         {
             this.animalFactory = animalFactory;
             this.animalDb = animalDb;
+            this.writer = writer;
         }
 
         public void CreatePet(IList<string> parameters)
@@ -36,7 +39,7 @@
                 case "cat": newAnimal = this.animalFactory.CreateCat(name, gender, age); break;
                 case "dog": var breed = parameters[6]; newAnimal = this.animalFactory.CreateDog(name, gender, breed, age); break;
                 case "hamster": newAnimal = this.animalFactory.CreateHammster(name, gender, age); break;
-                default: Console.WriteLine(($"No pet of kind {animalType} can be serviced in this clinic")); return;
+                default: this.writer.WriteLine(($"No pet of kind {animalType} can be serviced in this clinic")); return;
             }
 
             newAnimal.OwnerPhoneNumber = userPhone;
@@ -71,7 +74,7 @@
                 sb.AppendLine($"Owner: {pet.OwnerPhoneNumber}");
             }
 
-            Console.WriteLine(sb.ToString());
+            this.writer.WriteLine(sb.ToString());
         }
     }
 }

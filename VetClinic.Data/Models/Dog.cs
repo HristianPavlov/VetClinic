@@ -1,10 +1,10 @@
 ﻿namespace VetClinic.Data.Models
 {
+    using Abstractions;
     using Bytes2you.Validation;
     using System.Text;
-    using Common.Enums;
-    using Abstractions;
     using VetClinic.Data.Contracts;
+    using VetClinic.Data.Enums;
 
     public class Dog : Pet, IDog
     {

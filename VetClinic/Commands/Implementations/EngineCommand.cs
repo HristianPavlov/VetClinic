@@ -6,6 +6,7 @@
     using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
+    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
@@ -13,11 +14,13 @@
     {
         private readonly ICommandFactory commandFactory;
         private readonly ICommandRepository commandsDb;
+        private readonly IWriter writer;
 
-        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb)
+        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb, IWriter writer)
         {
             this.commandFactory = commandFactory;
             this.commandsDb = commandsDb;
+            this.writer = writer;
         }
         public void CreateCommand(IList<string> parameters)
         {
@@ -53,11 +56,11 @@
                 throw new ArgumentException("No commands created yet");
             }
 
-            Console.WriteLine(("All commands:"));
+            this.writer.WriteLine(("All commands:"));
 
             foreach (var command in engineCommands)
             {
-                Console.WriteLine(command);
+                this.writer.WriteLine(command);
             }
         }
 
@@ -66,7 +69,7 @@
             var allCommands = new List<string>();
 
             var allMethods = Assembly
-                        .GetAssembly(typeof(ICommand))
+                        .GetAssembly(typeof(IProcessorCommand))
                         .GetTypes()
                         .Where(t => t.IsInterface)
                         .Select(t => new

@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using VetClinic.Data.Contracts;
 
-    public interface IAnimalRepository
+    public interface IPetRepository
     {
         ICollection<IPet> Pets { get; }
 

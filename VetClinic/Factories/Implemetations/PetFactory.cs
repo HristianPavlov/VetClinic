@@ -1,7 +1,7 @@
 ﻿namespace VetClinic.Factories.Implemetations
 {
-    using VetClinic.Data.Common.Enums;
     using VetClinic.Data.Contracts;
+    using VetClinic.Data.Enums;
     using VetClinic.Data.Models;
     using VetClinic.Factories.Contracts;
 

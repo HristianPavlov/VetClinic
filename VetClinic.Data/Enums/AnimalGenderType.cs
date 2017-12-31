@@ -1,4 +1,4 @@
-﻿namespace VetClinic.Data.Common.Enums
+﻿namespace VetClinic.Data.Enums
 {
     public enum AnimalGenderType
     {

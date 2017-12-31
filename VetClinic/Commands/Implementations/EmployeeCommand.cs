@@ -6,7 +6,8 @@
     using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
-    using VetClinic.Data.Common.Enums;
+    using VetClinic.Common.ConsoleServices.Contracts;
+    using VetClinic.Data.Enums;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
@@ -14,11 +15,13 @@
     {
         private readonly IPersonFactory personFactory;
         private readonly IEmployeeRepository employeeDb;
+        private readonly IWriter writer;
 
-        public EmployeeCommand(IPersonFactory personFactory, IEmployeeRepository staffDb)
+        public EmployeeCommand(IPersonFactory personFactory, IEmployeeRepository staffDb, IWriter writer)
         {
             this.personFactory = personFactory;
             this.employeeDb = staffDb;
+            this.writer = writer;
         }
 
         public void CreateEmployee(IList<string> parameters)
@@ -63,7 +66,7 @@
                 sb.AppendLine(employee.PrintInfo());
             }
 
-            Console.WriteLine(sb.ToString());
+            this.writer.WriteLine(sb.ToString());
         }
 
         public void SearchEmployeeByPhone(IList<string> parameters)
@@ -74,12 +77,12 @@
 
             if (employee == null)
             {
-                Console.WriteLine($"Employee with phone number {phone} was not found! Please proceed to register");
+                this.writer.WriteLine($"Employee with phone number {phone} was not found! Please proceed to register");
             }
             else
             {
-                Console.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with searched phone number {phone}");
-                Console.WriteLine($"Emplyoee Info: {employee.PrintInfo()}");
+                this.writer.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with searched phone number {phone}");
+                this.writer.WriteLine($"Emplyoee Info: {employee.PrintInfo()}");
             }
         }
     }

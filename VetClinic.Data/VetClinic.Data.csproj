@@ -50,10 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Enums\AnimalType.cs" />
-    <Compile Include="Common\Enums\AnimalGenderType.cs" />
-    <Compile Include="Common\Enums\RoleType.cs" />
-    <Compile Include="Common\IdGenerator.cs" />
+    <Compile Include="Enums\AnimalType.cs" />
+    <Compile Include="Enums\AnimalGenderType.cs" />
+    <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Contracts\IPet.cs" />
     <Compile Include="Contracts\ICat.cs" />
     <Compile Include="Contracts\IEngineCommand.cs" />
@@ -61,10 +60,10 @@
     <Compile Include="Models\EngineCommand.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Repositories\Contracts\IRepository.cs" />
-    <Compile Include="Repositories\Implementations\AnimalRepository.cs" />
+    <Compile Include="Repositories\Implementations\PetRepository.cs" />
     <Compile Include="Repositories\Implementations\CommandRepository.cs" />
     <Compile Include="Repositories\Implementations\EmployeeRepository.cs" />
-    <Compile Include="Repositories\Contracts\IAnimalRepository.cs" />
+    <Compile Include="Repositories\Contracts\IPetRepository.cs" />
     <Compile Include="Repositories\Contracts\ICommandRepository.cs" />
     <Compile Include="Repositories\Contracts\IEmployeeRepository.cs" />
     <Compile Include="Repositories\Contracts\IServiceRepository.cs" />

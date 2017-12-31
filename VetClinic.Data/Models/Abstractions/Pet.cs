@@ -1,12 +1,12 @@
 ﻿namespace VetClinic.Data.Models.Abstractions
 {
     using Bytes2you.Validation;
-    using Common.Enums;
     using Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using VetClinic.Data.Enums;
 
     public abstract class Pet : IPet
     {

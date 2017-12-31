@@ -6,6 +6,7 @@
     using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
+    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
@@ -14,12 +15,14 @@
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;
         private readonly IPetRepository animalDb;
+        private readonly IWriter writer;
 
-        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IPetRepository animalDb)
+        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IPetRepository animalDb, IWriter writer)
         {
             this.personFactory = personFactory;
             this.userDb = userDb;
             this.animalDb = animalDb;
+            this.writer = writer;
         }
 
         public void CreatePet(IList<string> parameters)
@@ -107,7 +110,7 @@
                 throw new ArgumentException("User not found");
             }
 
-            Console.WriteLine(user.ListUserPets());
+            this.writer.WriteLine(user.ListUserPets());
         }
 
         public void ListUsers()
@@ -126,7 +129,7 @@
                 sb.AppendLine(user.PrintInfo());
             }
 
-            Console.WriteLine(sb.ToString());
+            this.writer.WriteLine(sb.ToString());
         }
 
         public void SearchUserByPhone(IList<string> parameters)
@@ -137,13 +140,13 @@
 
             if (user == null)
             {
-                Console.WriteLine($"User with phone number {phone} was not found! Please proceed to register");
+                this.writer.WriteLine($"User with phone number {phone} was not found! Please proceed to register");
             }
             else
             {
-                Console.WriteLine($"User {user.FirstName} {user.LastName} was found with searched phone number {phone}");
-                Console.WriteLine($"{user.FirstName}'s Info:");
-                Console.WriteLine($"{user.PrintInfo()}");
+                this.writer.WriteLine($"User {user.FirstName} {user.LastName} was found with searched phone number {phone}");
+                this.writer.WriteLine($"{user.FirstName}'s Info:");
+                this.writer.WriteLine($"{user.PrintInfo()}");
             }
         }
 

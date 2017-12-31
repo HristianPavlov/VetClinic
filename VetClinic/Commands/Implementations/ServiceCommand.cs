@@ -6,6 +6,7 @@
     using System.Text;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
+    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
@@ -15,12 +16,14 @@
         private readonly IServiceFactory serviceFactory;
         private readonly IServiceRepository serviceDb;
         private readonly IUserRepository userDb;
+        private readonly IWriter writer;
 
-        public ServiceCommand(IServiceFactory serviceFactory, IServiceRepository serviceDb, IUserRepository userDb)
+        public ServiceCommand(IServiceFactory serviceFactory, IServiceRepository serviceDb, IUserRepository userDb, IWriter writer)
         {
             this.serviceFactory = serviceFactory;
             this.serviceDb = serviceDb;
             this.userDb = userDb;
+            this.writer = writer;
         }
 
         public void CreateService(IList<string> parameters)
@@ -65,7 +68,7 @@
                 sb.AppendLine(service.PrintInfo());
             }
 
-            Console.WriteLine(sb.ToString());
+            this.writer.WriteLine(sb.ToString());
         }
 
         public void PerformService(IList<string> parameters)
@@ -99,7 +102,7 @@
             user.Bill += service.Price;
 
             service.Execute();
-            this.OnMessage($"Service {service.Name} is executed!");
+            this.OnMessage($"Service {service.Name} completed!");
         }
 
         public decimal closeAccount(IList<string> parameters)
@@ -124,7 +127,7 @@
             {
                 throw new CustomException("Service not found");
             }
-            this.OnMessage($"Service {service.Name} is executed!");
+            this.OnMessage($"Service {service.Name} completed!");
         }
     }
 }

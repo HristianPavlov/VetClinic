@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using VetClinic.Data.Common.Enums;
-
-namespace VetClinic.Data.Contracts
+﻿namespace VetClinic.Data.Contracts
 {
+    using System.Collections.Generic;
+    using VetClinic.Data.Enums;
+
     public interface IPet
     {
         string Id { get; }

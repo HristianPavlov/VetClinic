@@ -2,9 +2,8 @@
 {
     using Abstractions;
     using Bytes2you.Validation;
-    using Common.Enums;
-    using System.Text;
     using VetClinic.Data.Contracts;
+    using VetClinic.Data.Enums;
 
     public class Cat : Pet, ICat
     {

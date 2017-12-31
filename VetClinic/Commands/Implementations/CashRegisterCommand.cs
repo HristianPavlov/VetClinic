@@ -5,6 +5,7 @@
     using System.Linq;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
+    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories.Contracts;
 
@@ -12,13 +13,15 @@
     {
         private decimal balance;
         private readonly IServiceRepository serviceDb;
+        private readonly IWriter writer;
 
         private readonly ICollection<IService> bookedServices;
 
-        public CashRegisterCommand(IServiceRepository serviceDb, decimal balance = 0.00m)
+        public CashRegisterCommand(IServiceRepository serviceDb, IWriter writer, decimal balance = 0.00m)
         {
             this.balance = balance;
             this.serviceDb = serviceDb;
+            this.writer = writer;
             bookedServices = new List<IService>();
         }
 
@@ -43,23 +46,23 @@
             }
 
             this.bookedServices.Add(service);
-            this.OnMessage($"Service {serviceName} successfully booked");
+            this.OnMessage($"Service {serviceName} successfully booked!");
         }
 
 
         public void PrintBookedServices()
         {
-            Console.WriteLine(("Booked service History:"));
+            this.writer.WriteLine(("History for booked service:"));
 
             foreach (var service in bookedServices)
             {
-                Console.WriteLine($"{service.Name} - ${service.Price}");
+                this.writer.WriteLine($"{service.Name} - ${service.Price}");
             }
         }
 
         public void PrintBalance()
         {
-            Console.WriteLine(string.Format("{0:F2}", this.Balance));
+            this.writer.WriteLine(string.Format("{0:F2}", this.Balance));
         }
     }
 }

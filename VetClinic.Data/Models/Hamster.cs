@@ -2,8 +2,8 @@
 {
     using Abstractions;
     using Bytes2you.Validation;
-    using Common.Enums;
     using VetClinic.Data.Contracts;
+    using VetClinic.Data.Enums;
 
     public class Hamster : Pet, IHamster
     {
