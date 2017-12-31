@@ -46,8 +46,7 @@
             var writer = new ConsoleWriter();
 
             var eventHandler = new EventHandler((command, message)
-                =>
-            { writer.WriteLine(message); });
+                => { writer.WriteLine(message); });
 
             var userCommands = new UserCommand(personFactory, userDb, animalDb, writer);
             userCommands.ImportantEventHappened += eventHandler;
