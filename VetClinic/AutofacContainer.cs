@@ -22,20 +22,10 @@
         private static void ConfigureContainer(ContainerBuilder builder)
         {
             builder
-              .RegisterAssemblyTypes(typeof(IPetRepository).Assembly)
-              .Where(t => t.Name.EndsWith("Repository"))
-              .AsImplementedInterfaces()
-              .SingleInstance();
-
-            builder
                 .RegisterAssemblyTypes(typeof(ICommandFactory).Assembly)
-                .Where(t => t.Name.EndsWith("Factory"))
-                .AsImplementedInterfaces()
-                .SingleInstance();
-
-            builder
-                .RegisterAssemblyTypes(typeof(IProcessorCommand).Assembly)
-                .Where(t => t.Name.EndsWith("Command"))
+                .Where(t => t.Name.EndsWith("Repository")
+                         && t.Name.EndsWith("Command")
+                         && t.Name.EndsWith("Factory"))
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
@@ -43,15 +33,15 @@
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
 
-            builder.RegisterAssemblyTypes(
-                      Assembly.GetExecutingAssembly())
-                     .AssignableTo<Person>()
-                     .PropertiesAutowired();
+            //builder.RegisterAssemblyTypes(
+            //            Assembly.GetExecutingAssembly())
+            //           .AssignableTo<Person>()
+            //           .PropertiesAutowired();
 
-            builder.RegisterAssemblyTypes(
-                      Assembly.GetExecutingAssembly())
-                      .AssignableTo<Pet>()
-                      .PropertiesAutowired();
+            //builder.RegisterAssemblyTypes(
+            //           Assembly.GetExecutingAssembly())
+            //          .AssignableTo<Pet>()
+            //          .PropertiesAutowired();
         }
     }
 }
