@@ -1,16 +1,17 @@
 ﻿namespace VetClinic
 {
-    using System;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common.ConsoleServices.Contracts;
 
     public class Engine : IEngine
     {
+        private readonly IReader reader;
         private readonly IWriter writer;
         private readonly IProcessorCommand processorCommand;
 
-        public Engine(IWriter writer, IProcessorCommand processorCommand)
+        public Engine(IProcessorCommand processorCommand, IReader reader, IWriter writer)
         {
+            this.reader = reader;
             this.writer = writer;
             this.processorCommand = processorCommand;
         }
@@ -21,9 +22,9 @@
 
             while (true)
             {
-                var command = Console.ReadLine();
+                var commandLine = this.reader.ReadLine();
 
-                this.processorCommand.ProcessCommand(command);
+                this.processorCommand.ProcessCommand(commandLine);
 
                 this.writer.WriteLine("Waiting for command...");
             }

@@ -43,10 +43,13 @@
             var serviceDb = new ServiceRepository();
             var commandDb = new CommandRepository();
 
+            var commands = new Command();
+            var reader = new ConsoleReader();
             var writer = new ConsoleWriter();
 
             var eventHandler = new EventHandler((command, message)
-                => { writer.WriteLine(message); });
+                =>
+            { writer.WriteLine(message); });
 
             var userCommands = new UserCommand(personFactory, userDb, animalDb, writer);
             userCommands.ImportantEventHappened += eventHandler;
@@ -60,15 +63,15 @@
             var serviceCommands = new ServiceCommand(serviceFactory, serviceDb, userDb, writer);
             serviceCommands.ImportantEventHappened += eventHandler;
 
-            var engineCommands = new EngineCommand(commandFactory, commandDb, writer);
+            var engineCommands = new EngineCommand(commandFactory, commandDb, commands, writer);
             engineCommands.ImportantEventHappened += eventHandler;
 
             var cashRegisterCommands = new CashRegisterCommand(serviceDb, writer);
             cashRegisterCommands.ImportantEventHappened += eventHandler;
 
-            var processorCommand = new ProcessorCommand(userCommands, animalCommands, employeeCommands, serviceCommands, engineCommands, cashRegisterCommands, writer);
+            var processorCommand = new ProcessorCommand(userCommands, animalCommands, employeeCommands, serviceCommands, engineCommands, cashRegisterCommands, commands, writer);
 
-            var engine = new Engine(writer, processorCommand);
+            var engine = new Engine(processorCommand, reader, writer);
 
             engine.Start();
         }

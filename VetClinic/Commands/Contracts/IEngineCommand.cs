@@ -8,6 +8,6 @@ namespace VetClinic.Commands.Contracts
 
         void DeleteCommand(IList<string> parameters);
 
-        void Help();
+        void ListCommands();
     }
 }

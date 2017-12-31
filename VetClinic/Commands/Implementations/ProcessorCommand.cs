@@ -13,9 +13,10 @@ namespace VetClinic.Commands.Implementations
         private readonly IServiceCommand serviceCommands;
         private readonly IEngineCommand engineCommands;
         private readonly ICashRegisterCommand cashRegister;
+        private readonly ICommand commands;
         private readonly IWriter writer;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, IWriter writer)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, ICommand commands, IWriter writer)
         {
             this.userCommands = userCommands;
             this.animalCommands = animalCommands;
@@ -23,6 +24,7 @@ namespace VetClinic.Commands.Implementations
             this.serviceCommands = serviceCommands;
             this.engineCommands = engineCommands;
             this.cashRegister = cashRegister;
+            this.commands = commands;
             this.writer = writer;
         }
 
@@ -37,6 +39,14 @@ namespace VetClinic.Commands.Implementations
             }
             try
             {
+                //var commandsList = this.commands.GetAllCommands();
+                //var command = commandParts[0];
+                //var commandFound = commandsList.FirstOrDefault(c => c == command);
+                //if (commandFound != null)
+                //{
+                //    //find and execute dinamically
+                //}
+
                 switch (commandParts[0])
                 {
                     // User
@@ -72,7 +82,7 @@ namespace VetClinic.Commands.Implementations
                     // Commands
                     case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
                     case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
-                    case "help": this.engineCommands.Help(); break;
+                    case "listCommands": this.engineCommands.ListCommands(); break;
 
                     // Accounting
                     case "updateBalance":
@@ -81,7 +91,7 @@ namespace VetClinic.Commands.Implementations
                     case "printBalance": this.cashRegister.PrintBalance(); break;
                     case "printBookedServices": this.cashRegister.PrintBookedServices(); break;
 
-                    default: this.writer.WriteLine("Invalid command! To read about all commmands, write help and press enter"); break;
+                    default: this.writer.WriteLine("Invalid command! To read about all commmands, write listCommands and press enter"); break;
                 }
             }
             catch (Exception ex)

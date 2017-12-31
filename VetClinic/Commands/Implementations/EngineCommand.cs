@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common;
     using VetClinic.Common.ConsoleServices.Contracts;
@@ -14,13 +13,15 @@
     {
         private readonly ICommandFactory commandFactory;
         private readonly ICommandRepository commandsDb;
+        private readonly ICommand commands;
         private readonly IWriter writer;
 
-        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb, IWriter writer)
+        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb, ICommand commands, IWriter writer)
         {
             this.commandFactory = commandFactory;
             this.commandsDb = commandsDb;
             this.writer = writer;
+            this.commands = commands;
         }
         public void CreateCommand(IList<string> parameters)
         {
@@ -47,9 +48,9 @@
             this.OnMessage($"Command {name} successfully deleted");
         }
 
-        public void Help()
+        public void ListCommands()
         {
-            var engineCommands = GetAllCommands();
+            var engineCommands = this.commands.GetAllCommands();
 
             if (engineCommands.Count() == 0)
             {
@@ -63,39 +64,6 @@
             {
                 this.writer.WriteLine($"{++counter}. {command}");
             }
-        }
-
-        private List<string> GetAllCommands()
-        {
-            var allCommands = new List<string>();
-
-            var allMethods = Assembly
-                        .GetAssembly(typeof(IProcessorCommand))
-                        .GetTypes()
-                        .Where(t => t.IsInterface)
-                        .Select(t => new
-                        {
-                            Commands = t.GetMethods()
-                                            .Where(m => m.ReturnType == typeof(void)).ToList()
-                          })
-                        .ToList();
-
-            foreach (var methodList in allMethods.Skip(1))
-            {
-                foreach (var command in methodList.Commands)
-                {
-                    if (allCommands.Contains(command.Name))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        allCommands.Add(command.Name);
-                    }
-                }
-            }
-
-            return allCommands;
         }
     }
 }

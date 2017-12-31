@@ -1,83 +1,43 @@
-﻿using System;
-using VetClinic.Commands.Contracts;
-
-namespace VetClinic.Commands.Implementations
+﻿namespace VetClinic.Commands.Implementations
 {
-    class Command : ICommand
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using VetClinic.Commands.Contracts;
+
+    public class Command : ICommand
     {
-        //private const char SplitCommandSymbol = ' ';
-        //private const string CommentOpenSymbol = "{{";
-        //private const string CommentCloseSymbol = "}}";
-
-        private string name;
-        //private List<string> parameters;
-
-        public Command(string input)
+        public List<string> GetAllCommands()
         {
-            this.Name = input;
-            //this.Parameters = new List<string>();
-            //this.TranslateInput(input);
-        }
+            var allCommands = new List<string>();
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
+            var allMethods = Assembly
+                        .GetAssembly(typeof(ICommand))
+                        .GetTypes()
+                        .Where(t => t.IsInterface)
+                        .Select(t => new
+                        {
+                            Commands = t.GetMethods()
+                                            .Where(m => m.ReturnType == typeof(void)).ToList()
+                        })
+                        .ToList();
 
-            private set
+            foreach (var methodList in allMethods.Skip(1))
             {
-                if (string.IsNullOrEmpty(value))
+                foreach (var command in methodList.Commands)
                 {
-
-                    throw new ArgumentNullException("Name cannot be null or empty.");
+                    if (allCommands.Contains(command.Name))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        allCommands.Add(command.Name);
+                    }
                 }
-
-                this.name = value;
             }
+
+            return allCommands;
         }
-        //public List<string> Parameters
-        //{
-        //    get
-        //    {
-        //        return this.parameters;
-        //    }
-
-        //    private set
-        //    {
-        //        if (value == null)
-        //        {
-        //            throw new ArgumentNullException("List of strings cannot be null.");
-        //        }
-
-        //        this.parameters = value;
-        //    }
-        //}
-
-        //private void TranslateInput(string input)
-        //{
-        //    var indexOfFirstSeparator = input.IndexOf(SplitCommandSymbol);
-        //    var indexOfOpenComment = input.IndexOf(CommentOpenSymbol);
-        //    var indexOfCloseComment = input.IndexOf(CommentCloseSymbol);
-        //    Regex regex = new Regex("{{.+(?=}})}}");
-
-        //    if (indexOfFirstSeparator < 0)
-        //    {
-        //        this.Name = input;
-        //        return;
-        //    }
-
-        //    this.Name = input.Substring(0, indexOfFirstSeparator);
-
-        //    if (indexOfOpenComment >= 0)
-        //    {
-        //        this.Parameters.Add(input.Substring(indexOfOpenComment + CommentOpenSymbol.Length, indexOfCloseComment - CommentCloseSymbol.Length - indexOfOpenComment));
-        //        input = regex.Replace(input, string.Empty);
-        //    }
-
-        //    this.Parameters.AddRange(input.Substring(indexOfFirstSeparator + 1).Split(new[] { SplitCommandSymbol }, StringSplitOptions.RemoveEmptyEntries));
-        //}
-
     }
 }
