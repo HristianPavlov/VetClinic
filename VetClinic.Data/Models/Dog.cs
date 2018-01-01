@@ -25,7 +25,7 @@
         public override string PrintInfo()
         {
             var sb = new StringBuilder();
-            sb.Append(base.PrintInfo());
+            sb.AppendLine(base.PrintInfo().Trim());
             sb.AppendLine($"Breed: {this.Breed}");
             return sb.ToString();
         }

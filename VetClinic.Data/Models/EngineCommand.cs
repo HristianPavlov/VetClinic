@@ -15,7 +15,6 @@
             this.name = name;
         }
 
-
         public string Id => this.id;
 
         public string Name => this.name;

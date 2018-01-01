@@ -64,7 +64,7 @@
             {
                 if ( command.ToLower() == "write" ||
                      command.ToLower() == "writeline" ||
-                     command.ToLower() == "addbokedservice" ||
+                     command.ToLower() == "addbookedservice" ||
                      command.ToLower() == "processcommand" ||
                      command.ToLower() == "createcommand" ||
                      command.ToLower() == "deletecommand" ||

@@ -20,7 +20,7 @@
         public override string PrintInfo()
         {
             var sb = new StringBuilder();
-            sb.Append(base.PrintInfo());
+            sb.AppendLine(base.PrintInfo().Trim());
             sb.AppendLine($"Role: {this.Role}");
             return sb.ToString();
         }
