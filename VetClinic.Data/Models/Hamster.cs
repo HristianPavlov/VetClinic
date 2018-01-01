@@ -8,7 +8,7 @@
     public class Hamster : Pet, IHamster
     {
         public Hamster(string name, AnimalGenderType gender, int age) 
-            : base(name, gender, AnimalType.Hamster, age)
+            : base(name, gender, AnimalType.hamster, age)
         {
             Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
         }

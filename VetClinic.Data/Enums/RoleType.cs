@@ -2,8 +2,8 @@
 {
     public enum RoleType
     {
-        NotSet,
-        Admin,
-        Veterinarian
+        notset,
+        admin,
+        veterinarian
     }
 }

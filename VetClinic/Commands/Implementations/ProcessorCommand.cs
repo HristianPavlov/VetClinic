@@ -47,49 +47,56 @@ namespace VetClinic.Commands.Implementations
                 //    //find and execute dinamically
                 //}
 
-                switch (commandParts[0])
+                switch (commandParts[0].ToLower())
                 {
                     // User
-                    case "createUser": this.userCommands.CreateUser(commandParts); break;
-                    case "deleteUser": this.userCommands.DeleteUser(commandParts); break;
-                    case "listUserPets": this.userCommands.ListUserPets(commandParts); break;
-                    case "searchUserByPhone": this.userCommands.SearchUserByPhone(commandParts); break;
-                    case "listUsers": this.userCommands.ListUsers(); break;
+                    case "createuser": this.userCommands.CreateUser(commandParts); break;
+                    case "deleteuser": this.userCommands.DeleteUser(commandParts); break;
+                    case "listuserpets": this.userCommands.ListUserPets(commandParts); break;
+                    case "searchuserbyphone": this.userCommands.SearchUserByPhone(commandParts); break;
+                    case "listusers": this.userCommands.ListUsers(); break;
 
                     // Employee
-                    case "createEmployee": this.employeeCommands.CreateEmployee(commandParts); break;
-                    case "deleteEmployee": this.employeeCommands.DeleteEmployee(commandParts); break;
-                    case "listEmployees": this.employeeCommands.ListEmployees(); break;
-                    case "searchEmployeeByPhone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
+                    case "createemployee": this.employeeCommands.CreateEmployee(commandParts); break;
+                    case "deleteemployee": this.employeeCommands.DeleteEmployee(commandParts); break;
+                    case "listemployees": this.employeeCommands.ListEmployees(); break;
+                    case "searchemployeebyphone": this.employeeCommands.SearchEmployeeByPhone(commandParts); break;
 
                     // Pet
-                    case "createPet":
+                    case "createpet":
                         this.animalCommands.CreatePet(commandParts);
                         this.userCommands.CreatePet(commandParts); break;
-                    case "deletePet":
+                    case "deletepet":
                         this.animalCommands.DeletePet(commandParts);
                         this.userCommands.CreatePet(commandParts); break;
-                    case "listPets": this.animalCommands.ListPets(); break;
+                    case "listpets": this.animalCommands.ListPets(); break;
 
                     // Services
-                    case "createService": this.serviceCommands.CreateService(commandParts); break;
-                    case "deleteService": this.serviceCommands.DeleteService(commandParts); break;
-                    case "listServices": this.serviceCommands.ListServices(commandParts); break;
-                    case "performService":
+                    case "createservice": this.serviceCommands.CreateService(commandParts); break;
+                    case "deleteservice": this.serviceCommands.DeleteService(commandParts); break;
+                    case "listservices": this.serviceCommands.ListServices(commandParts); break;
+                    case "performservice":
                         this.serviceCommands.PerformService(commandParts);
                         this.cashRegister.AddBookedService(commandParts); break;
 
+<<<<<<< HEAD
                     //// Commands
                     //case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
                     //case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
                     //case "listCommands": this.engineCommands.ListCommands(); break;
+=======
+                    // Commands
+                    case "createcommand": this.engineCommands.CreateCommand(commandParts); break;
+                    case "deletecommand": this.engineCommands.DeleteCommand(commandParts); break;
+                    case "listcommands": this.engineCommands.ListCommands(); break;
+>>>>>>> ea8d48af56a2f26ade7296fad5793f5cc9d1f46e
 
                     // Accounting
-                    case "updateBalance":
+                    case "updatebalance":
                         this.cashRegister.UpdateBalance(
-                        this.serviceCommands.closeAccount(commandParts)); break;
-                    case "printBalance": this.cashRegister.PrintBalance(); break;
-                    case "printBookedServices": this.cashRegister.PrintBookedServices(); break;
+                        this.serviceCommands.CloseAccount(commandParts)); break;
+                    case "printbalance": this.cashRegister.PrintBalance(); break;
+                    case "printbookedservices": this.cashRegister.PrintBookedServices(); break;
 
                     default: this.writer.WriteLine("Invalid command! To read about all commmands, write listCommands and press enter"); break;
                 }
