@@ -28,7 +28,7 @@
         public void CreatePet(IList<string> parameters)
         {
             var userPhone = parameters[1];
-            // var animalType = parameters[2];
+            // var animalType = parameters[2]; // not used input parameter
             var animalName = parameters[3];
 
             var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
@@ -51,7 +51,7 @@
         public void DeletePet(IList<string> parameters)
         {
             var userPhone = parameters[1];
-            // var animalType = parameters[2];
+            // var animalType = parameters[2];  // not used input parameter
             var animalName = parameters[3];
 
             var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
@@ -149,6 +149,5 @@
                 this.writer.WriteLine($"{user.PrintInfo()}");
             }
         }
-
     }
 }
