@@ -10,7 +10,7 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class UserCommand : VetClinicEventHandler, IUserCommand
+    public class UserCommand : Command, IUserCommand
     {
         private readonly IPersonFactory personFactory;
         private readonly IUserRepository userDb;

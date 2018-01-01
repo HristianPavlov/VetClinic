@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacContainer.cs" />
-    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\Contracts\ICommandGetter.cs" />
     <Compile Include="Commands\Contracts\IPetCommand.cs" />
     <Compile Include="Commands\Contracts\ICashRegisterCommand.cs" />
     <Compile Include="Commands\Contracts\IProcessorCommand.cs" />
@@ -75,6 +75,7 @@
     <Compile Include="Commands\Contracts\IServiceCommand.cs" />
     <Compile Include="Commands\Contracts\IUserCommand.cs" />
     <Compile Include="Commands\Implementations\Command.cs" />
+    <Compile Include="Commands\Implementations\CommandGetter.cs" />
     <Compile Include="Commands\Implementations\PetCommand.cs" />
     <Compile Include="Commands\Implementations\CashRegisterCommand.cs" />
     <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Factories\Contracts\IPersonFactory.cs" />
     <Compile Include="Factories\Contracts\IServiceFactory.cs" />
+    <Compile Include="Factories\Implemetations\Factory.cs" />
     <Compile Include="Factories\Implemetations\PetFactory.cs" />
     <Compile Include="Factories\Implemetations\CommandFactory.cs" />
     <Compile Include="Factories\Implemetations\PersonFactory.cs" />
@@ -104,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

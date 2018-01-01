@@ -13,10 +13,10 @@ namespace VetClinic.Commands.Implementations
         private readonly IServiceCommand serviceCommands;
         private readonly IEngineCommand engineCommands;
         private readonly ICashRegisterCommand cashRegister;
-        private readonly ICommand commands;
+        private readonly ICommandGetter commands;
         private readonly IWriter writer;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, ICommand commands, IWriter writer)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, ICommandGetter commands, IWriter writer)
         {
             this.userCommands = userCommands;
             this.animalCommands = animalCommands;

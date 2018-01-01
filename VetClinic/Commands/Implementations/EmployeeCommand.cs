@@ -11,7 +11,7 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class EmployeeCommand : VetClinicEventHandler, IEmployeeCommand
+    public class EmployeeCommand : Command, IEmployeeCommand
     {
         private readonly IPersonFactory personFactory;
         private readonly IEmployeeRepository employeeDb;

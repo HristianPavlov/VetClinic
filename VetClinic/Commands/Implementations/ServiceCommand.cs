@@ -11,7 +11,7 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class ServiceCommand : VetClinicEventHandler, IServiceCommand
+    public class ServiceCommand : Command, IServiceCommand
     {
         private readonly IServiceFactory serviceFactory;
         private readonly IServiceRepository serviceDb;

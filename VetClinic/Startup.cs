@@ -43,7 +43,7 @@
             var serviceDb = new ServiceRepository();
             var commandDb = new CommandRepository();
 
-            var commands = new Command();
+            var commands = new CommandGetter();
             var reader = new ConsoleReader();
             var writer = new ConsoleWriter();
 

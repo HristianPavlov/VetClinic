@@ -11,7 +11,7 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class PetCommand : VetClinicEventHandler, IPetCommand
+    public class PetCommand : Command, IPetCommand
     {
         private readonly IPetFactory animalFactory;
         private readonly IPetRepository animalDb;

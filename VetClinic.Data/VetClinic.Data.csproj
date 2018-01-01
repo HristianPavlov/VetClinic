@@ -87,6 +87,7 @@
     <Compile Include="Contracts\IUser.cs" />
     <Compile Include="Models\Abstractions\Pet.cs" />
     <Compile Include="Models\Cat.cs" />
+    <Compile Include="Repositories\Implementations\Repository.cs" />
     <Compile Include="Repositories\Implementations\ServiceRepository.cs" />
     <Compile Include="Repositories\Implementations\UserRepository.cs" />
     <Compile Include="Models\Dog.cs" />
@@ -98,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public interface ICommand
+    public interface ICommandGetter
     {
         List<string> GetAllCommands();
     }

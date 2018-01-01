@@ -9,14 +9,14 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class EngineCommand : VetClinicEventHandler, IEngineCommand
+    public class EngineCommand : Command, IEngineCommand
     {
         private readonly ICommandFactory commandFactory;
         private readonly ICommandRepository commandsDb;
-        private readonly ICommand commands;
+        private readonly ICommandGetter commands;
         private readonly IWriter writer;
 
-        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb, ICommand commands, IWriter writer)
+        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb, ICommandGetter commands, IWriter writer)
         {
             this.commandFactory = commandFactory;
             this.commandsDb = commandsDb;
