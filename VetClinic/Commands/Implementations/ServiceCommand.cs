@@ -29,6 +29,12 @@
         public void CreateService(IList<string> parameters)
         {
             var name = parameters[1];
+
+            var service = this.serviceDb.Services.FirstOrDefault(p => p.Name == name);
+            if (service != default(IService))
+            {
+                throw new CustomException("This service already exists!");
+            }
             var price = Decimal.Parse(parameters[2]);
 
             var newService = this.serviceFactory.CreateService(name, price);

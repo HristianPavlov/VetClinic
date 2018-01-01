@@ -37,9 +37,9 @@
         {
             var petExists = this.pets.Any(a => a.Id == pet.Id);
 
-            if (petExists)
+            if (!petExists)
             {
-                throw new ArgumentException("This pet already exists in database");
+                throw new ArgumentException("This pet does not exists in database");
             }
 
             this.pets.Remove(pet);
