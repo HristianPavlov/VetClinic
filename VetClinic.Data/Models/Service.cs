@@ -10,7 +10,7 @@
     {
         private static int count = 1;
 
-        private decimal price;
+        private readonly decimal price;
         private readonly string name;
         private readonly string id;
         private readonly int timeToExecute;
@@ -24,10 +24,10 @@
             this.timeToExecute = timeToExecute;
         }
 
-        public Service(string name, decimal price, int timeToExecute) // TODO price cannot be changed
+        public Service(string name, decimal price, int timeToExecute)
             : this(name, timeToExecute)
         {
-            this.Price = price;
+            this.price = price;
         }
 
         public string Id => this.id;
@@ -37,11 +37,6 @@
         public decimal Price
         {
             get => this.price;
-            protected set
-            {
-                Guard.WhenArgument(price, "Price must be positive!").IsLessThan(0.0m).Throw();
-                this.price = value;
-            }
         }
 
         public int TimeToExecute => this.timeToExecute;

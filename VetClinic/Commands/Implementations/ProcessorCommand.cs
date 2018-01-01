@@ -39,14 +39,6 @@ namespace VetClinic.Commands.Implementations
             }
             try
             {
-                //var commandsList = this.commands.GetAllCommands();
-                //var command = commandParts[0];
-                //var commandFound = commandsList.FirstOrDefault(c => c == command);
-                //if (commandFound != null)
-                //{
-                //    //find and execute dinamically
-                //}
-
                 switch (commandParts[0].ToLower())
                 {
                     // User
@@ -80,8 +72,6 @@ namespace VetClinic.Commands.Implementations
                         this.cashRegister.AddBookedService(commandParts); break;
 
                     // Commands
-                    //case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
-                    //case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
                     case "listcommands": this.engineCommands.ListCommands(); break;
 
                     // Accounting

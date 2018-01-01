@@ -62,21 +62,18 @@
 
             foreach (var command in engineCommands)
             {
-                if (
-                    command.ToLower() == "write" ||
-                    command.ToLower() == "writeline" ||
-                    command.ToLower() == "addbokedservice" ||
-                    command.ToLower() == "processcommand" ||
-                    command.ToLower() == "createcommand" ||
-                    command.ToLower() == "deletecommand" ||
-                    command.ToLower() == "bookservice" )
-                {
-                }
+                if ( command.ToLower() == "write" ||
+                     command.ToLower() == "writeline" ||
+                     command.ToLower() == "addbokedservice" ||
+                     command.ToLower() == "processcommand" ||
+                     command.ToLower() == "createcommand" ||
+                     command.ToLower() == "deletecommand" ||
+                     command.ToLower() == "bookservice" )
+                { }
                 else
                 {
                     this.writer.WriteLine($"{++counter}. {command}");
                 }
-
             }
         }
     }
