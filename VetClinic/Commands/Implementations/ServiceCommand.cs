@@ -105,7 +105,7 @@
             this.OnMessage($"Service {service.Name} completed!");
         }
 
-        public decimal closeAccount(IList<string> parameters)
+        public decimal CloseAccount(IList<string> parameters)
         {
             var userPhone = parameters[1];
            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);

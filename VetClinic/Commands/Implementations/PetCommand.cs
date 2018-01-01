@@ -29,9 +29,9 @@
             IPet newAnimal;
 
             var userPhone = parameters[1];
-            var animalType = parameters[2];
+            var animalType = parameters[2].ToLower();
             var name = parameters[3];
-            var gender = (AnimalGenderType)Enum.Parse(typeof(AnimalGenderType), parameters[4]);
+            var gender = (AnimalGenderType)Enum.Parse(typeof(AnimalGenderType), parameters[4].ToLower());
             var age = int.Parse(parameters[5]);
 
             switch (animalType)

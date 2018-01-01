@@ -30,7 +30,7 @@
             var lastName = parameters[2];
             var phoneNumber = parameters[3];
             var email = parameters[4];
-            var role = (RoleType)Enum.Parse(typeof(RoleType), parameters[4]);
+            var role = (RoleType)Enum.Parse(typeof(RoleType), parameters[4].ToLower());
 
             var newEmployee = this.personFactory.CreateEmployee(firstName, lastName, phoneNumber, email, role);
         }

@@ -11,7 +11,7 @@
         private readonly string breed;
 
         public Dog(string name, AnimalGenderType gender, string breed, int age) 
-            : base(name, gender, AnimalType.Dog, age)
+            : base(name, gender, AnimalType.dog, age)
         {
             Guard.WhenArgument(breed, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(breed.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();

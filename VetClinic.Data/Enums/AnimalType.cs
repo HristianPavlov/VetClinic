@@ -2,9 +2,9 @@
 {
     public enum AnimalType
     {
-        NotSet,
-        Cat,
-        Dog,
-        Hamster
+        notset,
+        cat,
+        dog,
+        hamster
     }
 }
