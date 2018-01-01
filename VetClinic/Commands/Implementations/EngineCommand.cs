@@ -52,7 +52,7 @@
         {
             var engineCommands = this.commands.GetAllCommands();
 
-            if (engineCommands.Count() == 0)
+            if (engineCommands == null)
             {
                 throw new ArgumentException("No commands created yet");
             }
@@ -62,7 +62,21 @@
 
             foreach (var command in engineCommands)
             {
-                this.writer.WriteLine($"{++counter}. {command}");
+                if (
+                    command.ToLower() == "write" ||
+                    command.ToLower() == "writeline" ||
+                    command.ToLower() == "addbokedservice" ||
+                    command.ToLower() == "processcommand" ||
+                    command.ToLower() == "createcommand" ||
+                    command.ToLower() == "deletecommand" ||
+                    command.ToLower() == "bookservice" )
+                {
+                }
+                else
+                {
+                    this.writer.WriteLine($"{++counter}. {command}");
+                }
+
             }
         }
     }

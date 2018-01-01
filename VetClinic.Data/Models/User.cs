@@ -60,13 +60,7 @@
             foreach (var pet in this.pets)
             {
                 sb.AppendLine(pet.PrintInfo().Trim());
-                //sb.AppendLine($"Name: {pet.Name}");
-                //sb.AppendLine($"Gender: {pet.Gender}");
-                //sb.AppendLine($"Age: {pet.Age}");
-                //sb.AppendLine($"Type: {pet.Type}");
-                //sb.AppendLine($"Owner: {pet.OwnerPhoneNumber}");
             }
-
 
             return sb.ToString();
         }

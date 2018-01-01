@@ -79,10 +79,10 @@ namespace VetClinic.Commands.Implementations
                         this.serviceCommands.PerformService(commandParts);
                         this.cashRegister.AddBookedService(commandParts); break;
 
-                    //// Commands
+                    // Commands
                     //case "createCommand": this.engineCommands.CreateCommand(commandParts); break;
                     //case "deleteCommand": this.engineCommands.DeleteCommand(commandParts); break;
-                    //case "listCommands": this.engineCommands.ListCommands(); break;
+                    case "listcommands": this.engineCommands.ListCommands(); break;
 
                     // Accounting
                     case "updatebalance":
