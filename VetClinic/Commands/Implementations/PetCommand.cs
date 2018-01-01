@@ -71,7 +71,8 @@
             foreach (var pet in animalDb.Pets)
             {
                 sb.Append(pet.PrintInfo());
-                sb.AppendLine($"Owner: {pet.OwnerPhoneNumber}");
+                sb.AppendLine($"Owner phone: {pet.OwnerPhoneNumber}");
+                sb.AppendLine(" ========== ");
             }
 
             this.writer.WriteLine(sb.ToString());

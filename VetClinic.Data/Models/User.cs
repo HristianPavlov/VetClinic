@@ -72,8 +72,8 @@
         public override string PrintInfo()
         {
             var sb = new StringBuilder();
-            sb.Append(base.PrintInfo());
-            sb.AppendLine(ListUserPets());
+            sb.AppendLine(base.PrintInfo().Trim());
+            sb.AppendLine(ListUserPets().Trim());
             return sb.ToString();
         }
     }
