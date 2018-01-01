@@ -114,7 +114,7 @@
         public decimal CloseAccount(IList<string> parameters)
         {
             var userPhone = parameters[1];
-           var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
             decimal amount = user.Bill;
             user.Bill = 0;
