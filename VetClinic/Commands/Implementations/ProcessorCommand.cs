@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using VetClinic.Commands.Contracts;
-using VetClinic.Common.ConsoleServices.Contracts;
-
-namespace VetClinic.Commands.Implementations
+﻿namespace VetClinic.Commands.Implementations
 {
+    using System;
+    using System.Linq;
+    using VetClinic.Commands.Contracts;
+    using VetClinic.Common.ConsoleServices.Contracts;
+
     public class ProcessorCommand : IProcessorCommand
     {
         private readonly IUserCommand userCommands;

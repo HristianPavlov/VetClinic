@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common;
     using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;

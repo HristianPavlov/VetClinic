@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace VetClinic.Commands.Contracts
+﻿namespace VetClinic.Commands.Contracts
 {
+    using System.Collections.Generic;
+
     public interface IServiceCommand
     {
         void CreateService(IList<string> parameters);

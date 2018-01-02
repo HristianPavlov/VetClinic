@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using VetClinic.Common;
-
-namespace VetClinic.Commands.Implementations
+﻿namespace VetClinic.Commands.Implementations
 {
+    using System.Collections.Generic;
+    using VetClinic.Common;
+
     public abstract class Command : VetClinicEventHandler
     {
         public abstract void Create(IList<string> parameters);
