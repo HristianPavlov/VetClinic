@@ -85,5 +85,15 @@
                 this.writer.WriteLine($"Emplyoee Info: {employee.PrintInfo()}");
             }
         }
+
+        public override void Create(IList<string> parameters)
+        {
+            CreateEmployee(parameters);
+        }
+
+        public override void Delete(IList<string> parameters)
+        {
+            DeleteEmployee(parameters);
+        }
     }
 }

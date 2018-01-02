@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="VetClinic.Commands.Implementations.CashRegisterCommand" Collapsed="true">
-    <Position X="3.25" Y="3.25" Width="1.5" />
+    <Position X="3.75" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAABAEAIAAAAAAAAAAgAABAIAAAAAAEACQAAABAAAAA=</HashCode>
       <FileName>Commands\Implementations\CashRegisterCommand.cs</FileName>
@@ -9,14 +9,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.Command" Collapsed="true">
-    <Position X="2" Y="1.5" Width="1.75" />
+    <Position X="1.5" Y="1.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\Implementations\Command.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VetClinic.Commands.Implementations.CommandGetter" Collapsed="true">
-    <Position X="8.75" Y="7" Width="2" />
+    <Position X="5.25" Y="8.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\Implementations\CommandGetter.cs</FileName>
@@ -24,31 +24,31 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.EmployeeCommand" Collapsed="true">
-    <Position X="1" Y="3.25" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAIAAACAAAAAAAAAAAABAAAAAQgAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAABAIAAACAAAAAAAAAAAEBAEAAAQgAAAAAAAI=</HashCode>
       <FileName>Commands\Implementations\EmployeeCommand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.EngineCommand" Collapsed="true">
-    <Position X="1" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAIAAAEAEAAEAAAAAEAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAIAAAEAEAAEAAAAAEEAAEAAAQAAAAAAAAA=</HashCode>
       <FileName>Commands\Implementations\EngineCommand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.PetCommand" Collapsed="true">
-    <Position X="3.25" Y="6.25" Width="1.5" />
+    <Position X="2.75" Y="5.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABIAAAAgAAAAAAAAAABAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABIAAAAgAAAAAAAEAAFAAAQAAAAAAAAA=</HashCode>
       <FileName>Commands\Implementations\PetCommand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.ProcessorCommand" Collapsed="true">
-    <Position X="6.25" Y="7" Width="1.75" />
+    <Position X="2.75" Y="8.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAoACAAAgAAAAAAEAAAAAAAABwAAAAAgAAA=</HashCode>
       <FileName>Commands\Implementations\ProcessorCommand.cs</FileName>
@@ -56,51 +56,51 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.ServiceCommand" Collapsed="true">
-    <Position X="1" Y="6.25" Width="1.5" />
+    <Position X="0.5" Y="6.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAFAAAAABAAAAAAAAAABQAAEACABAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAAFAAAAABAAAAEAAEAABQAAEACABAA=</HashCode>
       <FileName>Commands\Implementations\ServiceCommand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Commands.Implementations.UserCommand" Collapsed="true">
-    <Position X="3.25" Y="4.75" Width="1.5" />
+    <Position X="2.75" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAABQAAAIAEAAgAABAAAAAAAAAAAQAAAAABAgA=</HashCode>
+      <HashCode>AAAAAQAABQAAAIAEAAgAABAAAAEAAEAAAQAAAAABAgA=</HashCode>
       <FileName>Commands\Implementations\UserCommand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Common.CustomException" Collapsed="true">
-    <Position X="8.75" Y="9" Width="2" />
+    <Position X="5.25" Y="10.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\CustomException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VetClinic.Common.CustomMessage" Collapsed="true">
-    <Position X="6.25" Y="9" Width="1.75" />
+    <Position X="2.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAACA=</HashCode>
       <FileName>Common\CustomMessage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VetClinic.Common.VetClinicEventHandler" Collapsed="true">
-    <Position X="2" Y="0.5" Width="1.75" />
+    <Position X="2.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAA=</HashCode>
       <FileName>Common\VetClinicEventHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VetClinic.Factories.Implemetations.Factory" Collapsed="true">
-    <Position X="7.5" Y="0.75" Width="1.5" />
+    <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Implemetations\Factory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VetClinic.Factories.Implemetations.CommandFactory" Collapsed="true">
-    <Position X="6.25" Y="2.25" Width="1.5" />
+    <Position X="6" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Implemetations\CommandFactory.cs</FileName>
@@ -108,7 +108,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Factories.Implemetations.PersonFactory" Collapsed="true">
-    <Position X="8.75" Y="2.25" Width="1.5" />
+    <Position X="8" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Implemetations\PersonFactory.cs</FileName>
@@ -116,7 +116,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Factories.Implemetations.PetFactory" Collapsed="true">
-    <Position X="8.75" Y="3.75" Width="1.5" />
+    <Position X="8" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>Factories\Implemetations\PetFactory.cs</FileName>
@@ -124,7 +124,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Factories.Implemetations.ServiceFactory" Collapsed="true">
-    <Position X="6.25" Y="3.75" Width="1.5" />
+    <Position X="6" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Factories\Implemetations\ServiceFactory.cs</FileName>
@@ -132,7 +132,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.Engine" Collapsed="true">
-    <Position X="6.25" Y="8" Width="1.5" />
+    <Position X="2.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAQAAAAAQAAA=</HashCode>
       <FileName>Engine.cs</FileName>
@@ -140,7 +140,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="VetClinic.AutofacContainer" Collapsed="true">
-    <Position X="8.75" Y="8" Width="1.5" />
+    <Position X="5.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>AutofacContainer.cs</FileName>

@@ -77,5 +77,15 @@
 
             this.writer.WriteLine(sb.ToString());
         }
+
+        public override void Create(IList<string> parameters)
+        {
+            CreatePet(parameters);
+        }
+
+        public override void Delete(IList<string> parameters)
+        {
+            DeletePet(parameters);
+        }
     }
 }

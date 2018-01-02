@@ -76,5 +76,15 @@
                 }
             }
         }
+
+        public override void Create(IList<string> parameters)
+        {
+            CreateCommand(parameters);
+        }
+
+        public override void Delete(IList<string> parameters)
+        {
+            DeleteCommand(parameters);
+        }
     }
 }

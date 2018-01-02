@@ -9,7 +9,7 @@
     using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories.Contracts;
 
-    public class CashRegisterCommand : Command, ICashRegisterCommand
+    public class CashRegisterCommand : VetClinicEventHandler, ICashRegisterCommand
     {
         private decimal balance;
         private readonly IServiceRepository serviceDb;

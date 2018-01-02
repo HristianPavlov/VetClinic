@@ -149,5 +149,15 @@
                 this.writer.WriteLine($"{user.PrintInfo()}");
             }
         }
+
+        public override void Create(IList<string> parameters)
+        {
+            CreateUser(parameters);
+        }
+
+        public override void Delete(IList<string> parameters)
+        {
+            DeleteUser(parameters);
+        }
     }
 }

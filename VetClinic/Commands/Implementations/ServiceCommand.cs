@@ -135,5 +135,15 @@
             }
             this.OnMessage($"Service {service.Name} completed!");
         }
+
+        public override void Create(IList<string> parameters)
+        {
+            CreateService(parameters);
+        }
+
+        public override void Delete(IList<string> parameters)
+        {
+            DeleteService(parameters);
+        }
     }
 }
