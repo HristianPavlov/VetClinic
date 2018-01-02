@@ -22,6 +22,7 @@ The Vet Clinic is a simple console application that manage the clinic CRUD opera
 - CRUD for customers
 - CRUD for pets
 - CRUD for clinic staff
+- CRUD for clinic services
 
 #### Services
 
