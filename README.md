@@ -34,5 +34,5 @@ This application provides services for the customer and their pets
 - Accounting of the clinic P&amp;L
 
 #### Libraries
-
+- Autofac - IoC handling dependecy injection for the entire project 
 
