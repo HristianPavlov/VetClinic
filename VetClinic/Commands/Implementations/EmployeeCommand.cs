@@ -5,22 +5,21 @@
     using System.Linq;
     using System.Text;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common;
     using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Enums;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class EmployeeCommand : Command, IEmployeeCommand
+    public class EmployeeCommand : IEmployeeCommand
     {
         private readonly IPersonFactory personFactory;
-        private readonly IEmployeeRepository employeeDb;
+        private readonly IEmployeeRepository employees;
         private readonly IWriter writer;
 
-        public EmployeeCommand(IPersonFactory personFactory, IEmployeeRepository staffDb, IWriter writer)
+        public EmployeeCommand(IPersonFactory personFactory, IEmployeeRepository employees, IWriter writer)
         {
             this.personFactory = personFactory;
-            this.employeeDb = staffDb;
+            this.employees = employees;
             this.writer = writer;
         }
 
@@ -39,20 +38,20 @@
         {
             var employeeId = parameters[1];
 
-            var employee = this.employeeDb.Employees.FirstOrDefault(e => e.Id == employeeId);
+            var employee = this.employees.Employees.FirstOrDefault(e => e.Id == employeeId);
 
             if (employee == null)
             {
                 throw new ArgumentException("Employee not found");
             }
 
-            this.employeeDb.DeleteEmployee(employeeId);
-            this.OnMessage($"Person {employee.FirstName} {employee.LastName} successfully deleted");
+            this.employees.DeleteEmployee(employeeId);
+            this.writer.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully deleted");
         }
 
         public void ListEmployees()
         {
-            if (this.employeeDb.Employees.Count == 0)
+            if (this.employees.Employees.Count == 0)
             {
                 throw new ArgumentException("No employee registered yet");
             }
@@ -61,7 +60,7 @@
 
             sb.AppendLine("All employees:");
 
-            foreach (var employee in this.employeeDb.Employees)
+            foreach (var employee in this.employees.Employees)
             {
                 sb.AppendLine(employee.PrintInfo());
             }
@@ -73,7 +72,7 @@
         {
             var phone = parameters[1];
 
-            var employee = this.employeeDb.Employees.FirstOrDefault(e => e.PhoneNumber == phone);
+            var employee = this.employees.Employees.FirstOrDefault(e => e.PhoneNumber == phone);
 
             if (employee == null)
             {
@@ -84,16 +83,6 @@
                 this.writer.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with searched phone number {phone}");
                 this.writer.WriteLine($"Emplyoee Info: {employee.PrintInfo()}");
             }
-        }
-
-        public override void Create(IList<string> parameters)
-        {
-            CreateEmployee(parameters);
-        }
-
-        public override void Delete(IList<string> parameters)
-        {
-            DeleteEmployee(parameters);
         }
     }
 }

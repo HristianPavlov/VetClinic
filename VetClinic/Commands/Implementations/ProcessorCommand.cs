@@ -13,10 +13,9 @@
         private readonly IServiceCommand serviceCommands;
         private readonly IEngineCommand engineCommands;
         private readonly ICashRegisterCommand cashRegister;
-        private readonly ICommandGetter commands;
         private readonly IWriter writer;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, ICommandGetter commands, IWriter writer)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, IWriter writer)
         {
             this.userCommands = userCommands;
             this.animalCommands = animalCommands;
@@ -24,7 +23,6 @@
             this.serviceCommands = serviceCommands;
             this.engineCommands = engineCommands;
             this.cashRegister = cashRegister;
-            this.commands = commands;
             this.writer = writer;
         }
 
@@ -39,6 +37,30 @@
             }
             try
             {
+                // var 1
+                var command = commandParts[0];
+
+                var commands = this.engineCommands.GetAllCommands();
+
+                if (commands == null)
+                {
+                    throw new ArgumentException("No commands created yet");
+                }
+
+                foreach (var commandList in commands.Skip(3))
+                {
+                    foreach (var method in commandList)
+                    {
+                        if (method.Name.ToLower() == command.ToLower())
+                        {
+                            // TODO what type to add instead of this
+                           // method.Invoke(this, new object[] { commandParts });
+                           // return;
+                        }
+                    }
+                }
+
+
                 switch (commandParts[0].ToLower())
                 {
                     // User

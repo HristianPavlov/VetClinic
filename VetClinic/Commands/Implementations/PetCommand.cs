@@ -10,16 +10,16 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class PetCommand : Command, IPetCommand
+    public class PetCommand : IPetCommand
     {
         private readonly IPetFactory animalFactory;
-        private readonly IPetRepository animalDb;
+        private readonly IPetRepository pets;
         private readonly IWriter writer;
 
-        public PetCommand(IPetFactory animalFactory, IPetRepository animalDb, IWriter writer)
+        public PetCommand(IPetFactory animalFactory, IPetRepository pets, IWriter writer)
         {
             this.animalFactory = animalFactory;
-            this.animalDb = animalDb;
+            this.pets = pets;
             this.writer = writer;
         }
 
@@ -42,9 +42,9 @@
             }
 
             newAnimal.OwnerPhoneNumber = userPhone;
-            this.animalDb.CreatePet(userPhone, newAnimal);
+            this.pets.CreatePet(userPhone, newAnimal);
 
-            this.OnMessage($"{animalType} with name {name} successfully created");
+            this.writer.WriteLine($"{animalType} with name {name} successfully created");
         }
 
         public void DeletePet(IList<string> parameters)
@@ -52,22 +52,22 @@
             var userPhone = parameters[1];
             var animalId = parameters[2];
 
-            var pet = this.animalDb.GetById(animalId);
+            var pet = this.pets.GetById(animalId);
             
             if (pet == null)
             {
                 throw new ArgumentException("Pet not found");
             }
 
-            this.animalDb.DetelePet(userPhone, pet);
-            this.OnMessage($"{pet.Type} with name {pet.Name} successfully removed from database");
+            this.pets.DetelePet(userPhone, pet);
+            this.writer.WriteLine($"{pet.Type} with name {pet.Name} successfully removed from database");
         }
 
         public void ListPets()
         {
             var sb = new StringBuilder();
 
-            foreach (var pet in animalDb.Pets)
+            foreach (var pet in pets.Pets)
             {
                 sb.Append(pet.PrintInfo());
                 sb.AppendLine($"Owner phone: {pet.OwnerPhoneNumber}");
@@ -75,16 +75,6 @@
             }
 
             this.writer.WriteLine(sb.ToString());
-        }
-
-        public override void Create(IList<string> parameters)
-        {
-            CreatePet(parameters);
-        }
-
-        public override void Delete(IList<string> parameters)
-        {
-            DeletePet(parameters);
         }
     }
 }

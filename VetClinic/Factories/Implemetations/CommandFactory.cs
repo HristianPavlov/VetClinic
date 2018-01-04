@@ -4,7 +4,7 @@
     using VetClinic.Data.Models;
     using VetClinic.Factories.Contracts;
 
-    public class CommandFactory : Factory, ICommandFactory
+    public class CommandFactory : ICommandFactory
     {
         public IEngineCommand CreateCommand(string name) => new EngineCommand(name);
     }

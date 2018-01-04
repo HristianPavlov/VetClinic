@@ -5,7 +5,7 @@
     using VetClinic.Data.Models;
     using VetClinic.Factories.Contracts;
 
-    public class PersonFactory : Factory, IPersonFactory
+    public class PersonFactory : IPersonFactory
     {
         public IUser CreateUser(string firstName, string lastName, string phoneNumber, string email) => new User(firstName, lastName, phoneNumber, email);
 

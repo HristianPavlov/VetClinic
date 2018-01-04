@@ -9,11 +9,11 @@
     public class PetRepository : IPetRepository
     {
         private readonly ICollection<IPet> pets;
-        private readonly IUserRepository usersDb;
+        private readonly IUserRepository users;
 
         public PetRepository(IUserRepository users)
         {
-            this.usersDb = users;
+            this.users = users;
             this.pets = new List<IPet>();
         }
         public ICollection<IPet> Pets => new List<IPet>(this.pets);

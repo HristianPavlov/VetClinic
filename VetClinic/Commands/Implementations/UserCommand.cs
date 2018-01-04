@@ -9,18 +9,18 @@
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class UserCommand : Command, IUserCommand
+    public class UserCommand : IUserCommand
     {
         private readonly IPersonFactory personFactory;
-        private readonly IUserRepository userDb;
-        private readonly IPetRepository animalDb;
+        private readonly IUserRepository users;
+        private readonly IPetRepository pets;
         private readonly IWriter writer;
 
-        public UserCommand(IPersonFactory personFactory, IUserRepository userDb, IPetRepository animalDb, IWriter writer)
+        public UserCommand(IPersonFactory personFactory, IUserRepository users, IPetRepository pets, IWriter writer)
         {
             this.personFactory = personFactory;
-            this.userDb = userDb;
-            this.animalDb = animalDb;
+            this.users = users;
+            this.pets = pets;
             this.writer = writer;
         }
 
@@ -28,16 +28,16 @@
         {
             var userPhone = parameters[1];
             // var animalType = parameters[2]; // not used input parameter
-            var animalName = parameters[3];
+            var petName = parameters[3];
 
-            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
                 throw new ArgumentException("User not found");
             }
 
-            var pet = this.animalDb.Pets.FirstOrDefault(a => a.Name == animalName);
+            var pet = this.pets.Pets.FirstOrDefault(a => a.Name == petName);
 
             if (pet == null)
             {
@@ -53,14 +53,14 @@
             // var animalType = parameters[2];  // not used input parameter
             var animalName = parameters[3];
 
-            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
                 throw new ArgumentException("User not found");
             }
 
-            var pet = this.animalDb.Pets.FirstOrDefault(a => a.Name == animalName);
+            var pet = this.pets.Pets.FirstOrDefault(a => a.Name == animalName);
 
             if (pet == null)
             {
@@ -79,30 +79,30 @@
 
             var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email);
 
-            this.userDb.CreateUser(newUser);
-            this.OnMessage($"User {firstName} {lastName} successfully created");
+            this.users.CreateUser(newUser);
+            this.writer.WriteLine($"User {firstName} {lastName} successfully created");
         }
 
         public void DeleteUser(IList<string> parameters)
         {
             var userId = parameters[1];
 
-            var user = this.userDb.Users.FirstOrDefault(p => p.Id == userId);
+            var user = this.users.Users.FirstOrDefault(p => p.Id == userId);
 
             if (user == null)
             {
                 throw new ArgumentException("User not found");
             }
 
-            this.userDb.DeleteUser(userId);
-            this.OnMessage($"User {user.FirstName} {user.LastName} successfully removed from database");
+            this.users.DeleteUser(userId);
+            this.writer.WriteLine($"User {user.FirstName} {user.LastName} successfully removed from database");
         }
 
         public void ListUserPets(IList<string> parameters)
         {
             var userPhone = parameters[1];
 
-            var user = this.userDb.Users.FirstOrDefault(p => p.PhoneNumber == userPhone);
+            var user = this.users.Users.FirstOrDefault(p => p.PhoneNumber == userPhone);
 
             if (user == null)
             {
@@ -114,7 +114,7 @@
 
         public void ListUsers()
         {
-            if (this.userDb.Users.Count == 0)
+            if (this.users.Users.Count == 0)
             {
                 throw new ArgumentException("No users registered");
             }
@@ -123,7 +123,7 @@
 
             sb.AppendLine("All users:");
 
-            foreach (var user in this.userDb.Users)
+            foreach (var user in this.users.Users)
             {
                 sb.AppendLine(user.PrintInfo());
             }
@@ -135,7 +135,7 @@
         {
             var phone = parameters[1];
 
-            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == phone);
+            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == phone);
 
             if (user == null)
             {
@@ -147,16 +147,6 @@
                 this.writer.WriteLine($"{user.FirstName}'s Info:");
                 this.writer.WriteLine($"{user.PrintInfo()}");
             }
-        }
-
-        public override void Create(IList<string> parameters)
-        {
-            CreateUser(parameters);
-        }
-
-        public override void Delete(IList<string> parameters)
-        {
-            DeleteUser(parameters);
         }
     }
 }

@@ -3,24 +3,23 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class EngineCommand : Command, IEngineCommand
+    public class EngineCommand : IEngineCommand
     {
         private readonly ICommandFactory commandFactory;
-        private readonly ICommandRepository commandsDb;
-        private readonly ICommandGetter commands;
+        private readonly ICommandRepository commands;
         private readonly IWriter writer;
 
-        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commandsDb, ICommandGetter commands, IWriter writer)
+        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commands, IWriter writer)
         {
             this.commandFactory = commandFactory;
-            this.commandsDb = commandsDb;
-            this.writer = writer;
             this.commands = commands;
+            this.writer = writer;
         }
         public void CreateCommand(IList<string> parameters)
         {
@@ -28,30 +27,30 @@
 
             var newCommand = this.commandFactory.CreateCommand(name);
 
-            this.commandsDb.CreateCommand(newCommand);
-            this.OnMessage($"Command {name} successfully created");
+            this.commands.CreateCommand(newCommand);
+            this.writer.WriteLine($"Command {name} successfully created");
         }
 
         public void DeleteCommand(IList<string> parameters)
         {
             var name = parameters[1];
 
-            var command = this.commandsDb.Commands.FirstOrDefault(p => p.Name == name);
+            var command = this.commands.Commands.FirstOrDefault(p => p.Name == name);
 
             if (command == null)
             {
                 throw new ArgumentException("Command not found");
             }
 
-            this.commandsDb.DeleteCommand(name);
-            this.OnMessage($"Command {name} successfully deleted");
+            this.commands.DeleteCommand(name);
+            this.writer.WriteLine($"Command {name} successfully deleted");
         }
 
         public void ListCommands()
         {
-            var engineCommands = this.commands.GetAllCommands();
+            var commandsList = this.GetAllCommands();
 
-            if (engineCommands == null)
+            if (commandsList == null)
             {
                 throw new ArgumentException("No commands created yet");
             }
@@ -59,31 +58,22 @@
             this.writer.WriteLine(("All commands:"));
             var counter = 0;
 
-            foreach (var command in engineCommands)
+            foreach (var commands in commandsList.Skip(1))
             {
-                if ( command.ToLower() == "write" ||
-                     command.ToLower() == "writeline" ||
-                     command.ToLower() == "addbookedservice" ||
-                     command.ToLower() == "processcommand" ||
-                     command.ToLower() == "createcommand" ||
-                     command.ToLower() == "deletecommand" ||
-                     command.ToLower() == "bookservice" )
-                { }
-                else
+                foreach (var command in commands)
                 {
-                    this.writer.WriteLine($"{++counter}. {command}");
+                    this.writer.WriteLine($"{++counter}. {command.Name}");
                 }
             }
+
         }
 
-        public override void Create(IList<string> parameters)
-        {
-            CreateCommand(parameters);
-        }
-
-        public override void Delete(IList<string> parameters)
-        {
-            DeleteCommand(parameters);
-        }
+        public IEnumerable<List<MethodInfo>> GetAllCommands()
+             => Assembly
+                   .GetAssembly(typeof(IEngineCommand))
+                   .GetTypes()
+                   .Where(t => t.IsInterface)
+                   .Select(t => t.GetMethods().Where(m => m.ReturnType == typeof(void))
+                   .ToList());
     }
 }

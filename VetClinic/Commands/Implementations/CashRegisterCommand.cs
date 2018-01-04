@@ -4,23 +4,22 @@
     using System.Collections.Generic;
     using System.Linq;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common;
     using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories.Contracts;
 
-    public class CashRegisterCommand : VetClinicEventHandler, ICashRegisterCommand
+    public class CashRegisterCommand : ICashRegisterCommand
     {
         private decimal balance;
-        private readonly IServiceRepository serviceDb;
+        private readonly IServiceRepository services;
         private readonly IWriter writer;
 
         private readonly ICollection<IService> bookedServices;
 
-        public CashRegisterCommand(IServiceRepository serviceDb, IWriter writer, decimal balance = 0.00m)
+        public CashRegisterCommand(IServiceRepository services, IWriter writer, decimal balance = 0.00m)
         {
             this.balance = balance;
-            this.serviceDb = serviceDb;
+            this.services = services;
             this.writer = writer;
             bookedServices = new List<IService>();
         }
@@ -38,7 +37,7 @@
         {
             var serviceName = parameters[1];
 
-            var service = this.serviceDb.Services.FirstOrDefault(s => s.Name == serviceName);
+            var service = this.services.Services.FirstOrDefault(s => s.Name == serviceName);
 
             if (service == null)
             {
@@ -46,7 +45,7 @@
             }
 
             this.bookedServices.Add(service);
-            this.OnMessage($"Service {serviceName} successfully booked!");
+            this.writer.WriteLine($"Service {serviceName} successfully booked!");
         }
 
 

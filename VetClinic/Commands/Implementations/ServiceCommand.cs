@@ -5,24 +5,23 @@
     using System.Linq;
     using System.Text;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common;
     using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
 
-    public class ServiceCommand : Command, IServiceCommand
+    public class ServiceCommand : IServiceCommand
     {
         private readonly IServiceFactory serviceFactory;
-        private readonly IServiceRepository serviceDb;
-        private readonly IUserRepository userDb;
+        private readonly IServiceRepository services;
+        private readonly IUserRepository users;
         private readonly IWriter writer;
 
-        public ServiceCommand(IServiceFactory serviceFactory, IServiceRepository serviceDb, IUserRepository userDb, IWriter writer)
+        public ServiceCommand(IServiceFactory serviceFactory, IServiceRepository services, IUserRepository users, IWriter writer)
         {
             this.serviceFactory = serviceFactory;
-            this.serviceDb = serviceDb;
-            this.userDb = userDb;
+            this.services = services;
+            this.users = users;
             this.writer = writer;
         }
 
@@ -30,37 +29,37 @@
         {
             var name = parameters[1];
 
-            var service = this.serviceDb.Services.FirstOrDefault(p => p.Name == name);
+            var service = this.services.Services.FirstOrDefault(p => p.Name == name);
             if (service != default(IService))
             {
-                throw new CustomException("This service already exists!");
+                throw new ArgumentException("This service already exists!");
             }
             var price = Decimal.Parse(parameters[2]);
 
             var newService = this.serviceFactory.CreateService(name, price);
 
-            this.serviceDb.CreateService(newService);
-            this.OnMessage($"Service {name} successfully created");
+            this.services.CreateService(newService);
+            this.writer.WriteLine($"Service {name} successfully created");
         }
 
         public void DeleteService(IList<string> parameters)
         {
             var name = parameters[1];
 
-            var service = this.serviceDb.Services.FirstOrDefault(p => p.Name == name);
+            var service = this.services.Services.FirstOrDefault(p => p.Name == name);
 
             if (service == null)
             {
                 throw new ArgumentException("Service not found");
             }
 
-            this.serviceDb.DeleteService(name);
-            this.OnMessage($"Service {name} successfully deleted");
+            this.services.DeleteService(name);
+            this.writer.WriteLine($"Service {name} successfully deleted");
         }
 
         public void ListServices(IList<string> parameters)
         {
-            if (this.serviceDb.Services.Count == 0)
+            if (this.services.Services.Count == 0)
             {
                 throw new ArgumentException("No users registered");
             }
@@ -69,7 +68,7 @@
 
             sb.AppendLine("All services:");
 
-            foreach (var service in this.serviceDb.Services)
+            foreach (var service in this.services.Services)
             {
                 sb.AppendLine(service.PrintInfo());
             }
@@ -83,14 +82,14 @@
             var userPhone = parameters[2];
             var animalName = parameters[3];
 
-            var service = this.serviceDb.Services.FirstOrDefault(s => s.Name == serviceName);
+            var service = this.services.Services.FirstOrDefault(s => s.Name == serviceName);
 
             if (service == null)
             {
                 throw new ArgumentException($"{serviceName} is not found.");
             }
 
-            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
@@ -108,13 +107,13 @@
             user.Bill += service.Price;
 
             service.Execute();
-            this.OnMessage($"Service {service.Name} completed!");
+            this.writer.WriteLine($"Service {service.Name} completed!");
         }
 
         public decimal CloseAccount(IList<string> parameters)
         {
             var userPhone = parameters[1];
-            var user = this.userDb.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
 
             decimal amount = user.Bill;
             user.Bill = 0;
@@ -127,23 +126,13 @@
         {
             var name = parameters[1];
 
-            var service = this.serviceDb.Services.FirstOrDefault(p => p.Name == name);
+            var service = this.services.Services.FirstOrDefault(p => p.Name == name);
 
             if (service == null)
             {
-                throw new CustomException("Service not found");
+                throw new ArgumentException("Service not found");
             }
-            this.OnMessage($"Service {service.Name} completed!");
-        }
-
-        public override void Create(IList<string> parameters)
-        {
-            CreateService(parameters);
-        }
-
-        public override void Delete(IList<string> parameters)
-        {
-            DeleteService(parameters);
+            this.writer.WriteLine($"Service {service.Name} completed!");
         }
     }
 }

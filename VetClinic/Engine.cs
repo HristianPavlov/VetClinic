@@ -5,15 +5,15 @@
 
     public class Engine : IEngine
     {
+        private readonly IProcessorCommand processorCommand;
         private readonly IReader reader;
         private readonly IWriter writer;
-        private readonly IProcessorCommand processorCommand;
 
         public Engine(IProcessorCommand processorCommand, IReader reader, IWriter writer)
         {
+            this.processorCommand = processorCommand;
             this.reader = reader;
             this.writer = writer;
-            this.processorCommand = processorCommand;
         }
 
         public void Start()
