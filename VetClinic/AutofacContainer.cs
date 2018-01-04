@@ -48,15 +48,10 @@
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
 
-            // Assembly.GetExecutingAssembly()
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
             builder
                 .RegisterAssemblyTypes(assemblies)
-                //.Where(t => t.Name.EndsWith("Repository")
-                //            && t.Name.EndsWith("Factory")
-                //            && t.Name.EndsWith("Command"))
-                //.AsImplementedInterfaces()
                 .SingleInstance();
         }
     }
