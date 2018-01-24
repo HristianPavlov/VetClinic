@@ -30,7 +30,7 @@
 
             if (petFound != null)
             {
-                throw new ArgumentException("this pet already exists in database");
+                throw new ArgumentException($"this {pet.Name} already exists in database");
             }
 
             this.pets.Add(pet);

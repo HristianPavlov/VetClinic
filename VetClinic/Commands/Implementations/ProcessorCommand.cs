@@ -37,7 +37,7 @@
             }
             try
             {
-                // var 1
+                #region // var 1 not working
                 var command = commandParts[0];
 
                 var commands = this.engineCommands.GetAllCommands();
@@ -46,20 +46,22 @@
                 {
                     throw new ArgumentException("No commands created yet");
                 }
-                            
+               
                 foreach (var commandList in commands.Skip(3))
                 {
                     foreach (var method in commandList)
                     {                                      
                         if (method.Name.ToLower() == command.ToLower())
                         {                          
-                            // TODO
+                            // TODO "this" should be replaced with dynamically commnad
                            method.Invoke(this, new object[] { commandParts });
                            return;
                         }
                     }
                 }
+                #endregion
 
+                // var 2
                 switch (commandParts[0].ToLower())
                 {
                     // User
