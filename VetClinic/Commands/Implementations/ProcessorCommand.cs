@@ -12,17 +12,17 @@
         private readonly IEmployeeCommand employeeCommands;
         private readonly IServiceCommand serviceCommands;
         private readonly IEngineCommand engineCommands;
-        private readonly ICashRegisterCommand cashRegister;
+        private readonly ICashRegisterCommand cashRegisterCommands;
         private readonly IWriter writer;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegister, IWriter writer)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer)
         {
             this.userCommands = userCommands;
             this.animalCommands = animalCommands;
             this.employeeCommands = employeeCommands;
             this.serviceCommands = serviceCommands;
             this.engineCommands = engineCommands;
-            this.cashRegister = cashRegister;
+            this.cashRegisterCommands = cashRegisterCommands;
             this.writer = writer;
         }
 
@@ -46,20 +46,19 @@
                 {
                     throw new ArgumentException("No commands created yet");
                 }
-
+                            
                 foreach (var commandList in commands.Skip(3))
                 {
                     foreach (var method in commandList)
-                    {
+                    {                                      
                         if (method.Name.ToLower() == command.ToLower())
-                        {
-                            // TODO what type to add instead of this
-                           // method.Invoke(this, new object[] { commandParts });
-                           // return;
+                        {                          
+                            // TODO
+                           method.Invoke(this, new object[] { commandParts });
+                           return;
                         }
                     }
                 }
-
 
                 switch (commandParts[0].ToLower())
                 {
@@ -91,17 +90,17 @@
                     case "listservices": this.serviceCommands.ListServices(commandParts); break;
                     case "performservice":
                         this.serviceCommands.PerformService(commandParts);
-                        this.cashRegister.AddBookedService(commandParts); break;
+                        this.cashRegisterCommands.AddBookedService(commandParts); break;
 
                     // Commands
                     case "listcommands": this.engineCommands.ListCommands(); break;
 
                     // Accounting
                     case "updatebalance":
-                        this.cashRegister.UpdateBalance(
+                        this.cashRegisterCommands.UpdateBalance(
                         this.serviceCommands.CloseAccount(commandParts)); break;
-                    case "printbalance": this.cashRegister.PrintBalance(); break;
-                    case "printbookedservices": this.cashRegister.PrintBookedServices(); break;
+                    case "printbalance": this.cashRegisterCommands.PrintBalance(); break;
+                    case "printbookedservices": this.cashRegisterCommands.PrintBookedServices(); break;
 
                     default: this.writer.WriteLine("Invalid command! To read about all commmands, write listCommands and press enter"); break;
                 }

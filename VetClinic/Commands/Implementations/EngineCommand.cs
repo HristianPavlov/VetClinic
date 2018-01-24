@@ -65,7 +65,6 @@
                     this.writer.WriteLine($"{++counter}. {command.Name}");
                 }
             }
-
         }
 
         public IEnumerable<List<MethodInfo>> GetAllCommands()

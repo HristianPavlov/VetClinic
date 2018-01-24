@@ -17,10 +17,10 @@
         {
             Guard.WhenArgument(firstName, "First name is null or empty").IsNullOrEmpty().Throw();
             Guard.WhenArgument(firstName.Length, "First name has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
-            Guard.WhenArgument(lastName, "First name is null or empty").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(lastName.Length, "First name has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
-            Guard.WhenArgument(phoneNumber, "First name is null or empty").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(phoneNumber.Length, "First name has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
+            Guard.WhenArgument(lastName, "Last name is null or empty").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(lastName.Length, "Last name has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
+            Guard.WhenArgument(phoneNumber, "Phone number is null or empty").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(phoneNumber.Length, "Phone number has invalid length").IsLessThan(3).IsGreaterThan(15).Throw();
 
             this.id = Guid.NewGuid().ToString();
             this.firstName = firstName;

@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacContainer.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\IPetCommand.cs" />
     <Compile Include="Commands\Contracts\ICashRegisterCommand.cs" />
     <Compile Include="Commands\Contracts\IProcessorCommand.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Commands\Contracts\IEngineCommand.cs" />
     <Compile Include="Commands\Contracts\IServiceCommand.cs" />
     <Compile Include="Commands\Contracts\IUserCommand.cs" />
+    <Compile Include="Commands\Implementations\Command.cs" />
     <Compile Include="Commands\Implementations\PetCommand.cs" />
     <Compile Include="Commands\Implementations\CashRegisterCommand.cs" />
     <Compile Include="Commands\Implementations\EmployeeCommand.cs" />
