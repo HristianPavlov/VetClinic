@@ -10,11 +10,11 @@
     {
         private readonly string breed;
 
-        public Dog(string name, AnimalGenderType gender, string breed, int age) 
+        public Dog(string name, AnimalGenderType gender, string breed, int age)
             : base(name, gender, AnimalType.dog, age)
         {
-            Guard.WhenArgument(breed, "Invalid name").IsNull().Throw();
-            Guard.WhenArgument(breed.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
+            Guard.WhenArgument(breed, "Invalid breed").IsNull().Throw();
+            Guard.WhenArgument(breed.Length, "Invalid breed length").IsLessThan(2).IsGreaterThan(15).Throw();
             Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
 
             this.breed = breed;
