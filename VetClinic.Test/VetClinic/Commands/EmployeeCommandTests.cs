@@ -1,8 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Collections.Generic;
+using System;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
+using VetClinic.Data.Enums;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Factories.Contracts;
 
@@ -29,26 +30,41 @@ namespace VetClinic.Test.VetClinic.Commands
 
         // Methods
         [TestMethod]
-        public void CreateEmployee_Should_Return_Correctly_FirstName()
+        public void CreateEmployee_Should_Call_PersonFactory()
         {
             // Arrange
             var personFactoryMock = new Mock<IPersonFactory>();
             var employeesRepoMock = new Mock<IEmployeeRepository>();
             var writerMock = new Mock<IWriter>();
-
-            // Act
             var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
 
-            var args = new List<string>() {
-                "firstname",
-                "lastname",
-                "phone",
-                "email",
-                "admin"
-            };
+            var role = (RoleType)Enum.Parse(typeof(RoleType), "admin");
+
+            // Act
+            personFactoryMock.Setup(x => x.CreateEmployee("firstname", "lastname", "phone", "email", role));
+            personFactoryMock.Object.CreateEmployee("firstname", "lastname", "phone", "email", role);
 
             // Assert
-            //Assert.IsTrue(employeeCommand.CreateEmployee(args));
+            personFactoryMock.Verify(x => x.CreateEmployee("firstname", "lastname", "phone", "email", role), Times.Once());
+        }
+
+        [TestMethod]
+        public void DeleteEmployee_Should_Delete_Emplyoee_From_Db()
+        {
+            // Arrange
+            var personFactoryMock = new Mock<IPersonFactory>();
+            var employeesRepoMock = new Mock<IEmployeeRepository>();
+            var writerMock = new Mock<IWriter>();
+            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
+
+            var employeeId = "1";
+
+            // Act
+            employeesRepoMock.Setup(x => x.DeleteEmployee(employeeId));
+            employeesRepoMock.Object.DeleteEmployee(employeeId);
+
+            // Assert
+            employeesRepoMock.Verify(x => x.DeleteEmployee(It.IsAny<String>()), Times.Once());
         }
     }
 }

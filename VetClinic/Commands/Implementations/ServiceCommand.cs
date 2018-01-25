@@ -34,9 +34,8 @@
             {
                 throw new ArgumentException("This service already exists!");
             }
-            var price = Decimal.Parse(parameters[2]);
 
-            var newService = this.serviceFactory.CreateService(name, price);
+            var newService = this.serviceFactory.CreateService(name, decimal.Parse(parameters[2]));
 
             this.services.CreateService(newService);
             this.writer.WriteLine($"Service {name} successfully created");
