@@ -26,7 +26,7 @@
         public void AddPet(IPet pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
-            var petFound = this.pets.FirstOrDefault(p => p.Id == pet.Id);
+            var petFound = this.pets.SingleOrDefault(p => p.Id == pet.Id);
 
             if (petFound != null)
             {
@@ -39,7 +39,7 @@
         public void RemovePet(IPet pet)
         {
             Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
-            var petFound = this.pets.FirstOrDefault(p => p.Id == pet.Id);
+            var petFound = this.pets.SingleOrDefault(p => p.Id == pet.Id);
             Guard.WhenArgument(petFound, "PetFound").IsNull().Throw();
 
             if (petFound != null)

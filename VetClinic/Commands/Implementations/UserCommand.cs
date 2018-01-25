@@ -30,14 +30,14 @@
             // var animalType = parameters[2]; // not used input parameter
             var petName = parameters[3];
 
-            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
                 throw new ArgumentException("User not found");
             }
 
-            var pet = this.pets.Pets.FirstOrDefault(a => a.Name == petName);
+            var pet = this.pets.Pets.SingleOrDefault(a => a.Name == petName);
 
             if (pet == null)
             {
@@ -53,14 +53,14 @@
             // var animalType = parameters[2];  // not used input parameter
             var animalName = parameters[3];
 
-            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
                 throw new ArgumentException("User not found");
             }
 
-            var pet = this.pets.Pets.FirstOrDefault(a => a.Name == animalName);
+            var pet = this.pets.Pets.SingleOrDefault(a => a.Name == animalName);
 
             if (pet == null)
             {
@@ -87,7 +87,7 @@
         {
             var userId = parameters[1];
 
-            var user = this.users.Users.FirstOrDefault(p => p.Id == userId);
+            var user = this.users.Users.SingleOrDefault(p => p.Id == userId);
 
             if (user == null)
             {
@@ -102,7 +102,7 @@
         {
             var userPhone = parameters[1];
 
-            var user = this.users.Users.FirstOrDefault(p => p.PhoneNumber == userPhone);
+            var user = this.users.Users.SingleOrDefault(p => p.PhoneNumber == userPhone);
 
             if (user == null)
             {
@@ -135,7 +135,7 @@
         {
             var phone = parameters[1];
 
-            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == phone);
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == phone);
 
             if (user == null)
             {

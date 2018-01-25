@@ -30,7 +30,7 @@
 
         public void DeleteUser(string id)
         {
-            var user = this.users.FirstOrDefault(u => u.Id == id);
+            var user = this.users.SingleOrDefault(u => u.Id == id);
 
             if (user == null)
             {

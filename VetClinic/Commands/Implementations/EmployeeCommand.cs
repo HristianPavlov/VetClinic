@@ -38,15 +38,15 @@
         {
             var employeeId = parameters[1];
 
-            var employee = this.employees.Employees.FirstOrDefault(e => e.Id == employeeId);
+            var employee = this.employees.Employees.SingleOrDefault(e => e.Id == employeeId);
 
             if (employee == null)
             {
-                throw new ArgumentException("Employee not found");
+                throw new ArgumentException($"{employee.FirstName} {employee.LastName} not found");
             }
 
             this.employees.DeleteEmployee(employeeId);
-            this.writer.WriteLine($"Person {employee.FirstName} {employee.LastName} successfully deleted");
+            this.writer.WriteLine($"{employee.FirstName} {employee.LastName} successfully deleted");
         }
 
         public void ListEmployees()
@@ -72,7 +72,7 @@
         {
             var phone = parameters[1];
 
-            var employee = this.employees.Employees.FirstOrDefault(e => e.PhoneNumber == phone);
+            var employee = this.employees.Employees.SingleOrDefault(e => e.PhoneNumber == phone);
 
             if (employee == null)
             {
@@ -80,7 +80,7 @@
             }
             else
             {
-                this.writer.WriteLine($"Emplyoee {employee.FirstName} {employee.LastName} was found with searched phone number {phone}");
+                this.writer.WriteLine($"{employee.FirstName} {employee.LastName} was found with searched phone number {phone}");
                 this.writer.WriteLine($"Emplyoee Info: {employee.PrintInfo()}");
             }
         }

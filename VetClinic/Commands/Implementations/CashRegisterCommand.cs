@@ -37,7 +37,7 @@
         {
             var serviceName = parameters[1];
 
-            var service = this.services.Services.FirstOrDefault(s => s.Name == serviceName);
+            var service = this.services.Services.SingleOrDefault(s => s.Name == serviceName);
 
             if (service == null)
             {

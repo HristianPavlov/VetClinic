@@ -63,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VetClinic.Data\Models\EmployeeTest.cs" />
-    <Compile Include="VetClinic\Commands\EmployeeCommandTest.cs" />
-    <Compile Include="VetClinic\Factories\PersonFactoryTest.cs" />
+    <Compile Include="VetClinic.Data\Models\EmployeeTests.cs" />
+    <Compile Include="VetClinic\Commands\EmployeeCommandTests.cs" />
+    <Compile Include="VetClinic\Factories\PersonFactoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

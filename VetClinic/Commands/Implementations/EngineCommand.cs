@@ -35,7 +35,7 @@
         {
             var name = parameters[1];
 
-            var command = this.commands.Commands.FirstOrDefault(p => p.Name == name);
+            var command = this.commands.Commands.SingleOrDefault(p => p.Name == name);
 
             if (command == null)
             {

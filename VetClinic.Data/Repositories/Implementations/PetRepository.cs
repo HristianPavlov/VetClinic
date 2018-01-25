@@ -30,7 +30,7 @@
             this.pets.Add(pet);
         }
 
-        public IPet GetById(string id) => this.pets.FirstOrDefault(a => a.Id == id);
+        public IPet GetById(string id) => this.pets.SingleOrDefault(a => a.Id == id);
 
 
         public void DetelePet(string userPhone, IPet pet)

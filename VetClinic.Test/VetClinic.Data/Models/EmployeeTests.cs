@@ -6,7 +6,7 @@ using VetClinic.Data.Models;
 namespace VetClinic.Test.VetClinic.Data.Models
 {
     [TestClass]
-    public class EmployeeTest
+    public class EmployeeTests
     {
         // Constructor
         [TestMethod]

@@ -1,18 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
-using VetClinic.Data.Enums;
-using VetClinic.Data.Models;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Factories.Contracts;
 
 namespace VetClinic.Test.VetClinic.Commands
 {
     [TestClass]
-    public class EmployeeCommandTest
+    public class EmployeeCommandTests
     {
         // Constructor
         [TestMethod]
@@ -50,10 +47,8 @@ namespace VetClinic.Test.VetClinic.Commands
                 "admin"
             };
 
-            employeeCommand.CreateEmployee(args);
-
             // Assert
-            // Assert.IsInstanceOfType(employeeCommand.CreateEmployee(args), typeof(Employee));
+            //Assert.IsTrue(employeeCommand.CreateEmployee(args));
         }
     }
 }

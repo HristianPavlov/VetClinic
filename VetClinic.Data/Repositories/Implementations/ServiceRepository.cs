@@ -32,7 +32,7 @@
 
         public void DeleteService(string name)
         {
-            var service = this.services.FirstOrDefault(s => s.Name == name);
+            var service = this.services.SingleOrDefault(s => s.Name == name);
 
             if (services == null)
             {
@@ -44,9 +44,9 @@
 
         public bool ContainsService(string id) => this.services.Any(s => s.Id == id);
 
-        public IService FindById(string id) => this.services.FirstOrDefault(s => s.Id == id);
+        public IService FindById(string id) => this.services.SingleOrDefault(s => s.Id == id);
 
-        public IService GetByName(string name) => this.services.FirstOrDefault(s => s.Name == name);
+        public IService GetByName(string name) => this.services.SingleOrDefault(s => s.Name == name);
 
         public string ListServices()
         {

@@ -29,7 +29,7 @@
         {
             var name = parameters[1];
 
-            var service = this.services.Services.FirstOrDefault(p => p.Name == name);
+            var service = this.services.Services.SingleOrDefault(p => p.Name == name);
             if (service != default(IService))
             {
                 throw new ArgumentException("This service already exists!");
@@ -46,7 +46,7 @@
         {
             var name = parameters[1];
 
-            var service = this.services.Services.FirstOrDefault(p => p.Name == name);
+            var service = this.services.Services.SingleOrDefault(p => p.Name == name);
 
             if (service == null)
             {
@@ -82,21 +82,21 @@
             var userPhone = parameters[2];
             var animalName = parameters[3];
 
-            var service = this.services.Services.FirstOrDefault(s => s.Name == serviceName);
+            var service = this.services.Services.SingleOrDefault(s => s.Name == serviceName);
 
             if (service == null)
             {
                 throw new ArgumentException($"{serviceName} is not found.");
             }
 
-            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
                 throw new ArgumentException($"{user.FirstName} {user.LastName} does not exists");
             }
 
-            IPet pet = user.Pets.FirstOrDefault((p => p.Name == animalName));
+            IPet pet = user.Pets.SingleOrDefault((p => p.Name == animalName));
 
             if (pet == null)
             {
@@ -113,7 +113,7 @@
         public decimal CloseAccount(IList<string> parameters)
         {
             var userPhone = parameters[1];
-            var user = this.users.Users.FirstOrDefault(u => u.PhoneNumber == userPhone);
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
 
             decimal amount = user.Bill;
             user.Bill = 0;
@@ -126,7 +126,7 @@
         {
             var name = parameters[1];
 
-            var service = this.services.Services.FirstOrDefault(p => p.Name == name);
+            var service = this.services.Services.SingleOrDefault(p => p.Name == name);
 
             if (service == null)
             {

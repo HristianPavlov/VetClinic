@@ -6,7 +6,7 @@ using VetClinic.Factories.Implemetations;
 namespace VetClinic.Test.VetClinic.Factories
 {
     [TestClass]
-    public class PersonFactoryTest
+    public class PersonFactoryTests
     {
         [TestMethod]
         public void Constructor_Should_Create_New_Instance_Of_Factory_Class()

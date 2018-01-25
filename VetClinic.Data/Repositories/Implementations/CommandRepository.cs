@@ -32,7 +32,7 @@
 
         public void DeleteCommand(string name)
         {
-            var command = this.commands.FirstOrDefault(s => s.Name == name);
+            var command = this.commands.SingleOrDefault(s => s.Name == name);
 
             if (command == null)
             {
@@ -42,7 +42,7 @@
             this.commands.Remove(command);
         }
 
-        public IEngineCommand GetByName(string name) => this.commands.FirstOrDefault(s => s.Name == name);
+        public IEngineCommand GetByName(string name) => this.commands.SingleOrDefault(s => s.Name == name);
 
         public string ListCommands()
         {

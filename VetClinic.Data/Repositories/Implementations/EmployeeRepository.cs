@@ -30,7 +30,7 @@
 
         public void DeleteEmployee(string id)
         {
-            var employee = this.employees.FirstOrDefault(e => e.Id == id);
+            var employee = this.employees.SingleOrDefault(e => e.Id == id);
 
             if (employee == null)
             {
