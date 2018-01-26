@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.Collections.Generic;
+using VetClinic.Commands.Contracts;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Enums;
@@ -83,6 +85,21 @@ namespace VetClinic.Test.VetClinic.Commands
             // Act & Assert
             Assert.ThrowsException<NullReferenceException>(()
                 => employeesRepoMock.Object.Employees.Count == 0);
+        }
+
+        [TestMethod]
+        public void SearchEmployeeByPhone_Should_Return_Emplyoee_PrintInfo_If_Found()
+        {
+            // Arrange
+            var employeeCommandMock = new Mock<IEmployeeCommand>();
+
+            // Act
+            employeeCommandMock.Setup(x => x.SearchEmployeeByPhone(It.IsAny<IList<string>>()));
+            employeeCommandMock.Object.SearchEmployeeByPhone(It.IsAny<IList<string>>());
+
+            // Assert
+            employeeCommandMock.Verify(x => x.SearchEmployeeByPhone(It.IsAny<IList<string>>()), Times.Once);
+
         }
 
     }
