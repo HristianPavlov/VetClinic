@@ -86,7 +86,7 @@ namespace VetClinic.Test.VetClinic.Commands
         }
 
         [TestMethod]
-        public void SearchEmployeeByPhone_Should_Return_Emplyoee_PrintInfo_If_Found()
+        public void SearchEmployeeByPhone_Should_Be_Called()
         {
             // Arrange
             var employeeCommandMock = new Mock<IEmployeeCommand>();
