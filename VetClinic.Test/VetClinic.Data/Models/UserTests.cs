@@ -36,7 +36,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
         }
 
         [TestMethod]
-        public void Constructor_Should_Create_New_Instance_Of_Class_Employee()
+        public void Constructor_Should_Create_New_Instance_Of_Class_User()
         {
             // Arrange & Act
             var e = new User("firstName", "lastName", "phone", "email");
