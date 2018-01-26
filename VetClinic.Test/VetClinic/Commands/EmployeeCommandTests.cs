@@ -14,17 +14,24 @@ namespace VetClinic.Test.VetClinic.Commands
     [TestClass]
     public class EmployeeCommandTests
     {
+        private static EmployeeCommand GetEmployeeCommand()
+        {
+            var personFactoryMock = new Mock<IPersonFactory>();
+            var employeesRepoMock = new Mock<IEmployeeRepository>();
+            var writerMock = new Mock<IWriter>();
+
+            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
+
+            return employeeCommand;
+
+        }
+
         // Constructor
         [TestMethod]
         public void Constructor_Should_Return_New_Instance_Of_Class_EmployeeCommand()
         {
             // Arrange
-            var personFactoryMock = new Mock<IPersonFactory>();
-            var employeesRepoMock = new Mock<IEmployeeRepository>();
-            var writerMock = new Mock<IWriter>();
-
-            // Act
-            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
+            var employeeCommand = GetEmployeeCommand();
 
             // Assert
             Assert.IsInstanceOfType(employeeCommand, typeof(EmployeeCommand));
@@ -36,11 +43,6 @@ namespace VetClinic.Test.VetClinic.Commands
         {
             // Arrange
             var personFactoryMock = new Mock<IPersonFactory>();
-            var employeesRepoMock = new Mock<IEmployeeRepository>();
-            var writerMock = new Mock<IWriter>();
-
-            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
-
 
             var role = (RoleType)Enum.Parse(typeof(RoleType), "admin");
 
@@ -56,11 +58,7 @@ namespace VetClinic.Test.VetClinic.Commands
         public void DeleteEmployee_Should_Delete_Emplyoee_From_Db()
         {
             // Arrange
-            var personFactoryMock = new Mock<IPersonFactory>();
             var employeesRepoMock = new Mock<IEmployeeRepository>();
-            var writerMock = new Mock<IWriter>();
-
-            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
 
             // Act
             employeesRepoMock.Setup(x => x.DeleteEmployee(It.IsAny<string>()));
@@ -74,10 +72,7 @@ namespace VetClinic.Test.VetClinic.Commands
         public void ListEmployees_Should_Throw_Exception_If_Emplyoees_Count_Is_Zero()
         {
             // Arrange
-            var personFactoryMock = new Mock<IPersonFactory>();
             var employeesRepoMock = new Mock<IEmployeeRepository>();
-            var writerMock = new Mock<IWriter>();
-            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
 
 
             // Act & Assert
@@ -99,6 +94,5 @@ namespace VetClinic.Test.VetClinic.Commands
             employeeCommandMock.Verify(x => x.SearchEmployeeByPhone(It.IsAny<IList<string>>()), Times.Once);
 
         }
-
     }
 }
