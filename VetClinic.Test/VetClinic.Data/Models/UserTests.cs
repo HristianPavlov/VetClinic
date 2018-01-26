@@ -64,6 +64,21 @@ namespace VetClinic.Test.VetClinic.Data.Models
             Assert.AreEqual(1, petsList.Count);
         }
 
+        [TestMethod]
+        public void RemovePet_Should_Remove_Pet_From_PetsList()
+        {
+            // Arrange
+            var petsList = new List<IPet>();
+            var pet = new Mock<IPet>();
+            petsList.Add(pet.Object);
+
+            // Act
+            petsList.Remove(pet.Object);
+
+            // Assert
+            Assert.AreEqual(0, petsList.Count);
+        }
+
 
         [TestMethod]
         public void PrintInfo_Should_Return_String_In_Correct_Format()
