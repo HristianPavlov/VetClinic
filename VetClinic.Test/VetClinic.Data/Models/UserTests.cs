@@ -55,14 +55,15 @@ namespace VetClinic.Test.VetClinic.Data.Models
 
             // Act
             var printedInfo = user.PrintInfo();
-
-            // Assert
-            Assert.AreEqual(string.Format(
+            var expectedResult = string.Format(
                               $"Full Name: {user.FirstName} {user.LastName}" + Environment.NewLine +
                               $"Id: {user.Id}" + Environment.NewLine +
                               $"Phone Number: {user.PhoneNumber}" + Environment.NewLine +
                               $"Email: {user.Email}" + Environment.NewLine +
-                              user.ListUserPets()) + Environment.NewLine, printedInfo);
+                              user.ListUserPets()) + Environment.NewLine;
+
+            // Assert
+            Assert.AreEqual(expectedResult, printedInfo);
         }
     }
 }
