@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
+using System.Collections.Generic;
+using VetClinic.Data.Contracts;
 using VetClinic.Data.Models;
 
 namespace VetClinic.Test.VetClinic.Data.Models
@@ -48,7 +51,22 @@ namespace VetClinic.Test.VetClinic.Data.Models
 
         // Methods
         [TestMethod]
-        public void User_PrintInfo_Should_Return_String_In_Correct_Format()
+        public void AddPet_Should_Add_New_Pet_To_PetsList()
+        {
+            // Arrange
+            var petsList = new List<IPet>();
+            var pet = new Mock<IPet>();
+
+            // Act
+            petsList.Add(pet.Object);
+
+            //Assert
+            Assert.AreEqual(1, petsList.Count);
+        }
+
+
+        [TestMethod]
+        public void PrintInfo_Should_Return_String_In_Correct_Format()
         {
             // Arrange
             var user = new User("firstName", "lastName", "phone", "email");

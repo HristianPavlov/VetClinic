@@ -1,7 +1,6 @@
 ﻿namespace VetClinic.Data.Models
 {
     using Abstractions;
-    using Bytes2you.Validation;
     using Contracts;
     using System;
     using System.Collections.Generic;
@@ -25,7 +24,6 @@
 
         public void AddPet(IPet pet)
         {
-            Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
             var petFound = this.pets.SingleOrDefault(p => p.Id == pet.Id);
 
             if (petFound != null)
@@ -38,9 +36,7 @@
 
         public void RemovePet(IPet pet)
         {
-            Guard.WhenArgument(pet, "Pet is null").IsNull().Throw();
             var petFound = this.pets.SingleOrDefault(p => p.Id == pet.Id);
-            Guard.WhenArgument(petFound, "PetFound").IsNull().Throw();
 
             if (petFound != null)
             {
