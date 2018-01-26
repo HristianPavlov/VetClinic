@@ -74,7 +74,6 @@ namespace VetClinic.Test.VetClinic.Commands
             // Arrange
             var employeesRepoMock = new Mock<IEmployeeRepository>();
 
-
             // Act & Assert
             Assert.ThrowsException<NullReferenceException>(()
                 => employeesRepoMock.Object.Employees.Count == 0);
@@ -92,7 +91,6 @@ namespace VetClinic.Test.VetClinic.Commands
 
             // Assert
             employeeCommandMock.Verify(x => x.SearchEmployeeByPhone(It.IsAny<IList<string>>()), Times.Once);
-
         }
     }
 }

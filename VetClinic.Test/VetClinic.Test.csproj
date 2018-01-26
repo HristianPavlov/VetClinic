@@ -65,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VetClinic.Data\Models\DogTests.cs" />
     <Compile Include="VetClinic.Data\Models\EmployeeTests.cs" />
+    <Compile Include="VetClinic.Data\Models\UserTests.cs" />
     <Compile Include="VetClinic\Commands\EmployeeCommandTests.cs" />
     <Compile Include="VetClinic\Factories\PersonFactoryTests.cs" />
   </ItemGroup>
