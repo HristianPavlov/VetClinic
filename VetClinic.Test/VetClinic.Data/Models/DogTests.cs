@@ -76,25 +76,25 @@ namespace VetClinic.Test.VetClinic.Data.Models
             Assert.IsInstanceOfType(dog, typeof(Dog));
         }
 
-        //// Methods          // TODO
-        //[TestMethod]
-        //public void Dog_PrintInfo_Should_Return_String_In_Correct_Format()
-        //{
-        //    // Arrange
-        //    var dog = new Dog("name", AnimalGenderType.female, "breed", 1);
+        // Methods
+        [TestMethod]
+        public void Dog_PrintInfo_Should_Return_String_In_Correct_Format()
+        {
+            // Arrange
+            var dog = new Dog("name", AnimalGenderType.female, "breed", 1);
 
-        //    // Act
-        //    var printedInfo = dog.PrintInfo();
-        //    var expectedResult = string.Format(
-        //                            $"Pet Type: {dog.Type}" + Environment.NewLine +
-        //                            $"Name: {dog.Name}" + Environment.NewLine +
-        //                            $"Id: {dog.Id}" + Environment.NewLine +
-        //                            $"Gender: {dog.Gender}" + Environment.NewLine +
-        //                            // ListAnimalServices()
-        //                            $"Breed: {dog.Breed}" + Environment.NewLine);
+            // Act
+            var printedInfo = dog.PrintInfo();
+            var expectedResult = string.Format(
+                                    $"Pet Type: {dog.Type}" + Environment.NewLine +
+                                    $"Name: {dog.Name}" + Environment.NewLine +
+                                    $"Id: {dog.Id}" + Environment.NewLine +
+                                    $"Gender: {dog.Gender}" + Environment.NewLine +
+                                    "No services performed yet" + Environment.NewLine +
+                                    $"Breed: {dog.Breed}" + Environment.NewLine);
 
-        //    // Assert
-        //    Assert.AreEqual(expectedResult, printedInfo);
-        //}
+            // Assert
+            Assert.AreEqual(expectedResult, printedInfo);
+        }
     }
 }
