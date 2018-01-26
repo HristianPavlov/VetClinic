@@ -77,11 +77,11 @@ namespace VetClinic.Test.VetClinic.Commands
             var writerMock = new Mock<IWriter>();
             var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
 
-            // init Employees list
-            employeesRepoMock.Setup(x => x.Employees.Count).Returns(0);
+            // Act
+            //employeesRepoMock.Setup(x => x.Employees.Count).Returns(0);
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(()
+            Assert.ThrowsException<NullReferenceException>(()
                 => employeesRepoMock.Object.Employees.Count == 0);
         }
 

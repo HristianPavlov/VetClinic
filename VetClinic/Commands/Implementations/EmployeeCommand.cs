@@ -60,7 +60,7 @@
         {
             if (this.employees.Employees.Count == 0)
             {
-                throw new ArgumentNullException("No employee registered yet");
+                throw new NullReferenceException("No employee registered yet");
             }
 
             var sb = new StringBuilder();
