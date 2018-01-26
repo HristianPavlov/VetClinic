@@ -81,7 +81,7 @@ namespace VetClinic.Test.VetClinic.Commands
             employeesRepoMock.Setup(x => x.Employees.Count).Returns(0);
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(()
+            Assert.ThrowsException<ArgumentNullException>(()
                 => employeesRepoMock.Object.Employees.Count == 0);
         }
 

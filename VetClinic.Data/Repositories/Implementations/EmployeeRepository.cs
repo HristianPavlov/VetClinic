@@ -34,7 +34,7 @@
 
             if (employee == null)
             {
-                throw new ArgumentException("This employee does not exists in database");
+                throw new ArgumentNullException("This employee does not exists in database");
             }
             this.employees.Remove(employee);
         }

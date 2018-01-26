@@ -44,7 +44,7 @@
 
                 //if (commands == null)
                 //{
-                //    throw new ArgumentException("No commands created yet");
+                //    throw new ArgumentNullException("No commands created yet");
                 //}
 
                 //foreach (var commandList in commands.Skip(3))

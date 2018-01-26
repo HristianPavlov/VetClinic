@@ -35,7 +35,7 @@
 
             if (employeeFound != null)
             {
-                throw new ArgumentException($"{employeeFound.FirstName} {employeeFound.LastName} already exists");
+                throw new ArgumentNullException($"{employeeFound.FirstName} {employeeFound.LastName} already exists");
             }
 
             var newEmployee = this.personFactory.CreateEmployee(firstName, lastName, phoneNumber, email, role);
@@ -49,7 +49,7 @@
 
             if (employee == null)
             {
-                throw new ArgumentException($"{employee.FirstName} {employee.LastName} not found");
+                throw new ArgumentNullException($"{employee.FirstName} {employee.LastName} not found");
             }
 
             this.employees.DeleteEmployee(employeeId);
@@ -60,7 +60,7 @@
         {
             if (this.employees.Employees.Count == 0)
             {
-                throw new ArgumentException("No employee registered yet");
+                throw new ArgumentNullException("No employee registered yet");
             }
 
             var sb = new StringBuilder();

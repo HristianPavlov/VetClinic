@@ -49,7 +49,7 @@
 
             if (service == null)
             {
-                throw new ArgumentException("Service not found");
+                throw new ArgumentNullException("Service not found");
             }
 
             this.services.DeleteService(name);
@@ -85,21 +85,21 @@
 
             if (service == null)
             {
-                throw new ArgumentException($"{serviceName} is not found.");
+                throw new ArgumentNullException($"{serviceName} is not found.");
             }
 
             var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
 
             if (user == null)
             {
-                throw new ArgumentException($"{user.FirstName} {user.LastName} does not exists");
+                throw new ArgumentNullException($"{user.FirstName} {user.LastName} does not exists");
             }
 
             IPet pet = user.Pets.SingleOrDefault((p => p.Name == animalName));
 
             if (pet == null)
             {
-                throw new ArgumentException($"{user.FirstName} {user.LastName} does not have an pet with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
+                throw new ArgumentNullException($"{user.FirstName} {user.LastName} does not have an pet with name: {animalName} registered. Please register {animalName} for customer {user.FirstName} {user.LastName} first");
             }
 
             pet.AddServices(service);
@@ -129,7 +129,7 @@
 
             if (service == null)
             {
-                throw new ArgumentException("Service not found");
+                throw new ArgumentNullException("Service not found");
             }
             this.writer.WriteLine($"Service {service.Name} completed!");
         }

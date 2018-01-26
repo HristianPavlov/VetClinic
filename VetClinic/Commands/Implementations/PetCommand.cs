@@ -56,7 +56,7 @@
             
             if (pet == null)
             {
-                throw new ArgumentException("Pet not found");
+                throw new ArgumentNullException("Pet not found");
             }
 
             this.pets.DetelePet(userPhone, pet);

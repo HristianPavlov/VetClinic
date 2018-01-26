@@ -34,14 +34,14 @@
 
             if (user == null)
             {
-                throw new ArgumentException("User not found");
+                throw new ArgumentNullException("User not found");
             }
 
             var pet = this.pets.Pets.SingleOrDefault(a => a.Name == petName);
 
             if (pet == null)
             {
-                throw new ArgumentException("Pet not found");
+                throw new ArgumentNullException("Pet not found");
             }
 
             user.AddPet(pet);
@@ -57,14 +57,14 @@
 
             if (user == null)
             {
-                throw new ArgumentException("User not found");
+                throw new ArgumentNullException("User not found");
             }
 
             var pet = this.pets.Pets.SingleOrDefault(a => a.Name == animalName);
 
             if (pet == null)
             {
-                throw new ArgumentException("Pet not found");
+                throw new ArgumentNullException("Pet not found");
             }
 
             user.RemovePet(pet);
@@ -91,7 +91,7 @@
 
             if (user == null)
             {
-                throw new ArgumentException("User not found");
+                throw new ArgumentNullException("User not found");
             }
 
             this.users.DeleteUser(userId);
@@ -106,7 +106,7 @@
 
             if (user == null)
             {
-                throw new ArgumentException("User not found");
+                throw new ArgumentNullException("User not found");
             }
 
             this.writer.WriteLine(user.ListUserPets());
@@ -116,7 +116,7 @@
         {
             if (this.users.Users.Count == 0)
             {
-                throw new ArgumentException("No users registered");
+                throw new ArgumentNullException("No users registered");
             }
 
             var sb = new StringBuilder();

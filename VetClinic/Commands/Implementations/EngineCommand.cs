@@ -39,7 +39,7 @@
 
             if (command == null)
             {
-                throw new ArgumentException("Command not found");
+                throw new ArgumentNullException("Command not found");
             }
 
             this.commands.DeleteCommand(name);
@@ -52,7 +52,7 @@
 
             if (commandsList == null)
             {
-                throw new ArgumentException("No commands created yet");
+                throw new ArgumentNullException("No commands created yet");
             }
 
             this.writer.WriteLine(("All commands:"));

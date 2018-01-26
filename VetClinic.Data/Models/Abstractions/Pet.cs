@@ -47,7 +47,7 @@
         {
             if (service == null)
             {
-                throw new ArgumentException("The services cannot be null");
+                throw new ArgumentNullException("The services cannot be null");
             }
 
             this.services.Add(service);

@@ -41,7 +41,7 @@
 
             if (service == null)
             {
-                throw new ArgumentException($"Service {serviceName} does not exists yet. Please create service {serviceName} first");
+                throw new ArgumentNullException($"Service {serviceName} does not exists yet. Please create service {serviceName} first");
             }
 
             this.bookedServices.Add(service);
