@@ -17,7 +17,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
         }
 
         [TestMethod]
-        public void Constructor_Should_Throw_ArgumentNullException_When_FirstName_Is_Empty()
+        public void Constructor_Should_Throw_ArgumentException_When_FirstName_Is_Empty()
         {
             // Arrange & Act & Assert
             Assert.ThrowsException<ArgumentException>(() => new Employee("", "lastName", "phone", "email", RoleType.admin));
