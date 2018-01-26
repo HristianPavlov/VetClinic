@@ -39,11 +39,30 @@ namespace VetClinic.Test.VetClinic.Data.Models
         public void Constructor_Should_Create_New_Instance_Of_Class_User()
         {
             // Arrange & Act
-            var e = new User("firstName", "lastName", "phone", "email");
+            var user = new User("firstName", "lastName", "phone", "email");
 
             // Assert
-            Assert.IsNotNull(e);
-            Assert.IsInstanceOfType(e, typeof(User));
+            Assert.IsNotNull(user);
+            Assert.IsInstanceOfType(user, typeof(User));
+        }
+
+        // Methods
+        [TestMethod]
+        public void User_PrintInfo_Should_Return_String_In_Correct_Format()
+        {
+            // Arrange
+            var user = new User("firstName", "lastName", "phone", "email");
+
+            // Act
+            var printedInfo = user.PrintInfo();
+
+            // Assert
+            Assert.AreEqual(string.Format(
+                              $"Full Name: {user.FirstName} {user.LastName}" + Environment.NewLine +
+                              $"Id: {user.Id}" + Environment.NewLine +
+                              $"Phone Number: {user.PhoneNumber}" + Environment.NewLine +
+                              $"Email: {user.Email}" + Environment.NewLine +
+                              user.ListUserPets()) + Environment.NewLine, printedInfo);
         }
     }
 }
