@@ -36,7 +36,9 @@ namespace VetClinic.Test.VetClinic.Commands
             var personFactoryMock = new Mock<IPersonFactory>();
             var employeesRepoMock = new Mock<IEmployeeRepository>();
             var writerMock = new Mock<IWriter>();
+
             var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
+
 
             var role = (RoleType)Enum.Parse(typeof(RoleType), "admin");
 
@@ -55,16 +57,33 @@ namespace VetClinic.Test.VetClinic.Commands
             var personFactoryMock = new Mock<IPersonFactory>();
             var employeesRepoMock = new Mock<IEmployeeRepository>();
             var writerMock = new Mock<IWriter>();
+
             var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
 
-            var employeeId = "1";
-
             // Act
-            employeesRepoMock.Setup(x => x.DeleteEmployee(employeeId));
-            employeesRepoMock.Object.DeleteEmployee(employeeId);
+            employeesRepoMock.Setup(x => x.DeleteEmployee(It.IsAny<string>()));
+            employeesRepoMock.Object.DeleteEmployee(It.IsAny<string>());
 
             // Assert
-            employeesRepoMock.Verify(x => x.DeleteEmployee(It.IsAny<String>()), Times.Once());
+            employeesRepoMock.Verify(x => x.DeleteEmployee(It.IsAny<string>()), Times.Once);
         }
+
+        [TestMethod]
+        public void ListEmployees_Should_Throw_Exception_If_Emplyoees_Count_Is_Zero()
+        {
+            // Arrange
+            var personFactoryMock = new Mock<IPersonFactory>();
+            var employeesRepoMock = new Mock<IEmployeeRepository>();
+            var writerMock = new Mock<IWriter>();
+            var employeeCommand = new EmployeeCommand(personFactoryMock.Object, employeesRepoMock.Object, writerMock.Object);
+
+            // init Employees list
+            employeesRepoMock.Setup(x => x.Employees.Count).Returns(0);
+
+            // Act & Assert
+            Assert.ThrowsException<ArgumentException>(()
+                => employeesRepoMock.Object.Employees.Count == 0);
+        }
+
     }
 }

@@ -38,27 +38,27 @@
             try
             {
                 #region // execute with reflection not working
-                var command = commandParts[0];
+                //var command = commandParts[0];
 
-                var commands = this.engineCommands.GetAllCommands();
+                //var commands = this.engineCommands.GetAllCommands();
 
-                if (commands == null)
-                {
-                    throw new ArgumentException("No commands created yet");
-                }
+                //if (commands == null)
+                //{
+                //    throw new ArgumentException("No commands created yet");
+                //}
 
-                foreach (var commandList in commands.Skip(3))
-                {
-                    foreach (var method in commandList)
-                    {
-                        if (method.Name.ToLower() == command.ToLower())
-                        {
-                            // TODO "this" should be replaced with dynamically commnad
-                            method.Invoke(this, new object[] { commandParts });
-                            return;
-                        }
-                    }
-                }
+                //foreach (var commandList in commands.Skip(3))
+                //{
+                //    foreach (var method in commandList)
+                //    {
+                //        if (method.Name.ToLower() == command.ToLower())
+                //        {
+                //            // TODO "this" should be replaced with dynamically commnad
+                //            method.Invoke(this, new object[] { commandParts });
+                //            return;
+                //        }
+                //    }
+                //}
                 #endregion
 
                 // execute with switch

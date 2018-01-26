@@ -31,6 +31,13 @@
             var email = parameters[4];
             var role = (RoleType)Enum.Parse(typeof(RoleType), parameters[4].ToLower());
 
+            var employeeFound = this.employees.Employees.SingleOrDefault(e => e.PhoneNumber == phoneNumber);
+
+            if (employeeFound != null)
+            {
+                throw new ArgumentException($"{employeeFound.FirstName} {employeeFound.LastName} already exists");
+            }
+
             var newEmployee = this.personFactory.CreateEmployee(firstName, lastName, phoneNumber, email, role);
         }
 
