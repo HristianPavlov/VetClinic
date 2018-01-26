@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using VetClinic.Data.Enums;
 using VetClinic.Data.Models;
 
@@ -20,7 +20,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
         public void Constructor_Should_Throw_ArgumentException_When_FirstName_Is_Empty()
         {
             // Arrange & Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => new Employee("", "lastName", "phone", "email", RoleType.admin));
+            Assert.ThrowsException<ArgumentException>(() => new Employee(string.Empty, "lastName", "phone", "email", RoleType.admin));
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
         public void Constructor_Should_Throw_ArgumentNullException_When_LastName_Is_Empty()
         {
             // Arrange & Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => new Employee("firstName", "", "phone", "email", RoleType.admin));
+            Assert.ThrowsException<ArgumentException>(() => new Employee("firstName", string.Empty, "phone", "email", RoleType.admin));
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
         {
             // Arrange
             var e = new Employee("firstName", "lastName", "phone", "email", RoleType.admin);
-            
+
             // Act
             var printedInfo = e.PrintInfo();
             var expectedResult = string.Format(
