@@ -68,6 +68,7 @@
     <Compile Include="VetClinic.Data\Models\EmployeeTests.cs" />
     <Compile Include="VetClinic.Data\Models\UserTests.cs" />
     <Compile Include="VetClinic\Commands\EmployeeCommandTests.cs" />
+    <Compile Include="VetClinic\Commands\UserCommandTests.cs" />
     <Compile Include="VetClinic\Factories\PersonFactoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
