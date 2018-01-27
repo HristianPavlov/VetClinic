@@ -30,7 +30,7 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
         }
 
         [TestMethod]
-        public void CreateEmployee_Should_Add_Employee_To_Db()
+        public void CreateEmployee_Should_Add_Employee_To_EmployeeList()
         {
             // Arrange
             var employeeRepository = new EmployeeRepository();
@@ -38,12 +38,29 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
 
             // Act
             employeeRepository.employees.Add(employee.Object);
-            var expectedEmployee = employeeRepository.Employees.SingleOrDefault();
+            var expectedEmployee = employeeRepository.employees.SingleOrDefault();
 
             // Assert
             Assert.IsNotNull(employeeRepository.employees);
             Assert.IsTrue(employeeRepository.employees.Count == 1);
             Assert.IsInstanceOfType(expectedEmployee, typeof(IEmployee));
+        }
+
+        [TestMethod]
+        public void DeleteEmployee_Should_Delete_Employee_From_EmployeeList()
+        {
+            // Arrange
+            var employeeRepository = new EmployeeRepository();
+            var employee = new Mock<IEmployee>();
+
+            // Act
+            employeeRepository.employees.Add(employee.Object);
+            employeeRepository.employees.Remove(employee.Object);
+            var expectedEmployee = employeeRepository.employees.SingleOrDefault();
+
+            // Assert
+            Assert.IsTrue(employeeRepository.employees.Count == 0);
+            Assert.IsNull(expectedEmployee);
         }
     }
 }
