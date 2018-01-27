@@ -13,14 +13,8 @@ namespace VetClinic.Test.VetClinic.Commands
         [TestMethod]
         public void Constructor_Should_Return_New_Instance()
         {
-            // Arrange
-            var personFactoryMock = new Mock<IPersonFactory>();
-            var usersMock = new Mock<IUserRepository>();
-            var petsMock = new Mock<IPetRepository>();
-            var writerMock = new Mock<IWriter>();
-
-            // Act
-            var userCommand = new UserCommand(personFactoryMock.Object, usersMock.Object, petsMock.Object, writerMock.Object);
+            // Arrange & Act
+            UserCommand userCommand = GetUserCommand();
 
             // Assert
             Assert.IsInstanceOfType(userCommand, typeof(UserCommand));
@@ -29,6 +23,15 @@ namespace VetClinic.Test.VetClinic.Commands
         [TestMethod]
         public void Contructor_Should_Return_New_Instance_Not_Null()
         {
+            // Arrange & Act
+            UserCommand userCommand = GetUserCommand();
+
+            // Assert
+            Assert.IsNotNull(userCommand);
+        }
+
+        private static UserCommand GetUserCommand()
+        {
             // Arrange
             var personFactoryMock = new Mock<IPersonFactory>();
             var usersMock = new Mock<IUserRepository>();
@@ -36,10 +39,7 @@ namespace VetClinic.Test.VetClinic.Commands
             var writerMock = new Mock<IWriter>();
 
             // Act
-            var userCommand = new UserCommand(personFactoryMock.Object, usersMock.Object, petsMock.Object, writerMock.Object);
-
-            // Assert
-            Assert.IsNotNull(userCommand);
+            return new UserCommand(personFactoryMock.Object, usersMock.Object, petsMock.Object, writerMock.Object);
         }
     }
 }
