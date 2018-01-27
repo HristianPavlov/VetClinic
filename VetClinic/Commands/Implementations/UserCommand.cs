@@ -24,52 +24,6 @@
             this.writer = writer;
         }
 
-        public void CreatePet(IList<string> parameters)
-        {
-            var userPhone = parameters[1];
-            // var animalType = parameters[2]; // not used input parameter
-            var petName = parameters[3];
-
-            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
-
-            if (user == null)
-            {
-                throw new ArgumentNullException("User not found");
-            }
-
-            var pet = this.pets.Pets.SingleOrDefault(a => a.Name == petName);
-
-            if (pet == null)
-            {
-                throw new ArgumentNullException("Pet not found");
-            }
-
-            user.AddPet(pet);
-        }
-
-        public void DeletePet(IList<string> parameters)
-        {
-            var userPhone = parameters[1];
-            // var animalType = parameters[2];  // not used input parameter
-            var animalName = parameters[3];
-
-            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
-
-            if (user == null)
-            {
-                throw new ArgumentNullException("User not found");
-            }
-
-            var pet = this.pets.Pets.SingleOrDefault(a => a.Name == animalName);
-
-            if (pet == null)
-            {
-                throw new ArgumentNullException("Pet not found");
-            }
-
-            user.RemovePet(pet);
-        }
-
         public void CreateUser(IList<string> parameters)
         {
             var firstName = parameters[1];
@@ -96,20 +50,6 @@
 
             this.users.DeleteUser(userId);
             this.writer.WriteLine($"User {user.FirstName} {user.LastName} successfully removed from database");
-        }
-
-        public void ListUserPets(IList<string> parameters)
-        {
-            var userPhone = parameters[1];
-
-            var user = this.users.Users.SingleOrDefault(p => p.PhoneNumber == userPhone);
-
-            if (user == null)
-            {
-                throw new ArgumentNullException("User not found");
-            }
-
-            this.writer.WriteLine(user.ListUserPets());
         }
 
         public void ListUsers()
@@ -147,6 +87,66 @@
                 this.writer.WriteLine($"{user.FirstName}'s Info:");
                 this.writer.WriteLine($"{user.PrintInfo()}");
             }
+        }
+
+        public void CreatePet(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+            // var animalType = parameters[2]; // not used input parameter
+            var petName = parameters[3];
+
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
+
+            if (user == null)
+            {
+                throw new ArgumentNullException("User was not found");
+            }
+
+            var pet = this.pets.Pets.SingleOrDefault(a => a.Name == petName);
+
+            if (pet == null)
+            {
+                throw new ArgumentNullException("Pet was not found");
+            }
+
+            user.AddPet(pet);
+        }
+
+        public void DeletePet(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+            // var animalType = parameters[2];  // not used input parameter
+            var animalName = parameters[3];
+
+            var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == userPhone);
+
+            if (user == null)
+            {
+                throw new ArgumentNullException("User not found");
+            }
+
+            var pet = this.pets.Pets.SingleOrDefault(a => a.Name == animalName);
+
+            if (pet == null)
+            {
+                throw new ArgumentNullException("Pet not found");
+            }
+
+            user.RemovePet(pet);
+        }
+
+        public void ListUserPets(IList<string> parameters)
+        {
+            var userPhone = parameters[1];
+
+            var user = this.users.Users.SingleOrDefault(p => p.PhoneNumber == userPhone);
+
+            if (user == null)
+            {
+                throw new ArgumentNullException("User not found");
+            }
+
+            this.writer.WriteLine(user.ListUserPets());
         }
     }
 }
