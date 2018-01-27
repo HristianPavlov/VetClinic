@@ -1,4 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System.Linq;
+using VetClinic.Data.Contracts;
 using VetClinic.Data.Repositories.Implementations;
 
 namespace VetClinic.Test.VetClinic.Data.Repositories
@@ -24,6 +27,23 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
 
             // Assert
             Assert.IsNotNull(employeeRepository.Employees);
+        }
+
+        [TestMethod]
+        public void CreateEmployee_Should_Add_Employee_To_Db()
+        {
+            // Arrange
+            var employeeRepository = new EmployeeRepository();
+            var employee = new Mock<IEmployee>();
+
+            // Act
+            employeeRepository.employees.Add(employee.Object);
+            var expectedEmployee = employeeRepository.Employees.SingleOrDefault();
+
+            // Assert
+            Assert.IsNotNull(employeeRepository.employees);
+            Assert.IsTrue(employeeRepository.employees.Count == 1);
+            Assert.IsInstanceOfType(expectedEmployee, typeof(IEmployee));
         }
     }
 }
