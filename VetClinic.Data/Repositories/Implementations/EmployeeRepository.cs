@@ -23,7 +23,7 @@
 
             if (employeeExist)
             {
-                throw new ArgumentException("This employee already exists in database");
+                throw new ArgumentException($"This {employee.FirstName} {employee.LastName} already exists in database");
             }
             this.employees.Add(employee);
         }
