@@ -82,7 +82,7 @@ namespace VetClinic.Test.VetClinic.Commands
             personFactoryMock.Verify(x => x.CreateUser(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
-        // TODO how to return a fake user instead searching for him
+        // TODO how to return a fake user instead searching for him in db
         [TestMethod]
         public void DeleteUser_Should_Call_UserRepository_DeleteUser_Once()
         {
@@ -126,7 +126,7 @@ namespace VetClinic.Test.VetClinic.Commands
             };
 
             // Act
-            userCommand.CreatePet(argsList); // TODO user cannot be found
+            userCommand.CreatePet(argsList); // how to return a fake user
 
 
             // Assert
@@ -154,7 +154,7 @@ namespace VetClinic.Test.VetClinic.Commands
             };
 
             // Act
-            userCommand.DeletePet(argsList); // TODO user cannot be found
+            userCommand.DeletePet(argsList); // how to return a fake user
 
 
             // Assert
