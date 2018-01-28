@@ -80,9 +80,7 @@ namespace VetClinic.Test.VetClinic.Commands
 
             // Assert
             personFactoryMock.Verify(x => x.CreateUser(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
-
         }
-
 
         // TODO how to return a fake user instead searching for him
         [TestMethod]
@@ -96,14 +94,13 @@ namespace VetClinic.Test.VetClinic.Commands
 
             var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
-
             var argsList = new List<string>()
             {
                 "deleteuser",
                 "id"
             };
 
-            userCommand.DeleteUser(argsList); // throws null exception user is null!!!
+            userCommand.DeleteUser(argsList); // how to return a fake user
 
             // Assert
             userRepoMock.Verify(x => x.DeleteUser(It.IsAny<string>()), Times.Once);
@@ -140,7 +137,27 @@ namespace VetClinic.Test.VetClinic.Commands
         [TestMethod]
         public void DeletePet_Should_Call_UserRepository_DeletePet_Once()
         {
+            // Arrange
+            var personFactoryMock = new Mock<IPersonFactory>();
+            var userRepoMock = new Mock<IUserRepository>();
+            var petRepoMock = new Mock<IPetRepository>();
+            var writerMock = new Mock<IWriter>();
 
+            var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
+
+            var argsList = new List<string>()
+            {
+                "deletepet",
+                "phone",
+                "animalType",
+                "animalName"
+            };
+
+            // Act
+            userCommand.DeletePet(argsList); // TODO user cannot be found
+
+
+            // Assert
 
 
         }
