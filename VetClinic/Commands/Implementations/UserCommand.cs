@@ -102,11 +102,11 @@
                 throw new ArgumentNullException("User was not found");
             }
 
-            var pet = this.pets.Pets.SingleOrDefault(p => p.Name == petName && user.PhoneNumber == userPhone);
+            var pet = this.pets.Pets.SingleOrDefault(p => p.Name == petName);
 
-            if (pet != null)
+            if (pet == null)
             {
-                throw new ArgumentNullException("Pet was already added to this user");
+                throw new ArgumentNullException("Pet was not found");
             }
 
             user.AddPet(pet);

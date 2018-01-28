@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Contracts;
@@ -120,21 +121,27 @@ namespace VetClinic.Test.VetClinic.Commands
 
             var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
-            var argsList = new List<string>()
-            {
-                "createpet",
-                "phone",
-                "animalType",
-                "animalName"
-            };
 
             // Act
+            var user = new Mock<IUser>();
+            userRepoMock.SetupGet(x => x.Users).Returns(new List<IUser>() { user.Object });
 
+            var pet = new Mock<IPet>();
+            user.SetupGet(x => x.Pets).Returns(new List<IPet>() { pet.Object });
 
-            userCommand.CreatePet(argsList); // how to return a fake user
+            var argsCreate = new List<string>()
+            {
+                "createpet",
+                user.Object.PhoneNumber,
+                "animalType",
+                pet.Object.Name
+            };
+            userCommand.CreatePet(argsCreate);
 
+            var expectedPet = user.Object.Pets.SingleOrDefault(p => p.Name == pet.Object.Name);
 
             // Assert
+            Assert.AreEqual(expectedPet, pet);
 
 
         }
