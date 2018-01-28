@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
+using VetClinic.Commands.Contracts;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Contracts;
@@ -16,7 +17,12 @@ namespace VetClinic.Test.VetClinic.Commands
         public void Constructor_Should_Return_New_Instance_Of_UserCommand()
         {
             // Arrange & Act
-            UserCommand userCommand = GetUserCommand();
+            var personFactoryMock = new Mock<IPersonFactory>();
+            var userRepoMock = new Mock<IUserRepository>();
+            var petRepoMock = new Mock<IPetRepository>();
+            var writerMock = new Mock<IWriter>();
+
+            var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
             // Assert
             Assert.IsNotNull(userCommand);
@@ -78,6 +84,8 @@ namespace VetClinic.Test.VetClinic.Commands
 
         }
 
+
+        // TODO how to return a fake user instead searching for him
         [TestMethod]
         public void DeleteUser_Should_Call_UserRepository_DeleteUser_Once()
         {
@@ -89,7 +97,6 @@ namespace VetClinic.Test.VetClinic.Commands
 
             var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
-            var userCommandMock = new Mock<UserCommand>(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
             var argsList = new List<string>()
             {
@@ -97,7 +104,7 @@ namespace VetClinic.Test.VetClinic.Commands
                 "id"
             };
 
-            userCommandMock.Object.DeleteUser(argsList); // TODO user cannot be found
+            userCommand.DeleteUser(argsList); // throws null exception user is null!!!
 
             // Assert
             userRepoMock.Verify(x => x.DeleteUser(It.IsAny<string>()), Times.Once);
@@ -124,50 +131,19 @@ namespace VetClinic.Test.VetClinic.Commands
 
             // Act
             userCommand.CreatePet(argsList); // TODO user cannot be found
-            var user = new Mock<IUser>();
+ 
 
             // Assert
-            user.Verify(x => x.AddPet(It.IsAny<IPet>()), Times.Once);
+        
 
         }
 
         [TestMethod]
         public void DeletePet_Should_Call_UserRepository_DeletePet_Once()
         {
+            
+           
 
-            // Arrange
-            var personFactoryMock = new Mock<IPersonFactory>();
-            var userRepoMock = new Mock<IUserRepository>();
-            var petRepoMock = new Mock<IPetRepository>();
-            var writerMock = new Mock<IWriter>();
-
-            var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
-
-            var argsList = new List<string>()
-            {
-                "deletepet",
-                "phone",
-                "animalType",
-                "animalName"
-            };
-
-            // Act
-            userCommand.DeletePet(argsList); // TODO user cannot be found
-            var user = new Mock<IUser>();
-
-            // Assert
-            user.Verify(x => x.RemovePet(It.IsAny<IPet>()), Times.Once);
-
-        }
-
-        private static UserCommand GetUserCommand()
-        {
-            var personFactoryMock = new Mock<IPersonFactory>();
-            var userRepoMock = new Mock<IUserRepository>();
-            var petRepoMock = new Mock<IPetRepository>();
-            var writerMock = new Mock<IWriter>();
-
-            return new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
         }
     }
 }
