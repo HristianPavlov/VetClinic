@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Contracts;
@@ -83,7 +82,6 @@ namespace VetClinic.Test.VetClinic.Commands
             personFactoryMock.Verify(x => x.CreateUser(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
-        // TODO how to return a fake user instead searching for him in db
         [TestMethod]
         public void DeleteUser_Should_Call_UserRepository_DeleteUser_Once()
         {
@@ -131,6 +129,8 @@ namespace VetClinic.Test.VetClinic.Commands
             };
 
             // Act
+
+
             userCommand.CreatePet(argsList); // how to return a fake user
 
 
