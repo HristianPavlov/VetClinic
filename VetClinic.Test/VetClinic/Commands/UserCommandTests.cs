@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
-using VetClinic.Commands.Contracts;
 using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Contracts;
@@ -131,18 +130,18 @@ namespace VetClinic.Test.VetClinic.Commands
 
             // Act
             userCommand.CreatePet(argsList); // TODO user cannot be found
- 
+
 
             // Assert
-        
+
 
         }
 
         [TestMethod]
         public void DeletePet_Should_Call_UserRepository_DeletePet_Once()
         {
-            
-           
+
+
 
         }
     }
