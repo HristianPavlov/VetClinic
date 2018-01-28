@@ -123,25 +123,28 @@ namespace VetClinic.Test.VetClinic.Commands
 
 
             // Act
-            var user = new Mock<IUser>();
-            userRepoMock.SetupGet(x => x.Users).Returns(new List<IUser>() { user.Object });
+            var userMock = new Mock<IUser>();
+            userRepoMock.SetupGet(x => x.Users).Returns(new List<IUser>() { userMock.Object });
 
-            var pet = new Mock<IPet>();
-            user.SetupGet(x => x.Pets).Returns(new List<IPet>() { pet.Object });
+            var petMock = new Mock<IPet>();
+            userMock.SetupGet(x => x.Pets).Returns(new List<IPet>() { petMock.Object });
+
+            petRepoMock.SetupGet(x => x.Pets).Returns(new List<IPet>() { petMock.Object });
 
             var argsCreate = new List<string>()
             {
                 "createpet",
-                user.Object.PhoneNumber,
+                userMock.Object.PhoneNumber,
                 "animalType",
-                pet.Object.Name
+                petMock.Object.Name
             };
             userCommand.CreatePet(argsCreate);
 
-            var expectedPet = user.Object.Pets.SingleOrDefault(p => p.Name == pet.Object.Name);
+            var expectedPet = userMock.Object.Pets.SingleOrDefault(p => p.Name == petMock.Object.Name);
 
             // Assert
-            Assert.AreEqual(expectedPet, pet);
+            userMock.Verify(x => x.AddPet(It.IsAny<IPet>()), Times.Once);
+            Assert.AreEqual(expectedPet, petMock.Object);
 
 
         }
@@ -157,20 +160,26 @@ namespace VetClinic.Test.VetClinic.Commands
 
             var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
-            var argsList = new List<string>()
+            var userMock = new Mock<IUser>();
+            userRepoMock.SetupGet(x => x.Users).Returns(new List<IUser>() { userMock.Object });
+
+            var petMock = new Mock<IPet>();
+            userMock.SetupGet(x => x.Pets).Returns(new List<IPet>() { petMock.Object });
+
+            petRepoMock.SetupGet(x => x.Pets).Returns(new List<IPet>() { petMock.Object });
+
+            var argsCreate = new List<string>()
             {
                 "deletepet",
-                "phone",
+                userMock.Object.PhoneNumber,
                 "animalType",
-                "animalName"
+                petMock.Object.Name
             };
 
-            // Act
-            userCommand.DeletePet(argsList); // how to return a fake user
-
+            userCommand.DeletePet(argsCreate);
 
             // Assert
-
+            userMock.Verify(x => x.RemovePet(It.IsAny<IPet>()), Times.Once);
 
         }
     }
