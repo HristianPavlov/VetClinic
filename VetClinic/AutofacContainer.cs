@@ -2,6 +2,7 @@
 {
     using Autofac;
     using System;
+    using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Commands.Implementations;
     using VetClinic.Common.ConsoleServices.Contracts;
@@ -59,11 +60,11 @@
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
 
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            //var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-            builder
-                .RegisterAssemblyTypes(assemblies)
-                .SingleInstance();
+            //builder
+            //    .RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+            //    .SingleInstance();
         }
     }
 }
