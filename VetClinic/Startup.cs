@@ -1,25 +1,27 @@
 ﻿namespace VetClinic
 {
     using Autofac;
-    using VetClinic.Commands.Implementations;
-    using VetClinic.Data.Repositories.Implementations;
+    using VetClinic.Commands.Contracts;
+    using VetClinic.Data.Repositories.Contracts;
 
     public class Startup
     {
         static void Main()
         {
+            var builder = new ContainerBuilder();
+
             var container = AutofacContainer.Build();
 
-            var petDb = container.Resolve<PetRepository>();
-            var userCommands = container.Resolve<UserCommand>();
-            var petCommands = container.Resolve<PetCommand>();
-            var employeeCommands = container.Resolve<EmployeeCommand>();
-            var serviceCommands = container.Resolve<ServiceCommand>();
-            var engineCommands = container.Resolve<EngineCommand>();
-            var cashRegisterCommands = container.Resolve<CashRegisterCommand>();
-            var processorCommand = container.Resolve<ProcessorCommand>();
+            var petDb = container.Resolve<IPetRepository>();
+            var userCommands = container.Resolve<IUserCommand>();
+            var petCommands = container.Resolve<IPetCommand>();
+            var employeeCommands = container.Resolve<IEmployeeCommand>();
+            var serviceCommands = container.Resolve<IServiceCommand>();
+            var engineCommands = container.Resolve<IEngineCommand>();
+            var cashRegisterCommands = container.Resolve<ICashRegisterCommand>();
+            var processorCommand = container.Resolve<IProcessorCommand>();
 
-            var engine = container.Resolve<Engine>();
+            var engine = container.Resolve<IEngine>();
             engine.Start();
         }
     }

@@ -11,8 +11,19 @@
     using VetClinic.Factories.Contracts;
     using VetClinic.Factories.Implemetations;
 
-    public class AutofacContainer
+    public class AutofacContainer : Autofac.Module
     {
+
+        //protected override void Load(ContainerBuilder builder)
+        //{
+        //    builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
+        //        //.Where(x=>x.Namespace.Contains("Factories"))
+        //        .AsImplementedInterfaces()
+        //        .SingleInstance();
+
+        //    builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
+        //}
+
         public static IContainer Build()
         {
             var builder = new ContainerBuilder();
