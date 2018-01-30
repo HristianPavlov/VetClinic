@@ -2,8 +2,6 @@
 {
     using Autofac;
     using System.Reflection;
-    using VetClinic.Commands.Contracts;
-    using VetClinic.Data.Repositories.Contracts;
 
     public class Startup
     {

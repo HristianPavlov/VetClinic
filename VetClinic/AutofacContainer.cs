@@ -1,8 +1,6 @@
 ﻿namespace VetClinic
 {
     using Autofac;
-    using System;
-    using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Commands.Implementations;
     using VetClinic.Common.ConsoleServices.Contracts;
@@ -18,7 +16,7 @@
         //protected override void Load(ContainerBuilder builder)
         //{
         //    builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
-        //        //.Where(x=>x.Namespace.Contains("Factories"))
+        //        //.Where(x => x.Namespace.Contains("Factories"))
         //        .AsImplementedInterfaces()
         //        .SingleInstance();
 
@@ -59,12 +57,6 @@
             builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
-
-            //var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-
-            //builder
-            //    .RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-            //    .SingleInstance();
         }
     }
 }
