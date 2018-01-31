@@ -4,7 +4,7 @@
     using System.Reflection;
     using VetClinic.Data.Repositories.Contracts;
 
-    public class AutofacContainer : Autofac.Module
+    public class AutofacModuleConfig : Autofac.Module
     {
 
         protected override void Load(ContainerBuilder builder)

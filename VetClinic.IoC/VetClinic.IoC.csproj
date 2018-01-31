@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VetClinic.Data\VetClinic.Data.csproj" />
+    <ProjectReference Include="..\VetClinic\VetClinic.csproj" />
+  </ItemGroup>
+
+</Project>
