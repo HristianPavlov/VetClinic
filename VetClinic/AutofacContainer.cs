@@ -10,12 +10,10 @@
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
-                //.Where(x => x.Namespace.Contains("Factories"))
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(ICommandRepository)))
-                //.Where(x => x.Namespace.Contains("Repositories"))
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
