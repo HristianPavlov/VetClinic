@@ -38,6 +38,7 @@
             var newService = this.serviceFactory.CreateService(name, decimal.Parse(parameters[2]));
 
             this.services.CreateService(newService);
+
             this.writer.WriteLine($"Service {name} successfully created");
         }
 
