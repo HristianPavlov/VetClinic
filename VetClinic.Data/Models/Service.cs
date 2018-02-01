@@ -27,6 +27,7 @@
         public Service(string name, decimal price, int timeToExecute)
             : this(name, timeToExecute)
         {
+            Guard.WhenArgument(price, "Price must be positive!").IsLessThan(1).Throw();
             this.price = price;
         }
 
