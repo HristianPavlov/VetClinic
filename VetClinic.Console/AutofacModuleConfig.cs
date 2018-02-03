@@ -1,4 +1,4 @@
-﻿namespace VetClinic
+﻿namespace VetClinic.Console
 {
     using Autofac;
     using System.Reflection;
@@ -9,12 +9,10 @@
 
         protected override void Load(ContainerBuilder builder)
         {
-            // VetClinic
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
-            // VetClinic.Data
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(ICommandRepository)))
                 .AsImplementedInterfaces()
                 .SingleInstance();

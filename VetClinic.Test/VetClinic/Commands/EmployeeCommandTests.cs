@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using VetClinic.Commands.Contracts;
 using VetClinic.Commands.Implementations;
-using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Enums;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Factories.Contracts;
+using VetClinic.Providers.Contracts;
 
 namespace VetClinic.Test.VetClinic.Commands
 {

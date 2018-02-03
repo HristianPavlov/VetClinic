@@ -4,11 +4,11 @@
     using System.Collections.Generic;
     using System.Text;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Contracts;
     using VetClinic.Data.Enums;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
+    using VetClinic.Providers.Contracts;
 
     public class PetCommand : IPetCommand
     {
@@ -53,7 +53,7 @@
             var animalId = parameters[2];
 
             var pet = this.pets.GetById(animalId);
-            
+
             if (pet == null)
             {
                 throw new ArgumentNullException("Pet not found");

@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Reflection;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common.ConsoleServices.Contracts;
     using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
+    using VetClinic.Providers.Contracts;
 
     public class EngineCommand : IEngineCommand
     {

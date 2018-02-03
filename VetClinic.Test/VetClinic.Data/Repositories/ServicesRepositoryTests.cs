@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Models;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Data.Repositories.Implementations;
 using VetClinic.Factories.Contracts;
+using VetClinic.Providers.Contracts;
 
 namespace VetClinic.Test.VetClinic.Data.Repositories
 {

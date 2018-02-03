@@ -1,9 +1,9 @@
 ﻿namespace VetClinic.Commands.Implementations
 {
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common.ConsoleServices.Contracts;
+    using VetClinic.Providers.Contracts;
 
-    public class Command: ICommand
+    public class Command : ICommand
     {
         private readonly IUserCommand userCommands;
         private readonly IPetCommand animalCommands;

@@ -3,10 +3,10 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using VetClinic.Commands.Implementations;
-using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Contracts;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Factories.Contracts;
+using VetClinic.Providers.Contracts;
 
 namespace VetClinic.Test.VetClinic.Commands
 {

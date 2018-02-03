@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using System.Reflection;
 
-namespace VetClinic.IoC
+namespace VetClinic.Console
 {
     public class Startup
     {
@@ -14,7 +14,7 @@ namespace VetClinic.IoC
             var container = builder.Build();
 
             var engine = container.Resolve<IEngine>();
-            engine.Start();
+            engine.Run();
         }
     }
 }

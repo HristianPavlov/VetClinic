@@ -1,22 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VetClinic.Commands.Contracts;
 using VetClinic.Commands.Implementations;
-using VetClinic.Common.ConsoleServices.Contracts;
 using VetClinic.Data.Contracts;
-using VetClinic.Data.Enums;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Factories.Contracts;
+using VetClinic.Providers.Contracts;
 
 namespace VetClinic.Test.VetClinic.Commands
 {
     [TestClass]
-  public  class ServiceCommandTests
+    public class ServiceCommandTests
     {
 
 
@@ -41,11 +36,11 @@ namespace VetClinic.Test.VetClinic.Commands
 
             // Arrange
             var sut = GetServiceCommand();
-                    
+
             // Assert
             Assert.IsInstanceOfType(sut, typeof(ServiceCommand));
         }
-        
+
         [TestMethod]
         public void CreateService_Should_Call_ServiceFactory()
         {
@@ -56,9 +51,9 @@ namespace VetClinic.Test.VetClinic.Commands
             var writerMock = new Mock<IWriter>();
 
             var sut = new ServiceCommand(serviceFactoryMock.Object, serviceRepoMock.Object, userMock.Object, writerMock.Object);
-            serviceRepoMock.SetupGet(x=>x.Services).Returns(new List<IService>());
+            serviceRepoMock.SetupGet(x => x.Services).Returns(new List<IService>());
             serviceFactoryMock.Setup(x => x.CreateService(It.IsAny<string>(), It.IsAny<decimal>())).Verifiable();
-                           
+
 
             // var serviceFactoryMock = new Mock<IServiceFactory>();
             var parameters = new List<string>()
@@ -70,16 +65,16 @@ namespace VetClinic.Test.VetClinic.Commands
 
             // Act
             sut.CreateService(parameters);
-            
+
             // Assert
             serviceFactoryMock.Verify(x => x.CreateService("Name", 7), Times.Once());
         }
 
 
-       
 
 
-      
+
+
 
     }
 }

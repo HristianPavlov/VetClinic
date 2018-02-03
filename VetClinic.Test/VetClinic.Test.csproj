@@ -86,9 +86,9 @@
       <Project>{18BD4B11-918A-42D0-BDDD-A79B3D1A872E}</Project>
       <Name>VetClinic.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VetClinic\VetClinic.csproj">
+    <ProjectReference Include="..\VetClinic\VetClinic.Core.csproj">
       <Project>{EFA03579-871B-4E2E-9342-8D0051C32860}</Project>
-      <Name>VetClinic</Name>
+      <Name>VetClinic.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
