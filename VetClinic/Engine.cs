@@ -16,7 +16,7 @@
             this.writer = writer;
         }
 
-        public void Start()
+        public void Run()
         {
             this.writer.WriteLine("System running...");
 

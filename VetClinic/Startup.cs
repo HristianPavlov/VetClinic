@@ -16,7 +16,7 @@
             var container = builder.Build();
 
             var engine = container.Resolve<IEngine>();
-            engine.Start();
+            engine.Run();
         }
     }
 }
