@@ -48,7 +48,7 @@
 
         public void ListCommands()
         {
-            var commandsList = this.GetAllCommands();
+            var commandsList = this.GetAllCommandNames();
 
             if (commandsList == null)
             {
@@ -67,7 +67,7 @@
             }
         }
 
-        private IEnumerable<List<MethodInfo>> GetAllCommands()
+        private IEnumerable<List<MethodInfo>> GetAllCommandNames()
              => Assembly
                     .Load("VetClinic.Core")
                    //.GetAssembly(typeof(IEngineCommand))
