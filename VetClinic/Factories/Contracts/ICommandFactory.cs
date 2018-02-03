@@ -4,6 +4,6 @@
 
     public interface ICommandFactory
     {
-        IEngineCommand CreateCommand(string name);
+        IEngineCommand CreateCommand(string commandName);
     }
 }

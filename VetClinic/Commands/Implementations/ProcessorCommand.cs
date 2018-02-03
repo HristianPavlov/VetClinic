@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using VetClinic.Commands.Contracts;
+    using VetClinic.Core.Commands.Contracts;
     using VetClinic.Factories.Contracts;
     using VetClinic.Providers.Contracts;
 
@@ -16,8 +17,9 @@
         private readonly ICashRegisterCommand cashRegisterCommands;
         private readonly IWriter writer;
         private readonly ICommandFactory commandFactory;
+        private readonly ICommandParser commandParser;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser)
         {
             this.userCommands = userCommands;
             this.petCommands = petCommands;
@@ -27,6 +29,7 @@
             this.cashRegisterCommands = cashRegisterCommands;
             this.writer = writer;
             this.commandFactory = commandFactory;
+            this.commandParser = commandParser;
         }
 
         public void ProcessCommand(string commandLine)
@@ -40,7 +43,7 @@
             }
 
             var commandName = commandParts[0].ToLower();
-            //var command = this.commandFactory.CreateCommand(commandName);
+            var command = this.commandParser.ParseCommand(commandLine);
 
             try
             {
