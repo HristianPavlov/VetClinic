@@ -2,7 +2,6 @@
 {
     using Autofac;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Data.Contracts;
     using VetClinic.Factories.Contracts;
 
     public class CommandFactory : ICommandFactory
