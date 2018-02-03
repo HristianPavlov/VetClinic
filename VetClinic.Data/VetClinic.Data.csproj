@@ -71,15 +71,11 @@
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Contracts\IPet.cs" />
     <Compile Include="Contracts\ICat.cs" />
-    <Compile Include="Contracts\IEngineCommand.cs" />
     <Compile Include="Contracts\IService.cs" />
-    <Compile Include="Models\EngineCommand.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Repositories\Implementations\PetRepository.cs" />
-    <Compile Include="Repositories\Implementations\CommandRepository.cs" />
     <Compile Include="Repositories\Implementations\EmployeeRepository.cs" />
     <Compile Include="Repositories\Contracts\IPetRepository.cs" />
-    <Compile Include="Repositories\Contracts\ICommandRepository.cs" />
     <Compile Include="Repositories\Contracts\IEmployeeRepository.cs" />
     <Compile Include="Repositories\Contracts\IServiceRepository.cs" />
     <Compile Include="Repositories\Contracts\IUserRepository.cs" />

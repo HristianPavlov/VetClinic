@@ -31,7 +31,7 @@
 
         public void ProcessCommand(string commandLine)
         {
-            var commandParts = commandLine.Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var commandParts = commandLine.Trim().Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             if (commandParts.Count() == 0)
             {

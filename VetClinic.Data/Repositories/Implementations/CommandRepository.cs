@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using VetClinic.Data.Contracts;
-    using VetClinic.Data.Repositories.Contracts;
 
     public class CommandRepository : ICommandRepository
     {

@@ -5,20 +5,19 @@
     using System.Linq;
     using System.Reflection;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Data.Repositories.Contracts;
     using VetClinic.Factories.Contracts;
     using VetClinic.Providers.Contracts;
 
     public class EngineCommand : IEngineCommand
     {
         private readonly ICommandFactory commandFactory;
-        private readonly ICommandRepository commands;
+        //private readonly ICommandRepository commands;
         private readonly IWriter writer;
 
-        public EngineCommand(ICommandFactory commandFactory, ICommandRepository commands, IWriter writer)
+        public EngineCommand(ICommandFactory commandFactory, IWriter writer)
         {
             this.commandFactory = commandFactory;
-            this.commands = commands;
+            //this.commands = commands;
             this.writer = writer;
         }
         public void CreateCommand(IList<string> parameters)
@@ -27,7 +26,7 @@
 
             var newCommand = this.commandFactory.CreateCommand(name);
 
-            this.commands.CreateCommand(newCommand);
+            //this.commands.CreateCommand(newCommand);
             this.writer.WriteLine($"Command {name} successfully created");
         }
 
@@ -35,14 +34,14 @@
         {
             var name = parameters[1];
 
-            var command = this.commands.Commands.SingleOrDefault(p => p.Name == name);
+            //var command = this.commands.Commands.SingleOrDefault(p => p.Name == name);
 
-            if (command == null)
-            {
-                throw new ArgumentNullException("Command not found");
-            }
+            //if (command == null)
+            //{
+            //    throw new ArgumentNullException("Command not found");
+            //}
 
-            this.commands.DeleteCommand(name);
+            //this.commands.DeleteCommand(name);
             this.writer.WriteLine($"Command {name} successfully deleted");
         }
 

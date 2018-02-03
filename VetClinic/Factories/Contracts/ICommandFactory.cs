@@ -1,6 +1,6 @@
 ﻿namespace VetClinic.Factories.Contracts
 {
-    using VetClinic.Data.Contracts;
+    using VetClinic.Commands.Contracts;
 
     public interface ICommandFactory
     {
