@@ -17,5 +17,28 @@ namespace VetClinic.Test.VetClinic.Factories
             // Assert
             Assert.IsInstanceOfType(dog, typeof(IPet));
         }
+
+        [TestMethod]
+        public void CreateCat_Should_Return_Instance_Of_Type_IPet()
+        {
+            // Arrange & Act
+            var cat = new PetFactory().CreateCat("name", AnimalGenderType.female, 1);
+
+            // Assert
+            Assert.IsInstanceOfType(cat, typeof(IPet));
+        }
+
+        [TestMethod]
+        public void CreateHamster_Should_Return_Instance_Of_Type_IPet()
+        {
+            // Arrange & Act
+            var hamster = new PetFactory().CreateHamster("name", AnimalGenderType.female, 1);
+
+            // Assert
+            Assert.IsInstanceOfType(hamster, typeof(IPet));
+        }
+
     }
+
+    
 }

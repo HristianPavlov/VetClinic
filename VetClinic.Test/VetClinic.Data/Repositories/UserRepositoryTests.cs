@@ -38,7 +38,7 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
             var user = new Mock<IUser>();
 
             // Act
-            userRepository.users.Add(user.Object);
+            userRepository.users.Add(user.Object); // TODO not testing the CreateUser method
             var expectedUser = userRepository.users.SingleOrDefault();
 
             //Assert
@@ -48,7 +48,7 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
         }
 
         [TestMethod]
-        public void DeleteUser_Should_Remove_New_User_To_UserList()
+        public void DeleteUser_Should_Remove_User_From_UserList()
         {
             // Arrange
             var userRepository = new UserRepository();
@@ -62,7 +62,6 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
             // Assert
             Assert.IsTrue(userRepository.users.Count == 0);
             Assert.IsNull(expectedUser);
-
         }
     }
 }

@@ -13,7 +13,7 @@
         public IPet CreateCat(string name, AnimalGenderType gender, int age)
             => new Cat(name, gender, age);
 
-        public IPet CreateHammster(string name, AnimalGenderType gender, int age)
+        public IPet CreateHamster(string name, AnimalGenderType gender, int age)
             => new Hamster(name, gender, age);
     }
 }

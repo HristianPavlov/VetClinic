@@ -16,10 +16,18 @@
             this.users = users;
             this.pets = new List<IPet>();
         }
+
         public ICollection<IPet> Pets => new List<IPet>(this.pets);
+
+        public IUserRepository Users => users;
 
         public void CreatePet(string userPhone, IPet pet)
         {
+            if (pet == null)
+            {
+                throw new ArgumentNullException("This pet is null");
+            }
+
             var petExists = this.pets.Any(a => a.Id == pet.Id);
 
             if (petExists)
@@ -33,8 +41,13 @@
         public IPet GetById(string id) => this.pets.SingleOrDefault(a => a.Id == id);
 
 
-        public void DetelePet(string userPhone, IPet pet)
+        public void DeletePet(string userPhone, IPet pet)
         {
+            if (pet == null)
+            {
+                throw new ArgumentNullException("This pet is null");
+            }
+
             var petExists = this.pets.Any(a => a.Id == pet.Id);
 
             if (!petExists)

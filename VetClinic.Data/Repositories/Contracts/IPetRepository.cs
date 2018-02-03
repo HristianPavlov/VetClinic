@@ -9,7 +9,7 @@
 
         void CreatePet(string userPhone, IPet pet);
 
-        void DetelePet(string userPhone, IPet pet);
+        void DeletePet(string userPhone, IPet pet);
 
         IPet GetById(string id);
     }

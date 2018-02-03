@@ -37,7 +37,7 @@
             {
                 case "cat": newAnimal = this.animalFactory.CreateCat(name, gender, age); break;
                 case "dog": var breed = parameters[6]; newAnimal = this.animalFactory.CreateDog(name, gender, breed, age); break;
-                case "hamster": newAnimal = this.animalFactory.CreateHammster(name, gender, age); break;
+                case "hamster": newAnimal = this.animalFactory.CreateHamster(name, gender, age); break;
                 default: this.writer.WriteLine(($"No pet of kind {animalType} can be serviced in this clinic")); return;
             }
 
@@ -59,7 +59,7 @@
                 throw new ArgumentNullException("Pet not found");
             }
 
-            this.pets.DetelePet(userPhone, pet);
+            this.pets.DeletePet(userPhone, pet);
             this.writer.WriteLine($"{pet.Type} with name {pet.Name} successfully removed from database");
         }
 

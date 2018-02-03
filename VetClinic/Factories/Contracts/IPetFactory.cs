@@ -9,6 +9,6 @@
 
         IPet CreateCat(string name, AnimalGenderType gender, int age);
 
-        IPet CreateHammster(string name, AnimalGenderType gender, int age);
+        IPet CreateHamster(string name, AnimalGenderType gender, int age);
     }
 }

@@ -70,6 +70,7 @@
     <Compile Include="VetClinic.Data\Models\ServiceTests.cs" />
     <Compile Include="VetClinic.Data\Models\UserTests.cs" />
     <Compile Include="VetClinic.Data\Repositories\EmployeeRepositoryTests.cs" />
+    <Compile Include="VetClinic.Data\Repositories\PetRepositoryTests.cs" />
     <Compile Include="VetClinic.Data\Repositories\ServicesRepositoryTests.cs" />
     <Compile Include="VetClinic.Data\Repositories\UserRepositoryTests.cs" />
     <Compile Include="VetClinic\Commands\EmployeeCommandTests.cs" />
