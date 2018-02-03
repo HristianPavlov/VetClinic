@@ -1,7 +1,6 @@
 ﻿namespace VetClinic.Commands.Contracts
 {
     using System.Collections.Generic;
-    using System.Reflection;
 
     public interface IEngineCommand
     {
@@ -9,7 +8,7 @@
 
         void DeleteCommand(IList<string> parameters);
 
-        IEnumerable<List<MethodInfo>> GetAllCommands();
+        //IEnumerable<List<MethodInfo>> GetAllCommands();
 
         void ListCommands();
     }

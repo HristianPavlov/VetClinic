@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using VetClinic.Commands.Contracts;
+    using VetClinic.Factories.Contracts;
     using VetClinic.Providers.Contracts;
 
     public class ProcessorCommand : IProcessorCommand
@@ -14,8 +15,9 @@
         private readonly IEngineCommand engineCommands;
         private readonly ICashRegisterCommand cashRegisterCommands;
         private readonly IWriter writer;
+        private readonly ICommandFactory commandFactory;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory)
         {
             this.userCommands = userCommands;
             this.animalCommands = animalCommands;
@@ -24,6 +26,7 @@
             this.engineCommands = engineCommands;
             this.cashRegisterCommands = cashRegisterCommands;
             this.writer = writer;
+            this.commandFactory = commandFactory;
         }
 
         public void ProcessCommand(string commandLine)
@@ -53,7 +56,7 @@
                 //    {
                 //        if (method.Name.ToLower() == command.ToLower())
                 //        {
-                //            // TODO "this" should be replaced with dynamically commnad
+                //            // TODO "this" should be replaced with concrete commnad dependency
                 //            method.Invoke(this, new object[] { commandParts });
                 //            return;
                 //        }

@@ -1,11 +1,19 @@
 ﻿namespace VetClinic.Factories.Implemetations
 {
+    using Autofac;
     using VetClinic.Data.Contracts;
-    using VetClinic.Data.Models;
     using VetClinic.Factories.Contracts;
 
     public class CommandFactory : ICommandFactory
     {
-        public IEngineCommand CreateCommand(string name) => new EngineCommand(name);
+        private readonly IComponentContext container;
+
+        public CommandFactory(IComponentContext container)
+        {
+            this.container = container;
+        }
+
+        public IEngineCommand CreateCommand(string name)
+            => this.container.ResolveNamed<IEngineCommand>(name);
     }
 }

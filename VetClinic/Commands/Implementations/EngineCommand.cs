@@ -67,7 +67,7 @@
             }
         }
 
-        public IEnumerable<List<MethodInfo>> GetAllCommands()
+        private IEnumerable<List<MethodInfo>> GetAllCommands()
              => Assembly
                    .GetAssembly(typeof(IEngineCommand))
                    .GetTypes()
