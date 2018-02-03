@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using VetClinic.Commands.Contracts;
-    using VetClinic.Common.ConsoleServices.Contracts;
+    using VetClinic.Providers.Contracts;
 
     public class ProcessorCommand : IProcessorCommand
     {

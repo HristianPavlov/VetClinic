@@ -1,4 +1,4 @@
-﻿namespace VetClinic.Common.ConsoleServices.Contracts
+﻿namespace VetClinic.Providers.Contracts
 {
     public interface IReader
     {

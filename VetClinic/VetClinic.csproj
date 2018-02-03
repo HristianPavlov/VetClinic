@@ -86,10 +86,10 @@
     <Compile Include="Commands\Implementations\ProcessorCommand.cs" />
     <Compile Include="Commands\Implementations\ServiceCommand.cs" />
     <Compile Include="Commands\Implementations\UserCommand.cs" />
-    <Compile Include="Common\ConsoleServices\Contracts\IWriter.cs" />
-    <Compile Include="Common\ConsoleServices\Implementations\ConsoleReader.cs" />
-    <Compile Include="Common\ConsoleServices\Contracts\IReader.cs" />
-    <Compile Include="Common\ConsoleServices\Implementations\ConsoleWriter.cs" />
+    <Compile Include="Providers\Contracts\IWriter.cs" />
+    <Compile Include="Providers\Implementations\ConsoleReader.cs" />
+    <Compile Include="Providers\Contracts\IReader.cs" />
+    <Compile Include="Providers\Implementations\ConsoleWriter.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Factories\Contracts\IPetFactory.cs" />
     <Compile Include="Factories\Contracts\ICommandFactory.cs" />

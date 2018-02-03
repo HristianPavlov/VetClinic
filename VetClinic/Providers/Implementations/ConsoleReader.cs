@@ -1,7 +1,7 @@
-﻿namespace VetClinic.Common.ConsoleServices.Implementations
+﻿namespace VetClinic.Providers.ConsoleServices.Implementations
 {
     using System;
-    using VetClinic.Common.ConsoleServices.Contracts;
+    using VetClinic.Providers.Contracts;
 
     public class ConsoleReader : IReader
     {
