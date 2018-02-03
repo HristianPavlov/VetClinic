@@ -58,7 +58,11 @@
             }
             else
             {
-                // decorator
+                builder.RegisterType<EngineCommand>().Named<IEngineCommand>("listcommands");
+                builder.RegisterType<EngineCommand>().Named<IEngineCommand>("listcommands")
+                    .WithParameter(
+                    (x, y) => x.Name == "command",
+                    (x, y) => y.ResolveNamed<IEngineCommand>("listcommands"));
             }
 
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();

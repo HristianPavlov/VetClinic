@@ -69,10 +69,12 @@
 
         private IEnumerable<List<MethodInfo>> GetAllCommands()
              => Assembly
-                   .GetAssembly(typeof(IEngineCommand))
+                    .Load("VetClinic.Core")
+                   //.GetAssembly(typeof(IEngineCommand))
                    .GetTypes()
-                   .Where(t => t.IsInterface)
+                   .Where(t => t.IsInterface && t.Name.EndsWith("Command"))
                    .Select(t => t.GetMethods().Where(m => m.ReturnType == typeof(void))
+                   .Distinct()
                    .ToList());
     }
 }

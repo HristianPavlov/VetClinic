@@ -40,7 +40,7 @@
             }
 
             var commandName = commandParts[0].ToLower();
-            // var command = this.commandFactory.CreateCommand(commandName);
+            //var command = this.commandFactory.CreateCommand(commandName);
 
             try
             {
