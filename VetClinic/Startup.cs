@@ -9,6 +9,8 @@
         {
             var builder = new ContainerBuilder();
 
+            //if (bool.Parse(ConfigurationManager.AppSettings["IsTestEnv"])) { }
+
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
 
             var container = builder.Build();

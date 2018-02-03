@@ -2,11 +2,7 @@
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VetClinic.Data.Contracts;
-using VetClinic.Data.Enums;
 using VetClinic.Data.Models;
 
 namespace VetClinic.Test.VetClinic.Data.Models
@@ -25,21 +21,21 @@ namespace VetClinic.Test.VetClinic.Data.Models
         public void Constructor_Service_Should_Throw_ArgumentNullException_When_TimeToExecute_Is_Negaative()
         {
             // Arrange & Act & Assert
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Service("gangsta",-1));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Service("gangsta", -1));
         }
 
         [TestMethod]
         public void Constructor_Service_Should_Throw_ArgumentNullException_When_Price_Is_Negative()
         {
             // Arrange & Act & Assert
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Service("gangsta",-1, 1));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Service("gangsta", -1, 1));
         }
 
         [TestMethod]
         public void Constructor_Service_Should_Throw_ArgumentNullException_When_Price_Is_Zero()
         {
             // Arrange & Act & Assert
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Service("gangsta", 0,6));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Service("gangsta", 0, 6));
         }
 
         [TestMethod]
@@ -88,7 +84,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
         //public void Service_Should_Execute_As_Expected()
         //{
         //    // Arrange
-            
+
         //    var service = new Mock<IService>();
         //    serviceList.Add(pet.Object);
 
@@ -112,11 +108,10 @@ namespace VetClinic.Test.VetClinic.Data.Models
                               $"Name: {service.Name}" + Environment.NewLine +
                               $"Id: {service.Id}" + Environment.NewLine +
                               $"Price: {service.Price}") + Environment.NewLine;
-                             
+
             // Assert
             Assert.AreEqual(expectedResult, printedInfo);
         }
     }
 }
 
-  

@@ -1,14 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VetClinic.Commands.Contracts;
-using VetClinic.Commands.Implementations;
 using VetClinic.Common.ConsoleServices.Contracts;
-using VetClinic.Data.Contracts;
 using VetClinic.Data.Models;
 using VetClinic.Data.Repositories.Contracts;
 using VetClinic.Data.Repositories.Implementations;
@@ -17,11 +9,11 @@ using VetClinic.Factories.Contracts;
 namespace VetClinic.Test.VetClinic.Data.Repositories
 {
     [TestClass]
-   public class ServicesRepositoryTests
+    public class ServicesRepositoryTests
     {
 
-           
-        
+
+
 
         [TestMethod]
         public void ServiceRepo_Should_Add_Service_To_Repo()
@@ -43,14 +35,14 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
             //serviceFactoryMock.Verify(x => x.CreateService("Name", 7), Times.Once());
 
             Assert.IsTrue(sut.Services.Contains(TheShit));
-           
+
         }
 
         //[TestMethod]
         //public void DeleteService_Should_Delete_Service_From_Db()
         //{
         //    // Arrange
-            
+
 
         //    // Act
         //    serviceRepoMock.Setup(x => x.DeleteService(It.IsAny<string>()));
@@ -64,7 +56,7 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
         public void DeleteService_Should_Delete_Service_From_Db_SecondTry()
         {
             // Arrange
-           // var sut = new ServiceRepository();
+            // var sut = new ServiceRepository();
             var serviceRepoMock = new Mock<IServiceRepository>();
 
             // Act
