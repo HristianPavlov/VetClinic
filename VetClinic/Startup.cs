@@ -7,9 +7,9 @@
     {
         static void Main()
         {
-            var builder = new ContainerBuilder();
-
             //if (bool.Parse(ConfigurationManager.AppSettings["IsTestEnv"])) { }
+
+            var builder = new ContainerBuilder();
 
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
 
