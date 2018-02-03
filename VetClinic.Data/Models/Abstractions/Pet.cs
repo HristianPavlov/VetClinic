@@ -16,11 +16,11 @@
         private readonly AnimalGenderType gender;
         private readonly ICollection<IService> services;
 
-        public Pet(string name, AnimalGenderType gender, AnimalType type, int age)  // TODO : Why not validating age here?
+        public Pet(string name, AnimalGenderType gender, AnimalType type, int age)
         {
             Guard.WhenArgument(name, "Invalid name").IsNull().Throw();
             Guard.WhenArgument(name.Length, "Invalid name length").IsLessThan(2).IsGreaterThan(15).Throw();
-
+            Guard.WhenArgument(age, "Age cannot be less than zero").IsLessThan(0).Throw();
             this.id = Guid.NewGuid().ToString();
             this.name = name;
             this.gender = gender;
