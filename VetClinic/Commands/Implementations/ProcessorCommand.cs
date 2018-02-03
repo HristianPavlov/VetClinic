@@ -9,7 +9,7 @@
     public class ProcessorCommand : IProcessorCommand
     {
         private readonly IUserCommand userCommands;
-        private readonly IPetCommand animalCommands;
+        private readonly IPetCommand petCommands;
         private readonly IEmployeeCommand employeeCommands;
         private readonly IServiceCommand serviceCommands;
         private readonly IEngineCommand engineCommands;
@@ -17,10 +17,10 @@
         private readonly IWriter writer;
         private readonly ICommandFactory commandFactory;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand animalCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory)
         {
             this.userCommands = userCommands;
-            this.animalCommands = animalCommands;
+            this.petCommands = petCommands;
             this.employeeCommands = employeeCommands;
             this.serviceCommands = serviceCommands;
             this.engineCommands = engineCommands;
@@ -38,6 +38,10 @@
                 this.writer.WriteLine("Please add a valid command!");
                 return;
             }
+
+            var commandName = commandParts[0].ToLower();
+            // var command = this.commandFactory.CreateCommand(commandName);
+
             try
             {
                 #region // execute with reflection not working
@@ -65,7 +69,7 @@
                 #endregion
 
                 // execute with switch
-                switch (commandParts[0].ToLower())
+                switch (commandName)
                 {
                     // User
                     case "createuser": this.userCommands.CreateUser(commandParts); break;
@@ -82,12 +86,12 @@
 
                     // Pet
                     case "createpet":
-                        this.animalCommands.CreatePet(commandParts);
+                        this.petCommands.CreatePet(commandParts);
                         this.userCommands.CreatePet(commandParts); break;
                     case "deletepet":
-                        this.animalCommands.DeletePet(commandParts);
+                        this.petCommands.DeletePet(commandParts);
                         this.userCommands.CreatePet(commandParts); break;
-                    case "listpets": this.animalCommands.ListPets(); break;
+                    case "listpets": this.petCommands.ListPets(); break;
 
                     // Services
                     case "createservice": this.serviceCommands.CreateService(commandParts); break;
