@@ -1,7 +1,6 @@
 ﻿namespace VetClinic.Commands.Implementations
 {
     using System;
-    using System.Linq;
     using VetClinic.Commands.Contracts;
     using VetClinic.Core.Commands.Contracts;
     using VetClinic.Factories.Contracts;
@@ -13,13 +12,13 @@
         private readonly IPetCommand petCommands;
         private readonly IEmployeeCommand employeeCommands;
         private readonly IServiceCommand serviceCommands;
-        private readonly IEngineCommand engineCommands;
+        private readonly ICommand engineCommands;
         private readonly ICashRegisterCommand cashRegisterCommands;
         private readonly IWriter writer;
         private readonly ICommandFactory commandFactory;
         private readonly ICommandParser commandParser;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, IEngineCommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, ICommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser)
         {
             this.userCommands = userCommands;
             this.petCommands = petCommands;
@@ -34,16 +33,7 @@
 
         public void ProcessCommand(string commandLine)
         {
-            var commandParts = commandLine.Trim().Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-
-            if (commandParts.Count() == 0)
-            {
-                this.writer.WriteLine("Please add a valid command!");
-                return;
-            }
-
-            var commandName = commandParts[0].ToLower();
-            var command = this.commandParser.ParseCommand(commandLine);
+            var commandParts = this.commandParser.ParseCommand(commandLine);
 
             try
             {
@@ -72,7 +62,7 @@
                 #endregion
 
                 // execute with switch
-                switch (commandName)
+                switch (commandParts[0])
                 {
                     // User
                     case "createuser": this.userCommands.CreateUser(commandParts); break;

@@ -49,7 +49,7 @@
                 builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("listservices");
                 builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("performservice");
 
-                builder.RegisterType<EngineCommand>().Named<IEngineCommand>("listcommands");
+                builder.RegisterType<Command>().Named<ICommand>("listcommands");
 
                 builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("updatebalance");
                 builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("printbalance");
@@ -58,11 +58,11 @@
             }
             else
             {
-                builder.RegisterType<EngineCommand>().Named<IEngineCommand>("listcommands");
-                builder.RegisterType<EngineCommand>().Named<IEngineCommand>("listcommands")
+                builder.RegisterType<Command>().Named<ICommand>("listcommands");
+                builder.RegisterType<Command>().Named<ICommand>("listcommands")
                     .WithParameter(
                     (pi, ctx) => pi.Name == "command",
-                    (pi, ctx) => ctx.ResolveNamed<IEngineCommand>("listcommands"));
+                    (pi, ctx) => ctx.ResolveNamed<ICommand>("listcommands"));
             }
 
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();

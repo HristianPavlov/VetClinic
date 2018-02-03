@@ -14,7 +14,7 @@
             this.container = container;
         }
 
-        public IEngineCommand CreateCommand(string name)
-            => this.container.ResolveNamed<IEngineCommand>(name);
+        public ICommand CreateCommand(string name)
+            => this.container.ResolveNamed<ICommand>(name);
     }
 }

@@ -1,9 +1,9 @@
-﻿using VetClinic.Commands.Contracts;
+﻿using System.Collections.Generic;
 
 namespace VetClinic.Core.Commands.Contracts
 {
     public interface ICommandParser
     {
-        IEngineCommand ParseCommand(string commandLine);
+        IList<string> ParseCommand(string commandLine);
     }
 }
