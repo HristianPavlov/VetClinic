@@ -35,11 +35,11 @@
         public void ProcessCommand(string commandAsString)
         {
             var commandParts = this.commandParser.ParseParameters(commandAsString);
-            var commandClass = this.commandFactory.GetCommandClass(commandAsString);
 
             try
             {
                 #region // execute with reflection
+                var commandClass = this.commandFactory.GetCommandClass(commandAsString);
                 var method = commandClass.GetType()
                                            .GetMethods()
                                            .Where(m => m.Name.ToLower() == commandParts[0])
