@@ -46,39 +46,11 @@
             this.Services.Remove(service);
         }
 
-        public bool ContainsService(string id)
-        {
+        public bool ContainsService(string id) => this.Services.Any(s => s.Id == id);
 
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException();
-            }
-            return this.Services.Any(s => s.Id == id);
-        }
+        public IService FindById(string id) => this.Services.SingleOrDefault(s => s.Id == id);
 
-        public IService FindById(string id)
-        {
-
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException();
-            }
-            return this.Services.SingleOrDefault(s => s.Id == id);
-
-        }
-
-
-        public IService GetByName(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException();
-            }
-            return this.Services.SingleOrDefault(s => s.Name == name);
-        }
-
-
-
+        public IService GetByName(string name) => this.Services.SingleOrDefault(s => s.Name == name);
 
         public string ListServices()
         {
