@@ -6,14 +6,27 @@
 
     public class CommandFactory : ICommandFactory
     {
-        private readonly IComponentContext container;
+        private readonly IComponentContext context;
 
-        public CommandFactory(IComponentContext container)
+
+        public CommandFactory(IComponentContext context)
         {
-            this.container = container;
+            this.context = context;
         }
 
-        public ICommand CreateCommand(string name)
-            => this.container.ResolveNamed<ICommand>(name);
+        public ICommand CreateCommand(string commandAsString)
+            => this.context.ResolveNamed<ICommand>(commandAsString.Split(' ')[0]);
+
+
+        //private TypeInfo FindCommand(string commandName)
+        //{
+        //    Assembly assembly = this.GetType().GetTypeInfo().Assembly;
+        //    var commandTypeInfo = assembly.DefinedTypes
+        //           .Where(t => t.ImplementedInterfaces.Any(i => i == typeof(ICommand)))
+        //           .Where(t => t.Name.ToLower() == commandName.ToLower())
+        //           .SingleOrDefault();
+
+        //    return commandTypeInfo;
+        //}
     }
 }

@@ -4,6 +4,8 @@ namespace VetClinic.Core.Commands.Contracts
 {
     public interface ICommandParser
     {
-        IList<string> ParseCommand(string commandLine);
+        //string ParseCommand(string commandAsString);
+
+        IList<string> ParseParameters(string commandAsString);
     }
 }

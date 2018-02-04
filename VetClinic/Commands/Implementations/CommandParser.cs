@@ -12,13 +12,35 @@ namespace VetClinic.Core.Commands.Implementations
 
         public CommandParser(ICommandFactory commandFactory)
         {
-            this.commandFactory = commandFactory ?? throw new ArgumentNullException();
+            this.commandFactory = commandFactory;
         }
 
-        public IList<string> ParseCommand(string commandLine)
-        {
-            return commandLine.Trim().Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        //public string ParseCommand(string commnandAsString)
+        //{
+        //    if (string.IsNullOrWhiteSpace(commnandAsString))
+        //    {
+        //        throw new ArgumentNullException("Command cannot be null or empty.");
+        //    }
 
+        //    return commnandAsString.Trim().Split(' ')[0];
+
+        //}
+
+        public IList<string> ParseParameters(string commnandAsString)
+        {
+            if (string.IsNullOrWhiteSpace(commnandAsString))
+            {
+                throw new ArgumentNullException("Command cannot be null or empty.");
+            }
+
+            var commandParts = commnandAsString.Trim().Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            if (!commandParts.Any())
+            {
+                return new List<string>();
+            }
+
+            return commandParts;
         }
     }
 }

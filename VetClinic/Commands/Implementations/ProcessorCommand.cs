@@ -31,9 +31,11 @@
             this.commandParser = commandParser;
         }
 
-        public void ProcessCommand(string commandLine)
+        public void ProcessCommand(string commandAsString)
         {
-            var commandParts = this.commandParser.ParseCommand(commandLine);
+            //var commandName = this.commandParser.ParseCommand(commandAsString);
+            var commandParts = this.commandParser.ParseParameters(commandAsString);
+            //var command = this.commandFactory.CreateCommand(commandAsString); //TODO replace switch
 
             try
             {

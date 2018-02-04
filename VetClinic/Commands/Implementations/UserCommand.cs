@@ -34,6 +34,7 @@
             var newUser = this.personFactory.CreateUser(firstName, lastName, phoneNumber, email);
 
             this.users.CreateUser(newUser);
+
             this.writer.WriteLine($"User {firstName} {lastName} successfully created");
         }
 
