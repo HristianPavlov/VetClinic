@@ -2,9 +2,8 @@
 {
     using Autofac;
     using System.Reflection;
-    using VetClinic.Data.Repositories.Contracts;
 
-    public class AutofacModuleConfig : Autofac.Module
+    public class VetClinicModuleConfig : Autofac.Module
     {
 
         protected override void Load(ContainerBuilder builder)
@@ -14,11 +13,6 @@
                             x.Namespace.Contains("Factories") ||
                             x.Namespace.Contains("Providers") ||
                             x.Name.EndsWith("Engine"))
-                .AsImplementedInterfaces()
-                .SingleInstance();
-
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(ICommandRepository)))
-                .Where(x => x.Namespace.Contains("Repositories"))
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
