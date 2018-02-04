@@ -14,7 +14,7 @@
             this.context = context;
         }
 
-        // TODO dinamically return the right class or method of class
+        // TODO dinamically return the right class or call the method of class
         public IUserCommand GetCommandClass(string commandAsString)
             => this.context.ResolveNamed<IUserCommand>(commandAsString.Split(' ')[0]);
 
