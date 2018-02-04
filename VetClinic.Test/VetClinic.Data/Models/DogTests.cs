@@ -76,7 +76,6 @@ namespace VetClinic.Test.VetClinic.Data.Models
             var dog = new Dog("name", AnimalGenderType.male, "breed", 1);
 
             // Assert
-            Assert.IsNotNull(dog);
             Assert.IsInstanceOfType(dog, typeof(Dog));
         }
 

@@ -74,6 +74,7 @@
     <Compile Include="VetClinic.Data\Repositories\ServicesRepositoryTests.cs" />
     <Compile Include="VetClinic.Data\Repositories\UserRepositoryTests.cs" />
     <Compile Include="VetClinic\Commands\EmployeeCommandTests.cs" />
+    <Compile Include="VetClinic\Commands\PetCommandTests.cs" />
     <Compile Include="VetClinic\Commands\ServiceCommandTests.cs" />
     <Compile Include="VetClinic\Commands\UserCommandTests.cs" />
     <Compile Include="VetClinic\Factories\PersonFactoryTests.cs" />

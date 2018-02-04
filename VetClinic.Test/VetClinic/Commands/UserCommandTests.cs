@@ -16,12 +16,13 @@ namespace VetClinic.Test.VetClinic.Commands
         [TestMethod]
         public void Constructor_Should_Return_New_Instance_Of_UserCommand()
         {
-            // Arrange & Act
+            // Arrange
             var personFactoryMock = new Mock<IPersonFactory>();
             var userRepoMock = new Mock<IUserRepository>();
             var petRepoMock = new Mock<IPetRepository>();
             var writerMock = new Mock<IWriter>();
 
+            // Act
             var userCommand = new UserCommand(personFactoryMock.Object, userRepoMock.Object, petRepoMock.Object, writerMock.Object);
 
             // Assert

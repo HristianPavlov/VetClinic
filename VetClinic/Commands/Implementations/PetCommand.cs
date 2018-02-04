@@ -35,10 +35,22 @@
 
             switch (animalType)
             {
-                case "cat": newAnimal = this.animalFactory.CreateCat(name, gender, age); break;
-                case "dog": var breed = parameters[6]; newAnimal = this.animalFactory.CreateDog(name, gender, breed, age); break;
-                case "hamster": newAnimal = this.animalFactory.CreateHamster(name, gender, age); break;
-                default: this.writer.WriteLine(($"No pet of kind {animalType} can be serviced in this clinic")); return;
+                case "cat":
+                    newAnimal = this.animalFactory.CreateCat(name, gender, age);
+                    break;
+
+                case "dog":
+                    var breed = parameters[6];
+                    newAnimal = this.animalFactory.CreateDog(name, gender, breed, age);
+                    break;
+
+                case "hamster":
+                    newAnimal = this.animalFactory.CreateHamster(name, gender, age);
+                    break;
+
+                default:
+                    this.writer.WriteLine(($"No pet of kind {animalType} can be serviced in this clinic"));
+                    return;
             }
 
             newAnimal.OwnerPhoneNumber = userPhone;

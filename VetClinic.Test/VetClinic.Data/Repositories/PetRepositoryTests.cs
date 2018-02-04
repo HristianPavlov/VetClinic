@@ -63,24 +63,6 @@ namespace VetClinic.Test.VetClinic.Data.Repositories
         }
 
         [TestMethod]
-        public void CreatePet_Should_Add_New_Pet_To_PetList()
-        {
-            // Arrange
-            var users = new Mock<IUserRepository>();
-            var petRepository = new PetRepository(users.Object);
-            var pet = new Mock<IPet>();
-
-            // Act
-            petRepository.CreatePet("12345",pet.Object);
-            var expectedPet = petRepository.Pets.SingleOrDefault();
-
-            //Assert
-            Assert.IsNotNull(expectedPet);
-            Assert.IsInstanceOfType(expectedPet, typeof(IPet));
-            Assert.IsTrue(petRepository.Pets.Count == 1);
-        }
-
-        [TestMethod]
         public void CreatePet_Should_Add_Pet_To_PetList_Correctly()
         {
             // Arrange
