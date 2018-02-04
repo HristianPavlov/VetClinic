@@ -39,7 +39,7 @@
 
             try
             {
-                #region // execute with reflection not working
+                #region // execute with reflection
                 var method = commandClass.GetType()
                                            .GetMethods()
                                            .Where(m => m.Name.ToLower() == commandParts[0])
