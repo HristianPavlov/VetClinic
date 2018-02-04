@@ -1,7 +1,6 @@
 ﻿namespace VetClinic.Factories.Implemetations
 {
     using Autofac;
-    using VetClinic.Commands.Contracts;
     using VetClinic.Factories.Contracts;
 
     public class CommandFactory : ICommandFactory
@@ -14,9 +13,9 @@
             this.context = context;
         }
 
-        // TODO return the right class (or call the method of class)
-        public IUserCommand GetCommandClass(string commandAsString)
-            => this.context.ResolveNamed<IUserCommand>(commandAsString.Split(' ')[0]);
+        // TODO dynamically return the right class (or call the method of class)
+        public object GetCommandClass(string commandAsString)
+            => this.context.ResolveNamed<object>(commandAsString.Split(' ')[0]);
 
 
         //private TypeInfo FindCommand(string commandName)

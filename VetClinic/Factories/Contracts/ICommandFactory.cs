@@ -1,10 +1,8 @@
-﻿using VetClinic.Commands.Contracts;
-
-namespace VetClinic.Factories.Contracts
+﻿namespace VetClinic.Factories.Contracts
 {
     public interface ICommandFactory
     {
         // TODO
-        IUserCommand GetCommandClass(string commandAsString);
+        object GetCommandClass(string commandAsString);
     }
 }
