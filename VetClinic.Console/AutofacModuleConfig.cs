@@ -1,12 +1,12 @@
 ﻿namespace VetClinic.Console
 {
     using Autofac;
+    using Autofac.Extras.DynamicProxy;
     using System.Configuration;
     using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Commands.Implementations;
-    using VetClinic.Core.Commands.Contracts;
-    using VetClinic.Core.Commands.Implementations;
+    using VetClinic.Console.Interceptors;
 
     public class AutofacModuleConfig : Autofac.Module
     {
@@ -27,16 +27,15 @@
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
+            builder.RegisterType<StopwatchInterceptor>().AsSelf();
+
             bool isTest = bool.Parse(ConfigurationManager.AppSettings["IsTestEnv"]);
 
             if (isTest)
             {
-                builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser");
-
-                //builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser")
-                //    .WithParameter(
-                //    (pi, ctx) => pi.Name == "command",
-                //    (pi, ctx) => ctx.ResolveNamed<IUserCommand>("createuser"));
+                builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser")
+                    .EnableClassInterceptors()
+                    .InterceptedBy(typeof(StopwatchInterceptor));
 
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("deleteuser");
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("listuserpets");
