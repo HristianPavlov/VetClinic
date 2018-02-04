@@ -5,6 +5,6 @@ namespace VetClinic.Factories.Contracts
     public interface ICommandFactory
     {
         // TODO
-        ICommand CreateCommand(string commandAsString);
+        IUserCommand GetCommandClass(string commandAsString);
     }
 }

@@ -15,8 +15,8 @@
         }
 
         // TODO dinamically return the right class or method of class
-        public ICommand CreateCommand(string commandAsString)
-            => this.context.ResolveNamed<ICommand>(commandAsString.Split(' ')[0]);
+        public IUserCommand GetCommandClass(string commandAsString)
+            => this.context.ResolveNamed<IUserCommand>(commandAsString.Split(' ')[0]);
 
 
         //private TypeInfo FindCommand(string commandName)

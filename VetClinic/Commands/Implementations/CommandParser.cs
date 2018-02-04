@@ -26,7 +26,7 @@ namespace VetClinic.Core.Commands.Implementations
 
             if (!commandParts.Any())
             {
-                return new List<string>();
+                throw new ArgumentNullException("Command cannot be empty.");
             }
 
             return commandParts;

@@ -35,7 +35,7 @@
         public void ProcessCommand(string commandAsString)
         {
             var commandParts = this.commandParser.ParseParameters(commandAsString);
-            var commandClass = this.commandFactory.CreateCommand(commandAsString);
+            var commandClass = this.commandFactory.GetCommandClass(commandAsString);
 
             try
             {
