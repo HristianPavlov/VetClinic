@@ -1,6 +1,7 @@
 ﻿namespace VetClinic.Commands.Implementations
 {
     using System;
+    using System.Linq;
     using VetClinic.Commands.Contracts;
     using VetClinic.Core.Commands.Contracts;
     using VetClinic.Factories.Contracts;
@@ -33,34 +34,17 @@
 
         public void ProcessCommand(string commandAsString)
         {
-            //var commandName = this.commandParser.ParseCommand(commandAsString);
             var commandParts = this.commandParser.ParseParameters(commandAsString);
-            //var command = this.commandFactory.CreateCommand(commandAsString); //TODO replace switch
+            var commandClass = this.commandFactory.CreateCommand(commandAsString);
 
             try
             {
                 #region // execute with reflection not working
-                //var command = commandParts[0];
-
-                //var commands = this.engineCommands.GetAllCommands();
-
-                //if (commands == null)
-                //{
-                //    throw new ArgumentNullException("No commands created yet");
-                //}
-
-                //foreach (var commandList in commands.Skip(3))
-                //{
-                //    foreach (var method in commandList)
-                //    {
-                //        if (method.Name.ToLower() == command.ToLower())
-                //        {
-                //            // TODO "this" should be replaced with concrete commnad dependency
-                //            method.Invoke(this, new object[] { commandParts });
-                //            return;
-                //        }
-                //    }
-                //}
+                var method = commandClass.GetType()
+                                           .GetMethods()
+                                           .Where(m => m.Name.ToLower() == commandParts[0])
+                                           .SingleOrDefault();
+                method.Invoke(commandClass, new object[] { commandParts });
                 #endregion
 
                 // execute with switch

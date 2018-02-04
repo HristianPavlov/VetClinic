@@ -5,6 +5,8 @@
     using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Commands.Implementations;
+    using VetClinic.Core.Commands.Contracts;
+    using VetClinic.Core.Commands.Implementations;
 
     public class AutofacModuleConfig : Autofac.Module
     {
@@ -30,6 +32,12 @@
             if (isTest)
             {
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser");
+
+                //builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser")
+                //    .WithParameter(
+                //    (pi, ctx) => pi.Name == "command",
+                //    (pi, ctx) => ctx.ResolveNamed<IUserCommand>("createuser"));
+
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("deleteuser");
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("listuserpets");
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("searchuserbyphone");

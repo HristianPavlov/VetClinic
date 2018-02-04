@@ -14,6 +14,7 @@
             this.context = context;
         }
 
+        // TODO dinamically return the right class or method of class
         public ICommand CreateCommand(string commandAsString)
             => this.context.ResolveNamed<ICommand>(commandAsString.Split(' ')[0]);
 

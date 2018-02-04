@@ -13,7 +13,7 @@
         void PerformService(IList<string> parameters);
 
         void BookService(IList<string> parameters);
-        
+
         decimal CloseAccount(IList<string> parameters);
     }
 }
