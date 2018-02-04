@@ -33,35 +33,19 @@
         {
             var commandParts = commandLine.Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-            if (commandParts.Count() == 0)
+            if (!commandParts.Any())
             {
                 this.writer.WriteLine("Please add a valid command!");
                 return;
             }
             try
             {
-                #region // execute with reflection not working
-                //var command = commandParts[0];
-
-                //var commands = this.engineCommands.GetAllCommands();
-
-                //if (commands == null)
-                //{
-                //    throw new ArgumentNullException("No commands created yet");
-                //}
-
-                //foreach (var commandList in commands.Skip(3))
-                //{
-                //    foreach (var method in commandList)
-                //    {
-                //        if (method.Name.ToLower() == command.ToLower())
-                //        {
-                //            // TODO "this" should be replaced with concrete commnad dependency
-                //            method.Invoke(this, new object[] { commandParts });
-                //            return;
-                //        }
-                //    }
-                //}
+                #region // execute with reflection
+                //var method = commandClass.GetType()
+                //                           .GetMethods()
+                //                           .Where(m => m.Name.ToLower() == commandParts[0])
+                //                           .SingleOrDefault();
+                //method.Invoke(commandClass, new object[] { commandParts });
                 #endregion
 
                 // execute with switch
