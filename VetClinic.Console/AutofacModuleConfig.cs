@@ -37,6 +37,7 @@
                     .EnableClassInterceptors()
                     .InterceptedBy(typeof(StopwatchInterceptor));
 
+
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("deleteuser");
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("listuserpets");
                 builder.RegisterType<UserCommand>().Named<IUserCommand>("searchuserbyphone");
