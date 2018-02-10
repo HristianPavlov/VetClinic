@@ -37,43 +37,41 @@
                     .EnableClassInterceptors()
                     .InterceptedBy(typeof(StopwatchInterceptor));
 
+                //builder.RegisterType<Command>().Named<ICommand>("listcommands");
+                //builder.RegisterType<Command>().Named<ICommand>("listcommands")
+                //    .WithParameter(
+                //    (pi, ctx) => pi.Name == "command",
+                //    (pi, ctx) => ctx.ResolveNamed<ICommand>("listcommands"));
 
-                builder.RegisterType<UserCommand>().Named<IUserCommand>("deleteuser");
-                builder.RegisterType<UserCommand>().Named<IUserCommand>("listuserpets");
-                builder.RegisterType<UserCommand>().Named<IUserCommand>("searchuserbyphone");
-                builder.RegisterType<UserCommand>().Named<IUserCommand>("listusers");
 
-                builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("createemployee");
-                builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("deleteemployee");
-                builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("listemployees");
-                builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("searchemployeebyphone");
+                //builder.RegisterType<UserCommand>().Named<IUserCommand>("deleteuser");
+                //builder.RegisterType<UserCommand>().Named<IUserCommand>("listuserpets");
+                //builder.RegisterType<UserCommand>().Named<IUserCommand>("searchuserbyphone");
+                //builder.RegisterType<UserCommand>().Named<IUserCommand>("listusers");
 
-                builder.RegisterType<PetCommand>().Named<IPetCommand>("createpet");
-                builder.RegisterType<PetCommand>().Named<IPetCommand>("deletepet");
-                builder.RegisterType<PetCommand>().Named<IPetCommand>("listpets");
+                //builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("createemployee");
+                //builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("deleteemployee");
+                //builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("listemployees");
+                //builder.RegisterType<EmployeeCommand>().Named<IEmployeeCommand>("searchemployeebyphone");
 
-                builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("createservice");
-                builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("deleteservice");
-                builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("listservices");
-                builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("performservice");
+                //builder.RegisterType<PetCommand>().Named<IPetCommand>("createpet");
+                //builder.RegisterType<PetCommand>().Named<IPetCommand>("deletepet");
+                //builder.RegisterType<PetCommand>().Named<IPetCommand>("listpets");
 
-                builder.RegisterType<Command>().Named<ICommand>("listcommands");
+                //builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("createservice");
+                //builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("deleteservice");
+                //builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("listservices");
+                //builder.RegisterType<ServiceCommand>().Named<IServiceCommand>("performservice");
 
-                builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("updatebalance");
-                builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("printbalance");
-                builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("printbookedservices");
+                //builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("updatebalance");
+                //builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("printbalance");
+                //builder.RegisterType<CashRegisterCommand>().Named<ICashRegisterCommand>("printbookedservices");
 
             }
             else
             {
-                builder.RegisterType<Command>().Named<ICommand>("listcommands");
-                builder.RegisterType<Command>().Named<ICommand>("listcommands")
-                    .WithParameter(
-                    (pi, ctx) => pi.Name == "command",
-                    (pi, ctx) => ctx.ResolveNamed<ICommand>("listcommands"));
-            }
 
-            builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace VetClinic.Commands.Implementations
 {
     using System;
-    using System.Linq;
     using VetClinic.Commands.Contracts;
     using VetClinic.Core.Commands.Contracts;
     using VetClinic.Factories.Contracts;
@@ -13,19 +12,19 @@
         private readonly IPetCommand petCommands;
         private readonly IEmployeeCommand employeeCommands;
         private readonly IServiceCommand serviceCommands;
-        private readonly ICommand engineCommands;
+        private readonly ICommand commands;
         private readonly ICashRegisterCommand cashRegisterCommands;
         private readonly IWriter writer;
         private readonly ICommandFactory commandFactory;
         private readonly ICommandParser commandParser;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, ICommand engineCommands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, ICommand commands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser)
         {
             this.userCommands = userCommands;
             this.petCommands = petCommands;
             this.employeeCommands = employeeCommands;
             this.serviceCommands = serviceCommands;
-            this.engineCommands = engineCommands;
+            this.commands = commands;
             this.cashRegisterCommands = cashRegisterCommands;
             this.writer = writer;
             this.commandFactory = commandFactory;
@@ -38,13 +37,26 @@
 
             try
             {
-                #region // execute with reflection
-                var commandClass = this.commandFactory.GetCommandClass(commandAsString);
-                var method = commandClass.GetType()
-                                           .GetMethods()
-                                           .Where(m => m.Name.ToLower() == commandParts[0])
-                                           .SingleOrDefault();
-                method.Invoke(commandClass, new object[] { commandParts });
+                #region // execute with reflection not working
+                //var commandClasses = this.commandFactory.GetCommandClasses();
+
+                //Type classToCall = null;
+                //MethodInfo methodToCall = null;
+
+                //foreach (var currClass in commandClasses)
+                //{
+                //    foreach (var m in currClass.GetMethods())
+                //    {
+                //        if (m.Name.ToLower() == commandAsString)
+                //        {
+                //            methodToCall = m;
+                //            classToCall = currClass;
+                //            break;
+                //        }
+                //    }
+                //}
+
+                //methodToCall.Invoke(classToCall, new object[] { commandParts }); // TODO
                 #endregion
 
                 // execute with switch
@@ -81,7 +93,7 @@
                         this.cashRegisterCommands.AddBookedService(commandParts); break;
 
                     // Commands
-                    case "listcommands": this.engineCommands.ListCommands(); break;
+                    case "listcommands": this.commands.ListCommands(); break;
 
                     // Accounting
                     case "updatebalance":
