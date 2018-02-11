@@ -62,7 +62,7 @@
 
                 //var commandClassToCall = this.commandFactory.ResolveCommand(commandAsString);
                 //var commandClassToCall = this.context.ResolveNamed<commandClass.GetType>(commandAsString);
-                commandMethod.Invoke(commandClass, new object[] { commandParts });
+                //commandMethod.Invoke(this.userCommands, new object[] { commandParts });
                 #endregion
 
                 // execute with switch

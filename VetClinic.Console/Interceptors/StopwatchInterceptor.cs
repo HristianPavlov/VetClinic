@@ -21,7 +21,7 @@ namespace VetClinic.Console.Interceptors
             invocation.Proceed();
             stopwatch.Stop();
 
-            this.writer.WriteLine($"Executed {invocation.Method.Name} for {stopwatch.ElapsedTicks} ticks.");
+            this.writer.WriteLine($"{invocation.Method.Name} was executed for {stopwatch.ElapsedMilliseconds} miliseconds.");
         }
     }
 }
