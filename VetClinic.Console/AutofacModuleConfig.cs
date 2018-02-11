@@ -40,13 +40,13 @@
                     //.EnableClassInterceptors()
                     .InterceptedBy(typeof(StopwatchInterceptor));
 
-                // for manual decorator
+                #region // example manual decorator
                 //builder.RegisterType<UserCommand>().Named<UserCommand>("createuser");
                 // builder.RegisterType<UserCommand>().Named<UserCommand>("createuser")
                 //     .WithParameter(
                 //     (pi, ctx) => pi.Name == "command",
                 //     (pi, ctx) => ctx.ResolveNamed<ICommand>("createuser"));
-
+                #endregion
             }
             else
             {
