@@ -1,6 +1,8 @@
 ﻿namespace VetClinic.Commands.Implementations
 {
+    using Autofac;
     using System;
+    using System.Reflection;
     using VetClinic.Commands.Contracts;
     using VetClinic.Core.Commands.Contracts;
     using VetClinic.Factories.Contracts;
@@ -17,8 +19,9 @@
         private readonly IWriter writer;
         private readonly ICommandFactory commandFactory;
         private readonly ICommandParser commandParser;
+        private readonly IComponentContext context;
 
-        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, ICommand commands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser)
+        public ProcessorCommand(IUserCommand userCommands, IPetCommand petCommands, IEmployeeCommand employeeCommands, IServiceCommand serviceCommands, ICommand commands, ICashRegisterCommand cashRegisterCommands, IWriter writer, ICommandFactory commandFactory, ICommandParser commandParser, IComponentContext context)
         {
             this.userCommands = userCommands;
             this.petCommands = petCommands;
@@ -29,6 +32,7 @@
             this.writer = writer;
             this.commandFactory = commandFactory;
             this.commandParser = commandParser;
+            this.context = context;
         }
 
         public void ProcessCommand(string commandAsString)
@@ -38,25 +42,27 @@
             try
             {
                 #region // execute with reflection not working
-                //var commandClasses = this.commandFactory.GetCommandClasses();
+                var allCommands = this.commandFactory.GetAllCommands();
 
-                //Type classToCall = null;
-                //MethodInfo methodToCall = null;
+                object commandClass = null;
+                MethodInfo commandMethod = null;
 
-                //foreach (var currClass in commandClasses)
-                //{
-                //    foreach (var m in currClass.GetMethods())
-                //    {
-                //        if (m.Name.ToLower() == commandAsString)
-                //        {
-                //            methodToCall = m;
-                //            classToCall = currClass;
-                //            break;
-                //        }
-                //    }
-                //}
+                foreach (var currrentCommand in allCommands)
+                {
+                    foreach (var currentMethod in currrentCommand.GetMethods())
+                    {
+                        if (currentMethod.Name.ToLower() == commandAsString)
+                        {
+                            commandMethod = currentMethod;
+                            commandClass = currrentCommand;
+                            break;
+                        }
+                    }
+                }
 
-                //methodToCall.Invoke(classToCall, new object[] { commandParts }); // TODO
+                //var commandClassToCall = this.commandFactory.ResolveCommand(commandAsString);
+                //var commandClassToCall = this.context.ResolveNamed<commandClass.GetType>(commandAsString);
+                commandMethod.Invoke(commandClass, new object[] { commandParts });
                 #endregion
 
                 // execute with switch

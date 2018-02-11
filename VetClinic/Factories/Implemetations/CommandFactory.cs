@@ -9,24 +9,24 @@
 
     public class CommandFactory : ICommandFactory
     {
-        private readonly IComponentContext context;
+        private readonly IComponentContext container;
 
 
         public CommandFactory(IComponentContext context)
         {
-            this.context = context;
+            this.container = context;
         }
 
         // TODO dynamically return the right class (or call the method of class)
-        public object GetCommandClass(string commandAsString)
-            => this.context.ResolveNamed<object>(commandAsString.Split(' ')[0]);
+        public object ResolveCommand(string commandAsString)
+            => this.container.ResolveNamed<object>(commandAsString);
 
-        public List<Type> GetCommandClasses()
+        public List<Type> GetAllCommands()
         => Assembly
                .Load("VetClinic.Core")
-              .GetTypes()
-              .Where(t => t.IsClass && t.Name.EndsWith("Command"))
-              .Distinct()
-              .ToList();
+               .GetTypes()
+               .Where(t => t.IsInterface && t.Name == "ProcessorCommand")
+               .Distinct()
+               .ToList();
     }
 }

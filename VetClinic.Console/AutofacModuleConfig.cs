@@ -37,11 +37,13 @@
                     .EnableClassInterceptors()
                     .InterceptedBy(typeof(StopwatchInterceptor));
 
-                //builder.RegisterType<Command>().Named<ICommand>("listcommands");
+
+                builder.RegisterType<Command>().Named<ICommand>("listcommands");
+
                 //builder.RegisterType<Command>().Named<ICommand>("listcommands")
                 //    .WithParameter(
                 //    (pi, ctx) => pi.Name == "command",
-                //    (pi, ctx) => ctx.ResolveNamed<ICommand>("listcommands"));
+                //    (pi, ctx) => ctx.ResolveNamed<ICommand>("deleteuser"));
 
 
                 //builder.RegisterType<UserCommand>().Named<IUserCommand>("deleteuser");
