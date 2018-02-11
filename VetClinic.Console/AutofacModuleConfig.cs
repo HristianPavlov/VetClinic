@@ -27,13 +27,6 @@
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
-            // for manual decorator
-            //builder.RegisterType<UserCommand>().Named<UserCommand>("createuser");
-            // builder.RegisterType<UserCommand>().Named<UserCommand>("createuser")
-            //     .WithParameter(
-            //     (pi, ctx) => pi.Name == "command",
-            //     (pi, ctx) => ctx.ResolveNamed<ICommand>("createuser"));
-
             builder.RegisterType<StopwatchInterceptor>().AsSelf();
 
             bool isTest = bool.Parse(ConfigurationManager.AppSettings["IsTestEnv"]);
@@ -47,10 +40,12 @@
                     //.EnableClassInterceptors()
                     .InterceptedBy(typeof(StopwatchInterceptor));
 
-                // not working
-                //builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser")
-                //    .EnableClassInterceptors()
-                //    .InterceptedBy(typeof(StopwatchInterceptor));
+                // for manual decorator
+                //builder.RegisterType<UserCommand>().Named<UserCommand>("createuser");
+                // builder.RegisterType<UserCommand>().Named<UserCommand>("createuser")
+                //     .WithParameter(
+                //     (pi, ctx) => pi.Name == "command",
+                //     (pi, ctx) => ctx.ResolveNamed<ICommand>("createuser"));
 
             }
             else
