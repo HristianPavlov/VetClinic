@@ -27,12 +27,12 @@
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
-
-            //builder.RegisterType<Command>().Named<ICommand>("listcommands");
-            //builder.RegisterType<Command>().Named<ICommand>("listcommands")
-            //    .WithParameter(
-            //    (pi, ctx) => pi.Name == "command",
-            //    (pi, ctx) => ctx.ResolveNamed<ICommand>("deleteuser"));    
+            // for manual decorator
+            //builder.RegisterType<UserCommand>().Named<UserCommand>("createuser");
+            // builder.RegisterType<UserCommand>().Named<UserCommand>("createuser")
+            //     .WithParameter(
+            //     (pi, ctx) => pi.Name == "command",
+            //     (pi, ctx) => ctx.ResolveNamed<ICommand>("createuser"));
 
             builder.RegisterType<StopwatchInterceptor>().AsSelf();
 
@@ -51,6 +51,10 @@
                 //builder.RegisterType<UserCommand>().Named<IUserCommand>("createuser")
                 //    .EnableClassInterceptors()
                 //    .InterceptedBy(typeof(StopwatchInterceptor));
+
+            }
+            else
+            {
 
             }
 
