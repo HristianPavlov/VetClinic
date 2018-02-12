@@ -1,6 +1,7 @@
 ﻿namespace VetClinic.Factories.Implemetations
 {
     using Autofac;
+    using System;
     using VetClinic.Commands.Contracts;
     using VetClinic.Factories.Contracts;
 
@@ -10,7 +11,7 @@
 
         public CommandFactory(IComponentContext container)
         {
-            this.container = container;
+            this.container = container ?? throw new ArgumentNullException("container") ;
         }
 
         public ICommand CreateCommand(string name)
