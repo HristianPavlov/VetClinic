@@ -20,7 +20,7 @@
 
         public ICollection<IPet> Pets => new List<IPet>(this.pets);
 
-        public decimal Bill { get => bill; set => bill = value; }
+        public decimal Bill { get => this.bill; set => this.bill = value; }
 
         public void AddPet(IPet pet)
         {
@@ -66,6 +66,7 @@
             var sb = new StringBuilder();
             sb.AppendLine(base.PrintInfo().Trim());
             sb.AppendLine(ListUserPets().Trim());
+            sb.AppendLine($"Current bill: {this.bill:f2} $");
             return sb.ToString();
         }
     }

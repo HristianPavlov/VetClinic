@@ -107,7 +107,7 @@ namespace VetClinic.Test.VetClinic.Data.Models
             var expectedResult = string.Format(
                               $"Name: {service.Name}" + Environment.NewLine +
                               $"Id: {service.Id}" + Environment.NewLine +
-                              $"Price: {service.Price}") + Environment.NewLine;
+                              $"Price: {service.Price} $") + Environment.NewLine;
 
             // Assert
             Assert.AreEqual(expectedResult, printedInfo);

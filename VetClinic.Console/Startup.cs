@@ -14,6 +14,7 @@ namespace VetClinic.Console
             var container = builder.Build();
 
             var engine = container.Resolve<IEngine>();
+
             engine.Run();
         }
     }

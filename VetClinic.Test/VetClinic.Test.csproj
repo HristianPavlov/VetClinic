@@ -74,6 +74,12 @@
     <Compile Include="VetClinic.Data\Repositories\ServicesRepositoryTests.cs" />
     <Compile Include="VetClinic.Data\Repositories\UserRepositoryTests.cs" />
     <Compile Include="VetClinic\Commands\EmployeeCommandTests.cs" />
+    <Compile Include="VetClinic\Commands\Implementations\AccountingCommandsTests.cs" />
+    <Compile Include="VetClinic\Commands\Implementations\CommandCommandsTests.cs" />
+    <Compile Include="VetClinic\Commands\Implementations\EmployeeCommandsTests.cs" />
+    <Compile Include="VetClinic\Commands\Implementations\PetCommandsTests.cs" />
+    <Compile Include="VetClinic\Commands\Implementations\ServiceCommandsTests.cs" />
+    <Compile Include="VetClinic\Commands\Implementations\UserCommandsTests.cs" />
     <Compile Include="VetClinic\Commands\PetCommandTests.cs" />
     <Compile Include="VetClinic\Commands\ServiceCommandTests.cs" />
     <Compile Include="VetClinic\Commands\UserCommandTests.cs" />

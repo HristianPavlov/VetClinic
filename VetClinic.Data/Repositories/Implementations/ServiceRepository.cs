@@ -16,7 +16,7 @@
             this.services = new List<IService>();
         }
 
-        public ICollection<IService> Services => this.services; //!!!!!
+        public ICollection<IService> Services => this.services; // TODO !!!!!
 
         public void CreateService(IService service)
         {
@@ -46,7 +46,6 @@
             this.Services.Remove(service);
         }
 
-
         public bool ContainsService(string id)
         {
 
@@ -68,7 +67,6 @@
 
         }
 
-
         public IService GetByName(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -77,7 +75,6 @@
             }
             return this.Services.SingleOrDefault(s => s.Name == name);
         }
-
 
 
         public string ListServices()

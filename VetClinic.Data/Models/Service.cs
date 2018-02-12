@@ -48,7 +48,7 @@
 
             sb.AppendLine($"Name: {this.Name}");
             sb.AppendLine($"Id: {this.Id}");
-            sb.AppendLine($"Price: {this.Price}");
+            sb.AppendLine($"Price: {this.Price} $");
 
             return sb.ToString();
         }

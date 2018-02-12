@@ -93,7 +93,8 @@ namespace VetClinic.Test.VetClinic.Data.Models
                               $"Id: {user.Id}" + Environment.NewLine +
                               $"Phone Number: {user.PhoneNumber}" + Environment.NewLine +
                               $"Email: {user.Email}" + Environment.NewLine +
-                              user.ListUserPets()) + Environment.NewLine;
+                              user.ListUserPets()) + Environment.NewLine +
+                              $"Current bill: {user.Bill:f2} $" + Environment.NewLine;
 
             // Assert
             Assert.AreEqual(expectedResult, printedInfo);

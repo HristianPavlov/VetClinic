@@ -1,6 +1,6 @@
 ﻿namespace VetClinic.Commands.Contracts
 {
-    public interface IProcessorCommand
+    public interface ICommandProcessor
     {
         void ProcessCommand(string commandLine);
     }

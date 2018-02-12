@@ -5,28 +5,34 @@
 
     public class Engine : IEngine
     {
-        private readonly IProcessorCommand processorCommand;
+        private readonly ICommandProcessor CommandProcessor;
         private readonly IReader reader;
         private readonly IWriter writer;
 
-        public Engine(IProcessorCommand processorCommand, IReader reader, IWriter writer)
+        public Engine(ICommandProcessor CommandProcessor, IReader reader, IWriter writer)
         {
-            this.processorCommand = processorCommand;
+            this.CommandProcessor = CommandProcessor;
             this.reader = reader;
             this.writer = writer;
         }
 
         public void Run()
         {
-            this.writer.WriteLine("System running...");
+            this.writer.WriteLine(" System running...");
 
             while (true)
             {
                 var commandLine = this.reader.ReadLine();
 
-                this.processorCommand.ProcessCommand(commandLine);
+                if (commandLine.Trim().ToLower() == "finish")
+                {
+                    this.writer.WriteLine(" Goodbye!");
+                    break;
+                }
 
-                this.writer.WriteLine("Waiting for command...");
+                this.CommandProcessor.ProcessCommand(commandLine);
+
+                this.writer.WriteLine(" Waiting for command...");
             }
         }
     }
