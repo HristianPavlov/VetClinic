@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.EmployeeCommands
 
         public override void Execute()
         {
-            SearchEmployeeByPhone();
-        }
-
-        private void SearchEmployeeByPhone()
-        {
             var parameters = this.Parameters;
             var phone = parameters[1];
 

@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.UserCommands
 
         public override void Execute()
         {
-            DeleteUser();
-        }
-
-        private void DeleteUser()
-        {
             var parameters = this.Parameters;
 
             var userId = parameters[1];

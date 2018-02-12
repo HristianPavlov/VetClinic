@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.ServiceCommands
 
         public override void Execute()
         {
-            DeleteService();
-        }
-
-        private void DeleteService()
-        {
             var parameters = this.Parameters;
             var name = parameters[1];
             var service = this.services.Services.SingleOrDefault(p => p.Name == name);

@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.UserCommands
 
         public override void Execute()
         {
-            SearchUserByPhone();
-        }
-
-        private void SearchUserByPhone()
-        {
             var parameters = this.Parameters;
             var phone = parameters[1];
             var user = this.users.Users.SingleOrDefault(u => u.PhoneNumber == phone);

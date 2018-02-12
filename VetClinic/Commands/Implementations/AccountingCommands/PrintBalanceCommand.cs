@@ -18,11 +18,6 @@ namespace VetClinic.Core.Commands.Implementations.AccountingCommands
 
         public override void Execute()
         {
-            PrintBalance();
-        }
-
-        private void PrintBalance()
-        {
             var balance = this.accountingRepository.Balance;
             this.writer.WriteLine($"{balance:F2} $");
         }

@@ -21,11 +21,6 @@ namespace VetClinic.Core.Commands.Implementations.AccountingCommands
 
         public override void Execute()
         {
-            CloseAccount();
-        }
-
-        private void CloseAccount()
-        {
             var parameters = this.Parameters;
             var userPhone = parameters[1];
 

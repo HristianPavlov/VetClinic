@@ -1,19 +1,20 @@
 ﻿namespace VetClinic
 {
+    using System;
     using VetClinic.Commands.Contracts;
     using VetClinic.Providers.Contracts;
 
     public class Engine : IEngine
     {
-        private readonly ICommandProcessor CommandProcessor;
+        private readonly ICommandProcessor commandProcessor;
         private readonly IReader reader;
         private readonly IWriter writer;
 
-        public Engine(ICommandProcessor CommandProcessor, IReader reader, IWriter writer)
+        public Engine(ICommandProcessor commandProcessor, IReader reader, IWriter writer)
         {
-            this.CommandProcessor = CommandProcessor;
-            this.reader = reader;
-            this.writer = writer;
+            this.commandProcessor = commandProcessor ?? throw new ArgumentNullException("commandProcessor");
+            this.reader = reader ?? throw new ArgumentNullException("reader");
+            this.writer = writer ?? throw new ArgumentNullException("reader");
         }
 
         public void Run()
@@ -30,7 +31,7 @@
                     break;
                 }
 
-                this.CommandProcessor.ProcessCommand(commandLine);
+                this.commandProcessor.ProcessCommand(commandLine);
 
                 this.writer.WriteLine(" Waiting for command...");
             }

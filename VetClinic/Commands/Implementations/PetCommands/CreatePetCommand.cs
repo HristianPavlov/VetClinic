@@ -26,11 +26,6 @@ namespace VetClinic.Core.Commands.Implementations.PetCommands
 
         public override void Execute()
         {
-            CreatePet();
-        }
-
-        private void CreatePet()
-        {
             var parameters = this.Parameters;
             IPet newAnimal;
 

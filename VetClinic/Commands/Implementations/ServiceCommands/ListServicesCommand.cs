@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.ServiceCommands
 
         public override void Execute()
         {
-            ListServices();
-        }
-
-        private void ListServices()
-        {
             if (this.services.Services.Count == 0)
             {
                 throw new ArgumentException("No users registered");

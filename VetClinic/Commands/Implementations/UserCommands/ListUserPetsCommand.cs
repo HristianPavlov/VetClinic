@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.UserCommands
 
         public override void Execute()
         {
-            ListUserPets();
-        }
-
-        private void ListUserPets()
-        {
             var parameters = this.Parameters;
 
             var userPhone = parameters[1];

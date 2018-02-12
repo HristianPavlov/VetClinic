@@ -21,11 +21,6 @@ namespace VetClinic.Core.Commands.Implementations.UserCommands
 
         public override void Execute()
         {
-            CreateUser();
-        }
-
-        private void CreateUser()
-        {
             var parameters = this.Parameters;
 
             var firstName = parameters[1];

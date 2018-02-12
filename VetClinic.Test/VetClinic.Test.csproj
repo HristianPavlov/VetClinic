@@ -80,9 +80,9 @@
     <Compile Include="VetClinic\Commands\Implementations\PetCommandsTests.cs" />
     <Compile Include="VetClinic\Commands\Implementations\ServiceCommandsTests.cs" />
     <Compile Include="VetClinic\Commands\Implementations\UserCommandsTests.cs" />
-    <Compile Include="VetClinic\Commands\PetCommandTests.cs" />
     <Compile Include="VetClinic\Commands\ServiceCommandTests.cs" />
     <Compile Include="VetClinic\Commands\UserCommandTests.cs" />
+    <Compile Include="VetClinic\EngineTests.cs" />
     <Compile Include="VetClinic\Factories\PersonFactoryTests.cs" />
     <Compile Include="VetClinic\Factories\PetFactoryTests.cs" />
   </ItemGroup>

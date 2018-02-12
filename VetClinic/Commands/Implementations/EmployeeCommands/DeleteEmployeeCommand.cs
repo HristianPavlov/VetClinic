@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.EmployeeCommands
 
         public override void Execute()
         {
-            DeleteEmployee();
-        }
-
-        private void DeleteEmployee()
-        {
             var parameters = this.Parameters;
             var employeeId = parameters[1];
             var employee = this.employees.Employees.SingleOrDefault(e => e.Id == employeeId);

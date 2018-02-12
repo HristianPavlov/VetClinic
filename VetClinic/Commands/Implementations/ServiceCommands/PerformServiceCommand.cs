@@ -22,11 +22,6 @@ namespace VetClinic.Core.Commands.Implementations.ServiceCommands
 
         public override void Execute()
         {
-            PerformService();
-        }
-
-        private void PerformService()
-        {
             var parameters = this.Parameters;
             var serviceName = parameters[1];
             var userPhone = parameters[2];

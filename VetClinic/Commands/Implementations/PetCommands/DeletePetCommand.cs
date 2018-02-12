@@ -21,11 +21,6 @@ namespace VetClinic.Core.Commands.Implementations.PetCommands
 
         public override void Execute()
         {
-            DeletePet();
-        }
-
-        public void DeletePet()
-        {
             var parameters = this.Parameters;
             var userPhone = parameters[1];
 

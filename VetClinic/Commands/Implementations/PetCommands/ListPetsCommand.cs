@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.PetCommands
 
         public override void Execute()
         {
-            ListPets();
-        }
-
-        public void ListPets()
-        {
             var sb = new StringBuilder();
 
             foreach (var pet in pets.Pets)

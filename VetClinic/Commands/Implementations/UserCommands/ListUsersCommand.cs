@@ -19,11 +19,6 @@ namespace VetClinic.Core.Commands.Implementations.UserCommands
 
         public override void Execute()
         {
-            ListUsers();
-        }
-
-        private void ListUsers()
-        {
             if (this.users.Users.Count == 0)
             {
                 throw new ArgumentNullException("No users registered");

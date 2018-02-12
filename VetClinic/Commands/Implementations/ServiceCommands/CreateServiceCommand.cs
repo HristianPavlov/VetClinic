@@ -23,11 +23,6 @@ namespace VetClinic.Core.Commands.Implementations.ServiceCommands
 
         public override void Execute()
         {
-            CreateService();
-        }
-
-        private void CreateService()
-        {
             var parameters = this.Parameters;
             var name = parameters[1];
 

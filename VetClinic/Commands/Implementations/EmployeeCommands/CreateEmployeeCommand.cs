@@ -23,11 +23,6 @@ namespace VetClinic.Core.Commands.Implementations.EmployeeCommands
 
         public override void Execute()
         {
-            CreateEmployee();
-        }
-
-        private void CreateEmployee()
-        {
             var parameters = this.Parameters;
             var firstName = parameters[1];
             var lastName = parameters[2];

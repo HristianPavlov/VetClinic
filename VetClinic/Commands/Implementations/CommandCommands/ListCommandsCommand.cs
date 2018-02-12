@@ -18,11 +18,6 @@ namespace VetClinic.Core.Commands.Implementations.CommandCommands
 
         public override void Execute()
         {
-            ListCommands();
-        }
-
-        private void ListCommands()
-        {
             var commandsList = this.GetAllCommandNames();
 
             if (commandsList == null)

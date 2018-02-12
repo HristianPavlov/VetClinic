@@ -20,11 +20,6 @@ namespace VetClinic.Core.Commands.Implementations.EmployeeCommands
 
         public override void Execute()
         {
-            ListEmployees();
-        }
-
-        private void ListEmployees()
-        {
             if (this.employees.Employees.Count == 0)
             {
                 throw new NullReferenceException("No employee registered yet");
