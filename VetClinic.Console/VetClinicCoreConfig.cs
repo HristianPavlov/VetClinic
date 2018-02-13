@@ -72,7 +72,8 @@
                 builder.RegisterType<Engine>()
                     .As<IEngine>()
                     .EnableInterfaceInterceptors()
-                    .InterceptedBy(typeof(StopwatchInterceptor));
+                    .InterceptedBy(typeof(StopwatchInterceptor))
+                    .SingleInstance();
             }
         }
     }
