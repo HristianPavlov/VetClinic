@@ -28,7 +28,6 @@
 
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
 
-
             // COMMANDS:
             // UserCommands
             builder.RegisterType<CreateUserCommand>().Named<ICommand>("createuser").SingleInstance();
@@ -75,7 +74,6 @@
                     .EnableInterfaceInterceptors()
                     .InterceptedBy(typeof(StopwatchInterceptor));
             }
-
         }
     }
 }
