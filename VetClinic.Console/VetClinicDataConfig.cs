@@ -4,7 +4,7 @@ using VetClinic.Data.Repositories.Contracts;
 
 namespace VetClinic.Console
 {
-    public class VetClinicDataModuleConfig : Autofac.Module
+    public class VetClinicDataConfig : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {

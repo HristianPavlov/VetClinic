@@ -1,8 +1,11 @@
 ﻿namespace VetClinic.Console
 {
     using Autofac;
+    using Autofac.Extras.DynamicProxy;
+    using System.Configuration;
     using System.Reflection;
     using VetClinic.Commands.Contracts;
+    using VetClinic.Console.Interceptors;
     using VetClinic.Core.Commands.Implementations.AccountingCommands;
     using VetClinic.Core.Commands.Implementations.CommandCommands;
     using VetClinic.Core.Commands.Implementations.EmployeeCommands;
@@ -10,7 +13,7 @@
     using VetClinic.Core.Commands.Implementations.ServiceCommands;
     using VetClinic.Core.Commands.Implementations.UserCommands;
 
-    public class VetClinicModuleConfig : Autofac.Module
+    public class VetClinicCoreConfig : Autofac.Module
     {
 
         protected override void Load(ContainerBuilder builder)
@@ -26,7 +29,7 @@
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
 
 
-        // COMMANDS:
+            // COMMANDS:
             // UserCommands
             builder.RegisterType<CreateUserCommand>().Named<ICommand>("createuser").SingleInstance();
             builder.RegisterType<DeleteUserCommand>().Named<ICommand>("deleteuser").SingleInstance();
@@ -58,6 +61,18 @@
             builder.RegisterType<CloseAccountCommand>().Named<ICommand>("closeaccount").SingleInstance();
             builder.RegisterType<PrintBalanceCommand>().Named<ICommand>("printbalance").SingleInstance();
 
+
+            bool isTest = bool.Parse(ConfigurationManager.AppSettings["IsTestEnv"]);
+
+            if (isTest)
+            {
+                builder.RegisterType<StopwatchInterceptor>().AsSelf();
+
+                builder.RegisterType<Engine>()
+                    .As<IEngine>()
+                    .EnableInterfaceInterceptors()
+                    .InterceptedBy(typeof(StopwatchInterceptor));
+            }
 
         }
     }

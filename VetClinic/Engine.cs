@@ -14,10 +14,10 @@
         {
             this.commandProcessor = commandProcessor ?? throw new ArgumentNullException("commandProcessor");
             this.reader = reader ?? throw new ArgumentNullException("reader");
-            this.writer = writer ?? throw new ArgumentNullException("reader");
+            this.writer = writer ?? throw new ArgumentNullException("writer");
         }
 
-        public void Run()
+        public void Start()
         {
             this.writer.WriteLine(" System running...");
 

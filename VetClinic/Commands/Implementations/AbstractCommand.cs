@@ -16,10 +16,7 @@ namespace VetClinic.Core.Commands.Implementations
         public IList<string> Parameters
         {
             get => this.parameters;
-            set
-            {
-                this.parameters = value ?? throw new ArgumentNullException("parameters");
-            }
+            set => this.parameters = value ?? throw new ArgumentNullException("parameters");
         }
 
         public abstract void Execute();

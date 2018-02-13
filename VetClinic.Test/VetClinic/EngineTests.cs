@@ -55,7 +55,7 @@ namespace VetClinic.Test.VetClinic
             reader.SetupSequence(m => m.ReadLine()).Returns("listcommands").Returns("finish");
 
             // Act
-            engine.Run();
+            engine.Start();
 
             // Assert
             reader.Verify(m => m.ReadLine(), Times.AtLeastOnce);
@@ -74,7 +74,7 @@ namespace VetClinic.Test.VetClinic
             reader.SetupSequence(m => m.ReadLine()).Returns("listcommands").Returns("finish");
 
             // Act
-            engine.Run();
+            engine.Start();
 
             // Assert
             writer.Verify(m => m.WriteLine(" System running..."), Times.Once);
@@ -93,7 +93,7 @@ namespace VetClinic.Test.VetClinic
             var engine = new Engine(commandProcessor.Object, reader.Object, writer.Object);
 
             // Act
-            engine.Run();
+            engine.Start();
 
             // Assert
             writer.Verify(m => m.WriteLine(" Waiting for command..."), Times.AtLeastOnce);
@@ -112,7 +112,7 @@ namespace VetClinic.Test.VetClinic
             var engine = new Engine(commandProcessor.Object, reader.Object, writer.Object);
 
             // Act
-            engine.Run();
+            engine.Start();
 
             // Assert
             writer.Verify(m => m.WriteLine(" Goodbye!"), Times.Once);
@@ -134,7 +134,7 @@ namespace VetClinic.Test.VetClinic
             var engine = new Engine(commandProcessor.Object, reader.Object, writer.Object);
 
             // Act
-            engine.Run();
+            engine.Start();
 
             // Assert
             commandProcessor.Verify(m => m.ProcessCommand(line), Times.Once);
