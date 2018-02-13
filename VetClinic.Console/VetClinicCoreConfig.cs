@@ -66,8 +66,10 @@
 
             if (isTest)
             {
+                // StopwatchInterceptor
                 builder.RegisterType<StopwatchInterceptor>().AsSelf();
 
+                // Engine with StopwatchInterceptor
                 builder.RegisterType<Engine>()
                     .As<IEngine>()
                     .EnableInterfaceInterceptors()
